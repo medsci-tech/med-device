@@ -1,0 +1,3 @@
+[10-Apr-2017 04:26:48 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Web\Controller' not found in D:\web\med-device\app\Http\Controllers\Web\HomeController.php on line 8
+[10-Apr-2017 04:32:24 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Web\Controller' not found in D:\web\med-device\app\Http\Controllers\Web\HomeController.php on line 8
+[10-Apr-2017 07:28:24 UTC] PHP Fatal error:  Cannot redeclare App\Http\Controllers\Web\Personal\PersonalController::index() in D:\web\med-device\app\Http\Controllers\Web\Personal\PersonalController.php on line 39
