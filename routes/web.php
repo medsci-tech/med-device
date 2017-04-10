@@ -15,6 +15,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
 
     Route::get('/', 'HomeController@index');//首页
     Route::any('/forget', 'HomeController@forget'); // 忘记密码
+    Route::any('/helper', 'HomeController@helper'); // 忘记密码
 
     Route::group(['prefix' => '', 'namespace' => 'Home'], function () {
         Route::get('/logins', 'LoginController@showLoginForm'); // 登录

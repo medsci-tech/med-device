@@ -30,4 +30,8 @@ class HomeController extends Controller
     {
         return view('web.home.forget');
     }
+    public function helper()
+    {
+        return view('web.home.helper');
+    }
 }

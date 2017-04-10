@@ -71,6 +71,7 @@
                         <li><a href="{{ url('/logins') }}">登录</a></li>
                         <li><a href="{{ url('/registers') }}">注册</a></li>
                         <li><a href="{{ url('/forget') }}">忘记密码</a></li>
+                        <li><a href="{{ url('/helper') }}">帮助</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
