@@ -68,9 +68,90 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
 
 });
 
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
+// 后台相关路由
+Route::group(['prefix' => 'admin'], function () {
+    Route::group(['namespace' => 'Admin', 'middleware' => 'admin'], function () {
+        Route::resource('category', 'CategoryController');
+        Route::resource('product', 'ProductController');
+        Route::resource('supplier', 'SupplierController');
+        Route::resource('activity', 'ActivityController');
+        Route::resource('user', 'UserController');
+        Route::resource('specification', 'SpecificationController');
+        Route::resource('banner', 'BannerController');
+        Route::resource('product-banner', 'ProductBannerController');
+        Route::get('down-order-excel', 'OrderController@downOrderExcel');
+        Route::get('order-2-excel', 'OrderController@order2Excel');
+        Route::any('/excel', 'ProductController@excel');
+        Route::any('/update-puan-id', 'ProductController@updatePuanId');
 
-    Route::get('/home', 'HomeController@index');
+        Route::any('/product/search', 'ProductController@search');
+        Route::any('/category/search', 'CategoryController@search');
+        Route::any('/order/search', 'OrderController@search');
+        Route::get('/order/set-ems-num', 'OrderController@setEMSNum');
+        Route::get('/order/ems-print', 'OrderController@printEMSOrder');
+        Route::get('/order/print-data', 'OrderController@printData');
+        Route::resource('order', 'OrderController');
+        //后台管理员
+        Route::any('logout', 'AuthController@logout');
+        Route::get('/', function () {
+            return view('admin.index');
+        });
+//        Route::get('logout', function () {
+//            Auth::logout();
+//            return Redirect::to('/admin/login');
+//        });
+
+        Route::group(['namespace' => 'Member', 'prefix' => 'member'], function () {
+            Route::get('wx-down-order-excel', 'OrderController@WxDownOrderExcel');
+            Route::get('member-down-order-excel', 'OrderController@MemberDownOrderExcel');
+
+            Route::any('order/wx-search', 'OrderController@search');
+            Route::any('order/member-search', 'OrderController@search');
+
+            Route::get('wx-order', 'OrderController@wx');
+            Route::get('member-order', 'OrderController@member');
+            Route::resource('product', 'ProductController');
+            Route::any('product/search', 'ProductController@search');
+        });
+
+    });
+
+    Route::group(['namespace' => 'Admin'], function () {
+        Route::group(['middleware' => 'admin'], function () {
+            Route::get('password/change', 'PasswordController@showChangePasswordForm')->name('auth.password.change');
+            Route::post('password/change', 'PasswordController@changePassword')->name('auth.password.update');
+        });
+        Route::group(['middleware' => 'guest'], function () {
+            Route::get('login', 'AuthController@showLoginForm')->name('auth.login');
+            Route::post('login', 'AuthController@login');
+        });
+    });
 });
+
+
+//Route::group(['prefix' => 'admin' ,'middleware' => 'web'], function () {
+//    Route::get('login', 'Admin\AuthController@getLogin');
+//
+//    Route::post('login', 'Admin\AuthController@postLogin');
+//
+//    Route::get('register', 'Admin\AuthController@register');
+//
+//    Route::post('register', 'Admin\AuthController@register');
+//
+//    Route::get('logout', 'Admin\AuthController@logout');
+//
+//    Route::get('/', 'Admin\AdminController@index');
+//});
+
+
+//Route::group(['middleware' => 'web', 'prefix' => ''], function () {
+////    //Route::auth();
+////
+//    Auth::routes();
+//
+//    Route::get('/home', 'HomeController@index');
+//});
+
+
+
 

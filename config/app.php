@@ -176,6 +176,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Stevenyangecho\UEditor\UEditorServiceProvider::class, // 富文本编辑器
+        //zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
 
     ],
 
