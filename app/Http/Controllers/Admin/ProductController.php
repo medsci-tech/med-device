@@ -71,29 +71,7 @@ class ProductController extends Controller
      */
     private function updateFormatData(Request $request)
     {
-        $data = [
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'detail' => $request->input('detail'),
-            'category_id' => $request->input('category_id'),
-            'supplier_id' => $request->input('supplier_id'),
-            'price' => $request->input('price'),
-            'beans' => $request->input('beans'),
-            'tags' => $request->input('tags'),
-            'is_on_sale' => $request->input('is_on_sale'),
-            'is_abroad' => $request->input('is_abroad'), // 是否海淘
-            'price_tax' => $request->input('price_tax'), //海淘税
-            'default_spec' => $request->input('default_spec'),
-            'weight' => $request->input('weight'),
-            'puan_id' => $request->input('puan_id')
-        ];
-        $data['price_tax'] = $request->input('is_abroad')>0 ? $request->input('price_tax') : 0;
-        if (!$request->input('activity_id')) {
-            $data['activity_id'] = null;
-        } else {
-            $data['activity_id'] = $request->input('activity_id');
-        }
-
+        $data = $this->postData;
         if ($request->hasFile('logo')) {
             $logoUrl = \Helper::qiniuUpload($request->file('logo'));
             if ($logoUrl) {
@@ -158,6 +136,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        /* 规格处理 */
         $specName = $request->input('spec_name');
         $specPrice = $request->input('spec_price');
         $specDetails = [];
@@ -167,10 +146,21 @@ class ProductController extends Controller
                 'specification_price' => $specPrice[$i],
             ];
         }
+        /* 视频处理 */
+        $videoApp = $request->input('qcloud_app_id');
+        $videoFile = $request->input('qcloud_file_id');
+        $videoDetails = [];
+        for ($i = 0; $i < sizeof($videoApp); $i++) {
+            $videoDetails[$i] = [
+                'qcloud_app_id' => $videoApp[$i],
+                'qcloud_file_id' => $videoFile[$i],
+            ];
+        }
         $data = $this->formatData($request);
         $data['specDetails'] = $specDetails;
+        $data['videoDetails'] = $videoDetails;
 
-        Product::Create($data);echo(11);exit;
+        Product::Create($data);
         return redirect('/admin/product');
     }
 
@@ -186,8 +176,6 @@ class ProductController extends Controller
         return view('admin.product.edit', [
             'product' => Product::find($id),
             'categories' => Category::all(),
-            'suppliers' => Supplier::all(),
-            'activities' => Activity::all(),
         ]);
     }
 
@@ -216,12 +204,25 @@ class ProductController extends Controller
             }
             $product->addSpecs($specDetails);
         }
+        /* 视频 */
+        if ($request->has('qcloud_app_id') && $request->has('qcloud_file_id')) {
+            $videoApp = $request->input('qcloud_app_id');
+            $videoFile = $request->input('qcloud_file_id');
+            $videoDetails = [];
+            for ($i = 0; $i < sizeof($videoApp); $i++) {
+                $videoDetails[$i] = [
+                    'qcloud_app_id' => $videoApp[$i],
+                    'qcloud_file_id' => $videoFile[$i],
+                ];
+            }
+            $product->addVideos($videoDetails);
+        }
 
         $bannerUrl = $this->uploadBanners($request);
         if ($bannerUrl) {
             $product->addBanners($bannerUrl);
         }
-        return redirect()->route('admin.product.index');
+        return redirect()->route('product.index');
     }
 
     /**

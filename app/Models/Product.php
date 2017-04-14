@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Common;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @package App\Models
  * @mixin \Eloquent
  */
-class Product extends Model
+class Product extends Common
 {
     use SoftDeletes;
 
@@ -47,15 +47,6 @@ class Product extends Model
         return $this->belongsTo('App\Models\Category', 'category_id');
     }
 
-    public function supplier()
-    {
-        return $this->belongsTo('App\Models\Supplier', 'supplier_id');
-    }
-
-    public function activity()
-    {
-        return $this->belongsTo(Activity::class, 'activity_id');
-    }
 
     public function type()
     {
@@ -77,6 +68,11 @@ class Product extends Model
         return $this->hasMany(ProductSpecification::class);
     }
 
+    public function videos()
+    {
+        return $this->hasMany(ProductVideo::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -94,11 +90,23 @@ class Product extends Model
         $this->specifications()->save(ProductSpecification::create($data));
         return $this;
     }
+    public function addVideo($data)
+    {
+        $this->videos()->save(ProductVideo::create($data));
+        return $this;
+    }
 
     public function addSpecs($items)
     {
         foreach ($items as $item) {
             $this->addSpec($item);
+        }
+        return $this;
+    }
+    public function addVideos($items)
+    {
+        foreach ($items as $item) {
+            $this->addVideo($item);
         }
         return $this;
     }
@@ -123,12 +131,16 @@ class Product extends Model
 
     public static function create(array $options = [])
     {
-        $product = new static($options);
-        $product->save();
+        $product = parent::create($options);
         if (array_key_exists('specDetails', $options)) {
             $spec = $options['specDetails'];
             $product = $product->addSpecs($spec);
         }
+        if (array_key_exists('videoDetails', $options)) {
+            $spec = $options['videoDetails'];
+            $product = $product->addVideos($spec);
+        }
+
         if (array_key_exists('banners', $options)) {
             $banners = $options['banners'];
             $product->addBanners($banners);

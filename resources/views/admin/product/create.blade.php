@@ -81,7 +81,6 @@
                             <input type="text" id="attention" placeholder="请输入注意事项" name="attention">
                         </div>
                     </div>
-
                     <div class="am-form-group">
                         <label for="weight" class="am-u-sm-3 am-form-label">库存</label>
                         <div class="am-u-sm-9">
@@ -140,10 +139,10 @@
                             <small>请用","隔开。例:"药械,糖尿病"</small>
                         </div>
                     </div>
-                    <div class="am-form-group am-form-file" id="banner">
+                    <div class="am-form-group am-form-file" id="video">
                         <label for="doc-ipt-file-2" class="am-u-sm-3 am-form-label">教育视频</label>
 
-                        <div class="am-u-sm-1" id="add-banner" style="float: left">
+                        <div class="am-u-sm-1"  style="float: left">
                             <button type="button" class="am-btn am-btn-success" id="add-video">
                                 <span class="am-icon-plus"></span>添加视频
                             </button>

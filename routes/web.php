@@ -101,18 +101,6 @@ Route::group(['prefix' => 'admin'], function () {
 //            return Redirect::to('/admin/login');
 //        });
 
-        Route::group(['namespace' => 'Member', 'prefix' => 'member'], function () {
-            Route::get('wx-down-order-excel', 'OrderController@WxDownOrderExcel');
-            Route::get('member-down-order-excel', 'OrderController@MemberDownOrderExcel');
-
-            Route::any('order/wx-search', 'OrderController@search');
-            Route::any('order/member-search', 'OrderController@search');
-
-            Route::get('wx-order', 'OrderController@wx');
-            Route::get('member-order', 'OrderController@member');
-            Route::resource('product', 'ProductController');
-            Route::any('product/search', 'ProductController@search');
-        });
 
     });
 

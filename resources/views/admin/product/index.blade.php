@@ -38,6 +38,7 @@
 
             <div class="am-u-sm-12 am-u-md-3">
                 <form action="/admin/product/search" method="post">
+                    {{ csrf_field() }}
                     <div class="am-input-group am-input-group-sm">
                         <input type="text" name="keyword" class="am-form-field" placeholder="请输入商品名称，tag或描述">
                          <span class="am-input-group-btn">
@@ -57,10 +58,10 @@
                             <th class="table-id">ID</th>
                             <th class="table-title">商品名称</th>
                             <th class="table-type">所属类别</th>
-                            <th class="table-type">供应商</th>
-                            <th class="table-type">活动</th>
-                            <th class="table-type">状态</th>
-                            <th class="table-type">是否海淘</th>
+                            <th class="table-type">生产企业</th>
+                            <th class="table-type">生产标准</th>
+                            <th class="table-type">注册证号</th>
+                            <th class="table-type">库存</th>
                             <th class="table-author">价格</th>
                             <th class="table-author">默认规格</th>
                             <th class="table-author">权重</th>
@@ -74,12 +75,12 @@
                                 <td>{{$product->id}}</td>
                                 <td>{{$product->name}}</td>
                                 <td>{!!  $product->category ? '<a href="/admin/product?category_id='.$product->category->id.'">'.$product->category->name.'</a>' : '未选择分类'!!}</td>
-                                <td>{{$product->supplier ?$product->supplier->supplier_name : '未选择供应商'}}</td>
-                                <td><a href="#">{{$product->activity ?$product->activity->activity_name : '暂未参加活动'}}</a>
+                                <td>{{$product->enterprise}}</td>
+                                <td>{{$product->standard}}</a>
                                 </td>
                                 {{--<td>{!!  $product->activity ? '<a href="/admin/product?activity_id='.$product->activity->id.'">'.$product->activity->activity_name.'</a>' : '暂未参加活动'!!}</td>--}}
-                                <td>{{$product->is_on_sale ?'出售' : '不出售'}}</td>
-                                <td>{{$product->is_abroad ?'是: 税费:'.$product->price_tax : '否'}}</td>
+                                <td>{{$product->registration}}</td>
+                                <td>{{$product->stock}}</td>
                                 <td class="am-hide-sm-only">{{$product->price}}</td>
                                 <td class="am-hide-sm-only">{{$product->default_spec}}</td>
                                 <td class="am-hide-sm-only">{{$product->weight}}</td>

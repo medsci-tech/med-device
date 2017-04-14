@@ -18,6 +18,19 @@
                       enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
+                    <div class="am-form-group am-form-select">
+                        <label for="doc-select-1" class="am-u-sm-3 am-form-label">所属分类</label>
+
+                        <div class="am-u-sm-9">
+                            <select id="category_id" name="category_id" required>
+                                <option value="">==请选择分类==</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                            <span class="am-form-caret"> </span>
+                        </div>
+                    </div>
                     <div class="am-form-group">
                         <label for="user-name" class="am-u-sm-3 am-form-label">商品名称</label>
 
@@ -41,79 +54,43 @@
                     <div class="am-form-group">
                         <label for="weight" class="am-u-sm-3 am-form-label">生产企业</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="weight" placeholder="puan id" name="enterprise"
-                                   value="{{$product->puan_id}}">
+                            <input type="text" id="enterprise" placeholder="请输入生产企业" name="enterprise" value="{{$product->enterprise}}">
                         </div>
                     </div>
-
-                    <div class="am-form-group am-form-select">
-                        <label for="doc-select-1" class="am-u-sm-3 am-form-label">所属分类</label>
-
+                    <div class="am-form-group">
+                        <label for="weight" class="am-u-sm-3 am-form-label">生产标准</label>
                         <div class="am-u-sm-9">
-                            <select id="category_id" name="category_id" required>
-                                <option value="">==请选择分类==</option>
-                                @foreach($categories as $category)
-                                    <option value="{{$category->id}}">{{$category->name}}</option>
-                                @endforeach
-                            </select>
-                            <span class="am-form-caret"> </span>
+                            <input type="text" id="standard" placeholder="请输入生产标准" name="standard" value="{{$product->standard}}">
                         </div>
                     </div>
-
-                    <div class="am-form-group am-form-select">
-                        <label for="doc-select-1" class="am-u-sm-3 am-form-label">所属供应商</label>
-
+                    <div class="am-form-group">
+                        <label for="weight" class="am-u-sm-3 am-form-label">注册证号</label>
                         <div class="am-u-sm-9">
-                            <select id="supplier_id" name="supplier_id" required>
-                                <option value="">==请选择供应商==</option>
-                                @foreach($suppliers as $supplier)
-                                    <option value="{{$supplier->id}}">{{$supplier->supplier_name}}</option>
-                                @endforeach
-                            </select>
-                            <span class="am-form-caret"> </span>
+                            <input type="text" id="registration" placeholder="请输入注册证号" name="registration" value="{{$product->registration}}">
                         </div>
                     </div>
-
-                    <div class="am-form-group am-form-select">
-                        <label for="doc-select-1" class="am-u-sm-3 am-form-label">所属活动</label>
-
+                    <div class="am-form-group">
+                        <label for="weight" class="am-u-sm-3 am-form-label">适用科室</label>
                         <div class="am-u-sm-9">
-                            <select id="activity_id" name="activity_id">
-                                <option value="">==请选择所属活动==</option>
-                                @foreach($activities as $activity)
-                                    <option value="{{$activity->id}}">{{$activity->activity_name}}</option>
-                                @endforeach
-                            </select>
-                            <span class="am-form-caret"> </span>
+                            <input type="text" id="office" placeholder="请输入用科室" name="office" value="{{$product->office}}">
                         </div>
                     </div>
-
-                    <div class="am-form-group am-form-select">
-                        <label for="doc-select-1" class="am-u-sm-3 am-form-label">是否出售</label>
-
+                    <div class="am-form-group">
+                        <label for="weight" class="am-u-sm-3 am-form-label">适用范围</label>
                         <div class="am-u-sm-9">
-                            <select id="is_on_sale" name="is_on_sale" required>
-                                <option value="1">出售</option>
-                                <option value="0">不出售</option>
-                            </select>
-                            <span class="am-form-caret"> </span>
+                            <input type="text" id="scope" placeholder="请输入适用范围" name="scope"  value="{{$product->scope}}">
                         </div>
                     </div>
-                    <div class="am-form-group am-form-select">
-                        <label for="doc-select-1" class="am-u-sm-3 am-form-label">是否海淘</label>
+                    <div class="am-form-group">
+                        <label for="weight" class="am-u-sm-3 am-form-label">使用注意</label>
                         <div class="am-u-sm-9">
-                            <select id="is_abroad" name="is_abroad">
-                                <option value="0">否</option>
-                                <option value="1">是</option>
-                            </select>
-                            <span class="am-form-caret"> </span>
+                            <input type="text" id="attention" placeholder="请输入注意事项" name="attention"  value="{{$product->attention}}">
                         </div>
                     </div>
-                    <div class="am-form-group" id="pricetax">
-                        <label for="price" class="am-u-sm-3 am-form-label">海淘税收</label>
+                    <div class="am-form-group">
+                        <label for="weight" class="am-u-sm-3 am-form-label">库存</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="price_tax" placeholder="海淘税收费" name="price_tax" value="{{$product->price_tax}}">
-                            <small></small>
+                            <input type="text" id="stock" placeholder="请输入库存,建议数字" name="stock"  value="{{$product->stock}}">
                         </div>
                     </div>
 
@@ -161,26 +138,6 @@
                         </div>
                     @endforeach
 
-                    <div class="am-form-group">
-                        <label for="user-name" class="am-u-sm-3 am-form-label">迈豆价格</label>
-
-                        <div class="am-u-sm-9">
-                            <input type="text" id="beans" placeholder="迈豆价格" name="beans" value="{{$product->beans}}"
-                                   required>
-                            <small></small>
-                        </div>
-                    </div>
-
-                    <div class="am-form-group">
-                        <label for="user-name" class="am-u-sm-3 am-form-label">产品描述</label>
-
-                        <div class="am-u-sm-9">
-                            <input type="text" id="price" placeholder="产品描述" name="description"
-                                   value="{{$product->description}}" required>
-                            <small></small>
-                        </div>
-                    </div>
-
                     <div class="am-form-group am-form-file">
                         <label for="doc-ipt-file-2" class="am-u-sm-3 am-form-label">LOGO</label>
 
@@ -223,7 +180,7 @@
                         </div>
                     @endif
 
-                    <div class="am-form-group">
+                    <div class="am-form-group" id="tags">
                         <label for="user-name" class="am-u-sm-3 am-form-label">商品标签</label>
 
                         <div class="am-u-sm-9">
@@ -231,7 +188,33 @@
                             <small>请用","隔开。例:"药械,糖尿病"</small>
                         </div>
                     </div>
+                    @foreach($product->videos as $video)
+                        <div class="am-form-group"><label for="user-name" class="am-u-sm-3 am-form-label">视频参数</label>
 
+                            <div class="am-u-sm-3"><input type="text" value="{{$video->qcloud_app_id}}" readonly>
+                            </div>
+                            <div class="am-u-sm-3"><input type="text" value="{{$video->qcloud_app_id}}" readonly>
+                            </div>
+                            <div class="am-u-sm-3 am-btn-toolbar">
+                                <a href="/admin/video/{{$video->id}}/edit"
+                                   class="am-btn am-btn-primary am-btn-xs"><span
+                                            class="am-icon-pencil"></span> 修改</a>
+                                <a type="button" class="am-btn am-btn-danger am-btn-xs"
+                                   id="delete{{ $video->id }}" url="/admin/video/"><span
+                                            class="am-icon-remove"></span>
+                                    删除</a>
+                            </div>
+                        </div>
+                    @endforeach
+                    <div class="am-form-group am-form-file" id="video">
+                        <label for="doc-ipt-file-2" class="am-u-sm-3 am-form-label">教育视频</label>
+
+                        <div class="am-u-sm-1"  style="float: left">
+                            <button type="button" class="am-btn am-btn-success" id="add-video">
+                                <span class="am-icon-plus"></span>添加视频
+                            </button>
+                        </div>
+                    </div>
                     <div class="am-form-group">
                         <label for="user-intro" class="am-u-sm-3 am-form-label">商品简介</label>
 
@@ -242,7 +225,16 @@
                             </script>
                         </div>
                     </div>
+                    <div class="am-form-group">
+                        <label for="user-intro" class="am-u-sm-3 am-form-label">招商信息</label>
 
+                        <div class="am-u-sm-9">
+                            <!-- 加载编辑器的容器 -->
+                            <script id="container2" name="description" type="text/plain">
+                                {{$product->description}}
+                            </script>
+                        </div>
+                    </div>
                     <div class="am-form-group">
                         <div class="am-u-sm-9 am-u-sm-push-3">
                             <button type="submit" class="am-btn am-btn-primary">保存修改</button>
@@ -271,6 +263,11 @@
             var txt = ue.getContentTxt();
             ue.setContent(txt);
         });
+        var ue2 = UE.getEditor('container2');
+        ue2.ready(function () {
+            var txt = ue2.getContentTxt();
+            ue2.setContent(txt);
+        });
 
         $("#category_id").val("{{$product->category_id}}");
         $("#supplier_id").val("{{$product->supplier_id}}");
@@ -281,6 +278,10 @@
         $('#add-spec').click(function () {
             var input = '<div class="am-form-group"><label for="user-name" class="am-u-sm-3 am-form-label">商品规格</label><div class="am-u-sm-4"><input type="text" placeholder="规格名称,例如[100g]" name="spec_name[]" required></div><div class="am-u-sm-4"><input type="text"  placeholder="规格对应价格商品价格" name="spec_price[]" required></div></div>';
             $('#price').after(input);
+        });
+        $('#add-video').click(function () {
+            var input = '<div class="am-form-group"><label for="user-name" class="am-u-sm-3 am-form-label">视频参数</label><div class="am-u-sm-4"><input type="text" placeholder="请输入腾讯云app_id" name="qcloud_app_id[]" required></div><div class="am-u-sm-4"><input type="text"  placeholder="请输入腾讯云file_id" name="qcloud_file_id[]" required></div></div>';
+            $('#tags').after(input);
         });
 
         $('input[type=file]').change(function () {
