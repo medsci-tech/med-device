@@ -16,7 +16,6 @@ class ProductBanner extends Model
      *
      * @var string
      */
-    protected $table = 'product_banners';
 
     /**
      * The attributes that are mass assignable.

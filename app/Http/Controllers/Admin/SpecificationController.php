@@ -59,7 +59,7 @@ class SpecificationController extends Controller
         $spec = ProductSpecification::find($id);
         $data = $this->formatData($request);
         $spec->update($data);
-        return redirect()->route('admin.specification.index');
+        return redirect()->route('specification.index');
     }
 
     /**

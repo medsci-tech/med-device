@@ -15,8 +15,8 @@
             <div class="am-u-sm-10">
                 <form class="am-form am-form-horizontal" method="post" action="/admin/category/{{$category->id}}"
                       enctype="multipart/form-data">
-                    <input type="hidden" name="_method" value="put"/>
-
+                    {{ csrf_field() }}
+                    {{ method_field('PUT') }}
                     <div class="am-form-group">
                         <label for="user-name" class="am-u-sm-3 am-form-label">类型名称</label>
 
@@ -27,16 +27,16 @@
                         </div>
                     </div>
 
-                    <div class="am-form-group am-form-file">
-                        <label for="doc-ipt-file-2" class="am-u-sm-3 am-form-label">类型图片</label>
+                    {{--<div class="am-form-group am-form-file">--}}
+                        {{--<label for="doc-ipt-file-2" class="am-u-sm-3 am-form-label">类型图片</label>--}}
 
-                        <div class="am-u-sm-9">
-                            <button type="button" class="am-btn am-btn-default am-btn-sm"><i
-                                        class="am-icon-cloud-upload"></i> 选择要上传的文件
-                            </button>
-                        </div>
-                        <input type="file" name="logo">
-                    </div>
+                        {{--<div class="am-u-sm-9">--}}
+                            {{--<button type="button" class="am-btn am-btn-default am-btn-sm"><i--}}
+                                        {{--class="am-icon-cloud-upload"></i> 选择要上传的文件--}}
+                            {{--</button>--}}
+                        {{--</div>--}}
+                        {{--<input type="file" name="logo">--}}
+                    {{--</div>--}}
 
                     {{--<div class="am-form-group am-form-select">--}}
                     {{--<label for="doc-select-1" class="am-u-sm-3 am-form-label">所属类型</label>--}}

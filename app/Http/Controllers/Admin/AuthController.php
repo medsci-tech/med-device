@@ -15,7 +15,7 @@ class AuthController extends Controller
 {
     use AuthenticatesUsers;
 
-    protected $redirectTo = 'admin/order';
+    protected $redirectTo = 'admin/product';
 //    protected $guard = 'admin';
 //    protected $loginView = 'admin.login';
 //    protected $registerView = 'admin.register';

@@ -171,13 +171,15 @@ return [
         /*
          * Application Service Providers...
          */
+        App\Providers\HelperServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Stevenyangecho\UEditor\UEditorServiceProvider::class, // 富文本编辑器
-        //zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
+        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
     ],
 
@@ -227,6 +229,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Qiniu' => zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
+        'Helper' => App\Helper\Facades\Helper::class,
 
     ],
 

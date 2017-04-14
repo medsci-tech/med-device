@@ -16,30 +16,7 @@
             <div class="am-u-sm-10">
                 <form class="am-form am-form-horizontal" method="post" action="/admin/product"
                       enctype="multipart/form-data">
-                    <div class="am-form-group">
-                        <label for="user-name" class="am-u-sm-3 am-form-label">商品名称</label>
-
-                        <div class="am-u-sm-9">
-                            <input type="text" id="name" placeholder="商品名称" name="name" required>
-                            <small></small>
-                        </div>
-                    </div>
-                    <div class="am-form-group">
-                        <label for="weight" class="am-u-sm-3 am-form-label">商品权重</label>
-
-                        <div class="am-u-sm-9">
-                            <input type="text" id="weight" placeholder="商品权重" name="weight" value="0">
-                            <small>权重越大,排序越靠前</small>
-                        </div>
-                    </div>
-
-
-                    <div class="am-form-group">
-                        <label for="weight" class="am-u-sm-3 am-form-label">Puan ID</label>
-                        <div class="am-u-sm-9">
-                            <input type="text" id="weight" placeholder="puan id" name="puan_id">
-                        </div>
-                    </div>
+                    {{ csrf_field() }}
                     <div class="am-form-group am-form-select">
                         <label for="doc-select-1" class="am-u-sm-3 am-form-label">所属分类</label>
                         <div class="am-u-sm-9">
@@ -52,61 +29,63 @@
                             <span class="am-form-caret"> </span>
                         </div>
                     </div>
-
-                    <div class="am-form-group am-form-select">
-                        <label for="doc-select-1" class="am-u-sm-3 am-form-label">所属活动</label>
-
-                        <div class="am-u-sm-9">
-                            <select id="activity_id" name="activity_id">
-                                <option value="">==请选择所属活动==</option>
-                                @foreach($activities as $activity)
-                                    <option value="{{$activity->id}}">{{$activity->activity_name}}</option>
-                                @endforeach
-                            </select>
-                            <span class="am-form-caret"> </span>
-                        </div>
-                    </div>
-
-                    <div class="am-form-group am-form-select">
-                        <label for="doc-select-1" class="am-u-sm-3 am-form-label">所属供应商</label>
+                    <div class="am-form-group">
+                        <label for="user-name" class="am-u-sm-3 am-form-label">商品名称</label>
 
                         <div class="am-u-sm-9">
-                            <select id="" name="supplier_id" required>
-                                <option value="">==请选择供应商==</option>
-                                @foreach($suppliers as $supplier)
-                                    <option value="{{$supplier->id}}">{{$supplier->supplier_name}}</option>
-                                @endforeach
-                            </select>
-                            <span class="am-form-caret"> </span>
-                        </div>
-                    </div>
-
-                    <div class="am-form-group am-form-select">
-                        <label for="doc-select-1" class="am-u-sm-3 am-form-label">是否出售</label>
-
-                        <div class="am-u-sm-9">
-                            <select id="" name="is_on_sale">
-                                <option value="1">出售</option>
-                                <option value="0">不出售</option>
-                            </select>
-                            <span class="am-form-caret"> </span>
-                        </div>
-                    </div>
-                    <div class="am-form-group am-form-select">
-                        <label for="doc-select-1" class="am-u-sm-3 am-form-label">是否海淘</label>
-                        <div class="am-u-sm-9">
-                            <select id="is_abroad" name="is_abroad">
-                                <option value="0">否</option>
-                                <option value="1">是</option>
-                            </select>
-                            <span class="am-form-caret"> </span>
-                        </div>
-                    </div>
-                    <div class="am-form-group" id="pricetax">
-                        <label for="price" class="am-u-sm-3 am-form-label">海淘税收</label>
-                        <div class="am-u-sm-9">
-                            <input type="text" id="price_tax" placeholder="海淘税收费" name="price_tax">
+                            <input type="text" id="name" placeholder="商品名称" name="name" required>
                             <small></small>
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="weight" class="am-u-sm-3 am-form-label">商品权重</label>
+
+                        <div class="am-u-sm-9">
+                            <input type="text" id="weight" placeholder="权重越大,排序越靠前" name="weight">
+                        </div>
+                    </div>
+
+                    <div class="am-form-group">
+                        <label for="weight" class="am-u-sm-3 am-form-label">生产企业</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" id="enterprise" placeholder="请输入生产企业" name="enterprise">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="weight" class="am-u-sm-3 am-form-label">生产标准</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" id="standard" placeholder="请输入生产标准" name="standard">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="weight" class="am-u-sm-3 am-form-label">注册证号</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" id="registration" placeholder="请输入注册证号" name="registration">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="weight" class="am-u-sm-3 am-form-label">适用科室</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" id="office" placeholder="请输入用科室" name="office">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="weight" class="am-u-sm-3 am-form-label">适用范围</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" id="scope" placeholder="请输入适用范围" name="scope">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="weight" class="am-u-sm-3 am-form-label">使用注意</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" id="attention" placeholder="请输入注意事项" name="attention">
+                        </div>
+                    </div>
+
+                    <div class="am-form-group">
+                        <label for="weight" class="am-u-sm-3 am-form-label">库存</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" id="stock" placeholder="请输入库存,建议数字" name="stock">
                         </div>
                     </div>
                     <div class="am-form-group">
@@ -132,25 +111,6 @@
                             </button>
                         </div>
                     </div>
-
-                    <div class="am-form-group">
-                        <label for="beans" class="am-u-sm-3 am-form-label">迈豆价格</label>
-
-                        <div class="am-u-sm-9">
-                            <input type="text" id="price" placeholder="迈豆价格" name="beans" required>
-                            <small></small>
-                        </div>
-                    </div>
-
-                    <div class="am-form-group">
-                        <label for="user-name" class="am-u-sm-3 am-form-label">商品描述</label>
-
-                        <div class="am-u-sm-9">
-                            <input type="text" id="price" placeholder="商品描述" name="description" required>
-                            <small></small>
-                        </div>
-                    </div>
-
                     <div class="am-form-group am-form-file">
                         <label for="doc-ipt-file-2" class="am-u-sm-3 am-form-label">LOGO</label>
 
@@ -172,8 +132,7 @@
                             </button>
                         </div>
                     </div>
-
-                    <div class="am-form-group">
+                    <div class="am-form-group" id="tags">
                         <label for="user-name" class="am-u-sm-3 am-form-label">商品标签</label>
 
                         <div class="am-u-sm-9">
@@ -181,13 +140,31 @@
                             <small>请用","隔开。例:"药械,糖尿病"</small>
                         </div>
                     </div>
+                    <div class="am-form-group am-form-file" id="banner">
+                        <label for="doc-ipt-file-2" class="am-u-sm-3 am-form-label">教育视频</label>
 
+                        <div class="am-u-sm-1" id="add-banner" style="float: left">
+                            <button type="button" class="am-btn am-btn-success" id="add-video">
+                                <span class="am-icon-plus"></span>添加视频
+                            </button>
+                        </div>
+                    </div>
                     <div class="am-form-group">
                         <label for="user-intro" class="am-u-sm-3 am-form-label">商品简介</label>
 
                         <div class="am-u-sm-9">
                             <!-- 加载编辑器的容器 -->
                             <script id="container" name="detail" type="text/plain">
+
+                            </script>
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="user-intro" class="am-u-sm-3 am-form-label">招商信息</label>
+
+                        <div class="am-u-sm-9">
+                            <!-- 加载编辑器的容器 -->
+                            <script id="container2" name="description" type="text/plain">
 
                             </script>
                         </div>
@@ -207,6 +184,10 @@
         $('#add-spec').click(function () {
             var input = '<div class="am-form-group"><label for="user-name" class="am-u-sm-3 am-form-label">商品规格</label><div class="am-u-sm-4"><input type="text" placeholder="规格名称,例如[100g]" name="spec_name[]" required></div><div class="am-u-sm-4"><input type="text"  placeholder="规格对应价格商品价格" name="spec_price[]" required></div></div>';
             $('#price').after(input);
+        });
+        $('#add-video').click(function () {
+            var input = '<div class="am-form-group"><label for="user-name" class="am-u-sm-3 am-form-label">视频参数</label><div class="am-u-sm-4"><input type="text" placeholder="请输入腾讯云app_id" name="qcloud_app_id[]" required></div><div class="am-u-sm-4"><input type="text"  placeholder="请输入腾讯云file_id" name="qcloud_file_id[]" required></div></div>';
+            $('#tags').after(input);
         });
 
         $('#add-banner').click(function () {
@@ -244,6 +225,10 @@
         var ue = UE.getEditor('container');
         ue.ready(function () {
             ue.execCommand('serverparam', '_token', '{{ csrf_token() }}');//此处为支持laravel5 csrf ,根据实际情况修改,目的就是设置 _token 值.
+        });
+        var ue2 = UE.getEditor('container2');
+        ue2.ready(function () {
+            ue2.execCommand('serverparam', '_token', '{{ csrf_token() }}');//此处为支持laravel5 csrf ,根据实际情况修改,目的就是设置 _token 值.
         });
     </script>
 @stop

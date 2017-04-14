@@ -16,12 +16,6 @@ class Product extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'products';
 
     /**
      * The attributes that are mass assignable.
@@ -29,23 +23,23 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'category_id',
-        'supplier_id',
-        'activity_id',
-        'puan_id',
-        'is_on_sale',
-        'is_show',
         'name',
+        'enterprise',
+        'standard',
+        'registration',
+        'office',
+        'scope',
+        'attention',
+        'stock',
+        'weight',
+        'category_id',
+        'is_show',
         'description',
         'price',
-        'beans',
         'tags',
         'logo',
         'detail',
         'default_spec',
-        'weight',
-        'is_abroad',
-        'price_tax',
     ];
 
     public function category()
@@ -119,7 +113,7 @@ class Product extends Model
      * @param array $items
      * @return $this
      */
-    public function addBanners($items)
+    public  function addBanners($items)
     {
         foreach ($items as $item) {
             $this->addBanner($item);
@@ -129,8 +123,8 @@ class Product extends Model
 
     public static function create(array $options = [])
     {
-        $product = parent::create($options);
-
+        $product = new static($options);
+        $product->save();
         if (array_key_exists('specDetails', $options)) {
             $spec = $options['specDetails'];
             $product = $product->addSpecs($spec);
@@ -139,6 +133,8 @@ class Product extends Model
             $banners = $options['banners'];
             $product->addBanners($banners);
         }
+
         return $product;
     }
+
 }

@@ -16,8 +16,8 @@
             <div class="am-u-sm-10">
                 <form class="am-form am-form-horizontal" method="post" action="/admin/product/{{$product->id}}"
                       enctype="multipart/form-data">
-                    <input type="hidden" name="_method" value="put"/>
-
+                    {{ csrf_field() }}
+                    {{ method_field('PUT') }}
                     <div class="am-form-group">
                         <label for="user-name" class="am-u-sm-3 am-form-label">商品名称</label>
 
@@ -39,9 +39,9 @@
                     </div>
 
                     <div class="am-form-group">
-                        <label for="weight" class="am-u-sm-3 am-form-label">Puan ID</label>
+                        <label for="weight" class="am-u-sm-3 am-form-label">生产企业</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="weight" placeholder="puan id" name="puan_id"
+                            <input type="text" id="weight" placeholder="puan id" name="enterprise"
                                    value="{{$product->puan_id}}">
                         </div>
                     </div>

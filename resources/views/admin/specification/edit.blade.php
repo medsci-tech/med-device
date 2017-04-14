@@ -15,9 +15,10 @@
         <div class="am-g">
             <div class="am-u-sm-10">
                 <form class="am-form am-form-horizontal" method="post"
-                      action="/admin/specification/{{$specification->id}}"
+                      action="{{ url('admin/specification/'.$specification->id) }}"
                       enctype="multipart/form-data">
-                    <input type="hidden" name="_method" value="put"/>
+                    {{ csrf_field() }}
+                    {{ method_field('PUT') }}
                     @if($specification->product)
                         <div class="am-form-group">
                             <label for="user-name" class="am-u-sm-3 am-form-label">所属商品</label>

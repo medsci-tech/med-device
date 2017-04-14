@@ -111,7 +111,7 @@ class CategoryController extends Controller
         $category->update($data);
         \Session::flash('message', trans('categories.update_message'));
 
-        return redirect()->route('admin.category.index');
+        return redirect()->route('category.index');
     }
 
     /**

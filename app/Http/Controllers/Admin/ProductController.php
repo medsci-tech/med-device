@@ -19,6 +19,29 @@ class ProductController extends Controller
         'description' => 'required',
         'price' => 'required',
     ];
+    private $postData;
+
+    function __construct(Request $request)
+    {
+        $this->postData = [
+            'name' => $request->input('name'), // 名称
+            'weight' => $request->input('weight'),// 排序
+            'enterprise' => $request->input('enterprise'),// 生产企业
+            'standard' => $request->input('standard'),// 生产标准
+            'registration' => $request->input('registration'),// 注册证号
+            'office' => $request->input('office'),// 适用科室
+            'scope' => $request->input('scope'),// 适用范围
+            'attention' => $request->input('attention'),// 使用注意
+            'stock' => $request->input('stock'),// 库存
+            'category_id' => $request->input('category_id'),// 分类
+            'default_spec' => $request->input('default_spec'), // 规格
+            'price' => $request->input('price'),// 价格
+            'detail' => $request->input('detail'),// 商品详情
+            'description' => $request->input('description'),// 招商详情
+            'tags' => $request->input('tags'), // 标签
+        ];
+    }
+
 
     /**
      * Data filtering.
@@ -27,34 +50,13 @@ class ProductController extends Controller
      */
     private function formatData(Request $request)
     {
-        $data = [
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'detail' => $request->input('detail'),
-            'category_id' => $request->input('category_id'),
-            'supplier_id' => $request->input('supplier_id'),
-            'price' => $request->input('price'),
-            'beans' => $request->input('beans'),
-            'tags' => $request->input('tags'),
-            'is_on_sale' => $request->input('is_on_sale'),
-            'is_abroad' => $request->input('is_abroad'), // 是否海淘
-            'price_tax' => $request->input('price_tax'), //海淘税
-            'default_spec' => $request->input('default_spec'),
-            'weight' => $request->input('weight'),
-            'puan_id' => $request->input('puan_id')
-        ];
-        $data['price_tax'] = $request->input('is_abroad')>0 ? $request->input('price_tax') : 0;
-        if ($request->has('activity_id') && $request->input('activity_id')) {
-            $data['activity_id'] = $request->input('activity_id');
-        }
-
+        $data = $this->postData;
         if ($request->hasFile('logo')) {
             $logoUrl = \Helper::qiniuUpload($request->file('logo'));
             if ($logoUrl) {
                 $data['logo'] = $logoUrl;
             }
         }
-
         $bannerUrl = $this->uploadBanners($request);
         if ($bannerUrl) {
             $data['banners'] = $bannerUrl;
@@ -167,7 +169,8 @@ class ProductController extends Controller
         }
         $data = $this->formatData($request);
         $data['specDetails'] = $specDetails;
-        Product::create($data);
+
+        Product::Create($data);echo(11);exit;
         return redirect('/admin/product');
     }
 

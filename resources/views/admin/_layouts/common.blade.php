@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/png" href="/i/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="商城后台管理">
@@ -60,9 +61,10 @@
                 <li><a href="/admin/user"><span class="am-icon-users"></span>用户管理</a></li>
                 {{--<li><a href="/admin/order"><span class="am-icon-file"></span> 订单管理</a></li>--}}
                 <li><a href="/admin/banner"><span class="am-icon-th"></span> 首页Banner</a></li>
+                <li><a href="/admin/category"><span class="am-icon-pencil-square-o"></span>产品分类</a></li>
                 <li class="admin-parent">
-                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span
-                                class="am-icon-product-hun"></span>
+                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}">
+                        <span class="am-icon-product-hun"></span>
                         商品管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                     <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
                         <li><a href="/admin/product" class="am-cf"><span class="am-icon-calendar"></span>商品管理</a></li>
@@ -70,7 +72,6 @@
                         <li><a href="/admin/product-banner"><span class="am-icon-th"></span></span>Banner管理</a></li>
                     </ul>
                 </li>
-                <li><a href="/admin/category"><span class="am-icon-pencil-square-o"></span>产品分类</a></li>
                 {{--<li><a href="/admin/supplier"><span class="am-icon-bank"></span>供应商管理</a></li>--}}
                 {{--<li><a href="/admin/activity"><span class="am-icon-bookmark"></span>活动管理</a></li>--}}
 
@@ -123,4 +124,11 @@
 <div id="cntvlive2-is-installed"></div>
 </body>
 </html>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 

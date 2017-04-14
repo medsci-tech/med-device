@@ -16,7 +16,6 @@ class ProductSpecification extends Model
      *
      * @var string
      */
-    protected $table = 'product_specifications';
 
     /**
      * The attributes that are mass assignable.
