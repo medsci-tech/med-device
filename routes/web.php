@@ -77,6 +77,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('activity', 'ActivityController');
         Route::resource('user', 'UserController');
         Route::resource('specification', 'SpecificationController');
+        Route::resource('video', 'VideoController');
         Route::resource('banner', 'BannerController');
         Route::resource('product-banner', 'ProductBannerController');
         Route::get('down-order-excel', 'OrderController@downOrderExcel');

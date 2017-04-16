@@ -64,7 +64,7 @@ class BannerController extends Controller
         $banner = Banner::find($id);
         $data = $this->formatData($request);
         $banner->update($data);
-        return redirect()->route('admin.banner.index');
+        return redirect()->route('banner.index');
     }
 
     /**

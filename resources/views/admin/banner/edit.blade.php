@@ -17,6 +17,7 @@
                 <form class="am-form am-form-horizontal" method="post"
                       action="/admin/banner/{{$banner->id}}"
                       enctype="multipart/form-data">
+                    {{ csrf_field() }}
                     <input type="hidden" name="_method" value="put"/>
                     <div class="am-form-group">
                         <label for="user-name" class="am-u-sm-3 am-form-label"></label>
