@@ -18,7 +18,7 @@
                       action="/admin/product-banner/{{$banner->id}}"
                       enctype="multipart/form-data">
                     <input type="hidden" name="_method" value="put"/>
-
+					{{ csrf_field() }}
                     <div class="am-form-group">
                         <label for="user-name" class="am-u-sm-3 am-form-label"></label>
 
