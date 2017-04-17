@@ -11,14 +11,23 @@
 |
 */
 
+Route::group(['middleware' => 'web'], function () {
+    //Auth::routes();
+    Route::any('login', 'Auth\AuthController@login');
+    Route::get('logout', 'Auth\AuthController@logout');
+    Route::any('register', 'Auth\AuthController@register');
+
+    Route::get('/home', 'HomeController@index');
+});
 Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
 
+    Route::get('/home', 'HomeController@index');
     Route::get('/', 'HomeController@index');//首页
     Route::any('/forget', 'HomeController@forget'); // 忘记密码
     Route::any('/helper', 'HomeController@helper'); // 忘记密码
 
     Route::group(['prefix' => '', 'namespace' => 'Home'], function () {
-        Route::get('/logins', 'LoginController@showLoginForm'); // 登录
+
         Route::any('/logout', 'LoginController@logout');
         Route::post('/login', 'LoginController@login');
         Route::get('/registers', 'RegisterController@create'); // 注册页面
@@ -53,6 +62,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
 
     });
     Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {
+
         Route::get('/', 'PersonalController@index');
         Route::get('/collection', 'PersonalController@collection');
 
@@ -132,14 +142,6 @@ Route::group(['prefix' => 'admin'], function () {
 //    Route::get('/', 'Admin\AdminController@index');
 //});
 
-
-//Route::group(['middleware' => 'web', 'prefix' => ''], function () {
-////    //Route::auth();
-////
-//    Auth::routes();
-//
-//    Route::get('/home', 'HomeController@index');
-//});
 
 
 

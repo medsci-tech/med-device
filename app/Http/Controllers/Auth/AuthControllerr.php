@@ -59,7 +59,7 @@ class AuthController extends Controller
                 return back()->with('error', '账号或密码错误')->withInput();
             }
         }
-        return view('auth.login');
+        return view('web.auth.login');
     }
     //登录页面验证
     protected function validateLogin(array $data)
@@ -110,7 +110,7 @@ class AuthController extends Controller
                 return back()->with('error', '注册失败！')->withInput();
             }
         }
-        return view('auth.register');
+        return view('web.auth.register');
     }
     protected function validateRegister(array $data)
     {
