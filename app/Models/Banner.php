@@ -16,7 +16,6 @@ class Banner extends Model
      *
      * @var string
      */
-    protected $table = 'banners';
 
     /**
      * The attributes that are mass assignable.

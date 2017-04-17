@@ -66,7 +66,7 @@
                     <div class="am-form-group">
                         <label for="weight" class="am-u-sm-3 am-form-label">适用科室</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="office" placeholder="请输入用科室" name="office">
+                            <input type="text" id="office" placeholder="请输入科室" name="office">
                         </div>
                     </div>
                     <div class="am-form-group">
