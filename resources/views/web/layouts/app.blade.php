@@ -68,8 +68,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/logins') }}">登录</a></li>
-                        <li><a href="{{ url('/registers') }}">注册</a></li>
+                        <li><a href="{{ url('/login') }}">登录</a></li>
+                        <li><a href="{{ url('/register') }}">注册</a></li>
                         <li><a href="{{ url('/forget') }}">忘记密码</a></li>
                         <li><a href="{{ url('/helper') }}">帮助</a></li>
                     @else
