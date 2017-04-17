@@ -18,6 +18,8 @@
 - [帮助](http://yxt.mime.org.cn/helper).
 - [忘记密码](http://yxt.mime.org.cn/forget).
 - [药械产品详情页](http://yxt.mime.org.cn/product/detail/3).
+- [注册](http://yxt.mime.org.cn/register).
+- [登录](http://yxt.mime.org.cn/login).
 
 模板目录结构介绍：
 resources/views/web：为PC端模板目录
@@ -25,6 +27,12 @@ resources/views/web：为PC端模板目录
 resources/views/wap：为m端模板目录
 
 resources/views/layouts：为端模板布局目录(请按需搭建)
+
+注册模板路径：
+resources/views/web/auth/register.blade.php
+
+登录模板路径：
+resources/views/web/auth/login.blade.php
 
 首页模板路径：
 resources/views/web/home/index.blade.php

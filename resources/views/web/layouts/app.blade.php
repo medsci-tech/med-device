@@ -33,6 +33,7 @@
                 </div>
                 <div class="button">搜索</div>
             </div>
+<<<<<<< HEAD
             <p class="hot">
                 热门搜索词： 
                 <a href="search">外科器材</a>
@@ -44,6 +45,49 @@
             <div class="wechat">
                 <img class="wechat-logo" src="img/home/u103.png">
                 <img class="wechat-code" src="img/home/u101.png" >
+=======
+
+            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/') }}">首页</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('product/') }}">药械产品招商</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('market/') }}">药械营销服务</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('agent/') }}">药械经纪人</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('search/') }}">搜索</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('personal/') }}">个人中心</a></li>
+                </ul>
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                        <li><a href="{{ url('/login') }}">登录</a></li>
+                        <li><a href="{{ url('/register') }}">注册</a></li>
+                        <li><a href="{{ url('/forget') }}">忘记密码</a></li>
+                        <li><a href="{{ url('/helper') }}">帮助</a></li>
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                            </ul>
+                        </li>
+                    @endif
+                </ul>
+>>>>>>> 7b6b7be44ee7b6aa356c185548cf071dbf96854e
             </div>
         </div>
     </div>

@@ -8,3 +8,6 @@
 Homestead.json
 Homestead.yaml
 .env
+/resources/views/adminbk
+/php_errors.log
+/app/Http/Requests
