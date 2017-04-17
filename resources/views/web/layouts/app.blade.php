@@ -1,98 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
-
-    <!-- Styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-
-    <style>
-        body {
-            font-family: 'Lato';
-        }
-
-        .fa-btn {
-            margin-right: 6px;
-        }
-    </style>
+<meta charset="utf-8">
+<title>@yield('title')</title>
+<link rel="stylesheet" type="text/css" href="style/vendor.css">
+@yield('page_css')
 </head>
-<body id="app-layout">
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header">
-
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-
-                </a>
+<body>
+<div class="container-fluid">
+    <div class="row header">
+        <div class="col-md-4 col-md-offset-1">
+            <a class="btn-login" href="logins">登录</a>
+            <a class="btn-register" href="register">注册</a>
+        </div>
+        <div class="col-md-6 links-header">
+            <a href="personal"><img src="img/home/u161.png">个人中心</a>
+            <a href=""><img src="img/home/u163.png">我的消息</a>
+            <a href="helper"><img src="img/home/u165.png">帮助中心</a>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row search">
+        <div class="col-md-2 col-md-offset-1">
+            <img class="logo" src="img/home/u61.jpg">
+            <h1 class="h1">药械通</h1>
+            <p>互联网医药信息服务证：9982561</p>
+        </div>
+        <div class="col-md-6">
+            <div class="searcher">
+                <div class="input">
+                    <input type="text" name="product" placeholder="输入产品名称">
+                </div>
+                <div class="button">搜索</div>
             </div>
-
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/') }}">首页</a></li>
-                </ul>
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('product/') }}">药械产品招商</a></li>
-                </ul>
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('market/') }}">药械营销服务</a></li>
-                </ul>
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('agent/') }}">药械经纪人</a></li>
-                </ul>
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('search/') }}">搜索</a></li>
-                </ul>
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('personal/') }}">个人中心</a></li>
-                </ul>
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/logins') }}">登录</a></li>
-                        <li><a href="{{ url('/registers') }}">注册</a></li>
-                        <li><a href="{{ url('/forget') }}">忘记密码</a></li>
-                        <li><a href="{{ url('/helper') }}">帮助</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                            </ul>
-                        </li>
-                    @endif
-                </ul>
+            <p class="hot">
+                热门搜索词： 
+                <a href="search">外科器材</a>
+                <a href="search">基础器材</a>
+            </p>
+        </div>
+        <div class="col-md-3 contect">
+            <span>药械小助手 400-8648883</span>
+            <div class="wechat">
+                <img class="wechat-logo" src="img/home/u103.png">
+                <img class="wechat-code" src="img/home/u101.png" >
             </div>
         </div>
-    </nav>
-
+    </div>
     @yield('content')
-
-    <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    <div class="row footer">
+        <div class="col-md-5 col-md-offset-1 info-footer">
+            <a href="">关于我们</a>
+            <a href="">联系我们</a>
+            <a href="">购买方式</a>
+            <a href="">常见问题</a>
+            <p>Copyright@2017 施康培科技（武汉）有限公司版权所有，保留所有权利</p>
+            <p>互联网药品信息服务资格证书编号（鄂）</p>
+            <p>鄂ICP备 15021002号</p>
+        </div>
+        <div class="col-md-3 col-md-offset-2 qr-code">
+            <div class="row">
+                <div class="col-md-6">
+                    <img width="100%" src="img/home/u101.png">
+                    <p>药械通官方微信</p>
+                </div>
+                <div class="col-md-6">
+                    <img width="100%" src="img/home/u192.png">
+                    <p>药械通企业号</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@yield('panel')
+<script src="js/vendor.js"></script>
+@yield('page_js')
 </body>
 </html>

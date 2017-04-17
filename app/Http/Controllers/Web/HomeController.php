@@ -34,4 +34,7 @@ class HomeController extends Controller
     {
         return view('web.home.helper');
     }
+    public function my_page(){
+        return view('web.home.my_page');
+    }
 }

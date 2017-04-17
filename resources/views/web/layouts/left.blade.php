@@ -1,20 +1,33 @@
-@section('css')
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>@yield('title')</title>
+<link rel="stylesheet" type="text/css" href="../style/vendor.css">
+@yield('page_css')
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row header">
+		<div class="col-md-6">
+			<img src="../img/home/u61.jpg">
+			<h1>药械通</h1>
+			<h2>个人中心</h2>
+		</div>
+		<div class="col-md-3 col-md-offset-3">
+			<a class=" link-header" href="/">药械通首页</a>
+			<a class=" link-header" href="../helper">帮助中心</a>
+		</div>
+	</div>
 
-@endsection
-
-<header class="header">
-    头部
-</header>
-<li  ><a href="{{url('personal/collection')}}">我的收藏</a></li>
-<li ><a href="{{url('personal/cooperation')}}">我的合作</a></li>
-<li  ><a href="{{url('personal/appointment')}}">我的预约</a></li>
-<li  ><a href="{{url('personal/info-edit')}}">基础信息修改</a></li>
-<li  ><a href="{{url('personal/expertise')}}">个人专长</a></li>
-<li  ><a href="{{url('personal/enterprise')}}">企业信息</a></li>
-<li ><a href="{{url('personal/pwd-edit')}}">修改密码</a></li>
-
-@yield('content')
-        </div>
+	<div class="row line"><div></div></div>
+	@yield('content')
+</div>
+@yield('panel')
+<script src="../js/vendor.js"></script>
+@yield('page_js')
+</body>
+</html>
 
 
 

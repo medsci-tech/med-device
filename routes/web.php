@@ -16,12 +16,13 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
     Route::get('/', 'HomeController@index');//首页
     Route::any('/forget', 'HomeController@forget'); // 忘记密码
     Route::any('/helper', 'HomeController@helper'); // 忘记密码
+    Route::get('/my_page', 'HomeController@my_page');
 
     Route::group(['prefix' => '', 'namespace' => 'Home'], function () {
         Route::get('/logins', 'LoginController@showLoginForm'); // 登录
         Route::any('/logout', 'LoginController@logout');
         Route::post('/login', 'LoginController@login');
-        Route::get('/registers', 'RegisterController@create'); // 注册页面
+        Route::get('/registers', 'RegisterController@registers'); // 注册页面
         Route::any('/store', 'RegisterController@store'); // 注册保存
     });
 
@@ -59,7 +60,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
         Route::get('/cooperation', 'PersonalController@cooperation');//我的合作
         Route::get('/appointment', 'PersonalController@appointment');//我的预约
         Route::get('/info-edit', 'PersonalController@infoEdit');// 资料修改
-        Route::get('/pwd-edit', 'PersonalController@infoEdit');// 面修改
+        Route::get('/pwd-edit', 'PersonalController@pwdEdit');// 面修改
         Route::get('/expertise', 'PersonalController@expertise');// 个人专长
         Route::get('/enterprise', 'PersonalController@enterprise');// 企业信息
         Route::get('/about-us', 'PersonalController@aboutUs');
