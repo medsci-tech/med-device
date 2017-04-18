@@ -11,7 +11,7 @@ use Redirect;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
-
+use App\Http\Requests\Interfaces\CodeRequest;
 class AuthController extends Controller
 {
     /*
@@ -33,7 +33,7 @@ class AuthController extends Controller
      * @var string
      */
     protected $redirectTo = '/';
-
+    protected $_user;
     /**
      * Create a new authentication controller instance.
      *
@@ -44,45 +44,91 @@ class AuthController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
-    //登录页面
+
+    /**
+     * 登录
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
     public function login(Request $request)
     {
         if ($request->isMethod('post')) {
-            $validator = $this->validateLogin($request->input());
-            if ($validator->fails()) {
-                return back()->withErrors($validator)->withInput();
+            $username = $request->name; // 登录用户名
+            if(preg_match("/^1[34578][0-9]{9}$/",$username))
+            {
+                $login_sign ='phone';
             }
-            if (Auth::guard('web')->attempt($this->validateUser($request->input()))) {
-                $request->session()->put('email', $request->email);
-                return Redirect::to('home')->with('success', '登录成功！');
+            else
+            {
+                $login_sign ='name';
+            }
+            $validator = $this->validateLogin($request->input());
+
+            if ($validator->fails())
+                return response()->json(['code'=>200, 'status' => 0,'message' => $validator->errors()->first() ]);
+
+            if (Auth::guard('web')->attempt($this->validateUser($request->input(),$login_sign))) {
+                return response()->json(['code'=>200, 'status' => 1,'message' => '登录成功' ]);
             }else {
-                return back()->with('error', '账号或密码错误')->withInput();
+                return response()->json(['code'=>200, 'status' => 0,'message' => '账号或密码错误' ]);
             }
         }
         return view('web.auth.login');
     }
-    //登录页面验证
-    protected function validateLogin(array $data)
+
+    //用户名登录页面验证
+    protected function validateUserLogin(array $data)
     {
         return Validator::make($data, [
-            'email' => 'required',
+            'name' => 'required',
             'password' => 'required',
         ], [
-            'required' => ':attribute 为必填项',
-            'min' => ':attribute 长度不符合要求'
+            'required' => ':attribute为必填项',
+            'min' => ':attribute长度不符合要求'
         ], [
-            'email' => '邮箱',
+            'name' => '用户名',
             'password' => '密码'
         ]);
     }
-    //验证用户字段
-    protected function validateUser(array $data)
+
+    //手机登录页面验证
+    protected function validateLogin(array $data)
     {
-        return [
-            'email' => $data['email'],
+        return Validator::make($data, [
+            'name'=>'required|regex:/^1[34578][0-9]{9}$/|exists:users,phone',
+            'password' => 'required',
+        ], [
+            'required' => ':attribute 为必填项',
+            'exists' => ':attribute 不存在',
+            'min' => ':attribute 长度不符合要求'
+        ], [
+            'phone' => '手机号',
+            'password' => '密码'
+        ]);
+    }
+
+    /**
+     * 验证用户字段
+     * @author      lxhui<772932587@qq.com>
+     * $login_sign 登录标识
+     * @since 1.0
+     * @return array
+     */
+    protected function validateUser(array $data,$login_sign)
+    {
+        if($login_sign=='name')
+            return [
+            'name' => $data['name'],
             'password' => $data['password']
         ];
+        else
+            return [
+                'phone' => $data['phone'],
+                'password' => $data['password']
+            ];
     }
+
     //退出登录
     public function logout()
     {
@@ -91,43 +137,65 @@ class AuthController extends Controller
         }
         return Redirect::to('home');
     }
-    //注册
+
+    /**
+     * 注册
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
     public function register(Request $request)
     {
         if ($request->isMethod('post')) {
             $validator = $this->validateRegister($request->input());
             if ($validator->fails()) {
-                return back()->withErrors($validator)->withInput();
+                $validator_error_first = $validator->errors()->first();
+                if($validator_error_first){
+                    return response()->json(['code'=>200, 'status' => 0,'message' => $validator_error_first ]);
+                }
             }
-            $user = new User();
-            $user->name = $request->name;$user->email = $request->email;
-            $user->password = bcrypt($request->password);
-            $user->create_time = time();
-            $user->update_time = time();
-            if($user->save()){
-                return redirect('home/login')->with('success', '注册成功！');
-            }else{
-                return back()->with('error', '注册失败！')->withInput();
-            }
+            $data = $request->all();
+            $data['password'] = bcrypt($request->password);
+            $result = User::create($data);
+
+            if($result)
+                return response()->json([ 'code' => 200, 'status' => 1, 'message' => '注册成功' ]);
+            else
+                return response()->json([ 'code' => 200, 'status' => 0, 'message' => '注册失败' ]);
+
         }
         return view('web.auth.register');
     }
+
+    /**
+     * 注册验证
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
     protected function validateRegister(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|alpha_num|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'name' => 'required|alpha_num|max:12|unique:users',
+            'phone'=>'required|regex:/^1[34578][0-9]{9}$/|unique:users',
+            //'email' => 'required|email|max:255|unique:users',
+            'code' => 'required|min:6|in:222222',
+            'password' => 'required|min:6|max:12|confirmed',
             'password_confirmation' => 'required|min:6|'
         ], [
-            'required' => ':attribute 为必填项',
-            'min' => ':attribute 长度不符合要求',
+            'required' => ':attribute为必填项',
+            'in' => ':attribute无效',
+            'regex' => ':attribute不是合法项',
+            'min' => ':attribute长度不符合要求',
             'confirmed' => '两次输入的密码不一致',
-            'unique' => '该邮箱已经被人占用',
-            'alpha_num' => ':attribute 必须为字母或数字'
+            'name.unique' => '该用户名已经被注册',
+            'phone.unique' => '该手机号已经被注册',
+            'alpha_num' => ':attribute必须为字母或数字'
         ], [
-            'name' => '昵称',
-            'email' => '邮箱',
+            'name' => '用户名',
+            'phone' => '手机号',
+            //'email' => '邮箱',
+            'code' => '验证码',
             'password' => '密码',
             'password_confirmation' => '确认密码'
         ]);

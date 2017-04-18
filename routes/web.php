@@ -17,11 +17,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('logout', 'Auth\AuthController@logout');
     Route::any('register', 'Auth\AuthController@register');
 
+
     Route::get('/home', 'HomeController@index');
 });
 Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
 
-    Route::get('/home', 'HomeController@index');
     Route::get('/', 'HomeController@index');//首页
     Route::any('/forget', 'HomeController@forget'); // 忘记密码
     Route::any('/helper', 'HomeController@helper'); // 忘记密码
@@ -34,6 +34,11 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
         Route::get('/registers', 'RegisterController@registers'); // 注册页面
         Route::any('/store', 'RegisterController@store'); // 注册保存
     });
+
+    Route::group(['prefix'=>'','middleware'=>'throttle:20'],function(){
+        Route::post('/send-code', 'HomeController@sendCode');//发送验证码
+    });
+
 
     Route::group(['prefix' => 'product', 'namespace' => 'Product'], function () {
         Route::get('/', 'ProductController@index'); // 药械产品招商导航页

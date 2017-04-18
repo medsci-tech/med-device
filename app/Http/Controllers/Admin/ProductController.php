@@ -26,6 +26,8 @@ class ProductController extends Controller
         $this->postData = [
             'name' => $request->input('name'), // 名称
             'weight' => $request->input('weight'),// 排序
+            'contact_name' => $request->input('contact_name'),// 联系人
+            'contact_phone' => $request->input('contact_phone'),// 联系电话
             'enterprise' => $request->input('enterprise'),// 生产企业
             'standard' => $request->input('standard'),// 生产标准
             'registration' => $request->input('registration'),// 注册证号

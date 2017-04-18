@@ -24,6 +24,8 @@ class Product extends Common
      */
     protected $fillable = [
         'name',
+        'contact_name',
+        'contact_phone',
         'enterprise',
         'standard',
         'registration',
