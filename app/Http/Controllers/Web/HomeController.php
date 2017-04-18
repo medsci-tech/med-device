@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Web;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Interfaces\SendCode;
 class HomeController extends Controller
 {
+    use SendCode;
     /**
      * Create a new controller instance.
      *
@@ -16,6 +18,7 @@ class HomeController extends Controller
     {
         //$this->middleware('auth');
     }
+
 
     /**
      * Show the application dashboard.
@@ -34,4 +37,16 @@ class HomeController extends Controller
     {
         return view('web.home.helper');
     }
+
+    /**
+     * 发送验证码
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function sendCode(Request $request)
+    {
+        return $this->send($request->phone);
+    }
+
 }

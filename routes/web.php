@@ -31,13 +31,6 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
     });
 
 
-    Route::group(['prefix' => '', 'namespace' => 'Home'], function () {
-
-        Route::any('/logout', 'LoginController@logout');
-        Route::post('/login', 'LoginController@login');
-        Route::any('/store', 'RegisterController@store'); // 注册保存
-    });
-
     Route::group(['prefix' => 'product', 'namespace' => 'Product'], function () {
         Route::get('/', 'ProductController@index'); // 药械产品招商导航页
         Route::get('/detail/{id}', 'ProductController@detail');# 产品宣传页
