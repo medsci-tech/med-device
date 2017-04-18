@@ -56,14 +56,11 @@ class AuthController extends Controller
         if ($request->isMethod('post')) {
             $username = $request->name; // 登录用户名
             if(preg_match("/^1[34578][0-9]{9}$/",$username))
-            {
                 $login_sign ='phone';
-            }
             else
-            {
                 $login_sign ='name';
-            }
-            $validator = $this->validateLogin($request->input());
+           // echo($login_sign);exit;
+            $validator = $this->validateLogin($request->input(),$login_sign);
 
             if ($validator->fails())
                 return response()->json(['code'=>200, 'status' => 0,'message' => $validator->errors()->first() ]);
@@ -77,28 +74,18 @@ class AuthController extends Controller
         return view('web.auth.login');
     }
 
-    //用户名登录页面验证
-    protected function validateUserLogin(array $data)
+    //登录页面验证
+    protected function validateLogin(array $data,$login_sign)
     {
-        return Validator::make($data, [
-            'name' => 'required',
+        $rules = [
             'password' => 'required',
-        ], [
-            'required' => ':attribute为必填项',
-            'min' => ':attribute长度不符合要求'
-        ], [
-            'name' => '用户名',
-            'password' => '密码'
-        ]);
-    }
+        ];
+        if($login_sign=='phone')
+            $rules['name']='required|regex:/^1[34578][0-9]{9}$/|exists:users,phone';
+        else
+            $rules['name']='required|exists:users,name';
 
-    //手机登录页面验证
-    protected function validateLogin(array $data)
-    {
-        return Validator::make($data, [
-            'name'=>'required|regex:/^1[34578][0-9]{9}$/|exists:users,phone',
-            'password' => 'required',
-        ], [
+        return Validator::make($data, $rules, [
             'required' => ':attribute 为必填项',
             'exists' => ':attribute 不存在',
             'min' => ':attribute 长度不符合要求'
@@ -117,16 +104,10 @@ class AuthController extends Controller
      */
     protected function validateUser(array $data,$login_sign)
     {
-        if($login_sign=='name')
-            return [
-            'name' => $data['name'],
+        return [
+            $login_sign => $data['name'],
             'password' => $data['password']
         ];
-        else
-            return [
-                'phone' => $data['phone'],
-                'password' => $data['password']
-            ];
     }
 
     //退出登录
@@ -135,7 +116,7 @@ class AuthController extends Controller
         if(Auth::guard('web')->user()){
             Auth::guard('web')->logout();
         }
-        return Redirect::to('home');
+        return Redirect::to('/');
     }
 
     /**
