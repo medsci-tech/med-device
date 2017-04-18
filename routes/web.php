@@ -69,6 +69,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
 
         Route::get('/cooperation', 'PersonalController@cooperation');//我的合作
         Route::get('/appointment', 'PersonalController@appointment');//我的预约
+        Route::any('/appointment-detail', 'PersonalController@appointmentDetail');//我的预约
         Route::get('/info-edit', 'PersonalController@infoEdit');// 资料修改
         Route::get('/pwd-edit', 'PersonalController@pwdEdit');// 面修改
         Route::get('/expertise', 'PersonalController@expertise');// 个人专长
@@ -142,8 +143,3 @@ Route::group(['prefix' => 'admin'], function () {
 //
 //    Route::get('/', 'Admin\AdminController@index');
 //});
-
-
-
-
-
