@@ -33,9 +33,8 @@
                 </div>
                 <div class="button">搜索</div>
             </div>
-<<<<<<< HEAD
             <p class="hot">
-                热门搜索词： 
+                热门搜索词：
                 <a href="search">外科器材</a>
                 <a href="search">基础器材</a>
             </p>
@@ -45,10 +44,12 @@
             <div class="wechat">
                 <img class="wechat-logo" src="img/home/u103.png">
                 <img class="wechat-code" src="img/home/u101.png" >
-=======
-
+            </div>
+            <!--
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
+            -->
                 <!-- Left Side Of Navbar -->
+                <!--
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/') }}">首页</a></li>
                 </ul>
@@ -67,9 +68,13 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('personal/') }}">个人中心</a></li>
                 </ul>
+                -->
                 <!-- Right Side Of Navbar -->
+                <!--
                 <ul class="nav navbar-nav navbar-right">
+                -->
                     <!-- Authentication Links -->
+                    <!--
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">登录</a></li>
                         <li><a href="{{ url('/register') }}">注册</a></li>
@@ -87,8 +92,8 @@
                         </li>
                     @endif
                 </ul>
->>>>>>> 7b6b7be44ee7b6aa356c185548cf071dbf96854e
             </div>
+            -->
         </div>
     </div>
     @yield('content')

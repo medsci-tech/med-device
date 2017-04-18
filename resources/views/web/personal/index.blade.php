@@ -46,9 +46,9 @@
 				<img src="img/profile/u2310.jpg">
 				<div class="welcome">
 					<p>尊敬的&nbsp;<span id="name" class="name">hhhh</span>&nbsp;您好，欢迎您回来!</p>
-					<a href="profile-basic.html">基本信息</a><span>（未完善）</span>
-					<a href="profile-expertise.html">个人专长</a><span>（未完善）</span>
-					<a href="profile-enterprise.html">企业信息</a><span>（未完善）</span>
+					<a href="personal/info-edit">基本信息</a><span>（未完善）</span>
+					<a href="personal/expertise">个人专长</a><span>（未完善）</span>
+					<a href="personal/enterprise">企业信息</a><span>（未完善）</span>
 				</div>
 			</div>
 			<div class="mymessage">

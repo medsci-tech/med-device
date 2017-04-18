@@ -1,0 +1,198 @@
+.header {
+  background-color: #01a4e4;
+}
+.btn-login,
+.btn-register {
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  margin: 10px 14px 10px 0;
+  color: #33CCFF;
+  background-color: white;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.btn-login:hover,
+.btn-register:hover {
+  text-decoration: none;
+}
+.btn-register {
+  background-color: #01a4e4;
+  color: white;
+  border: 1px solid white;
+  opacity: 0.7;
+}
+.links-header a {
+  display: block;
+  float: right;
+  margin: 13px 0 13px 40px;
+  height: 100%;
+  color: white;
+}
+.search {
+  border-bottom: 1px solid #DCDCDC;
+}
+.search .logo {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+}
+.search .h1 {
+  display: inline-block;
+  color: #01a4e4;
+  vertical-align: bottom;
+  font-size: 38px;
+}
+.search p {
+  font-size: 14px;
+  color: #999999;
+  margin: 8px 0;
+}
+.search .searcher {
+  width: 572px;
+  height: 52px;
+  margin: 26px auto 0;
+}
+.search .searcher .input {
+  float: left;
+  width: 446px;
+  height: 100%;
+  background-color: #f2f2f2;
+  border: 1px solid #DCDCDC;
+  border-radius: 4px 0 0 4px;
+}
+.search .searcher .input input {
+  width: 96%;
+  height: 80%;
+  margin: 6px 10px;
+  font-size: 14px;
+  background-color: #f2f2f2;
+  outline: none;
+  border: none;
+}
+.search .searcher .button {
+  float: left;
+  width: 122px;
+  height: 52px;
+  margin-left: -1px;
+  background-color: #01a4e4;
+  border-radius: 0 4px 4px 0;
+  line-height: 52px;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+.search .hot {
+  font-size: 13px;
+  color: #AEAEAE;
+  text-align: right;
+  padding-right: 70px;
+}
+.search .hot a {
+  color: #666;
+  margin: 10px;
+  font-size: 14px;
+}
+.search .contect span {
+  display: inline-block;
+  color: #AEAEAE;
+  margin: 28px 14px 0 0;
+}
+.search .contect .wechat {
+  display: inline-block;
+}
+.search .contect .wechat:hover .wechat-code {
+  display: block;
+  position: absolute;
+  transform: translate(-90%, -5px);
+}
+.search .contect .wechat-code {
+  display: none;
+}
+.nav {
+  border-bottom: 2px solid #01a4e4;
+}
+.nav a {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  height: 56px;
+  line-height: 56px;
+  margin-right: 60px;
+  color: #666666;
+  font-size: 16px;
+}
+.nav a:hover {
+  text-decoration: none;
+}
+.nav a.focus {
+  color: #01a4e4;
+}
+.nav .strip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: 6px;
+  width: 76px;
+  height: 6px;
+  border-radius: 3px;
+  background-color: #01a4e4;
+}
+.nav2 {
+  background-color: #f2f2f2;
+  line-height: 40px;
+}
+.nav2 span {
+  color: #66CCFF;
+}
+.products {
+  padding: 20px 0 50px;
+  overflow: hidden;
+}
+.products .item {
+  display: inline-block;
+  padding: 34px 20px;
+  width: 22%;
+  min-width: 200px;
+  margin: 10px;
+  color: #6B6B6B;
+}
+.products .item:hover {
+  box-shadow: 0 0 10px gray;
+}
+.products .item img {
+  display: block;
+  width: 84%;
+  margin: 0 auto 20px;
+}
+.products span {
+  color: #FF6633;
+}
+.products .price-num {
+  font-size: 24px;
+}
+.products .pagination {
+  float: right;
+}
+.footer {
+  height: 200px;
+  color: #5E5E5E;
+  background-color: #f2f2f2;
+}
+.info-footer a {
+  display: inline-block;
+  margin: 34px 70px 30px 0;
+}
+.info-footer p {
+  margin-bottom: 10px;
+}
+.qr-code img {
+  display: inline-block;
+  width: 126px;
+  margin: 30px 0px 6px -10px;
+}
+
+/*# sourceMappingURL=search-result.css.map*/

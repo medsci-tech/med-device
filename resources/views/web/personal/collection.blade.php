@@ -44,14 +44,14 @@
 			<div class="mycollect">
 				<div class="panel">我的收藏</div>
 				<div class="collect-item">
-					<a class="pic" href="product-detail.html" target="_blank"><img src="img/home/u150.jpg"></a>
-					<a class="link" href="product-detail.html">怡成血糖仪家用电子血糖仪JPS系列 华鸿一次性无菌采血针</a>
+					<a class="pic" href="../product/detail" target="_blank"><img src="img/home/u150.jpg"></a>
+					<a class="link" href="../product/detail">怡成血糖仪家用电子血糖仪JPS系列 华鸿一次性无菌采血针</a>
 					<div class="btn-cancle">取消收藏</div>
 				</div>
 
 				<div class="collect-item">
-					<a class="pic" href="product-detail.html" target="_blank"><img src="img/home/u150.jpg"></a>
-					<a class="link" href="product-detail.html">怡成血糖仪家用电子血糖仪JPS系列 华鸿一次性无菌采血针</a>
+					<a class="pic" href="../product/detail" target="_blank"><img src="img/home/u150.jpg"></a>
+					<a class="link" href="../product/detail">怡成血糖仪家用电子血糖仪JPS系列 华鸿一次性无菌采血针</a>
 					<div class="btn-cancle">取消收藏</div>
 				</div>
 				

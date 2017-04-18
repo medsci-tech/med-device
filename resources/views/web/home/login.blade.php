@@ -27,12 +27,12 @@
             <div class="password-option">
                 <input class="checkbox" type="checkbox" name="remember-password">
                 <span class="remember-password">记住密码</span>
-                <a href="password.html">忘记密码？</a>
+                <a href="forget">忘记密码？</a>
             </div>
             <div id="submit" class="submit">登录</div>
             <p>
                 <span>还没有账户？</span>
-                <a href="register.html">立即注册</a>
+                <a href="register">立即注册</a>
             </p>
         </div>
     </div>

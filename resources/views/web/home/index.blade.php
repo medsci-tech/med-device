@@ -15,9 +15,9 @@
     <div class="row nav">
         <div class="col-md-offset-1 col-md-11">
             <a class="focus">&nbsp;&nbsp;首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页&nbsp;&nbsp;<div class="strip"></div></a>
-            <a href="products.html">药械产品招商</a>
-            <a href="service.html">药械营销服务</a>
-            <a href="broker.html">药械经纪人</a>
+            <a href="product">药械产品招商</a>
+            <a href="market">药械营销服务</a>
+            <a href="agent">药械经纪人</a>
         </div>
     </div>
 
@@ -77,6 +77,6 @@
 
     <div class="row appointment">
         <h2>药械营销服务预约</h2>
-        <a href="marketing-order.html">查看详情></a>
+        <a href="market/marketing-order">查看详情></a>
     </div>
 @endsection

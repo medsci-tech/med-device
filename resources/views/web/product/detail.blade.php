@@ -8,34 +8,6 @@
 @endsection
 
 @section('content')
-	<div class="row search">
-		<div class="col-md-2 col-md-offset-1">
-			<img class="logo" src="img/home/u61.jpg">
-			<h1 class="h1">药械通</h1>
-			<p>互联网医药信息服务证：9982561</p>
-		</div>
-		<div class="col-md-6">
-			<div class="searcher">
-				<div class="input">
-					<input type="text" name="product" placeholder="输入产品名称">
-				</div>
-				<div class="button">搜索</div>
-			</div>
-			<p class="hot">
-				热门搜索词： 
-				<a href="">外科器材</a>
-				<a href="">基础器材</a>
-			</p>
-		</div>
-		<div class="col-md-3 contect">
-			<span>药械小助手 400-8648883</span>
-			<div class="wechat">
-				<img class="wechat-logo" src="img/home/u103.png">
-				<img class="wechat-code" src="img/home/u101.png" >
-			</div>
-		</div>
-	</div>
-
 	<div class="row nav">
 		<div class="col-md-offset-1 col-md-11">
 			<a href="index.html">&nbsp;&nbsp;首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页&nbsp;&nbsp;</a>
@@ -62,7 +34,7 @@
 		<div class="col-md-4 col-md-offset-1">
 			<div class="preview">
 				<div class="big">
-					<img src="img/product-detail/u717.jpg">
+					<img src="../../img/product-detail/u717.jpg">
 				</div>
 				<div class="thumbnails">
 					<div class="tab"></div>
@@ -169,35 +141,35 @@
 			<div class="content video"></div>
 			<div class="content similar">
 				<div class="col-md-2 item">
-					<img src="img/home/u148.jpg">
+					<img src="../../img/home/u148.jpg">
 					<p>怡成血糖仪家用电子血糖仪JPS系列 华鸿一次性无菌采血针 </p>
 				</div>
 				<div class="col-md-2 item">
-					<img src="img/home/u148.jpg">
+					<img src="../../img/home/u148.jpg">
 					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 				</div>
 				<div class="col-md-2 item">
-					<img src="img/home/u148.jpg">
+					<img src="../../img/home/u148.jpg">
 					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 				</div>
 				<div class="col-md-2 item">
-					<img src="img/home/u148.jpg">
+					<img src="../../img/home/u148.jpg">
 					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 				</div>
 				<div class="col-md-2 item">
-					<img src="img/home/u148.jpg">
+					<img src="../../img/home/u148.jpg">
 					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 				</div>
 				<div class="col-md-2 item">
-					<img src="img/home/u148.jpg">
+					<img src="../../img/home/u148.jpg">
 					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 				</div>
 				<div class="col-md-2 item">
-					<img src="img/home/u148.jpg">
+					<img src="../../img/home/u148.jpg">
 					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 				</div>
 				<div class="col-md-2 item">
-					<img src="img/home/u148.jpg">
+					<img src="../../img/home/u148.jpg">
 					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 				</div>
 			</div>
@@ -214,7 +186,7 @@
 	<div class="shielder"></div>
 	<div id="panel" class="panel">
 		<div class="btn-submit">提交</div>
-		<img src="img/broker-sign/u899.png">
+		<img src="../../img/broker-sign/u899.png">
 		<p>合作意向</p>
 		<form>
 			<div>

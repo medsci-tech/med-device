@@ -7,43 +7,15 @@
 @endsection
 
 @section('content')
-	<div class="row search">
-		<div class="col-md-2 col-md-offset-1">
-			<img class="logo" src="img/home/u61.jpg">
-			<h1 class="h1">药械通</h1>
-			<p>互联网医药信息服务证：9982561</p>
-		</div>
-		<div class="col-md-6">
-			<div class="searcher">
-				<div class="input">
-					<input type="text" name="product" placeholder="输入产品名称">
-				</div>
-				<div class="button">搜索</div>
-			</div>
-			<p class="hot">
-				热门搜索词： 
-				<a href="">外科器材</a>
-				<a href="">基础器材</a>
-			</p>
-		</div>
-		<div class="col-md-3 contect">
-			<span>药械小助手 400-8648883</span>
-			<div class="wechat">
-				<img class="wechat-logo" src="img/home/u103.png">
-				<img class="wechat-code" src="img/home/u101.png" >
-			</div>
-		</div>
-	</div>
-
 	<div class="row nav">
 		<div class="col-md-offset-1 col-md-11">
-			<a href="index.html">&nbsp;&nbsp;首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页&nbsp;&nbsp;</a>
+			<a href="/">&nbsp;&nbsp;首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页&nbsp;&nbsp;</a>
 			<a class="focus">
 				药械产品招商
 				<div class="strip"></div>
 			</a>
-			<a href="service.html">药械营销服务</a>
-			<a href="broker.html">药械经纪人</a>
+			<a href="market">药械营销服务</a>
+			<a href="agent">药械经纪人</a>
 		</div>
 	</div>
 

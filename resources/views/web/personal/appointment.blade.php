@@ -64,7 +64,7 @@
 							<span class="location">湖北省武汉市洪山区高新大道</span>
 							<span class="time">2017-3-30</span>
 						</div>
-						<a class="btn-detail" href="profile-order-detail.html">详情</a>
+						<a class="btn-detail" href="appointment-detail">详情</a>
 					</div>
 				</div>
 			</div>

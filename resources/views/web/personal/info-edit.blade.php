@@ -43,7 +43,7 @@
 		<div class="content col-md-8">
 			<div class="profile-basic">
 				<div class="panel">
-					<a href="profile.html">信息管理</a>
+					<a href="../personal">信息管理</a>
 					<span> &nbsp;> &nbsp;基础信息修改</span>
 				</div>
 
