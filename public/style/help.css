@@ -1,0 +1,101 @@
+.header img {
+  display: inline-block;
+  width: 60px;
+  margin: 14px 0 14px 100px;
+}
+.header h1 {
+  display: inline-block;
+  vertical-align: middle;
+  color: #01a4e4;
+  font-size: 38px;
+}
+.header h2 {
+  display: none;
+}
+.header .link-header {
+  display: inline-block;
+  margin: 60px 28px 0 0;
+  color: #01B9FE;
+}
+.line {
+  height: 2px;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+.line div {
+  height: 94%;
+  width: 200px;
+  margin-left: 110px;
+  background-color: #01a4e4;
+}
+.mid {
+  margin-top: 30px;
+}
+.mid > div {
+  position: relative;
+}
+.mid > div::after {
+  content: "";
+  display: block;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+.nav {
+  position: absolute;
+}
+.nav .nav-item {
+  width: 180px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  margin-bottom: 4px;
+  color: #333;
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+.nav .focus {
+  color: white;
+  background-color: #199ed8;
+  cursor: auto;
+}
+.content {
+  display: none;
+  min-height: 660px;
+  margin: 0 0 100px 220px;
+  padding: 24px 0 40px 26px;
+  background-color: #f2f2f2;
+}
+.problems .question {
+  height: 38px;
+  line-height: 38px;
+  padding-left: 16px;
+  color: #333;
+  border-left: 6px solid #199ed8;
+}
+.problems .answer {
+  margin: 20px 0 40px 20px;
+  color: #949494;
+}
+.problems {
+  display: block;
+}
+.footer {
+  height: 200px;
+  color: #5E5E5E;
+  background-color: #f2f2f2;
+}
+.info-footer a {
+  display: inline-block;
+  margin: 34px 70px 30px 0;
+}
+.info-footer p {
+  margin-bottom: 10px;
+}
+.qr-code img {
+  display: inline-block;
+  width: 126px;
+  margin: 30px 0px 6px -10px;
+}
+
+/*# sourceMappingURL=help.css.map*/
