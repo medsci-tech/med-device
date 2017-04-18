@@ -12,7 +12,7 @@
 */
 
 Route::group(['middleware' => 'web'], function () {
-    //Auth::routes();
+    Auth::routes();
     Route::any('login', 'Auth\AuthController@login');
     Route::get('logout', 'Auth\AuthController@logout');
     Route::any('register', 'Auth\AuthController@register');
@@ -67,7 +67,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
         Route::get('/', 'SearchController@index'); // 搜索相关
 
     });
-    Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {
+    Route::group(['prefix' => 'personal', 'namespace' => 'Personal','middleware' => 'auth'], function () {
 
         Route::get('/', 'PersonalController@index');
         Route::get('/collection', 'PersonalController@collection');
