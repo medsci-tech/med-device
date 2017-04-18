@@ -44,7 +44,12 @@
                             <input type="text" id="weight" placeholder="权重越大,排序越靠前" name="weight">
                         </div>
                     </div>
-
+                    <div class="am-form-group"><label for="user-name" class="am-u-sm-3 am-form-label">联系方式</label>
+                        <div class="am-u-sm-4"><input type="text"  placeholder="请输入联系人" name="contact_name">
+                        </div>
+                        <div class="am-u-sm-4"><input type="text" placeholder="请输入联系电话" name="contact_phone">
+                        </div>
+                    </div>
                     <div class="am-form-group">
                         <label for="weight" class="am-u-sm-3 am-form-label">生产企业</label>
                         <div class="am-u-sm-9">

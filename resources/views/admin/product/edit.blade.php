@@ -51,6 +51,13 @@
                         </div>
                     </div>
 
+                    <div class="am-form-group"><label for="user-name" class="am-u-sm-3 am-form-label">联系方式</label>
+                       <div class="am-u-sm-3"><input type="text" name="contact_name" value="{{$product->contact_name}}">
+                        </div>
+                        <div class="am-u-sm-3"><input type="text" name="contact_phone" value="{{$product->contact_phone}}">
+                        </div>
+                    </div>
+
                     <div class="am-form-group">
                         <label for="weight" class="am-u-sm-3 am-form-label">生产企业</label>
                         <div class="am-u-sm-9">
