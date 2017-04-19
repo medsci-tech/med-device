@@ -19,6 +19,8 @@ class Appointment extends Model
      */
     protected $fillable = [
         'product_name',
+        'service_type_id',
+        'user_id',
         'type_id',
         'province',
         'city',
@@ -27,6 +29,7 @@ class Appointment extends Model
         'hospital_name',
         'contact_name',
         'contact_phone',
+        'appoint_at',
         'comment',
     ];
 

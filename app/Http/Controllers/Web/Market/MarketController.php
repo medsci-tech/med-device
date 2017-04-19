@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Market;
 
 use App\Models\ServiceType;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -40,21 +41,23 @@ class MarketController extends Controller
      * @return Response
      */
     public function store(Request  $request){
-
         $req = new StoreAppointment();
-        $validator = \Validator::make($request->all(), $req->rules(),$req->messages());
-
+        $data =$request->all();
+        $validator = \Validator::make($data, $req->rules(),$req->messages());
         if ($validator->fails()) {
             $validator_error_first = $validator->errors()->first();
             return response()->json(['code'=>200, 'status' => 0,'message' => $validator_error_first ]);
         }
-
-
-        $user_id = \Auth::id();
-
+        $data['user_id'] = \Auth::id();
+        try {
+            if(Appointment::create($data))
+                return response()->json(['code'=>200, 'status' => 1,'message' => '预约成功!' ]);
+            else
+                return response()->json(['code'=>200, 'status' => 0,'message' => '预约失败!' ]);
+        } catch (\Exception $e) {
+            return response()->json(['code'=>200, 'status' => 0,'message' => '服务器异常!' ]);
+        }
 
     }
-
-
 
 }
