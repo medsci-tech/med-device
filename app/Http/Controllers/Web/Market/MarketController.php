@@ -39,11 +39,22 @@ class MarketController extends Controller
      * @param  StoreAppointmentRequest  $request
      * @return Response
      */
-    public function store(StoreAppointment $request){
+    public function store(Request  $request){
 
+        $req = new StoreAppointment();
+        $validator = \Validator::make($request->all(), $req->rules(),$req->messages());
+
+        if ($validator->fails()) {
+            $validator_error_first = $validator->errors()->first();
+            return response()->json(['code'=>200, 'status' => 0,'message' => $validator_error_first ]);
+        }
+
+
+        $user_id = \Auth::id();
 
 
     }
+
 
 
 }

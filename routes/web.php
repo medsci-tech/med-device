@@ -41,7 +41,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
     Route::group(['prefix' => 'market', 'namespace' => 'Market'], function () {
         Route::get('/', 'MarketController@index'); // 药械营销服务
         Route::get('/marketing-order', 'MarketController@marketingOrder'); // 药械营销服务
-        Route::get('/store', 'MarketController@store'); // 预约服务提交
+        Route::post('/store', 'MarketController@store'); // 预约服务提交
 
         Route::group(['prefix' => 'order'], function () {
             Route::get('/', 'OrderController@index');

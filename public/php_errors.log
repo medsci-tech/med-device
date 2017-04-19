@@ -90,3 +90,4 @@
 [14-Apr-2017 05:14:40 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 262144 bytes) in D:\web\med-device\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php on line 214
 [14-Apr-2017 05:15:00 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 262144 bytes) in D:\web\med-device\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php on line 214
 [19-Apr-2017 06:29:18 UTC] PHP Fatal error:  Cannot use App\Models\Requests as Requests because the name is already in use in D:\web\med-device\app\Http\Controllers\Web\Market\MarketController.php on line 8
+[19-Apr-2017 09:05:23 UTC] PHP Fatal error:  Cannot make non static method Illuminate\Foundation\Http\FormRequest::messages() static in class App\Http\Requests\StoreAppointment in D:\web\med-device\app\Http\Requests\StoreAppointment.php on line 8

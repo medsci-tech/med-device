@@ -55,6 +55,7 @@
 			<!-- 下拉框结束 -->
 
 			<form class="form" action="" method="POST">
+
 				<div>
 					<label for="product-name">产品名称</label>
 					<input id="product-name" type="text" name="name" placeholder="输入产品名称">
