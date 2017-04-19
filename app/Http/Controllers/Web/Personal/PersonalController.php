@@ -47,6 +47,11 @@ class PersonalController extends Controller
 
         return view('web.personal.appointment', ['data' => null]);
     }
+    public function appointmentDetail()
+    {
+
+        return view('web.personal.appointment-detail', ['data' => null]);
+    }
     public function infoEdit()
     {
 

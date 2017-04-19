@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Interfaces\SendCode;
 class HomeController extends Controller
 {
-    use SendCode;
+    //use SendCode;
     /**
      * Create a new controller instance.
      *
@@ -37,6 +37,9 @@ class HomeController extends Controller
     {
         return view('web.home.helper');
     }
+    public function my_page(){
+        return view('web.home.my_page');
+    }
 
     /**
      * 发送验证码
@@ -48,5 +51,4 @@ class HomeController extends Controller
     {
         return $this->send($request->phone);
     }
-
 }
