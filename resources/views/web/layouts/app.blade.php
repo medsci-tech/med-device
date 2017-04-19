@@ -10,8 +10,8 @@
 <div class="container-fluid">
     <div class="row header">
         <div class="col-md-4 col-md-offset-1">
-            <a class="btn-login" href="logins">登录</a>
-            <a class="btn-register" href="register">注册</a>
+            <a class="btn-login" href="{{ url('login') }}">登录</a>
+            <a class="btn-register" href="{{ url('register') }}">注册</a>
         </div>
         <div class="col-md-6 links-header">
             <a href="personal"><img src="img/home/u161.png">个人中心</a>
