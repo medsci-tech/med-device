@@ -17,6 +17,12 @@ class AgentController extends Controller
         ]);
     }
 
+    public function agentSign(Request $request)
+    {
+        return view('web.agent.agent-sign')->with([
+            'result' => json_encode('test')
+        ]);
+    }
 
 
 

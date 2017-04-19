@@ -46,8 +46,14 @@ resources/views/web/product/detail.blade.php
 药械营销服务模板路径：
 resources/views/web/market/index.blade.php
 
+药械营销服务预约
+resources/views/web/market/marketing-order.blade
+
 药械经纪人模板路径：
 resources/views/web/agent/index.blade.php
+
+经纪人等记模板路径：
+resources/views/web/agent/agent-sign.blade.php
 
 搜索模板路径：
 resources/views/web/search/index.blade.php

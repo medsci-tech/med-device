@@ -47,6 +47,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
 
     Route::group(['prefix' => 'market', 'namespace' => 'Market'], function () {
         Route::get('/', 'MarketController@index'); // 药械营销服务
+        Route::get('/marketing-order', 'MarketController@index'); // 药械营销服务
 
         Route::group(['prefix' => 'order'], function () {
             Route::get('/', 'OrderController@index');
@@ -62,12 +63,13 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
 
     Route::group(['prefix' => 'agent', 'namespace' => 'Agent'], function () {
         Route::get('/', 'AgentController@index'); // 药械经纪人
+        Route::get('/agent-sign', 'AgentController@agentSign'); // 等记经纪人
     });
     Route::group(['prefix' => 'search', 'namespace' => 'Search'], function () {
         Route::get('/', 'SearchController@index'); // 搜索相关
 
     });
-    Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {
+    Route::group(['prefix' => 'personal', 'namespace' => 'Personal','middleware' => 'auth'], function () {
 
         Route::get('/', 'PersonalController@index');
         Route::get('/collection', 'PersonalController@collection');

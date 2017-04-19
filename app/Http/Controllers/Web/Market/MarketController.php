@@ -17,7 +17,12 @@ class MarketController extends Controller
         ]);
     }
 
-
+    public function marketingOrder(Request $request)
+    {
+        return view('web.market.marketing-order')->with([
+            'result' => json_encode('test')
+        ]);
+    }
 
 
 }
