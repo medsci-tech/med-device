@@ -44,7 +44,6 @@ class AuthController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
-
     /**
      * 登录
      * @author      lxhui<772932587@qq.com>
@@ -59,13 +58,12 @@ class AuthController extends Controller
                 $login_sign ='phone';
             else
                 $login_sign ='name';
-           // echo($login_sign);exit;
-            $validator = $this->validateLogin($request->input(),$login_sign);
 
+            $validator = $this->validateLogin($request->input(),$login_sign);
             if ($validator->fails())
                 return response()->json(['code'=>200, 'status' => 0,'message' => $validator->errors()->first() ]);
 
-            if (Auth::guard('web')->attempt($this->validateUser($request->input(),$login_sign))) {
+            if (Auth::guard('web')->attempt($this->validateUser($request->input(),$login_sign),$request->remember)) {
                 return response()->json(['code'=>200, 'status' => 1,'message' => '登录成功' ]);
             }else {
                 return response()->json(['code'=>200, 'status' => 0,'message' => '账号或密码错误' ]);
@@ -86,10 +84,11 @@ class AuthController extends Controller
             $rules['name']='required|exists:users,name';
 
         return Validator::make($data, $rules, [
-            'required' => ':attribute 为必填项',
-            'exists' => ':attribute 不存在',
-            'min' => ':attribute 长度不符合要求'
+            'required' => ':attribute为必填项',
+            'exists' => ':attribute不存在',
+            'min' => ':attribute长度不符合要求'
         ], [
+            'name' => '账号',
             'phone' => '手机号',
             'password' => '密码'
         ]);
@@ -140,7 +139,10 @@ class AuthController extends Controller
             $result = User::create($data);
 
             if($result)
+            {
+                Auth::attempt(['name' => $data['name'], 'password' => $request->password]);
                 return response()->json([ 'code' => 200, 'status' => 1, 'message' => '注册成功' ]);
+            }
             else
                 return response()->json([ 'code' => 200, 'status' => 0, 'message' => '注册失败' ]);
 
@@ -162,7 +164,8 @@ class AuthController extends Controller
             //'email' => 'required|email|max:255|unique:users',
             'code' => 'required|min:6|in:222222',
             'password' => 'required|min:6|max:12|confirmed',
-            'password_confirmation' => 'required|min:6|'
+            'password_confirmation' => 'required|min:6|',
+            'agree' => 'accepted',
         ], [
             'required' => ':attribute为必填项',
             'in' => ':attribute无效',
@@ -171,7 +174,8 @@ class AuthController extends Controller
             'confirmed' => '两次输入的密码不一致',
             'name.unique' => '该用户名已经被注册',
             'phone.unique' => '该手机号已经被注册',
-            'alpha_num' => ':attribute必须为字母或数字'
+            'alpha_num' => ':attribute必须为字母或数字',
+            "accepted" => "The :attribute 必须同意条款.",
         ], [
             'name' => '用户名',
             'phone' => '手机号',

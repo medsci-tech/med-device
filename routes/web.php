@@ -16,9 +16,10 @@ Route::group(['middleware' => 'web'], function () {
     Route::any('login', 'Auth\AuthController@login');
     Route::get('logout', 'Auth\AuthController@logout');
     Route::any('register', 'Auth\AuthController@register');
-
-
-    Route::get('/home', 'HomeController@index');
+   // Route::get('/home', 'HomeController@index');
+    Route::get('home',function(){
+        return redirect('/');
+    });
 });
 Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
 
@@ -26,14 +27,6 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
     Route::any('/forget', 'HomeController@forget'); // 忘记密码
     Route::any('/helper', 'HomeController@helper'); // 忘记密码
     Route::get('/my_page', 'HomeController@my_page');
-
-    Route::group(['prefix' => '', 'namespace' => 'Home'], function () {
-
-        Route::any('/logout', 'LoginController@logout');
-        Route::post('/login', 'LoginController@login');
-        Route::get('/registers', 'RegisterController@registers'); // 注册页面
-        Route::any('/store', 'RegisterController@store'); // 注册保存
-    });
 
     Route::group(['prefix'=>'','middleware'=>'throttle:20'],function(){
         Route::post('/send-code', 'HomeController@sendCode');//发送验证码
@@ -47,7 +40,8 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
 
     Route::group(['prefix' => 'market', 'namespace' => 'Market'], function () {
         Route::get('/', 'MarketController@index'); // 药械营销服务
-        Route::get('/marketing-order', 'MarketController@index'); // 药械营销服务
+        Route::get('/marketing-order', 'MarketController@marketingOrder'); // 药械营销服务
+        Route::get('/store', 'MarketController@store'); // 预约服务提交
 
         Route::group(['prefix' => 'order'], function () {
             Route::get('/', 'OrderController@index');
@@ -69,7 +63,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
         Route::get('/', 'SearchController@index'); // 搜索相关
 
     });
-    Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {
+    Route::group(['prefix' => 'personal', 'namespace' => 'Personal','middleware' => 'auth'], function () {
 
         Route::get('/', 'PersonalController@index');
         Route::get('/collection', 'PersonalController@collection');

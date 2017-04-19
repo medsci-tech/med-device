@@ -9,10 +9,23 @@
 <body>
 <div class="container-fluid">
     <div class="row header">
+        @if (Auth::guest())
         <div class="col-md-4 col-md-offset-1">
             <a class="btn-login" href="{{ url('login') }}">登录</a>
             <a class="btn-register" href="{{ url('register') }}">注册</a>
         </div>
+        @else
+        <div class="col-md-4 col-md-offset-1">
+            <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{{ url('logout') }}"><i class="fa fa-btn fa-sign-out"></i>退出</a></li>
+                    </ul>
+            </li>
+        </div>
+        @endif
         <div class="col-md-6 links-header">
             <a href="personal"><img src="img/home/u161.png">个人中心</a>
             <a href=""><img src="img/home/u163.png">我的消息</a>

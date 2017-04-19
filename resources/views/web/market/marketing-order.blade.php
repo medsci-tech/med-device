@@ -33,9 +33,9 @@
 
 			<!-- 下拉框 -->
 			<ul id="drop-type" class="drop-down">
-				<li>类型一</li>
-				<li>类型二</li>
-				<li>类型三</li>
+				@foreach ($data as $val)
+				<li type="{{ $val->id }}">{{ $val->name }}</li>
+				@endforeach
 			</ul>
 			<ul id="drop-province" class="drop-down">
 				<li>湖北省</li>
