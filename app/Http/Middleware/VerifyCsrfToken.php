@@ -14,6 +14,7 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
         '/register',
         '/login',
+        '/forget',
         '/send-code',
         '/market/store',
     ];

@@ -130,10 +130,12 @@ class AuthController extends Controller
             $validator = $this->validateRegister($request->input());
             if ($validator->fails()) {
                 $validator_error_first = $validator->errors()->first();
-                if($validator_error_first){
-                    return response()->json(['code'=>200, 'status' => 0,'message' => $validator_error_first ]);
-                }
+                return response()->json(['code'=>200, 'status' => 0,'message' => $validator_error_first ]);
             }
+            /* 验证码验证 */
+           if(!\Helper::checkCode($request->code,$request->phone))
+               return response()->json(['code'=>200, 'status' => 0,'message' => '无效的验证码' ]);
+
             $data = $request->all();
             $data['password'] = bcrypt($request->password);
             $result = User::create($data);
@@ -162,7 +164,7 @@ class AuthController extends Controller
             'name' => 'required|alpha_num|max:12|unique:users',
             'phone'=>'required|regex:/^1[34578][0-9]{9}$/|unique:users',
             //'email' => 'required|email|max:255|unique:users',
-            'code' => 'required|min:6|in:222222',
+            'code' => 'required|min:6',
             'password' => 'required|min:6|max:12|confirmed',
             'password_confirmation' => 'required|min:6|',
             'agree' => 'accepted',

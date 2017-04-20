@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Web;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Interfaces\SendCode;
+use App\Http\Requests\Interfaces\CheckResetPwd;
 use App\Models\Product;
+use App\User;
 class HomeController extends Controller
 {
-    use SendCode;
+    use CheckResetPwd;
     /**
      * Create a new controller instance.
      *
@@ -34,8 +35,28 @@ class HomeController extends Controller
             'data' => $data
         ]);
     }
-    public function forget()
+
+    /**
+     * 忘记密码
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function forget(Request $request)
     {
+        if ($request->isMethod('post')) {
+            $result =$this->checkPhoneCode($request->all());
+            if($result['status'] ==1)
+            {
+                $user = User::where(['phone'=>$request->phone])->first();
+                $user->password = bcrypt($request->password);
+                $user->save();
+                return response()->json(['code'=>200, 'status' => 1,'message' => '修改成功' ]);
+            }
+            else
+                return response()->json(['code'=>200, 'status' => 0,'message' => $result['message'] ]);
+        }
+
         return view('web.home.forget');
     }
     public function helper()

@@ -72,6 +72,7 @@ class Helper
     {
         return sprintf('%06d',random_int($start, $end));
     }
+
     /** 短信发送
      * @param $phone 电话
      * @param $message 发送内心
@@ -98,6 +99,21 @@ class Helper
         $res = json_decode( $res,true);
         curl_close( $ch );
         return $res;
+    }
+
+    /** 短信合法验证
+     * @param $phone 电话
+     * @param $code 验证码
+     * @return mixed
+     */
+    public static function checkCode($code,$phone)
+    {
+        /* 验证码验证 */
+        $auth_code = \Cache::get($phone);
+        if ($code != $auth_code)
+            return false;
+        else
+            return true;
     }
 
 

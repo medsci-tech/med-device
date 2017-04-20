@@ -13491,7 +13491,7 @@ namespace {
          * @return mixed
          * @static
          */
-        public static function qiniuUpload($file){dd(22);
+        public static function qiniuUpload($file){
             return \App\Helper\Helper::qiniuUpload($file);
         }
 

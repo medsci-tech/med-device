@@ -26,8 +26,7 @@ class ProductController extends Controller
      */
     public function detail($id)
     {
-
-
+        Product::find($id)->increment('view_counts');
         $data =  Product::find($id);
 
         return view('web.product.detail')->with(['data'=>$data]);

@@ -11,3 +11,4 @@ Homestead.yaml
 /resources/views/adminbk
 /php_errors.log
 /app/Http/Requests
+/app/Http/Requests/Interfaces/SendCode.php
