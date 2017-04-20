@@ -118,26 +118,30 @@
         </div>
     </div>
     @yield('content')
-    <div class="container">
+    <div class="container-fulid">
         <div class="row footer">
-            <div class="col-md-5 col-md-offset-1 info-footer">
-                <a href="">关于我们</a>
-                <a href="">联系我们</a>
-                <a href="">购买方式</a>
-                <a href="">常见问题</a>
-                <p>Copyright@2017 施康培科技（武汉）有限公司版权所有，保留所有权利</p>
-                <p>互联网药品信息服务资格证书编号（鄂）</p>
-                <p>鄂ICP备 15021002号</p>
-            </div>
-            <div class="col-md-3 col-md-offset-2 qr-code">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
-                        <img width="100%" src="/img/home/u101.png">
-                        <p>药械通官方微信</p>
+                    <div class="col-md-5 col-md-offset-1 info-footer">
+                        <a href="">关于我们</a>
+                        <a href="">联系我们</a>
+                        <a href="">购买方式</a>
+                        <a href="">常见问题</a>
+                        <p>Copyright@2017 施康培科技（武汉）有限公司版权所有，保留所有权利</p>
+                        <p>互联网药品信息服务资格证书编号（鄂）</p>
+                        <p>鄂ICP备 15021002号</p>
                     </div>
-                    <div class="col-md-6">
-                        <img width="100%" src="/img/home/u192.png">
-                        <p>药械通企业号</p>
+                    <div class="col-md-3 col-md-offset-2 qr-code">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img width="100%" src="/img/home/u101.png">
+                                <p>药械通官方微信</p>
+                            </div>
+                            <div class="col-md-6">
+                                <img width="100%" src="/img/home/u192.png">
+                                <p>药械通企业号</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -51,6 +51,8 @@
 
         </div>
     </div>
+</div>
+<div class="container-fulid">
     <div class="row appointment">
         <h2>药械营销服务预约</h2>
         <a href="{{ url('market/marketing-order/') }}" target="_blank">查看详情></a>
