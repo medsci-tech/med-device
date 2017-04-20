@@ -35,6 +35,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
     Route::group(['prefix' => 'product', 'namespace' => 'Product'], function () {
         Route::get('/', 'ProductController@index'); // 药械产品招商导航页
         Route::get('/detail/{id}', 'ProductController@detail');# 产品宣传页
+        Route::post('collect', 'ProductController@collect');# 产品收藏
     });
 
     Route::group(['prefix' => 'market', 'namespace' => 'Market'], function () {
