@@ -63,5 +63,42 @@ class Helper
         return $disk->getDriver()->downloadUrl($newName);
     }
 
+    /**
+     * @param int $start
+     * @param int $end
+     * @return string
+     */
+    public static function generateMessageVerify($start = 000000, $end = 999999)
+    {
+        return sprintf('%06d',random_int($start, $end));
+    }
+    /** 短信发送
+     * @param $phone 电话
+     * @param $message 发送内心
+     * @return mixed
+     */
+    public  function sendCode($phone,$code,$message=null)
+    {
+        $message = $message ? $message : '验证码：'.$code.'【药械通】';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "http://sms-api.luosimao.com/v1/send.json");
+
+        curl_setopt($ch, CURLOPT_HTTP_VERSION  , CURL_HTTP_VERSION_1_0 );
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 8);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+
+        curl_setopt($ch, CURLOPT_HTTPAUTH , CURLAUTH_BASIC);
+        curl_setopt($ch, CURLOPT_USERPWD  , 'api:key-'.env('LUOSIMAO_API_KEY'));
+
+        curl_setopt($ch, CURLOPT_POST, TRUE);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, array('mobile' => $phone,'message' => $message));
+
+        $res = curl_exec( $ch );
+        $res = json_decode( $res,true);
+        curl_close( $ch );
+        return $res;
+    }
+
 
 }

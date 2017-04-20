@@ -54,6 +54,28 @@ class HomeController extends Controller
      */
     public function sendCode(Request $request)
     {
-        return $this->send($request->phone);
+        try {
+            $validator = \Validator::make($request->all(), [
+                'phone'   => 'required|digits:11|regex:/^1[34578][0-9]{9}$/'
+            ]);
+            if ($validator->fails())
+                return ['code' => 200, 'status' => 0, 'message' => $validator->errors()->first('phone')];
+
+            $code = \Helper::generateMessageVerify();
+            $phone = $request->phone;
+            //$res = \Helper::sendCode($phone,$code);
+
+            $res=['msg'=>'ok'];//临时
+            if($res['msg']=='ok')
+            {
+                \Cache::put($phone, $code,2);
+                return response()->json(['code'=>200, 'status' => 1,'message' => '发送成功!','code'=>$code ]);
+            }
+            else
+                return response()->json(['code'=>200, 'status' => 0,'message' => '发送失败!' ]);
+
+        } catch (\Exception $e) {
+            return ['code' => 200, 'status' => 0, 'message' => $e->getMessage()];
+        }
     }
 }

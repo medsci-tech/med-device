@@ -26,6 +26,8 @@ class ProductController extends Controller
      */
     public function detail($id)
     {
+
+
         $data =  Product::find($id);
 
         return view('web.product.detail')->with(['data'=>$data]);
