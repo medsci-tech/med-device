@@ -42,100 +42,30 @@
 		</div>
 		<div class="content col-md-8">
 			<div class="infomanager">
-				<div class="panel">
+				<div class="ipanel">
 					<a href="/personal">信息管理</a>
-					<span> &nbsp;> &nbsp;企业认证</span>
+					<span> &nbsp;> &nbsp;个人专长</span>
 				</div>
 
-				<div class="items">
-					<div class="info-item">
-						<h4>营业执照</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
-					<div class="info-item">
-						<h4>开户许可证</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
-					<div class="info-item">
-						<h4>医疗器械经营许可证</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
-					<div class="info-item">
-						<h4>开票信息</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
-					<div class="info-item">
-						<h4>受托人身份证复印件（正面）</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
-					<div class="info-item">
-						<h4>受托人身份证复印件（反面）</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
-					<div class="info-item">
-						<h4>印章备案表</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
-					<div class="info-item">
-						<h4>企业法人委托书原件</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
-					<div class="info-item">
-						<h4>发票和出库单样票</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
-					<div class="info-item">
-						<h4>企业公示信息</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
-					<div class="info-item">
-						<h4>质保协议</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
+				<div class="form">
+					
+					<h4>覆盖科室（可添加多个）</h4>
+					<div id="item-container1" class="item-container"></div>
+					<div id="department" class="btn-choose">选择科室</div>
+					<div class="separate-line"></div>
+		
+					<h4>覆盖医院（可添加多个）</h4>
+					<div id="item-container2" class="item-container"></div>
+					<div id="hospital" class="btn-choose">选择医院</div>
+					<div class="separate-line"></div>
+		
+					<h4>擅长服务类型（可添加多个）</h4>
+					<div id="item-container3" class="item-container"></div>
+					<div id="service" class="btn-choose">选择服务</div>
+					<div class="separate-line"></div>
+		
+					<input class="submit" type="submit" name="submit" value="确定">
+
 				</div>
 			</div>
 		</div>
@@ -144,4 +74,23 @@
 
 @section('page_js')
 <script src="/js/profile-expertise.js"></script>
+@endsection
+
+@section('panel')
+<div class="shielder"></div>
+<div id="panel1" class="panel panel1">
+	<div class="btn-panel">选择</div>
+	<img src="img/broker-sign/u899.png">
+	<p>选择科室(可添加多个）</p>
+</div>
+<div id="panel2" class="panel panel2">
+	<div class="btn-panel">选择</div>
+	<img src="img/broker-sign/u899.png">
+	<p>选择覆盖区域</p>
+</div>
+<div id="panel3" class="panel panel3">
+	<div class="btn-panel">选择</div>
+	<img src="img/broker-sign/u899.png">
+	<p>选择服务类型(可添加多个）</p>
+</div>
 @endsection
