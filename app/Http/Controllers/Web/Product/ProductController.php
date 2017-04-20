@@ -9,7 +9,6 @@ use App\Http\Requests;
 class ProductController extends Controller
 {
 
-
     public function index(Request $request)
     {
         return view('web.product.index')->with([
