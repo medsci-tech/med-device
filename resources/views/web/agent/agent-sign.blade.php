@@ -3,7 +3,7 @@
 @section('title', '首页')
 
 @section('page_css')
-<link rel="stylesheet" type="text/css" href="style/broker-sign.css">
+<link rel="stylesheet" type="text/css" href="/style/broker-sign.css">
 @endsection
 
 @section('content')
@@ -43,41 +43,15 @@
 				<input class="sex-radio" type="radio" name="sex" value="男"><span>男</span>
 				<input class="sex-radio" type="radio" name="sex" value="女"><span>女</span>
 			</div>
-			<!-- 下拉框 -->
-			<ul id="drop-province" class="drop-down">
-				<li>湖北省</li>
-				<li>湖南省</li>
-				<li>广东省</li>
-			</ul>
-			<ul id="drop-city" class="drop-down">
-				<li>市一</li>
-				<li>市二</li>
-				<li>市三</li>
-			</ul>
-			<ul id="drop-county" class="drop-down">
-				<li>一县</li>
-				<li>二县</li>
-				<li>三县</li>
-			</ul>
-			<!-- 下拉框结束 -->
 			<div>
 				<label for="">电子邮箱</label>
 				<input type="text" name="email" placeholder="请输入电子邮箱">
 			</div>
 			<div>
 				<label for="">工作区域</label>
-				<input id="area" type="text" name="area">
-				<div id="province" class="province">
-					<div id="value-province">省</div>
-					<div id="btn-dropdown-province" class="btn-dropdown"></div>
-				</div>
-				<div id="city" class="city">
-					<div id="value-city">市</div>
-					<div id="btn-dropdown-city" class="btn-dropdown"></div>
-				</div>
-				<div id="county" class="county">
-					<div id="value-county">县</div>
-					<div id="btn-dropdown-county" class="btn-dropdown"></div>
+				
+				<div id="loc-wrapper">
+					<input id="area" style="display: block" readonly type="text" name="area" placeholder="请选择省市地区">
 				</div>
 			</div>
 			<div class="separate-line"></div>
@@ -105,7 +79,8 @@
 
 
 @section('page_js')
-<script src="js/broker-sign.js"></script>
+<script src="/js/broker-sign.js"></script>
+<script src="/js/loc.js"></script>
 @endsection
 
 
@@ -114,17 +89,17 @@
 	<div class="shielder"></div>
 	<div id="panel1" class="panel panel1">
 		<div class="btn-panel">选择</div>
-		<img src="img/broker-sign/u899.png">
+		<img src="/img/broker-sign/u899.png">
 		<p>选择科室(可添加多个）</p>
 	</div>
 	<div id="panel2" class="panel panel2">
 		<div class="btn-panel">选择</div>
-		<img src="img/broker-sign/u899.png">
+		<img src="/img/broker-sign/u899.png">
 		<p>选择覆盖区域</p>
 	</div>
 	<div id="panel3" class="panel panel3">
 		<div class="btn-panel">选择</div>
-		<img src="img/broker-sign/u899.png">
+		<img src="/img/broker-sign/u899.png">
 		<p>选择服务类型(可添加多个）</p>
 	</div>
 	<!-- 弹出面板结束 -->

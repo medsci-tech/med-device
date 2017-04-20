@@ -73,5 +73,5 @@
 @endsection
 
 @section('js')
-<script src="js/profile-orders.js"></script>
+<script src="/js/profile-orders.js"></script>
 @endsection

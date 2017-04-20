@@ -61,5 +61,5 @@
 @endsection
 
 @section(page_css)
-<script src="js/register.js"></script>
+<script src="/js/register.js"></script>
 @endsection

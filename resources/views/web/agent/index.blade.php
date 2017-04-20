@@ -29,6 +29,6 @@
 @endsection
 
 @section('page_js')
-<script src="js/broker.js"></script>
+<script src="/js/broker.js"></script>
 @endsection
 

@@ -44,7 +44,7 @@
 			<div class="business">
 				<div class="panel">我的收藏</div>
 				<div class="business-item">
-					<a class="pic" href="../product/detail" target="_blank"><img src="img/home/u150.jpg"></a>
+					<a class="pic" href="../product/detail" target="_blank"><img src="/img/home/u150.jpg"></a>
 					<a class="link" href="../product/detail">怡成血糖仪家用电子血糖仪JPS系列 华鸿一次性无菌采血针</a>
 					<span id="contact" class="contact">联系人：小陈</span>
 					<span id="tel" class="tel">联系电话：13693858395</span>

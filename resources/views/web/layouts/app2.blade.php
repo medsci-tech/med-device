@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <title>@yield('title')</title>
-<link rel="stylesheet" type="text/css" href="style/vendor.css">
+<link rel="stylesheet" type="text/css" href="/style/vendor.css">
 @yield('page_css')
 </head>
 <body>
 <div class="container-fluid">
     <div class="row header">
         <div class="col-md-6">
-            <img src="img/home/u61.jpg">
+            <img src="/img/home/u61.jpg">
             <h1>药械通</h1>
             <h2>个人中心</h2>
         </div>
@@ -33,11 +33,11 @@
         <div class="col-md-3 col-md-offset-2 qr-code">
             <div class="row">
                 <div class="col-md-6">
-                    <img width="100%" src="img/home/u101.png">
+                    <img width="100%" src="/img/home/u101.png">
                     <p>药械通官方微信</p>
                 </div>
                 <div class="col-md-6">
-                    <img width="100%" src="img/home/u192.png">
+                    <img width="100%" src="/img/home/u192.png">
                     <p>药械通企业号</p>
                 </div>
             </div>
@@ -45,7 +45,7 @@
     </div>
 </div>
 @yield('panel')
-<script src="js/vendor.js"></script>
+<script src="/js/vendor.js"></script>
 @yield('page_js')
 </body>
 </html>
