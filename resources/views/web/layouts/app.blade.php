@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>@yield('title')</title>
-<link rel="stylesheet" type="text/css" href="style/vendor.css">
+<link rel="stylesheet" type="text/css" href="/style/vendor.css">
 @yield('page_css')
 </head>
 <body>
@@ -27,15 +27,15 @@
         </div>
         @endif
         <div class="col-md-6 links-header">
-            <a href="personal"><img src="img/home/u161.png">个人中心</a>
-            <a href=""><img src="img/home/u163.png">我的消息</a>
-            <a href="helper"><img src="img/home/u165.png">帮助中心</a>
+            <a href="personal"><img src="/img/home/u161.png">个人中心</a>
+            <a href=""><img src="/img/home/u163.png">我的消息</a>
+            <a href="helper"><img src="/img/home/u165.png">帮助中心</a>
         </div>
         <div class="col-md-1"></div>
     </div>
     <div class="row search">
         <div class="col-md-2 col-md-offset-1">
-            <img class="logo" src="img/home/u61.jpg">
+            <img class="logo" src="/img/home/u61.jpg">
             <h1 class="h1">药械通</h1>
             <p>互联网医药信息服务证：9982561</p>
         </div>
@@ -55,8 +55,8 @@
         <div class="col-md-3 contect">
             <span>药械小助手 400-8648883</span>
             <div class="wechat">
-                <img class="wechat-logo" src="img/home/u103.png">
-                <img class="wechat-code" src="img/home/u101.png" >
+                <img class="wechat-logo" src="/img/home/u103.png">
+                <img class="wechat-code" src="/img/home/u101.png" >
             </div>
             <!--
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -123,11 +123,11 @@
         <div class="col-md-3 col-md-offset-2 qr-code">
             <div class="row">
                 <div class="col-md-6">
-                    <img width="100%" src="img/home/u101.png">
+                    <img width="100%" src="/img/home/u101.png">
                     <p>药械通官方微信</p>
                 </div>
                 <div class="col-md-6">
-                    <img width="100%" src="img/home/u192.png">
+                    <img width="100%" src="/img/home/u192.png">
                     <p>药械通企业号</p>
                 </div>
             </div>
@@ -135,7 +135,7 @@
     </div>
 </div>
 @yield('panel')
-<script src="js/vendor.js"></script>
+<script src="/js/vendor.js"></script>
 @yield('page_js')
 </body>
 </html>

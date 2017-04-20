@@ -7,14 +7,14 @@
 @endsection
 
 @section('page_css')
-<link rel="stylesheet" type="text/css" href="../style/profile-orders.css">
+<link rel="stylesheet" type="text/css" href="/style/profile-orders.css">
 @endsection
 
 @section('content')
 	<div class="row">
 		<div class="col-md-2 nav">
 			<div class="item">
-				<a class="button" href="../personal">
+				<a class="button" href="/personal">
 					<span class="img1"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;信息管理
 				</a>
@@ -73,5 +73,5 @@
 @endsection
 
 @section('js')
-<script src="js/profile-orders.js"></script>
+<script src="/js/profile-orders.js"></script>
 @endsection

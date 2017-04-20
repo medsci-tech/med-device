@@ -3,7 +3,7 @@
 @section('title', '个人中心')
 
 @section('page_css')
-<link rel="stylesheet" type="text/css" href="../style/profile.css">
+<link rel="stylesheet" type="text/css" href="/style/profile.css">
 @endsection
 
 @section('content')
@@ -43,7 +43,7 @@
 		<div class="content col-md-8">
 			<div class="infomanager">
 				<div class="panel">信息管理</div>
-				<img src="img/profile/u2310.jpg">
+				<img src="/img/profile/u2310.jpg">
 				<div class="welcome">
 					<p>尊敬的&nbsp;<span id="name" class="name">hhhh</span>&nbsp;您好，欢迎您回来!</p>
 					<a href="personal/info-edit">基本信息</a><span>（未完善）</span>
@@ -63,5 +63,5 @@
 @endsection
 
 @section('page_js')
-<script src="../js/profile.js"></script>
+<script src="/js/profile.js"></script>
 @endsection

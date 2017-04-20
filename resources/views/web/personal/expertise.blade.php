@@ -3,7 +3,7 @@
 @section('title', '个人专长')
 
 @section('page_css')
-<link rel="stylesheet" type="text/css" href="../style/profile-expertise.css">
+<link rel="stylesheet" type="text/css" href="/style/profile-expertise.css">
 @endsection
 
 @section('content')
@@ -43,7 +43,7 @@
 		<div class="content col-md-8">
 			<div class="infomanager">
 				<div class="panel">
-					<a href="../personal">信息管理</a>
+					<a href="/personal">信息管理</a>
 					<span> &nbsp;> &nbsp;企业认证</span>
 				</div>
 
@@ -143,5 +143,5 @@
 @endsection
 
 @section('page_js')
-<script src="../js/profile-expertise.js"></script>
+<script src="/js/profile-expertise.js"></script>
 @endsection

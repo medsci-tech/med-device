@@ -3,7 +3,7 @@
 @section('title','找回密码')
 
 @section('page_css')
-<link rel="stylesheet" type="text/css" href="../style/password.css">
+<link rel="stylesheet" type="text/css" href="/style/password.css">
 @endsection
 
 @section('content')
@@ -37,5 +37,5 @@
 @endsection
 
 @section('page_js')
-<script src="../js/password.js"></script>
+<script src="/js/password.js"></script>
 @endsection

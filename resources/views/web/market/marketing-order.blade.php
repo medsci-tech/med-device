@@ -3,25 +3,25 @@
 @section('title', '首页')
 
 @section('page_css')
-<link rel="stylesheet" type="text/css" href="../style/marketing-order.css">
+<link rel="stylesheet" type="text/css" href="/style/marketing-order.css">
 @endsection
 
 @section('content')
 	<div class="row nav">
 		<div class="col-md-offset-1 col-md-11">
-			<a href="../">&nbsp;&nbsp;首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页&nbsp;&nbsp;</a>
-			<a href="../product">药械产品招商</a>
-			<a class="focus" href="service.html">
+			<a href="/">&nbsp;&nbsp;首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页&nbsp;&nbsp;</a>
+			<a href="/product">药械产品招商</a>
+			<a class="focus" href="/market">
 				药械营销服务
 				<div class="strip"></div>
 			</a>
-			<a href="../agent">药械经纪人</a>
+			<a href="/agent">药械经纪人</a>
 		</div>
 	</div>
 
 	<div class="row nav2">
 		<div class="col-md-offset-1 col-md-11">
-			<a href="../market">药械营销服务</a>
+			<a href="/market">药械营销服务</a>
 			<a>></a>
 			<a>营销服务预约</a>
 		</div>
@@ -105,5 +105,5 @@
 
 
 @section('page_js')
-<script src="../js/marketing-order.js"></script>
+<script src="/js/marketing-order.js"></script>
 @endsection

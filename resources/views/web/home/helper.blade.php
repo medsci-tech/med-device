@@ -7,7 +7,7 @@
 @endsection
 
 @section('page_js')
-<script src="js/help.js"></script>
+<script src="/js/help.js"></script>
 @endsection
 
 

@@ -7,7 +7,7 @@
 @endsection
 
 @section('page_js')
-<script src="js/index.js"></script>
+<script src="/js/index.js"></script>
 @endsection
 
 
@@ -42,16 +42,14 @@
             </div>
             @foreach ($data as $val)
             <div class="col-md-2 item">
-                <a href="{{ url('product/detail/'.$val->id) }}" target="_blank"><img src="{{ $val->logo }}"><a></a>
-                <p>{{ $val->name }}</p>
+                <a href="{{ url('product/detail/'.$val->id) }}" target="_blank"><img src="{{ $val->logo }}"><a></a><p>{{ $val->name }}</p>
             </div>
             @endforeach
 
         </div>
     </div>
-
     <div class="row appointment">
         <h2>药械营销服务预约</h2>
-        <a href="market/marketing-order">查看详情></a>
+        <a href="{{ url('market/marketing-order/') }}" target="_blank">查看详情></a>
     </div>
 @endsection

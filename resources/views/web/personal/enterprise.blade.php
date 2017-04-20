@@ -3,7 +3,7 @@
 @section('title', '企业信息修改')
 
 @section('page_css')
-<link rel="stylesheet" type="text/css" href="../style/profile-enterprise.css">
+<link rel="stylesheet" type="text/css" href="/style/profile-enterprise.css">
 @endsection
 
 @section('content')
@@ -43,7 +43,7 @@
 		<div class="content col-md-8">
 			<div class="infomanager">
 				<div class="panel">
-					<a href="../personal">信息管理</a>
+					<a href="/personal">信息管理</a>
 					<span> &nbsp;> &nbsp;企业认证</span>
 				</div>
 
@@ -143,5 +143,5 @@
 @endsection
 
 @section('page_js')
-<script src="../js/profile-enterprise.js"></script>
+<script src="/js/profile-enterprise.js"></script>
 @endsection
