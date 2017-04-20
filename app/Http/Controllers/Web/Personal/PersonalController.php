@@ -1,15 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Web\Personal;
-use App\Constants\AppConstant;
-use App\Models\CustomerArticleStatistics;
-use App\Models\CustomerCommodityStatistics;
-use App\Models\CustomerStatistics;
-use App\Models\EnterpriseArticleStatistics;
-use App\Models\EnterpriseBasicStatistics;
-use App\Models\EnterpriseCommodityStatistics;
-use App\Werashop\InvitationCounter\CustomerInvitationCounter;
-use App\Werashop\Statistics\Enterprise\EnterpriseCalculator;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -18,11 +9,6 @@ use Carbon\Carbon;
 
 class PersonalController extends Controller
 {
-    function __construct()
-    {
-        //$this->middleware('auth.wechat');
-        //$this->middleware('auth.access');
-    }
 
     public function index()
     {
@@ -34,7 +20,7 @@ class PersonalController extends Controller
     {
         $res = \App\User::find(\Auth::id())->collections;
         foreach ($res as $role) {
-            echo $role->product_id;
+          
         }
 
         return view('web.personal.collection', ['data' => null]);
