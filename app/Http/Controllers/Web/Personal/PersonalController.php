@@ -32,6 +32,10 @@ class PersonalController extends Controller
 
     public function collection()
     {
+        $res = \App\User::find(\Auth::id())->collections;
+        foreach ($res as $role) {
+            echo $role->product_id;
+        }
 
         return view('web.personal.collection', ['data' => null]);
     }
