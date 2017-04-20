@@ -34,53 +34,58 @@
 		<div class="col-md-4 col-md-offset-1">
 			<div class="preview">
 				<div class="big">
-					<img src="/../img/product-detail/u717.jpg">
+					<img src="{{ $data->logo  }}?imageView2/1/w/450/h/450/q/90">
 				</div>
 				<div class="thumbnails">
 					<div class="tab"></div>
-					<div class="thumbnail"></div>
+					<!-- 缩略图前端请更新这里 -->
+					@if($data->banners)
+						@foreach($data->banners as $banner)
+					<div class="thumbnail" style="background-image:{{$banner->image_url }}?imageView2/1/w/60/h/60/q/90"></div>
+						@endforeach
+					@endif
 					<div class="tab"></div>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-6">
 			<div class="product-info">
-				<h2>怡成血糖仪家用电子血糖仪JPS系列 华鸿一次性无菌采血针</h2>
+				<h2>{{ $data->name  }}</h2>
 				<div class="info-row">
 					<div class="key">产品规格</div>
-					<div class="value">血糖仪器</div>
+					<div class="value">{{ $data->default_spec  }}</div>
 				</div>
 				<div class="info-row">
 					<div class="key">生产企业</div>
-					<div class="value">血糖仪器</div>
+					<div class="value">{{ $data->enterprise  }}</div>
 				</div>
 				<div class="info-row">
 					<div class="key">生产标准</div>
-					<div class="value">血糖仪器</div>
+					<div class="value">{{ $data->standard  }}</div>
 				</div>
 				<div class="info-row">
 					<div class="key">注册证号</div>
-					<div class="value">血糖仪器</div>
+					<div class="value">{{ $data->registration  }}</div>
 				</div>
 				<div class="info-row">
 					<div class="key">适用科室</div>
-					<div class="value">血糖仪器</div>
+					<div class="value">{{ $data->office  }}</div>
 				</div>
 				<div class="info-row">
 					<div class="key">适用范围</div>
-					<div class="value">血糖仪器</div>
+					<div class="value">{{ $data->scope  }}</div>
 				</div>
 				<div class="info-row">
 					<div class="key">使用注意</div>
-					<div class="value">血糖仪器</div>
+					<div class="value">{{ $data->attention  }}</div>
 				</div>
 				<div class="info-row">
 					<div class="key">价格</div>
-					<div class="value">血糖仪器</div>
+					<div class="value">{{ $data->price  }}</div>
 				</div>
 				<div class="info-row">
 					<div class="key">库存</div>
-					<div class="value">血糖仪器</div>
+					<div class="value">{{ $data->stock  }}</div>
 				</div>
 				<div class="btn-business">我要合作</div>
 				<div class="save">&nbsp;&nbsp;&nbsp;收藏</div>
@@ -102,41 +107,10 @@
 				<div class="tabset-tab">同类产品</div>
 			</div>
 			<div class="content product-detail">
-				<p>本产品是一种极高频治疗设备，是通过极高频电磁波直接照射病灶部位后，与细胞、分子产生的一种共振作用；此作用也可选择照射生物活性点即穴位，通过生物功能系统传导与放大，到达远端组织或器官效应部位。这种作用可改善血液循环增加血流量，促进毛细血管及淋巴管的回流，改善组织微循环促进组织营养及新陈代谢，增加白细胞的吞噬作用，从而达到消炎、止疼、化瘀消肿、促进伤口愈合等。</p>
+				{!! $data->detail !!}
 			</div>
 			<div class="content business">
-				<table class="table table-bordered">
-					<tr>
-						<th>省份</th>
-						<th>招投标价格</th>
-						<th>收费标准</th>
-						<th>医保信息</th>
-					</tr>
-					<tr>
-						<td>北京</td>
-						<td>1000元</td>
-						<td>XX  1200元  /  YY  50元</td>
-						<td>医保B档</td>
-					</tr>
-					<tr class="active">
-						<td>北京</td>
-						<td>1000元</td>
-						<td>XX  1200元  /  YY  50元</td>
-						<td>医保B档</td>
-					</tr>
-					<tr>
-						<td>北京</td>
-						<td>1000元</td>
-						<td>XX  1200元  /  YY  50元</td>
-						<td>医保B档</td>
-					</tr>
-					<tr class="active">
-						<td>北京</td>
-						<td>1000元</td>
-						<td>XX  1200元  /  YY  50元</td>
-						<td>医保B档</td>
-					</tr>
-				</table>
+				{!! $data->description !!}
 			</div>
 			<div class="content video"></div>
 			<div class="content similar">

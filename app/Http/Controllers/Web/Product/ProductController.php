@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -25,7 +26,9 @@ class ProductController extends Controller
      */
     public function detail($id)
     {
-        return view('web.product.detail')->with(['id'=>$id]);
+        $data =  Product::find($id);
+
+        return view('web.product.detail')->with(['data'=>$data]);
     }
 
 

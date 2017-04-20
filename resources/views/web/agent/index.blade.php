@@ -23,7 +23,7 @@
 		<div class="shielder"></div>
 		<div class="mid-content">
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
-			<a class="reserve" href="agent/agent-sign">成为药械经纪人</a>
+			<a class="reserve" href="{{ url('agent/agent-sign') }}">成为药械经纪人</a>
 		</div>
 	</div>
 @endsection
