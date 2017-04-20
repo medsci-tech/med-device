@@ -10,7 +10,6 @@ use App\Models\Product;
 class ProductController extends Controller
 {
 
-
     public function index(Request $request)
     {
         return view('web.product.index')->with([
