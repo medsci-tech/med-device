@@ -26,7 +26,7 @@ $(function(){
 	var wrapper = $('#loc-wrapper')
 		.css('position', 'relative')
 		.click(function(){
-			locSelector.show()
+			locSelector.toggle()
 		})
 	var output = wrapper.find('#area')
 
