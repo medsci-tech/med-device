@@ -3,7 +3,7 @@
 @section('title', '预约详情')
 
 @section('page_css')
-<link rel="stylesheet" type="text/css" href="../style/profile-order-detail.css">
+<link rel="stylesheet" type="text/css" href="/style/profile-order-detail.css">
 @endsection
 
 @section('content')
@@ -43,7 +43,7 @@
 		<div class="content col-md-8">
 			<div class="profile-basic">
 				<div class="panel">
-					<a href="../appointment">我的预约</a>
+					<a href="/appointment">我的预约</a>
 					<span> &nbsp;> &nbsp;预约详情</span>
 				</div>
 
@@ -74,5 +74,5 @@
 @endsection
 
 @section('page_js')
-<script src="../js/profile-order-detail.js"></script>
+<script src="/js/profile-order-detail.js"></script>
 @endsection

@@ -3,7 +3,7 @@
 @section('title', '个人资料修改')
 
 @section('page_css')
-<link rel="stylesheet" type="text/css" href="../style/profile-basic.css">
+<link rel="stylesheet" type="text/css" href="/style/profile-basic.css">
 @endsection
 
 @section('content')
@@ -43,7 +43,7 @@
 		<div class="content col-md-8">
 			<div class="profile-basic">
 				<div class="panel">
-					<a href="../personal">信息管理</a>
+					<a href="/personal">信息管理</a>
 					<span> &nbsp;> &nbsp;基础信息修改</span>
 				</div>
 
@@ -112,5 +112,5 @@
 @endsection
 
 @section('page_js')
-<script src="../js/profile-basic.js"></script>
+<script src="/js/profile-basic.js"></script>
 @endsection

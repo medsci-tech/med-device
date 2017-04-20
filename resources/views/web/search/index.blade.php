@@ -3,7 +3,7 @@
 @section('title', '搜索列表')
 
 @section('page_css')
-<link rel="stylesheet" type="text/css" href="../style/search-result.css">
+<link rel="stylesheet" type="text/css" href="/style/search-result.css">
 @endsection
 
 @section('content')
@@ -85,5 +85,5 @@
 @endsection
 
 @section('page_js')
-<script src="../js/search-result.js"></script>
+<script src="/js/search-result.js"></script>
 @endsection

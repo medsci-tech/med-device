@@ -3,7 +3,7 @@
 @section('title', '个人中心')
 
 @section('page_css')
-<link rel="stylesheet" type="text/css" href="../style/profile.css">
+<link rel="stylesheet" type="text/css" href="/style/profile.css">
 @endsection
 
 @section('content')
@@ -63,5 +63,5 @@
 @endsection
 
 @section('page_js')
-<script src="../js/profile.js"></script>
+<script src="/js/profile.js"></script>
 @endsection

@@ -3,7 +3,7 @@
 @section('title', '药械营销服务')
 
 @section('page_css')
-<link rel="stylesheet" type="text/css" href="../style/service.css">
+<link rel="stylesheet" type="text/css" href="/style/service.css">
 @endsection
 @section('content')
 	<div class="row nav">
@@ -28,5 +28,5 @@
 @endsection
 
 @section('page_js')
-<script src="../js/service.js"></script>
+<script src="/js/service.js"></script>
 @endsection

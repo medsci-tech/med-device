@@ -3,14 +3,14 @@
 @section('title', '修改密码')
 
 @section('page_css')
-<link rel="stylesheet" type="text/css" href="../style/profile-change-password.css">
+<link rel="stylesheet" type="text/css" href="/style/profile-change-password.css">
 @endsection
 
 @section('content')
 	<div class="row">
 		<div class="col-md-2 nav">
 			<div class="item">
-				<a class="button" href="../personal">
+				<a class="button" href="/personal">
 					<span class="img1"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;信息管理
 				</a>
@@ -70,5 +70,5 @@
 @endsection
 
 @section('page_js')
-<script src="../js/profile-change-passwordjs"></script>
+<script src="/js/profile-change-passwordjs"></script>
 @endsection

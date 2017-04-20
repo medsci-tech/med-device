@@ -3,7 +3,7 @@
 @section('title', '药械产品招商')
 
 @section('page_css')
-<link rel="stylesheet" type="text/css" href="../style/products.css">
+<link rel="stylesheet" type="text/css" href="/style/products.css">
 @endsection
 
 @section('content')
@@ -87,5 +87,5 @@
 @endsection
 
 @section('page_js')
-<script src="../js/products.js"></script>
+<script src="/js/products.js"></script>
 @endsection

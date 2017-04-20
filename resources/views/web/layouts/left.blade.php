@@ -16,7 +16,7 @@
 		</div>
 		<div class="col-md-3 col-md-offset-3">
 			<a class=" link-header" href="/">药械通首页</a>
-			<a class=" link-header" href="../helper">帮助中心</a>
+			<a class=" link-header" href="/helper">帮助中心</a>
 		</div>
 	</div>
 
