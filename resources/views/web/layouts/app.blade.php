@@ -5,6 +5,9 @@
 <title>@yield('title')</title>
 <link rel="stylesheet" type="text/css" href="/style/vendor.css">
 @yield('page_css')
+<style type="text/css">
+    body{min-width: 1200px}
+</style>
 </head>
 <body>
 <div class="container-fluid">
@@ -37,7 +40,7 @@
         <div class="col-md-2 col-md-offset-1">
             <img class="logo" src="/img/home/u61.jpg">
             <h1 class="h1">药械通</h1>
-            <p>互联网医药信息服务证：9982561</p>
+            <p style="white-space: nowrap;">互联网医药信息服务证：9982561</p>
         </div>
         <div class="col-md-6">
             <div class="searcher">
