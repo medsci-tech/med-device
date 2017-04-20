@@ -165,16 +165,16 @@
 		<form>
 			<div>
 				<label>姓名</label>
-				<input type="text" name="name">
+				<input type="text" name="name" value="@if (Auth::check()){{ \Auth::user()->real_name }}@endif">
 			</div>
 			<div>
 				<label>电话</label>
-				<input type="text" name="tel">
+				<input type="text" name="phone" value="@if (Auth::check()){{ \Auth::user()->phone }}@endif">
 			</div>
 			<div class="checkboxs">
-				<input type="checkbox" name="agent"><span>代理产品</span>
-				<input type="checkbox" name="academic"><span>提供学术服务</span>
-				<input type="checkbox" name="others"><span>其他</span>
+				@foreach(config('params')['work_option'] as $key =>$val)
+				<input type="checkbox" name="work_type" value="{{ $key }}"><span>{{ $val }}</span>
+				@endforeach
 			</div>
 		</form>
 	</div>

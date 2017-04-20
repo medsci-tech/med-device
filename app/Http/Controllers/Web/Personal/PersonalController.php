@@ -20,7 +20,7 @@ class PersonalController extends Controller
     {
         $res = \App\User::find(\Auth::id())->collections;
         foreach ($res as $role) {
-          
+
         }
 
         return view('web.personal.collection', ['data' => null]);
