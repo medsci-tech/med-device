@@ -42,6 +42,7 @@ class Product extends Common
         'logo',
         'detail',
         'default_spec',
+        'is_hot'
     ];
 
     public function category()
@@ -149,6 +150,11 @@ class Product extends Common
         }
 
         return $product;
+    }
+
+    public function products(array $where=[],$offset,$limit)
+    {
+        return $this::offset($offset)->where($where)->orderBy('weight', 'asc')->orderBy('created_at', 'desc')->limit($limit)->get();
     }
 
 }

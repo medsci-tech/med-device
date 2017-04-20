@@ -12,13 +12,12 @@
 */
 
 Route::group(['middleware' => 'web'], function () {
-    Auth::routes();
+    //Auth::routes();
     Route::any('login', 'Auth\AuthController@login');
     Route::get('logout', 'Auth\AuthController@logout');
     Route::any('register', 'Auth\AuthController@register');
-   // Route::get('/home', 'HomeController@index');
     Route::get('home',function(){
-        return redirect('/');
+        //return redirect('/');
     });
 });
 Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
@@ -77,7 +76,6 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
         Route::get('/enterprise', 'PersonalController@enterprise');// 企业信息
         Route::get('/about-us', 'PersonalController@aboutUs');
     });
-
 
 });
 

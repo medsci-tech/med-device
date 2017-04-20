@@ -242,6 +242,16 @@
                             </script>
                         </div>
                     </div>
+                    <div class="am-form-group am-form-select">
+                        <label for="doc-select-1" class="am-u-sm-3 am-form-label">是否热销</label>
+                        <div class="am-u-sm-9">
+                            <select id="is_hot" name="is_hot">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                            <span class="am-form-caret"> </span>
+                        </div>
+                    </div>
                     <div class="am-form-group">
                         <div class="am-u-sm-9 am-u-sm-push-3">
                             <button type="submit" class="am-btn am-btn-primary">保存修改</button>
@@ -280,7 +290,7 @@
         $("#supplier_id").val("{{$product->supplier_id}}");
         $("#activity_id").val("{{$product->activity_id}}");
         $("#is_on_sale").val("{{$product->is_on_sale}}");
-        $("#is_abroad").val("{{$product->is_abroad}}");
+        $("#is_hot").val("{{$product->is_hot}}");
 
         $('#add-spec').click(function () {
             var input = '<div class="am-form-group"><label for="user-name" class="am-u-sm-3 am-form-label">商品规格</label><div class="am-u-sm-4"><input type="text" placeholder="规格名称,例如[100g]" name="spec_name[]" required></div><div class="am-u-sm-4"><input type="text"  placeholder="规格对应价格商品价格" name="spec_price[]" required></div></div>';

@@ -173,7 +173,16 @@
                             </script>
                         </div>
                     </div>
-
+                    <div class="am-form-group am-form-select">
+                        <label for="doc-select-1" class="am-u-sm-3 am-form-label">是否热销</label>
+                        <div class="am-u-sm-9">
+                            <select id="is_hot" name="is_hot">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                            <span class="am-form-caret"> </span>
+                        </div>
+                    </div>
                     <div class="am-form-group">
                         <div class="am-u-sm-9 am-u-sm-push-3">
                             <button type="submit" class="am-btn am-btn-primary">创建商品</button>

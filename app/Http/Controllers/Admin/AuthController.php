@@ -82,7 +82,6 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-
         if (Auth::guard('admin')->attempt(['email'=>$request->email, 'password'=>$request->password])) {
             return redirect()->intended($this->redirectPath());
         }

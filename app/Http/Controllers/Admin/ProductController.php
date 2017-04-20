@@ -41,6 +41,7 @@ class ProductController extends Controller
             'detail' => $request->input('detail'),// 商品详情
             'description' => $request->input('description'),// 招商详情
             'tags' => $request->input('tags'), // 标签
+            'is_hot' => $request->input('is_hot'), // 热销
         ];
     }
 

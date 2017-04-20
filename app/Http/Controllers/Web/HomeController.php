@@ -6,9 +6,10 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Interfaces\SendCode;
+use App\Models\Product;
 class HomeController extends Controller
 {
-    //use SendCode;
+    use SendCode;
     /**
      * Create a new controller instance.
      *
@@ -27,7 +28,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('web.home.index');
+        $model = new Product();
+        $data = $model->products(['is_hot'=>1],0,8);
+        return view('web.home.index')->with([
+            'data' => $data
+        ]);
     }
     public function forget()
     {

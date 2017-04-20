@@ -40,38 +40,13 @@
                 <h2>热销产品</h2>
                 <span>所有产品></span>
             </div>
+            @foreach ($data as $val)
             <div class="col-md-2 item">
-                <img src="img/home/u148.jpg">
-                <p>怡成血糖仪家用电子血糖仪JPS系列 华鸿一次性无菌采血针 </p>
+                <a href="{{ url('product/detail/'.$val->id) }}" target="_blank"><img src="{{ $val->logo }}"><a></a>
+                <p>{{ $val->name }}</p>
             </div>
-            <div class="col-md-2 item">
-                <img src="img/home/u148.jpg">
-                <p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-            </div>
-            <div class="col-md-2 item">
-                <img src="img/home/u148.jpg">
-                <p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-            </div>
-            <div class="col-md-2 item">
-                <img src="img/home/u148.jpg">
-                <p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-            </div>
-            <div class="col-md-2 item">
-                <img src="img/home/u148.jpg">
-                <p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-            </div>
-            <div class="col-md-2 item">
-                <img src="img/home/u148.jpg">
-                <p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-            </div>
-            <div class="col-md-2 item">
-                <img src="img/home/u148.jpg">
-                <p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-            </div>
-            <div class="col-md-2 item">
-                <img src="img/home/u148.jpg">
-                <p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-            </div>
+            @endforeach
+
         </div>
     </div>
 
