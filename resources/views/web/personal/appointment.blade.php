@@ -48,9 +48,11 @@
 			<div class="content-orders">
 				<div class="panel">我的预约</div>
 				<div class="tabs">
-					<span>全部预约<span id="order-all"> ( 3 )</span></span>
-					<span>已完成<span id="order-done"> ( 1 )</span></span>
-					<span>未完成<span id="order-undone"> ( 2 )</span></span>
+					<span>全部预约<span id="order-all"> ( 5 )</span></span>
+					<span>已预约<span id="order-ordered"> ( 1 )</span></span>
+					<span>已审核<span id="order-audit"> ( 1 )</span></span>
+					<span>进行中<span id="order-on"> ( 1 )</span></span>
+					<span>已完成<span id="order-done"> ( 2 )</span></span>
 				</div>
 				<div class="strip"></div>
 				<div class="orders">
