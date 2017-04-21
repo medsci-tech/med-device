@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="/../style/vendor.css">
 <link rel="stylesheet" type="text/css" href="/../../style/product-detail.css">
 @endsection
-
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
 @section('content')
 	<div class="row nav">
 		<div class="col-md-offset-1 col-md-11">
@@ -112,7 +112,17 @@
 			<div class="content business">
 				{!! $data->description !!}
 			</div>
-			<div class="content video"></div>
+			<div class="content video">
+				<div id="id_video_container"></div>
+				@if($data->videos)
+					@foreach($data->videos as $video)
+						{{$video->qcloud_app_id }}
+					@endforeach
+				@endif
+
+
+
+			</div>
 			<div class="content similar">
 				<div class="col-md-2 item">
 					<img src="/../img/home/u148.jpg">
@@ -154,6 +164,27 @@
 @section('page_js')
 <script src="/../js/vendor.js"></script>
 <script src="/../js/product-detail.js"></script>
+<script src="http://qzonestyle.gtimg.cn/open/qcloud/video/h5/h5connect.js"></script>
+<script>
+    // 视频播放
+    $(function () {
+        // 腾讯视频
+        var option = {
+            "auto_play": "0",
+            "file_id": "1253586357",
+            "app_id": "9031868222912344050",
+            "width": 700,
+            "height": 500,
+            "remember": 1,
+            "stretch_patch": true,
+        };
+		/*调用播放器进行播放*/
+        new qcVideo.Player("id_video_container", option);
+    });
+
+</script>
+
+
 @endsection
 
 @section('panel')

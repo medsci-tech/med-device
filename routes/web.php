@@ -17,7 +17,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('logout', 'Auth\AuthController@logout');
     Route::any('register', 'Auth\AuthController@register');
     Route::get('home',function(){
-        //return redirect('/');
+        return redirect('/');
     });
 });
 Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
@@ -65,7 +65,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
 
     });
 	
-    Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {
+    Route::group(['prefix' => 'personal', 'namespace' => 'Personal','middleware' => 'auth'], function () {
 
         Route::get('/', 'PersonalController@index');
         Route::get('/collection', 'PersonalController@collection');
@@ -78,6 +78,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
         Route::get('/expertise', 'PersonalController@expertise');// 个人专长
         Route::get('/enterprise', 'PersonalController@enterprise');// 企业信息
         Route::get('/about-us', 'PersonalController@aboutUs');
+        Route::post('/upload-head', 'PersonalController@uploadHead');// 个人图像上传
     });
 
 });

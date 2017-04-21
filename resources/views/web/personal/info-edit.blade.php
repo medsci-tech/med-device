@@ -49,7 +49,7 @@
 					<span> &nbsp;> &nbsp;基础信息修改</span>
 				</div>
 				<form class="form" action="" method="POST">
-					<div class="icon"></div>
+					<div class="icon"><img name="head" src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1428636365,3811217326&fm=58"> </div>
 					<div id="choose-icon">上传头像</div>
 					<div>
 						<label for="">用户名</label>
@@ -123,20 +123,19 @@
             'method'   : 'post',
             'formData'     : {
                 'timestamp' : '<?php echo $timestamp;?>',
-                'token'     : '{{ csrf_token() }}'
+                '_token'     : '{{ csrf_token() }}'
             },
             'onInit'   : function(instance) { //初始化加载
                 //$('#choose-icon-queue').hide();
             },
             'buttonText' : '上传图像',
-            'uploadLimit' : 1, //限制上传一个
             'fileSizeLimit' : '2MB',
             'fileTypeExts' : '*.gif; *.jpg; *.png',
             'fileTypeDesc' : '只能上传图片',//选择文件的时候的提示信息
             'swf'      : '{{ asset('js/uploadify/uploadify.swf') }}',
             'buttonImage' : '',//重载按钮图片
             'buttonClass' : '',//重载按钮样式
-            'uploader' : '{{ url('admin/uploadFile') }}',
+            'uploader' : '{{ url('personal/upload-head') }}',
             'width'    : 80,
             'onSelect' : function(file) {
                 if(file.size>1024000*2){//文件太大，取消上传该文件
@@ -147,8 +146,7 @@
             },
             'onUploadSuccess' : uploadFile,
             'onUploadError' : function(file, errorCode, errorMsg, errorString) {
-
-                //alert('The file ' + file.name + ' could not be uploaded: ' + errorString);
+                alert('The file ' + file.name + ' could not be uploaded: ' + errorString);
             }
 //            'onUploadSuccess' : function(file, data, response) {
 //                alert('The file ' + file.name + ' was successfully uploaded with a response of ' + response + ':' + data);
@@ -157,8 +155,10 @@
         function uploadFile(file, data) {
             var data = $.parseJSON(data);
             if(data.code==0){
-                $("#error_msg").show();
-                $("#error_msg").html(data.msg);
+                $("input[name='art_thumb']").val(data);
+                $("#art_thumb").attr('src','/'+data);
+               // $("#error_msg").show();
+                //$("#error_msg").html(data.msg);
             }
             else{
                 $("#error_msg").hide();
