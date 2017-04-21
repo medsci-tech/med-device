@@ -44,7 +44,7 @@
     </div>
     <div class="container">
         <div class="row search">
-            <div class="col-md-2 col-md-offset-1">
+            <div class="col-md-3">
                 <img class="logo" src="/img/home/u61.jpg">
                 <h1 class="h1">药械通</h1>
                 <p>互联网医药信息服务证：9982561</p>
