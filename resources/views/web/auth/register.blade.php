@@ -91,22 +91,27 @@
     <h2 class="title">欢迎注册</h2>
     <form class="form" action="" method="POST">
       <div>
+        <div class="required">*</div>
         <label for="">用户名</label>
         <input type="text" name="name" placeholder="您的账户名和登录名" required>
       </div>
       <div>
+        <div class="required">*</div>
         <label for="">设置密码</label>
         <input type="password" name="password" placeholder="请输入密码">
       </div>
       <div>
+        <div class="required">*</div>
         <label for="">确认密码</label>
         <input type="password" name="confirm" placeholder="请再次输入密码">
       </div>
       <div>
+        <div class="required">*</div>
         <label for="">手机号</label>
         <input type="text" name="phone" placeholder="建议使用常用手机">
       </div>
       <div class="captcha">
+        <div class="required">*</div>
         <label for="">验证码</label>
         <input type="text" name="captcha" placeholder="请输入手机验证码">
         <div id="getCaptcha">获取验证码</div>
@@ -132,7 +137,7 @@
         <span>我同意</span><a href="">药械通用户服务协议</a>
       </div>
       <input class="submit" type="submit" name="submit" value="注册">
-      <p>已有账号？ <a href="logins">请登录</a></p>
+      <p>已有账号？ <a href="login">请登录</a></p>
     </form>
   </div>
 </div>

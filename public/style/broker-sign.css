@@ -174,15 +174,25 @@
 }
 .form > div {
   width: 420px;
-  height: 60px;
+  height: 50px;
   margin: 12px auto;
   border: 1px solid #d7d7d7;
+}
+.form .input-box{
+  position: relative;
+}
+.form > div .required{
+  position: absolute;
+  top: 6px;
+  left: -26px;
+  color: red;
+  font-size: 24px;
 }
 .form > div * {
   display: block;
   float: left;
-  height: 60px;
-  line-height: 60px;
+  height: 50px;
+  line-height: 50px;
   font-weight: normal;
 }
 .form label {
@@ -194,8 +204,9 @@
 .form input[type="password"] {
   display: inline-block;
   width: 300px;
-  height: 56px;
-  outline: none;
+  height: 46px;
+  margin-top: 1px;
+  outline-color: #fff;
   border: none;
 }
 .form .no-border {

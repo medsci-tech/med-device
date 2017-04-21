@@ -54,7 +54,7 @@
         <span>我同意</span><a href="">药械通用户服务协议</a>
       </div>
       <input class="submit" type="submit" name="submit" value="注册">
-      <p>已有账号？ <a href="logins">请登录</a></p>
+      <p>已有账号？ <a href="/login">请登录</a></p>
     </form>
   </div>
 </div>

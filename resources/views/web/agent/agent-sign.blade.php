@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 
-@section('title', '首页')
+@section('title', '经纪人登记')
 
 @section('page_css')
 <link rel="stylesheet" type="text/css" href="/style/broker-sign.css">
@@ -34,20 +34,24 @@
 			<div class="separate-line"></div>
 
 			<h4>基础信息</h4>
-			<div>
+			<div class="input-box">
+        		<div class="required">*</div>
 				<label for="">真实姓名</label>
 				<input type="text" name="realname" placeholder="请输入真实姓名">
 			</div>
-			<div class="no-border">
+			<div class="no-border input-box">
+        		<div class="required">*</div>
 				<label>性别</label>
 				<input class="sex-radio" type="radio" name="sex" value="男"><span>男</span>
 				<input class="sex-radio" type="radio" name="sex" value="女"><span>女</span>
 			</div>
-			<div>
+			<div class="input-box">
+        		<div class="required">*</div>
 				<label for="">电子邮箱</label>
 				<input type="text" name="email" placeholder="请输入电子邮箱">
 			</div>
-			<div>
+			<div class="input-box">
+        		<div class="required">*</div>
 				<label for="">工作区域</label>
 				
 				<div id="loc-wrapper">

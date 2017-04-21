@@ -121,7 +121,7 @@
         </div>
     </div>
     @yield('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row footer">
             <div class="col-md-5 col-md-offset-1 info-footer">
                 <a href="">关于我们</a>
