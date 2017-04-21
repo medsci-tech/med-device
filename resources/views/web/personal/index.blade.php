@@ -43,12 +43,12 @@
 		<div class="content col-md-8">
 			<div class="infomanager">
 				<div class="panel">信息管理</div>
-				<img src="/img/profile/u2310.jpg">
+				<img src="{{ isset(\Auth::user()->head_img) ? \Auth::user()->head_img.'?imageView2/1/w/120/h/120/q/90' : '' }}">
 				<div class="welcome">
-					<p>尊敬的&nbsp;<span id="name" class="name">hhhh</span>&nbsp;您好，欢迎您回来!</p>
-					<a href="personal/info-edit">基本信息</a><span>（未完善）</span>
-					<a href="personal/expertise">个人专长</a><span>（未完善）</span>
-					<a href="personal/enterprise">企业信息</a><span>（未完善）</span>
+					<p>尊敬的&nbsp;<span id="name" class="name">{{ \Auth::user()->name }}</span>&nbsp;您好，欢迎您回来!</p>
+					<a href="/personal/info-edit">基本信息</a><span>（未完善）</span>
+					<a href="/personal/expertise">个人专长</a><span>（未完善）</span>
+					<a href="/personal/enterprise">企业信息</a><span>（未完善）</span>
 				</div>
 			</div>
 			<div class="mymessage">

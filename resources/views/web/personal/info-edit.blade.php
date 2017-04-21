@@ -115,14 +115,11 @@
 @section('page_js')
 <script src="/js/profile-basic.js"></script>
 <script type="text/javascript">
-
-    <?php $timestamp = time();?>
     $(function() {
         $('#choose-icon').uploadify({
             'debug'    : false,
             'method'   : 'post',
             'formData'     : {
-                'timestamp' : '<?php echo $timestamp;?>',
                 '_token'     : '{{ csrf_token() }}'
             },
             'onInit'   : function(instance) { //初始化加载

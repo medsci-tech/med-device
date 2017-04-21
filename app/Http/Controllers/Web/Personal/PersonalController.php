@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Interfaces\CheckResetPwd;
 use App\Http\Requests\Interfaces\CheckResetInfo;
 use App\User;
+use App\Models\CompanyImage;
 class PersonalController extends Controller
 {
     use CheckResetPwd,CheckResetInfo;
@@ -96,13 +97,47 @@ class PersonalController extends Controller
         return view('web.personal.pwd-edit', ['data' => null]);
     }
 
-    public function expertise()
+    /**
+     * 个人专长
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function expertise(Request $request)
     {
-
         return view('web.personal.expertise', ['data' => null]);
     }
-    public function enterprise()
+    /**
+     * 企业证书
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function enterprise(Request $request)
     {
+        if ($request->isMethod('post')) {
+            $file_id = $request->file_id;
+            if(!$file_id)
+                return response()->json(['code'=>200, 'status' => 0,'message' => '缺少file_id参数' ]);
+
+            $file = $request->file('Filedata');
+            if ($file->isValid()) {
+                $url = \Helper::qiniuUpload($request->file('Filedata'));
+                if($url)
+                {
+                    $model = CompanyImage::where(['user_id' => \Auth::id()])->first();
+                    if($model)
+                        CompanyImage::where(['user_id' => \Auth::id()])->update(['file_'.$file_id => $url]);
+                    else
+                        CompanyImage::create(['user_id'=>\Auth::id(),'file_'.$file_id => $url]);
+                }
+                else
+                    return response()->json(['code'=>200, 'status' => 0,'message' => '上传失败' ]);
+
+                return response()->json(['code'=>200, 'status' => 1,'message' => '上传成功','data'=>['url'=>$url.'?imageView2/1/w/150/h/150/q/90'] ]);
+            } else
+                return response()->json(['code'=>200, 'status' => 0,'message' => '上传失败' ]);
+        }
 
         return view('web.personal.enterprise', ['data' => null]);
     }
@@ -120,7 +155,7 @@ class PersonalController extends Controller
             $user = \Auth::user();
             $user->head_img = $url;
             $user->save();
-            return response()->json(['code'=>200, 'status' => 1,'message' => '上传成功成功','data'=>['head_img'=>$url.'?imageView2/1/w/150/h/150/q/90'] ]);
+            return response()->json(['code'=>200, 'status' => 1,'message' => '上传成功','data'=>['head_img'=>$url.'?imageView2/1/w/150/h/150/q/90'] ]);
         } else
             return response()->json(['code'=>200, 'status' => 0,'message' => '上传失败' ]);
     }
