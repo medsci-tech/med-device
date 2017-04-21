@@ -17,7 +17,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('logout', 'Auth\AuthController@logout');
     Route::any('register', 'Auth\AuthController@register');
     Route::get('home',function(){
-        //return redirect('/');
+        return redirect('/');
     });
 });
 Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
@@ -36,6 +36,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
         Route::get('/', 'ProductController@index'); // 药械产品招商导航页
         Route::get('/detail/{id}', 'ProductController@detail');# 产品宣传页
         Route::post('collect', 'ProductController@collect');# 产品收藏
+        Route::post('join', 'ProductController@join');# 合作意向
     });
 
     Route::group(['prefix' => 'market', 'namespace' => 'Market'], function () {
@@ -63,7 +64,8 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
         Route::get('/', 'SearchController@index'); // 搜索相关
 
     });
-    Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {
+	
+    Route::group(['prefix' => 'personal', 'namespace' => 'Personal','middleware' => 'auth'], function () {
 
         Route::get('/', 'PersonalController@index');
         Route::get('/collection', 'PersonalController@collection');
@@ -72,10 +74,11 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
         Route::get('/appointment', 'PersonalController@appointment');//我的预约
         Route::any('/appointment-detail', 'PersonalController@appointmentDetail');//我的预约
         Route::get('/info-edit', 'PersonalController@infoEdit');// 资料修改
-        Route::get('/pwd-edit', 'PersonalController@pwdEdit');// 面修改
+        Route::any('/pwd-edit', 'PersonalController@pwdEdit');// 密码修改
         Route::get('/expertise', 'PersonalController@expertise');// 个人专长
         Route::get('/enterprise', 'PersonalController@enterprise');// 企业信息
         Route::get('/about-us', 'PersonalController@aboutUs');
+        Route::post('/upload-head', 'PersonalController@uploadHead');// 个人图像上传
     });
 
 });

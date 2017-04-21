@@ -48,7 +48,7 @@
 			<form class="form" action="" method="POST">
 				<div>
 					<label for="">手机号</label>
-					<input type="text" name="phone" placeholder="建议使用常用手机">
+					<input type="text" name="phone" placeholder="建议使用常用手机" value="{{ \Auth::user()->phone }}">
 				</div>
 				<div class="captcha">
 					<label for="">验证码</label>

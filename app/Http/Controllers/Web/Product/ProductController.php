@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Models\Product;
+use App\Models\Cooperation;
 use App\Models\Collection;
 use App\Http\Requests\Interfaces\CheckCollection;
+use App\Http\Requests\StoreCooperation;
 class ProductController extends Controller
 {
 
@@ -51,6 +53,36 @@ class ProductController extends Controller
         catch (\Exception $e) {
             return ['code' => 200, 'status' => 0, 'message' => $e->getMessage()];
         }
+    }
+
+    /**
+     * 合作意向
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function join(Request $request)
+    {
+        $req = new StoreCooperation();
+        if(!$req->authorize())
+            return response()->json(['code'=>200, 'status' => 0,'message' => '请先登录!' ]);
+
+        $data =$request->all();
+        $validator = \Validator::make($data, $req->rules(),$req->messages());
+        if ($validator->fails()) {
+            $validator_error_first = $validator->errors()->first();
+            return response()->json(['code'=>200, 'status' => 0,'message' => $validator_error_first ]);
+        }
+        $data['user_id'] = \Auth::id();
+        try {
+            if(Cooperation::create($data))
+                return response()->json(['code'=>200, 'status' => 1,'message' => '提交成功!' ]);
+            else
+                return response()->json(['code'=>200, 'status' => 0,'message' => '提交失败!' ]);
+        } catch (\Exception $e) {
+            return response()->json(['code'=>200, 'status' => 0,'message' => '服务器异常!' ]);
+        }
+
     }
 
 

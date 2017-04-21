@@ -5,7 +5,9 @@
 @section('page_css')
 <link rel="stylesheet" type="text/css" href="/style/profile-basic.css">
 @endsection
-
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="/js/uploadify/uploadify.css">
 @section('content')
 	<div class="row">
 		<div class="col-md-2 nav">
@@ -41,26 +43,25 @@
 			</div>
 		</div>
 		<div class="content col-md-8">
-			<div class="profile-basic">
+			<span class="profile-basic">
 				<div class="panel">
 					<a href="/personal">信息管理</a>
 					<span> &nbsp;> &nbsp;基础信息修改</span>
 				</div>
-
 				<form class="form" action="" method="POST">
-					<div class="icon"></div>
+					<div class="icon"><img name="head" src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1428636365,3811217326&fm=58"> </div>
 					<div id="choose-icon">上传头像</div>
 					<div>
 						<label for="">用户名</label>
-						<input type="text" name="name" placeholder="您的账户名和登录名">
+						<input type="text" name="name" placeholder="您的账户名和登录名" value="{{ \Auth::user()->name }}">
 					</div>
 					<div>
 						<label for="">手机号</label>
-						<input type="text" name="phone" placeholder="建议使用常用手机">
+						<input type="text" name="phone" placeholder="建议使用常用手机" value="{{ \Auth::user()->phone }}">
 					</div>
 					<div>
 						<label for="">真实姓名</label>
-						<input type="text" name="realname" placeholder="请输入真实姓名">
+						<input type="text" name="realname" placeholder="请输入真实姓名" value="{{ \Auth::user()->real_name }}">
 					</div>
 					<div class="no-border">
 						<label>性别</label>
@@ -69,7 +70,7 @@
 					</div>
 					<div>
 						<label for="">电子邮箱</label>
-						<input type="text" name="email" placeholder="请输入电子邮箱">
+						<input type="text" name="email" placeholder="请输入电子邮箱" {{ \Auth::user()->email }}>
 					</div>
 					<div>
 						<label for="">工作地址</label>
@@ -113,4 +114,59 @@
 
 @section('page_js')
 <script src="/js/profile-basic.js"></script>
+<script type="text/javascript">
+
+    <?php $timestamp = time();?>
+    $(function() {
+        $('#choose-icon').uploadify({
+            'debug'    : false,
+            'method'   : 'post',
+            'formData'     : {
+                'timestamp' : '<?php echo $timestamp;?>',
+                '_token'     : '{{ csrf_token() }}'
+            },
+            'onInit'   : function(instance) { //初始化加载
+                //$('#choose-icon-queue').hide();
+            },
+            'buttonText' : '上传图像',
+            'fileSizeLimit' : '2MB',
+            'fileTypeExts' : '*.gif; *.jpg; *.png',
+            'fileTypeDesc' : '只能上传图片',//选择文件的时候的提示信息
+            'swf'      : '{{ asset('js/uploadify/uploadify.swf') }}',
+            'buttonImage' : '',//重载按钮图片
+            'buttonClass' : '',//重载按钮样式
+            'uploader' : '{{ url('personal/upload-head') }}',
+            'width'    : 80,
+            'onSelect' : function(file) {
+                if(file.size>1024000*2){//文件太大，取消上传该文件
+                    alert("文件大小超过限制！");
+                    $('#choose-icon').uploadify('cancel',file.id);
+                }
+
+            },
+            'onUploadSuccess' : uploadFile,
+            'onUploadError' : function(file, errorCode, errorMsg, errorString) {
+                alert('The file ' + file.name + ' could not be uploaded: ' + errorString);
+            }
+//            'onUploadSuccess' : function(file, data, response) {
+//                alert('The file ' + file.name + ' was successfully uploaded with a response of ' + response + ':' + data);
+//            }
+        });
+        function uploadFile(file, data) {
+            var data = $.parseJSON(data);
+            if(data.code==0){
+                $("input[name='art_thumb']").val(data);
+                $("#art_thumb").attr('src','/'+data);
+               // $("#error_msg").show();
+                //$("#error_msg").html(data.msg);
+            }
+            else{
+                $("#error_msg").hide();
+                $('input[name=fail_file]').val(data.path);
+                $('input[name=fail_size]').val(data.size);
+            }
+        }
+
+    });
+</script>
 @endsection

@@ -127,8 +127,6 @@ class ProductController extends Controller
     {
         return view('admin.product.create', [
             'categories' => Category::all(),
-            'suppliers' => Supplier::all(),
-            'activities' => Activity::all(),
         ]);
     }
 
