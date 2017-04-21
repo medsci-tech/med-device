@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Interfaces\CheckResetPwd;
+use App\Http\Requests\Interfaces\CheckResetInfo;
 use App\User;
+use App\Models\CompanyImage;
 class PersonalController extends Controller
 {
-    use CheckResetPwd;
+    use CheckResetPwd,CheckResetInfo;
     public function index()
     {
 
@@ -42,8 +44,31 @@ class PersonalController extends Controller
 
         return view('web.personal.appointment-detail', ['data' => null]);
     }
-    public function infoEdit()
+    /**
+     * 个人资料修改
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function infoEdit(Request $request)
     {
+        if ($request->isMethod('post')) {
+            $result =$this->CheckResetInfo($request->all());
+            if($result['status'] ==1)
+            {
+                $user = \Auth::user();
+                $user->real_name =$request->real_name;
+                $user->province =$request->province;
+                $user->city =$request->city;
+                $user->area =$request->area;
+                $user->sex =$request->sex;
+                $user->email =$request->email;
+                $user->save();
+                return response()->json(['code'=>200, 'status' => 1,'message' => '修改成功' ]);
+            }
+            else
+                return response()->json(['code'=>200, 'status' => 0,'message' => $result['message'] ]);
+        }
 
         return view('web.personal.info-edit', ['data' => null]);
     }
@@ -72,13 +97,47 @@ class PersonalController extends Controller
         return view('web.personal.pwd-edit', ['data' => null]);
     }
 
-    public function expertise()
+    /**
+     * 个人专长
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function expertise(Request $request)
     {
-
         return view('web.personal.expertise', ['data' => null]);
     }
-    public function enterprise()
+    /**
+     * 企业证书
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function enterprise(Request $request)
     {
+        if ($request->isMethod('post')) {
+            $file_id = $request->file_id;
+            if(!$file_id)
+                return response()->json(['code'=>200, 'status' => 0,'message' => '缺少file_id参数' ]);
+
+            $file = $request->file('Filedata');
+            if ($file->isValid()) {
+                $url = \Helper::qiniuUpload($request->file('Filedata'));
+                if($url)
+                {
+                    $model = CompanyImage::where(['user_id' => \Auth::id()])->first();
+                    if($model)
+                        CompanyImage::where(['user_id' => \Auth::id()])->update(['file_'.$file_id => $url]);
+                    else
+                        CompanyImage::create(['user_id'=>\Auth::id(),'file_'.$file_id => $url]);
+                }
+                else
+                    return response()->json(['code'=>200, 'status' => 0,'message' => '上传失败' ]);
+
+                return response()->json(['code'=>200, 'status' => 1,'message' => '上传成功','data'=>['url'=>$url.'?imageView2/1/w/150/h/150/q/90'] ]);
+            } else
+                return response()->json(['code'=>200, 'status' => 0,'message' => '上传失败' ]);
+        }
 
         return view('web.personal.enterprise', ['data' => null]);
     }
@@ -90,40 +149,15 @@ class PersonalController extends Controller
      */
     public function uploadHead(Request $request)
     {
-
         $file = $request->file('Filedata');
         if ($file->isValid()) {
-
-            $logoUrl = \Helper::qiniuUpload($request->file('Filedata'));
-
-echo($logoUrl);exit;
-
-        } else {
-            echo(111111);exit;
-        }
-
-        exit;
-        $file = Input::file('Filedata');
-
-            $extension = $file->getClientOriginalExtension();
-            $newName = date('YmdHis').mt_rand(100,999).".".$extension;
-            $path = $file->move(base_path()."/uploads",$newName);
-            $filepath = 'uploads/'.$newName;
-            return $filepath;
-            /*//检验上传的文件是否有效
-            $clientName = $file->getClientOriginalName();//获取文件名称
-            $tmpName = $file->getFileName();  //缓存在tmp文件中的文件名 例如 php9732.tmp 这种类型的
-            $realPath = $file->getRealPath();  //这个表示的是缓存在tmp文件夹下的文件绝对路径。
-            $entension = $file->getClientOriginalExtension(); //上传文件的后缀
-            $mimeType = $file->getMimeType(); //得到的结果是imgage/jpeg
-            $path = $file->move('storage/uploads');
-            //如果这样写的话,默认会放在我们 public/storage/uploads/php9372.tmp
-            //如果我们希望将放置在app的uploads目录下 并且需要改名的话
-            $path = $file->move(app_path().'/uploads'.$newName);
-            //这里app_path()就是app文件夹所在的路径。$newName 可以是通过某种算法获得的文件名称
-            //比如 $newName = md5(date('YmdHis').$clientName).".".$extension;*/
-
-
+            $url = \Helper::qiniuUpload($request->file('Filedata'));
+            $user = \Auth::user();
+            $user->head_img = $url;
+            $user->save();
+            return response()->json(['code'=>200, 'status' => 1,'message' => '上传成功','data'=>['head_img'=>$url.'?imageView2/1/w/150/h/150/q/90'] ]);
+        } else
+            return response()->json(['code'=>200, 'status' => 0,'message' => '上传失败' ]);
     }
 
 }

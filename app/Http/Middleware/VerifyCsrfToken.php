@@ -19,6 +19,7 @@ class VerifyCsrfToken extends BaseVerifier
         '/forget',
         '/send-code',
         '/market/store',
-        '/personal/pwd-edit'
+        '/personal/pwd-edit',
+        '/personal/info-edit'
     ];
 }

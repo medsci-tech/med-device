@@ -49,15 +49,15 @@
 					<span> &nbsp;> &nbsp;基础信息修改</span>
 				</div>
 				<form class="form" action="" method="POST">
-					<div class="icon"><img name="head" src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1428636365,3811217326&fm=58"> </div>
+					<div class="icon"><img name="head" src="{{ \Auth::user()->head_img.'?imageView2/1/w/150/h/150/q/90' }}"> </div>
 					<div id="choose-icon">上传头像</div>
 					<div>
 						<label for="">用户名</label>
-						<input type="text" name="name" placeholder="您的账户名和登录名" value="{{ \Auth::user()->name }}">
+						<input type="text" name="name" placeholder="您的账户名和登录名" value="{{ \Auth::user()->name }}" readonly>
 					</div>
 					<div>
 						<label for="">手机号</label>
-						<input type="text" name="phone" placeholder="建议使用常用手机" value="{{ \Auth::user()->phone }}">
+						<input type="text" name="phone" placeholder="建议使用常用手机" value="{{ \Auth::user()->phone }}" readonly>
 					</div>
 					<div>
 						<label for="">真实姓名</label>
@@ -65,12 +65,12 @@
 					</div>
 					<div class="no-border">
 						<label>性别</label>
-						<input class="sex-radio" type="radio" name="sex" value="男"><span>男</span>
-						<input class="sex-radio" type="radio" name="sex" value="女"><span>女</span>
+						<input class="sex-radio" type="radio" name="sex" value="男" @if (\Auth::user()->sex =='男')checked @endif><span>男</span>
+						<input class="sex-radio" type="radio" name="sex" value="女" @if (\Auth::user()->sex =='女')checked @endif><span>女</span>
 					</div>
 					<div>
 						<label for="">电子邮箱</label>
-						<input type="text" name="email" placeholder="请输入电子邮箱" {{ \Auth::user()->email }}>
+						<input type="text" name="email" placeholder="请输入电子邮箱" value="{{ \Auth::user()->email }}">
 					</div>
 					<div>
 						<label for="">工作地址</label>
@@ -115,14 +115,11 @@
 @section('page_js')
 <script src="/js/profile-basic.js"></script>
 <script type="text/javascript">
-
-    <?php $timestamp = time();?>
     $(function() {
         $('#choose-icon').uploadify({
             'debug'    : false,
             'method'   : 'post',
             'formData'     : {
-                'timestamp' : '<?php echo $timestamp;?>',
                 '_token'     : '{{ csrf_token() }}'
             },
             'onInit'   : function(instance) { //初始化加载
@@ -154,16 +151,11 @@
         });
         function uploadFile(file, data) {
             var data = $.parseJSON(data);
-            if(data.code==0){
-                $("input[name='art_thumb']").val(data);
-                $("#art_thumb").attr('src','/'+data);
-               // $("#error_msg").show();
-                //$("#error_msg").html(data.msg);
+            if(data.status==1){
+                $('img[name=head]').attr('src',data.data.head_img);
             }
             else{
-                $("#error_msg").hide();
-                $('input[name=fail_file]').val(data.path);
-                $('input[name=fail_size]').val(data.size);
+         		alert('上传失败!');
             }
         }
 
