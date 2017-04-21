@@ -127,8 +127,6 @@ class ProductController extends Controller
     {
         return view('admin.product.create', [
             'categories' => Category::all(),
-            'suppliers' => Supplier::all(),
-            'activities' => Activity::all(),
         ]);
     }
 
@@ -293,7 +291,7 @@ class ProductController extends Controller
         //通过filesize获得文件大小，将整个文件一下子读到一个字符串中
         $contents = fread($handle, filesize($filename));
         fclose($handle);
-        //dd(json_decode($contents));
+
         $categories = Category::all();
         $catArray = [];
         foreach ($categories as $category) {

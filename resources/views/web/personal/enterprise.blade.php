@@ -48,94 +48,16 @@
 				</div>
 
 				<div class="items">
-					<div class="info-item">
-						<h4>营业执照</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
+					@foreach(config('params')['cimpany_image'] as $key =>$val)
+						<div class="info-item">
+							<h4>{{ $val }}</h4>
+							<img src="" alt="上传照片">
+							<div>
+								<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
+								<div class="btn-upload"id="file_upload_{{ $key }}">上传照片</div>
+							</div>
 						</div>
-					</div>
-					<div class="info-item">
-						<h4>开户许可证</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
-					<div class="info-item">
-						<h4>医疗器械经营许可证</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
-					<div class="info-item">
-						<h4>开票信息</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
-					<div class="info-item">
-						<h4>受托人身份证复印件（正面）</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
-					<div class="info-item">
-						<h4>受托人身份证复印件（反面）</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
-					<div class="info-item">
-						<h4>印章备案表</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
-					<div class="info-item">
-						<h4>企业法人委托书原件</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
-					<div class="info-item">
-						<h4>发票和出库单样票</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
-					<div class="info-item">
-						<h4>企业公示信息</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
-					<div class="info-item">
-						<h4>质保协议</h4>
-						<img src="" alt="上传照片">
-						<div>
-							<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-							<div class="btn-upload">上传照片</div>
-						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 		</div>
