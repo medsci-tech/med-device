@@ -33,9 +33,9 @@
                     </div>
                     @endif
                     <div class="col-md-6 links-header">
-                        <a href="personal"><img src="/img/home/u161.png">个人中心</a>
-                        <a href=""><img src="/img/home/u163.png">我的消息</a>
-                        <a href="helper"><img src="/img/home/u165.png">帮助中心</a>
+                        <a href="/personal"><img src="/img/home/u161.png">个人中心</a>
+                        <a href="/personal"><img src="/img/home/u163.png">我的消息</a>
+                        <a href="/helper"><img src="/img/home/u165.png">帮助中心</a>
                     </div>
                     <div class="col-md-1"></div>
                 </div>
