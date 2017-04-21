@@ -65,12 +65,12 @@
 					</div>
 					<div class="no-border">
 						<label>性别</label>
-						<input class="sex-radio" type="radio" name="sex" value="男"><span>男</span>
-						<input class="sex-radio" type="radio" name="sex" value="女"><span>女</span>
+						<input class="sex-radio" type="radio" name="sex" value="男" @if (\Auth::user()->sex =='男')checked @endif><span>男</span>
+						<input class="sex-radio" type="radio" name="sex" value="女" @if (\Auth::user()->sex =='女')checked @endif><span>女</span>
 					</div>
 					<div>
 						<label for="">电子邮箱</label>
-						<input type="text" name="email" placeholder="请输入电子邮箱" {{ \Auth::user()->email }}>
+						<input type="text" name="email" placeholder="请输入电子邮箱" value="{{ \Auth::user()->email }}">
 					</div>
 					<div>
 						<label for="">工作地址</label>
