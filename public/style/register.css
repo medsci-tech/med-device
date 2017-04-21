@@ -41,7 +41,7 @@
   position: relative;
   width: 100%;
   height: 50px;
-  margin: 12px 0;
+  margin: 22px auto;
   border: 1px solid #d7d7d7;
 }
 .form-area .form > div .required{
@@ -83,7 +83,7 @@
   margin: 0 0 0 120px;
 }
 .form-area .form .sex-radio {
-  margin: 0 0 0 40px;
+  margin: 0 10px 0 40px;
 }
 .form-area .form .submit {
   display: block;

@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 
-@section('title', '产品详情')
+@section('title', '产品信息')
 
 @section('page_css')
 <link rel="stylesheet" type="text/css" href="/../style/vendor.css">
@@ -80,7 +80,7 @@
 					<div class="value">{{ $data->attention  }}</div>
 				</div>
 				<div class="info-row">
-					<div class="key">价格</div>
+					<div class="key">零售价格</div>
 					<div class="value">{{ $data->price  }}</div>
 				</div>
 				<div class="info-row">
@@ -126,34 +126,50 @@
 			<div class="content similar">
 				<div class="col-md-2 item">
 					<img src="/../img/home/u148.jpg">
+					<span class="price-type">零售价格</span>
+					<span class="price-num">12.80</span>
 					<p>怡成血糖仪家用电子血糖仪JPS系列 华鸿一次性无菌采血针 </p>
 				</div>
 				<div class="col-md-2 item">
 					<img src="/../img/home/u148.jpg">
+					<span class="price-type">零售价格</span>
+					<span class="price-num">12.80</span>
 					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 				</div>
 				<div class="col-md-2 item">
 					<img src="/../img/home/u148.jpg">
+					<span class="price-type">零售价格</span>
+					<span class="price-num">12.80</span>
 					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 				</div>
 				<div class="col-md-2 item">
 					<img src="/../img/home/u148.jpg">
+					<span class="price-type">零售价格</span>
+					<span class="price-num">12.80</span>
 					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 				</div>
 				<div class="col-md-2 item">
 					<img src="/../img/home/u148.jpg">
+					<span class="price-type">零售价格</span>
+					<span class="price-num">12.80</span>
 					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 				</div>
 				<div class="col-md-2 item">
 					<img src="/../img/home/u148.jpg">
+					<span class="price-type">零售价格</span>
+					<span class="price-num">12.80</span>
 					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 				</div>
 				<div class="col-md-2 item">
 					<img src="/../img/home/u148.jpg">
+					<span class="price-type">零售价格</span>
+					<span class="price-num">12.80</span>
 					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 				</div>
 				<div class="col-md-2 item">
 					<img src="/../img/home/u148.jpg">
+					<span class="price-type">零售价格</span>
+					<span class="price-num">12.80</span>
 					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 				</div>
 			</div>

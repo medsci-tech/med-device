@@ -187,7 +187,7 @@
   background-color: #F0F0F0;
 }
 #drop-type {
-  top: 180px;
+  top: 196px;
   right: 0;
   width: 320px;
 }
@@ -235,16 +235,24 @@
   margin-right: 10px;
 }
 .form-area .form > div {
+  position: relative;
   width: 100%;
-  height: 60px;
-  margin: 12px 0;
+  height: 50px;
+  margin: 22px 0;
   border: 1px solid #d7d7d7;
+}
+.form-area .form > div .required{
+  position: absolute;
+  top: 6px;
+  left: -26px;
+  color: red;
+  font-size: 24px;
 }
 .form-area .form > div * {
   display: block;
   float: left;
-  height: 60px;
-  line-height: 60px;
+  height: 50px;
+  line-height: 50px;
   font-weight: normal;
 }
 .form-area .form label {
@@ -255,8 +263,9 @@
 .form-area .form input[type="text"] {
   display: inline-block;
   width: 300px;
-  height: 56px;
-  outline: none;
+  height: 46px;
+  margin-top: 1px;
+  outline-color: #fff;
   border: none;
 }
 .form-area .form .desc {

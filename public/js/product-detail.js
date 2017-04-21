@@ -9,7 +9,7 @@ webpackJsonp([13],{
 $(document).ready(function () {
 
 	//tabs切换
-	$('.tabset-tab').on('click', function () {
+	$('.tabset-tab').on('mouseover', function () {
 		if ($(this).hasClass('focus')) {
 			return;
 		}
@@ -35,6 +35,36 @@ $(document).ready(function () {
 	$('.save').on('click', function () {
 		$(this).toggleClass('save-focus');
 	});
+
+	var index = 0;
+	for (var i = 0; i < $('.thumbnail').length; i++){
+		$('.thumbnail').eq(i).data('index', i);
+		$('.thumbnail').eq(i).on('click', (function(i){
+			return function(){
+				index = i;
+				refresh(i);
+			}
+		})(i))
+	}
+
+	$('.tab').eq(0).on('click', function(){
+		if (index > 0) {
+			index--
+			refresh(index)
+		}
+	})
+	$('.tab').eq(1).on('click', function(){
+		if (index < $('.thumbnail').length - 1) {
+			index++
+			refresh(index)
+		}
+	})
+
+	function refresh(index){
+		$('.big img').attr('src', $('.thumbnail').eq(index).attr('style').substring(17));
+	}
+
+
 });
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 

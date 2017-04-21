@@ -38,11 +38,14 @@
     <div class="row products">
             <div>
                 <h2>热销产品</h2>
-                <span>所有产品></span>
+                <span class="link-all">所有产品></span>
             </div>
             @foreach ($data as $val)
             <div class="col-md-2 item">
-                <a href="{{ url('product/detail/'.$val->id) }}" target="_blank"><img src="{{ $val->logo }}"><a></a><p>{{ $val->name }}</p>
+                <a href="{{ url('product/detail/'.$val->id) }}" target="_blank"><img src="{{ $val->logo }}"><a></a>
+                <span class="price-type">零售价格</span>
+                <span class="price-num">12.80</span>
+                <p>{{ $val->name }}</p>
             </div>
             @endforeach
 
