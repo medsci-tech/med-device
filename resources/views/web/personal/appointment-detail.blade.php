@@ -43,7 +43,7 @@
 		<div class="content col-md-8">
 			<div class="profile-basic">
 				<div class="panel">
-					<a href="/appointment">我的预约</a>
+					<a href="/personal/appointment">我的预约</a>
 					<span> &nbsp;> &nbsp;预约详情</span>
 				</div>
 

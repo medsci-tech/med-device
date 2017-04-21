@@ -12,6 +12,7 @@
 
 
 @section('content')
+<div class="container">
     <div class="row nav">
         <div class="col-md-offset-1 col-md-11">
             <a class="focus">&nbsp;&nbsp;首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页&nbsp;&nbsp;<div class="strip"></div></a>
@@ -20,7 +21,8 @@
             <a href="agent">药械经纪人</a>
         </div>
     </div>
-
+</div>
+<div class="container-fluid">
     <div id="banner" class="row banner">
         <div class="col-md-offset-1 col-md-11">
             <h2>运输、贮存医疗器械，应当符合医疗器械说明书和标签标示的要求</h2>
@@ -33,7 +35,8 @@
             </div>
         </div>
     </div>
-
+</div>
+<div class="container">
     <div class="row products">
         <div class="col-md-offset-1 col-md-10">
             <div>
@@ -48,8 +51,11 @@
 
         </div>
     </div>
+</div>
+<div class="container-fulid">
     <div class="row appointment">
         <h2>药械营销服务预约</h2>
         <a href="{{ url('market/marketing-order/') }}" target="_blank">查看详情></a>
     </div>
+</div>
 @endsection

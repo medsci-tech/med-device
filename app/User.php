@@ -26,4 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * 获取指定用户的所有收藏
+     */
+    public function collections()
+    {
+        return $this->hasMany('App\Models\Collection');
+    }
 }

@@ -4,7 +4,6 @@ namespace App\Http\Requests\Interfaces;
 use App\Http\Requests\Request;
 
 /**
- * Class RequestHasTargetUser
  * @mixin Request
  */
 trait CheckResetPwd
