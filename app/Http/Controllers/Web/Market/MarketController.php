@@ -42,6 +42,9 @@ class MarketController extends Controller
      */
     public function store(Request  $request){
         $req = new StoreAppointment();
+        if(!$req->authorize())
+            return response()->json(['code'=>200, 'status' => 0,'message' => '请先登录!' ]);
+
         $data =$request->all();
         $validator = \Validator::make($data, $req->rules(),$req->messages());
         if ($validator->fails()) {

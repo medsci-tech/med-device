@@ -172,8 +172,8 @@
 				<input type="text" name="phone" value="@if (Auth::check()){{ \Auth::user()->phone }}@endif">
 			</div>
 			<div class="checkboxs">
-				@foreach(config('params')['work_option'] as $key =>$val)
-				<input type="checkbox" name="work_type" value="{{ $key }}"><span>{{ $val }}</span>
+				@foreach(config('params')['join_type'] as $key =>$val)
+				<input type="checkbox" name="join_type" value="{{ $key }}"><span>{{ $val }}</span>
 				@endforeach
 			</div>
 		</form>

@@ -15,6 +15,7 @@ class VerifyCsrfToken extends BaseVerifier
         '/register',
         '/product/collect',
         '/login',
+        '/product/join',
         '/forget',
         '/send-code',
         '/market/store',
