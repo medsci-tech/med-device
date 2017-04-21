@@ -16,6 +16,9 @@ trait CheckResetPwd
      */
     public function checkPhoneCode(array $data=[])
     {
+        if(!isset($data['phone']) || !isset($data['code']) || !isset($data['password']))
+            return ['code'=>200, 'status' => 0,'message' => '无效的参数请求' ];
+
         $rules = [
             'phone' => 'required|digits:11|exists:users,phone',
             'code' => 'required|digits:6',

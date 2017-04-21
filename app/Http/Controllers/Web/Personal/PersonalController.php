@@ -5,11 +5,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
-
+use App\Http\Requests\Interfaces\CheckResetPwd;
+use App\User;
 class PersonalController extends Controller
 {
-
+    use CheckResetPwd;
     public function index()
     {
 
@@ -47,8 +47,27 @@ class PersonalController extends Controller
 
         return view('web.personal.info-edit', ['data' => null]);
     }
-    public function pwdEdit()
+
+    /**
+     * 修改密码
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function pwdEdit(Request $request)
     {
+        if ($request->isMethod('post')) {
+            $result =$this->checkPhoneCode($request->all());
+            if($result['status'] ==1)
+            {
+                $user = \Auth::user();
+                $user->password = bcrypt($request->password);
+                $user->save();
+                return response()->json(['code'=>200, 'status' => 1,'message' => '修改成功' ]);
+            }
+            else
+                return response()->json(['code'=>200, 'status' => 0,'message' => $result['message'] ]);
+        }
 
         return view('web.personal.pwd-edit', ['data' => null]);
     }
