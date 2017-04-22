@@ -29,10 +29,17 @@ class ProductController extends Controller
      */
     public function detail($id)
     {
-        Product::find($id)->increment('view_counts');
-        $data = Product::find($id);
+        try {
+            $data = Product::find($id);
+            if($data)
+                Product::find($id)->increment('view_counts');
+            $data_similar = Product::orderBy('id')->offset(0)->where(['is_hot'=>1])->limit(8)->get();
+        }
+        catch (\Exception $e) {
+            abort(404);
+        }
 
-        return view('web.product.detail')->with(['data' => $data]);
+        return view('web.product.detail')->with(['data' => $data,'data_similar' => $data_similar]);
     }
 
     /**

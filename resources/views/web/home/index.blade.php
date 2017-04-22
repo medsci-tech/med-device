@@ -40,15 +40,17 @@
                 <h2>热销产品</h2>
                 <span class="link-all">所有产品></span>
             </div>
+        @if($data)
             @foreach ($data as $val)
             <div class="col-md-2 item">
-                <a href="{{ url('product/detail/'.$val->id) }}" target="_blank"><img src="{{ $val->logo }}"><a></a>
+
+                <a href="{{ url('product/detail/'.$val->id) }}" target="_blank"><img src="{{ $val->logo }}?imageView2/1/w/220/h/220/q/90"></a><p>{{ $val->name }}</p>
                 <span class="price-type">零售价格</span>
-                <span class="price-num">12.80</span>
+                <span class="price-num">{{ $val->price }}</span>
                 <p>{{ $val->name }}</p>
             </div>
             @endforeach
-
+        @endif
     </div>
 </div>
 <div class="container-fulid">

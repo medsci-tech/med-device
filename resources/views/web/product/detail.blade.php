@@ -5,8 +5,10 @@
 @section('page_css')
 <link rel="stylesheet" type="text/css" href="/../style/vendor.css">
 <link rel="stylesheet" type="text/css" href="/../../style/product-detail.css">
+<link rel="stylesheet" type="text/css" href="/js/sweetalert/sweetalert.css">
 @endsection
 <script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/sweetalert/sweetalert.min.js"></script>
 @section('content')
 	<div class="row nav">
 		<div class="col-md-offset-1 col-md-11">
@@ -112,66 +114,23 @@
 			<div class="content business">
 				{!! $data->description !!}
 			</div>
-			<div class="content video">
-				<div id="id_video_container"></div>
+			<div class="content video"><div id="id_video_container" style="width:100%; height:auto;"></div>;
 				@if($data->videos)
 					@foreach($data->videos as $video)
-						{{$video->qcloud_app_id }}
+
+					@endforeach
+				@endif
+			</div>
+			<div class="content similar">
+				@if($data_similar)
+					@foreach ($data_similar as $val)
+						<div class="col-md-2 item">
+							<a href="{{ url('product/detail/'.$val->id) }}" target="_blank"><img src="{{ $val->logo }}?imageView2/1/w/220/h/220/q/90"></a>
+							<p>{{ $val->name }}</p>
+						</div>
 					@endforeach
 				@endif
 
-
-
-			</div>
-			<div class="content similar">
-				<div class="col-md-2 item">
-					<img src="/../img/home/u148.jpg">
-					<span class="price-type">零售价格</span>
-					<span class="price-num">12.80</span>
-					<p>怡成血糖仪家用电子血糖仪JPS系列 华鸿一次性无菌采血针 </p>
-				</div>
-				<div class="col-md-2 item">
-					<img src="/../img/home/u148.jpg">
-					<span class="price-type">零售价格</span>
-					<span class="price-num">12.80</span>
-					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-				</div>
-				<div class="col-md-2 item">
-					<img src="/../img/home/u148.jpg">
-					<span class="price-type">零售价格</span>
-					<span class="price-num">12.80</span>
-					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-				</div>
-				<div class="col-md-2 item">
-					<img src="/../img/home/u148.jpg">
-					<span class="price-type">零售价格</span>
-					<span class="price-num">12.80</span>
-					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-				</div>
-				<div class="col-md-2 item">
-					<img src="/../img/home/u148.jpg">
-					<span class="price-type">零售价格</span>
-					<span class="price-num">12.80</span>
-					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-				</div>
-				<div class="col-md-2 item">
-					<img src="/../img/home/u148.jpg">
-					<span class="price-type">零售价格</span>
-					<span class="price-num">12.80</span>
-					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-				</div>
-				<div class="col-md-2 item">
-					<img src="/../img/home/u148.jpg">
-					<span class="price-type">零售价格</span>
-					<span class="price-num">12.80</span>
-					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-				</div>
-				<div class="col-md-2 item">
-					<img src="/../img/home/u148.jpg">
-					<span class="price-type">零售价格</span>
-					<span class="price-num">12.80</span>
-					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -182,6 +141,13 @@
 <script src="/../js/product-detail.js"></script>
 <script src="http://qzonestyle.gtimg.cn/open/qcloud/video/h5/h5connect.js"></script>
 <script>
+    //弹出面板
+    $('.btn-business').on('click', function () {
+        @if (Auth::guest())
+        sweetAlert("您还没有登录!");
+		@endif
+    });
+
     // 视频播放
     $(function () {
         // 腾讯视频
