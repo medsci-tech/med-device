@@ -112,50 +112,22 @@
 			<div class="content business">
 				{!! $data->description !!}
 			</div>
-			<div class="content video">
-				<div id="id_video_container"></div>
+			<div class="content video"><div id="id_video_container" style="width:100%; height:auto;"></div>;
 				@if($data->videos)
 					@foreach($data->videos as $video)
-						{{$video->qcloud_app_id }}
+
 					@endforeach
 				@endif
-
-
-
 			</div>
 			<div class="content similar">
-				<div class="col-md-2 item">
-					<img src="/../img/home/u148.jpg">
-					<p>怡成血糖仪家用电子血糖仪JPS系列 华鸿一次性无菌采血针 </p>
-				</div>
-				<div class="col-md-2 item">
-					<img src="/../img/home/u148.jpg">
-					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-				</div>
-				<div class="col-md-2 item">
-					<img src="/../img/home/u148.jpg">
-					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-				</div>
-				<div class="col-md-2 item">
-					<img src="/../img/home/u148.jpg">
-					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-				</div>
-				<div class="col-md-2 item">
-					<img src="/../img/home/u148.jpg">
-					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-				</div>
-				<div class="col-md-2 item">
-					<img src="/../img/home/u148.jpg">
-					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-				</div>
-				<div class="col-md-2 item">
-					<img src="/../img/home/u148.jpg">
-					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-				</div>
-				<div class="col-md-2 item">
-					<img src="/../img/home/u148.jpg">
-					<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-				</div>
+				@if($data_similar)
+					@foreach ($data_similar as $val)
+						<div class="col-md-2 item">
+							<a href="{{ url('product/detail/'.$val->id) }}" target="_blank"><img src="{{ $val->logo }}?imageView2/1/w/220/h/220/q/90"></a>
+							<p>{{ $val->name }}</p>
+						</div>
+					@endforeach
+				@endif
 			</div>
 		</div>
 	</div>
