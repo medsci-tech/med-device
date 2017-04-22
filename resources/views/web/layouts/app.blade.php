@@ -126,10 +126,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 info-footer">
-                        <a href="/helper">关于我们</a>
-                        <a href="/helper">联系我们</a>
-                        <a href="/helper">购买方式</a>
-                        <a href="/helper">常见问题</a>
+                        <a href="/helper#ablout">关于我们</a>
+                        <a href="/helper#contact">联系我们</a>
+                        <a href="/helper#buy">购买方式</a>
+                        <a href="/helper#problems">常见问题</a>
                         <p>Copyright@2017 施康培科技（武汉）有限公司版权所有，保留所有权利</p>
                         <p>互联网药品信息服务资格证书编号（鄂）</p>
                         <p>鄂ICP备 15021002号</p>

@@ -29,6 +29,24 @@ $(document).ready(function () {
 			};
 		}(i));
 	}
+
+	$('.nav-item:target').click()
+
+	// $('#link-about').click(function(event){
+	// 	$('#about').click();
+	// })
+	// $('#link-buy').click(function(event){
+	// 	$('#buy').click();
+	// })
+	// $('#link-contact').click(function(event){
+	// 	$('#contact').click();
+	// })
+	// $('#link-problems').click(function(event){
+	// 	$('#problems').click();
+	// })
+	$('.footer-link').click(function(){
+		$('#' + $(this).data('target')).click()
+	})
 });
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 

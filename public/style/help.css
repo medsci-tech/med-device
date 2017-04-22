@@ -61,6 +61,7 @@
 }
 .content {
   display: none;
+  min-width: 900px;
   min-height: 660px;
   margin: 0 0 100px 220px;
   padding: 24px 0 40px 26px;

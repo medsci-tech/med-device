@@ -235,12 +235,17 @@
 }
 .form .item {
   position: relative;
-  width: 100px;
   height: 32px;
   margin: 10px 19px;
   line-height: 32px;
   border: 1px solid #aeaeae;
   border-radius: 6px;
+}
+.form .item .inner{
+  display: inline-block;
+  margin: 0 28px;
+  height: 30px;
+  line-height: 30px;
 }
 .form .item .icon {
   position: absolute;
@@ -324,7 +329,24 @@
   height: 60px;
   margin-right: 10px;
 }
-/* 三个下拉框 */
+/* 下拉框 */
+.form .email-dropdown{
+  display: none;
+  position: absolute;
+  border: 1px solid #d7d7d7;
+  border-top: none;
+  width: 320px;
+  height: auto;
+  left: 99px;
+  top: 49px;
+  text-align: left;
+  background-color: white;
+  z-index: 9
+}
+.form .email-dropdown .item-email:hover{
+  background-color: #f2f2f2;
+  cursor: default;
+}
 .drop-down {
   display: none;
   position: absolute;
@@ -465,8 +487,8 @@
   left: 46px;
   width: 368px;
   height: 196px;
-
   border: 1px solid #d7d7d7;
+  overflow-y: scroll;
 }
 .panel2 .items .item{
   position: relative;
@@ -474,6 +496,11 @@
   height: 44px;
   margin: 0;
   border: none;
+}
+.panel2 .items .item:hover{
+  background-color: #f2f2f2;
+  cursor: default;
+  color: #333;
 }
 .panel2 .items .item .name{
   line-height: 44px;
@@ -487,6 +514,7 @@
 .panel2 .btn-panel{
   width: 320px;
   height: 50px;
+  line-height: 50px;
   bottom: 38px;
 }
 /* footer */

@@ -47,8 +47,9 @@
 			</div>
 			<div class="input-box">
         		<div class="required">*</div>
-				<label for="">电子邮箱</label>
-				<input type="text" name="email" placeholder="请输入电子邮箱">
+				<label for="email">电子邮箱</label>
+				<input id="email" type="text" name="email" placeholder="请输入电子邮箱">
+				<div class="email-dropdown"></div>
 			</div>
 			<div class="input-box">
         		<div class="required">*</div>
@@ -103,16 +104,7 @@
 		<div class="province"></div>
 		<div class="city"></div>
 		<input class="search-box" type="text" name="hospital" placeholder="请输入医院名字">
-		<div class="items">
-			<div class="item">
-				<span class="name">武汉同济医院</span>
-				<input type="checkbox">
-			</div>
-			<div class="item">
-				<span class="name">武汉大学医院</span>
-				<input type="checkbox">
-			</div>
-		</div>
+		<div class="items"></div>
 	</div>
 	<div id="panel3" class="panel panel3">
 		<div class="btn-panel">选择</div>
