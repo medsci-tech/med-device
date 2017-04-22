@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="/style/vendor.css">
 @yield('page_css')
 <style type="text/css">
-    body{min-width: 1200px}
+    .nav{border-top: 1px solid #dcdcdc}
 </style>
 </head>
 <body>
@@ -16,12 +16,12 @@
             <div class="container">
                 <div class="row">
                     @if (Auth::guest())
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <a class="btn-login" href="{{ url('login') }}">登录</a>
                         <a class="btn-register" href="{{ url('register') }}">注册</a>
                     </div>
                     @else
-                    <div class="col-md-4 col-md-offset-1">
+                    <div class="col-md-6">
                         <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -43,8 +43,8 @@
         </div>
     </div>
     <div class="container">
-        <div class="row search">
-            <div class="col-md-2 col-md-offset-1">
+        <div class="row search" style="border: none;">
+            <div class="col-md-3">
                 <img class="logo" src="/img/home/u61.jpg">
                 <h1 class="h1">药械通</h1>
                 <p>互联网医药信息服务证：9982561</p>
@@ -56,13 +56,13 @@
                     </div>
                     <div class="button">搜索</div>
                 </div>
-                <p class="hot">
+                <p class="hot" style="text-align: center;padding-right: 0">
                     热门搜索词：
                     <a href="search">外科器材</a>
                     <a href="search">基础器材</a>
                 </p>
             </div>
-            <div class="col-md-3 contect">
+            <div class="col-md-3 contect" style="padding: 14px 0 0 60px">
                 <span>药械小助手 400-8648883</span>
                 <div class="wechat">
                     <img class="wechat-logo" src="/img/home/u103.png">
@@ -125,16 +125,16 @@
         <div class="row footer">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-5 col-md-offset-1 info-footer">
-                        <a href="">关于我们</a>
-                        <a href="">联系我们</a>
-                        <a href="">购买方式</a>
-                        <a href="">常见问题</a>
+                    <div class="col-md-8 info-footer">
+                        <a href="/helper">关于我们</a>
+                        <a href="/helper">联系我们</a>
+                        <a href="/helper">购买方式</a>
+                        <a href="/helper">常见问题</a>
                         <p>Copyright@2017 施康培科技（武汉）有限公司版权所有，保留所有权利</p>
                         <p>互联网药品信息服务资格证书编号（鄂）</p>
                         <p>鄂ICP备 15021002号</p>
                     </div>
-                    <div class="col-md-3 col-md-offset-2 qr-code">
+                    <div class="col-md-4 qr-code">
                         <div class="row">
                             <div class="col-md-6">
                                 <img width="100%" src="/img/home/u101.png">

@@ -29,49 +29,49 @@
 		<div class="col-md-offset-1 col-md-10">
 			<div class="col-md-2 item">
 				<img src="/img/home/u148.jpg">
-				<span class="price-type">￥</span>
+				<span class="price-type">零售价格</span>
 				<span class="price-num">12.80</span>
 				<p>怡成血糖仪家用电子血糖仪JPS系列 华鸿一次性无菌采血针 </p>
 			</div>
 			<div class="col-md-2 item">
 				<img src="/img/home/u148.jpg">
-				<span class="price-type">￥</span>
+				<span class="price-type">零售价格</span>
 				<span class="price-num">12.80</span>
 				<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 			</div>
 			<div class="col-md-2 item">
 				<img src="/img/home/u148.jpg">
-				<span class="price-type">￥</span>
+				<span class="price-type">零售价格</span>
 				<span class="price-num">12.80</span>
 				<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 			</div>
 			<div class="col-md-2 item">
 				<img src="/img/home/u148.jpg">
-				<span class="price-type">￥</span>
+				<span class="price-type">零售价格</span>
 				<span class="price-num">12.80</span>
 				<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 			</div>
 			<div class="col-md-2 item">
 				<img src="/img/home/u148.jpg">
-				<span class="price-type">￥</span>
+				<span class="price-type">零售价格</span>
 				<span class="price-num">12.80</span>
 				<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 			</div>
 			<div class="col-md-2 item">
 				<img src="/img/home/u148.jpg">
-				<span class="price-type">￥</span>
+				<span class="price-type">零售价格</span>
 				<span class="price-num">12.80</span>
 				<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 			</div>
 			<div class="col-md-2 item">
 				<img src="/img/home/u148.jpg">
-				<span class="price-type">￥</span>
+				<span class="price-type">零售价格</span>
 				<span class="price-num">12.80</span>
 				<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 			</div>
 			<div class="col-md-2 item">
 				<img src="/img/home/u148.jpg">
-				<span class="price-type">￥</span>
+				<span class="price-type">零售价格</span>
 				<span class="price-num">12.80</span>
 				<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
 			</div>

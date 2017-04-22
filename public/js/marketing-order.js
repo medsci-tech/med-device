@@ -30,28 +30,39 @@ $(document).ready(function () {
 	});
 
 	//绑定下拉框显示事件
-	function bindShowEvent(triggerId, targetId) {
+	// function bindShowEvent(triggerId, targetId) {
 
-		$('#' + triggerId).on('click', function (event) {
-			event.stopPropagation();
-			$('.drop-down').hide();
-			$('#' + targetId).toggle();
-		});
-	}
-	bindShowEvent('btn-dropdown-type', 'drop-type');
-	bindShowEvent('btn-dropdown-province', 'drop-province');
-	bindShowEvent('btn-dropdown-city', 'drop-city');
-	bindShowEvent('btn-dropdown-county', 'drop-county');
+	// 	$('#' + triggerId).on('click', function (event) {
+	// 		event.stopPropagation();
+	// 		$('.drop-down').hide();
+	// 		$('#' + targetId).toggle();
+	// 	});
+	// }
+	// bindShowEvent('btn-dropdown-type', 'drop-type');
+	// bindShowEvent('btn-dropdown-province', 'drop-province');
+	// bindShowEvent('btn-dropdown-city', 'drop-city');
+	// bindShowEvent('btn-dropdown-county', 'drop-county');
+
+	$('#service-type,#btn-dropdown-type').on('click', function(event){
+		event.stopPropagation();
+		$('.drop-down').hide();
+		$('#drop-type').toggle();
+	})
+	$('#service-type').on('click', function(event){
+		event.stopPropagation();
+		$('.drop-down').hide();
+		$('#drop-type').toggle();
+	})
 
 	//填值
-	function autoValue(triggerId, targetId) {
-		$('#' + triggerId + ' li').on('click', function (e) {
-			$('#' + targetId).text($(e.target).text());
-		});
-	}
-	autoValue('drop-province', 'value-province');
-	autoValue('drop-city', 'value-city');
-	autoValue('drop-county', 'value-county');
+	// function autoValue(triggerId, targetId) {
+	// 	$('#' + triggerId + ' li').on('click', function (e) {
+	// 		$('#' + targetId).text($(e.target).text());
+	// 	});
+	// }
+	// autoValue('drop-province', 'value-province');
+	// autoValue('drop-city', 'value-city');
+	// autoValue('drop-county', 'value-county');
 	$('#drop-type li').on('click', function (e) {
 		$('#service-type').val($(e.target).text());
 	});

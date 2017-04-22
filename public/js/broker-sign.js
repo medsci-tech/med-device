@@ -47,7 +47,7 @@ $(document).ready(function () {
 		//弹出选择面板
 		var self = this;
 		this.btn_choose.on('click', function () {
-			self.panel.show();
+			self.panel.fadeIn();
 			$('.shielder').show();
 		});
 	}
@@ -58,7 +58,7 @@ $(document).ready(function () {
 	});
 
 	var manager1 = new manager(['科室一', '科室二', '科室三'], 0);
-	var manager2 = new manager(['科室四', '科室五', '科室六'], 1);
+	var manager2 = new manager([], 1);
 	var manager3 = new manager(['科室一', '科室二', '科室'], 2);
 
 	//隐藏下拉框

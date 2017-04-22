@@ -171,6 +171,9 @@
 .products span {
   color: #FF6633;
 }
+.products .price-type{
+  color: #999;
+}
 .products .price-num {
   font-size: 24px;
 }

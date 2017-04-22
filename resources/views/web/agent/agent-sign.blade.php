@@ -100,6 +100,19 @@
 		<div class="btn-panel">选择</div>
 		<img src="/img/broker-sign/u899.png">
 		<p>选择覆盖区域</p>
+		<div class="province"></div>
+		<div class="city"></div>
+		<input class="search-box" type="text" name="hospital" placeholder="请输入医院名字">
+		<div class="items">
+			<div class="item">
+				<span class="name">武汉同济医院</span>
+				<input type="checkbox">
+			</div>
+			<div class="item">
+				<span class="name">武汉大学医院</span>
+				<input type="checkbox">
+			</div>
+		</div>
 	</div>
 	<div id="panel3" class="panel panel3">
 		<div class="btn-panel">选择</div>

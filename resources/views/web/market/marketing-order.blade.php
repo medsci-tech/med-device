@@ -1,8 +1,9 @@
 @extends('web.layouts.app')
 
-@section('title', '首页')
+@section('title', '营销服务预约')
 
 @section('page_css')
+<link rel="stylesheet" type="text/css" href="/style/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet" type="text/css" href="/style/marketing-order.css">
 @endsection
 
@@ -57,15 +58,18 @@
 			<form class="form" action="" method="POST">
 
 				<div>
+					<div class="required">*</div>
 					<label for="product-name">产品名称</label>
 					<input id="product-name" type="text" name="name" placeholder="输入产品名称">
 				</div>
 				<div>
+					<div class="required">*</div>
 					<label for="service-type">服务类型</label>
-					<input id="service-type" type="text" name="type" placeholder="选择服务类型" disabled style="background-color: white">
+					<input id="service-type" type="text" name="type" placeholder="选择服务类型" readonly style="background-color: white">
 					<div id="btn-dropdown-type" class="btn-dropdown"></div>
 				</div>
 				<div>
+					<div class="required">*</div>
 					<label for="area">预约区域</label>
 					<input id="area" type="text" name="area">
 					<div id="province" class="province">
@@ -82,14 +86,25 @@
 					</div>
 				</div>
 				<div>
-					<label for="date">预约日期</label>
-					<input id="date" type="text" name="phone" placeholder="年/月/日">
+					<label for="hospital">医院</label>
+					<input id="hospital" type="text" name="phone" placeholder="可填写多家医院">
 				</div>
 				<div>
+					<label for="department">科室</label>
+					<input id="department" type="text" name="phone" placeholder="可填写多家科室">
+				</div>
+				<div>
+					<div class="required">*</div>
+					<label for="datetimepicker">预约日期</label>
+					<input id="datetimepicker" type="text" name="phone" placeholder="年/月/日">
+				</div>
+				<div>
+					<div class="required">*</div>
 					<label for="contact">联系人</label>
 					<input id="contact" type="text" name="realname" placeholder="请输入联系人姓名">
 				</div>
 				<div>
+					<div class="required">*</div>
 					<label for="tel">联系电话</label>
 					<input id="tel" type="text" name="email" placeholder="请输入联系电话">
 				</div>
@@ -105,5 +120,7 @@
 
 
 @section('page_js')
+<script src="/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/js/bootstrap-datetimepicker.zh-CN.js"></script>
 <script src="/js/marketing-order.js"></script>
 @endsection

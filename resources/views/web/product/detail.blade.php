@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 
-@section('title', '产品详情')
+@section('title', '产品信息')
 
 @section('page_css')
 <link rel="stylesheet" type="text/css" href="/../style/vendor.css">
@@ -82,7 +82,7 @@
 					<div class="value">{{ $data->attention  }}</div>
 				</div>
 				<div class="info-row">
-					<div class="key">价格</div>
+					<div class="key">零售价格</div>
 					<div class="value">{{ $data->price  }}</div>
 				</div>
 				<div class="info-row">
@@ -130,6 +130,7 @@
 						</div>
 					@endforeach
 				@endif
+
 			</div>
 		</div>
 	</div>

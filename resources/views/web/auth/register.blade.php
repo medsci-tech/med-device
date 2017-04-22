@@ -133,12 +133,42 @@
         <label for="">工作区域</label>
       </div>
       <div class="no-border">
-        <input class="confirm-agree" type="checkbox" name="agree">
-        <span>我同意</span><a href="">药械通用户服务协议</a>
+        <input class="confirm-agree" type="checkbox" name="agree" checked>
+        <span>我同意</span><a data-toggle="modal" data-target="#myModal" style="cursor: pointer;">药械通用户服务协议</a>
       </div>
       <input class="submit" type="submit" name="submit" value="注册">
       <p>已有账号？ <a href="login">请登录</a></p>
     </form>
   </div>
+</div>
+@endsection
+
+@section('panel')
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          &times;
+        </button>
+        <h4 class="modal-title" id="myModalLabel">
+          药械通用户服务协议
+        </h4>
+      </div>
+      <div class="modal-body">
+        药械通用户服务协议<br>
+        药械通用户服务协议<br>
+        药械通用户服务协议<br>
+        药械通用户服务协议<br>
+        药械通用户服务协议<br>
+        药械通用户服务协议<br>
+        药械通用户服务协议<br>
+        药械通用户服务协议<br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal -->
 </div>
 @endsection
