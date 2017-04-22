@@ -5,8 +5,10 @@
 @section('page_css')
 <link rel="stylesheet" type="text/css" href="/../style/vendor.css">
 <link rel="stylesheet" type="text/css" href="/../../style/product-detail.css">
+<link rel="stylesheet" type="text/css" href="/js/sweetalert/sweetalert.css">
 @endsection
 <script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/sweetalert/sweetalert.min.js"></script>
 @section('content')
 	<div class="row nav">
 		<div class="col-md-offset-1 col-md-11">
@@ -138,6 +140,13 @@
 <script src="/../js/product-detail.js"></script>
 <script src="http://qzonestyle.gtimg.cn/open/qcloud/video/h5/h5connect.js"></script>
 <script>
+    //弹出面板
+    $('.btn-business').on('click', function () {
+        @if (Auth::guest())
+        sweetAlert("您还没有登录!");
+		@endif
+    });
+
     // 视频播放
     $(function () {
         // 腾讯视频
