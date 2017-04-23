@@ -167,6 +167,9 @@ $(document).ready(function () {
 	var container_appendHosItem = function(title){
 		var cancelBtn = $('<span class="icon"><span class="icon2"></span></span>')
 		var item = $('<div class="item" style="display:block"><span class="inner">' + title + '</span></div>').append(cancelBtn).appendTo($('#item-container2'))
+		cancelBtn.click(function(){
+			item.remove()
+		})
 	}
 	$('#panel2 .btn-panel').click(function(){
 		$('#item-container2').empty()
@@ -183,6 +186,21 @@ $(document).ready(function () {
 		$('.shielder').show();
 	});
 	initHospitals()
+
+	//医院名字筛选搜索
+	$('.search-box').on('keyup', function(){
+		var value = $(this).val()
+		$('.items .item').each(function(){
+			var $name = $(this).children('.name')
+			console.log($name.text())
+			if ($name.text().indexOf(value) === -1){
+				$(this).hide()
+				$(this).children('input')[0].checked = false
+			} else {
+				$(this).show()
+			}
+		})
+	})
 
 });
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
