@@ -9,6 +9,7 @@ use App\User;
 use App\Models\OrderDepart;
 use App\Models\OrderService;
 use App\Models\OrderHospital;
+use App\Models\Hospital;
 use App\Http\Requests\Interfaces\CheckAgent;
 class AgentController extends Controller
 {
@@ -33,7 +34,7 @@ class AgentController extends Controller
             $data = $request->all();
             $result =$this->checkAgent($request->all());
             if(\Auth::user()->agent)
-                return response()->json(['code' => 200, 'status' => 0, 'message' => '您已经预约过了!']);
+                return response()->json(['code' => 200, 'status' => 0, 'message' => '您已经登记过了!']);
 
             $data['user_id'] = \Auth::id();
             try {
@@ -44,12 +45,26 @@ class AgentController extends Controller
                     if(is_array($depart_ids_arr))
                     {
                         foreach($depart_ids_arr as $val)
-                            $user = User::firstOrCreate(['name' => 'John']);如果不存在只能插入name字段
-
-
+                            OrderDepart::firstOrCreate(['depart_id' => $val['depart_id'],'user_id'=>\Auth::id()]);
                     }
-                   // $user = User::firstOrCreate(['name' => 'John']);如果不存在只能插入name字段
-
+                    /* 登记服务 */
+                    $service_type_ids_arr = json_decode($request->service_type_ids,true);
+                    if(is_array($service_type_ids_arr))
+                    {
+                        foreach($depart_ids_arr as $val)
+                            OrderService::firstOrCreate(['service_id' => $val['service_type_id'],'user_id'=>\Auth::id()]);
+                    }
+                    /* 登记医院 */
+                    $hospitals_arr = json_decode($request->hospitals,true);
+                    if(is_array($hospitals_arr))
+                    {
+                        foreach($hospitals_arr as $val)
+                        {
+                            $model = Hospital::firstOrCreate(['province'=>$val['province'],'city'=>$val['city'],'hospital'=>$val['hospital']]);
+                            $hospital_id = $model->id;
+                            OrderHospital::firstOrCreate(['hospital_id' => $hospital_id,'user_id'=>\Auth::id()]);
+                        }
+                    }
                     $updata = [
                         'is_agent' => 1,
                         'real_name'=>$request->real_name,
@@ -60,12 +75,11 @@ class AgentController extends Controller
                         'area'=>$request->area,
                     ];
                     User::where('id', \Auth::id())->update($updata);
-                    return response()->json(['code'=>200, 'status' => 1,'message' => '修改成功' ]);
+                    return response()->json(['code'=>200, 'status' => 1,'message' => '登记成功' ]);
                 }
                 else
                     return response()->json(['code'=>200, 'status' => 0,'message' => $result['message'] ]);
 
-                return response()->json(['code' => 200, 'status' => 1, 'message' => 'oh!']);
             } catch (\Exception $e) {
                 return response()->json(['code' => 200, 'status' => 0, 'message' => '服务器异常!']);
             }
