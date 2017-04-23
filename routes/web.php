@@ -64,7 +64,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
     });
     Route::group(['prefix' => 'search', 'namespace' => 'Search'], function () {
         Route::get('/', 'SearchController@index'); // 搜索相关
-
+        Route::get('/{id}', 'SearchController@keywords');// 关键词搜索
     });
 	
     Route::group(['prefix' => 'personal', 'namespace' => 'Personal','middleware' => 'auth'], function () {

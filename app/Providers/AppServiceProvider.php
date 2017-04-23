@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use App\Models\Keyword;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,7 +13,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $keywords = Keyword::all()->toArray();
+        view()->composer('*',function($view) use ($keywords) {
+            $view->with('keywords',$keywords);
+        });
+
     }
 
     /**
