@@ -37,18 +37,18 @@
 			<div class="input-box">
         		<div class="required">*</div>
 				<label for="">真实姓名</label>
-				<input type="text" name="realname" placeholder="请输入真实姓名">
+				<input type="text" name="realname" placeholder="请输入真实姓名" @if (Auth::check()) value="{{ \Auth::user()->real_name }}" @endif>
 			</div>
 			<div class="no-border input-box">
         		<div class="required">*</div>
 				<label>性别</label>
-				<input class="sex-radio" type="radio" name="sex" value="男"><span>男</span>
-				<input class="sex-radio" type="radio" name="sex" value="女"><span>女</span>
+				<input class="sex-radio" type="radio" name="sex" value="男" @if (Auth::check() && \Auth::user()->sex=='男') checked @endif><span>男</span>
+				<input class="sex-radio" type="radio" name="sex" value="女" @if (Auth::check() && \Auth::user()->sex=='女') checked @endif><span>女</span>
 			</div>
 			<div class="input-box">
         		<div class="required">*</div>
 				<label for="email">电子邮箱</label>
-				<input id="email" type="text" name="email" placeholder="请输入电子邮箱">
+				<input id="email" type="text" name="email" placeholder="请输入电子邮箱" @if (Auth::check()) value="{{ \Auth::user()->email }}" @endif>
 				<div class="email-dropdown"></div>
 			</div>
 			<div class="input-box">
