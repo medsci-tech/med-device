@@ -121,4 +121,14 @@ class HomeController extends Controller
     {
         return $this->getDeparts();
     }
+    /**
+     * 科室列表
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function getHospital(Request $request)
+    {
+        return $this->getHospitals($request->all());
+    }
 }
