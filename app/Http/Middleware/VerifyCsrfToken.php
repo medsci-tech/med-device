@@ -13,6 +13,7 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         '/register',
+        '/get-hospital',
         '/product/collect',
         '/login',
         '/product/join',

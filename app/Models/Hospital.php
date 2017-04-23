@@ -9,23 +9,19 @@ use Illuminate\Database\Eloquent\Model;
  * @package App\Models
  * @mixin \Eloquent
  */
-class Supplier extends Model
+class Hospital extends Model
 {
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'suppliers';
-
+    protected $hidden = ['created_at','updated_at','deleted_at','hospital_level','country_id','city_id','city_id','province_id'];
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'supplier_name',
-        'supplier_desc'
+        'province',
+        'city',
+        'area',
+        'hospital'
     ];
     public function products()
     {
