@@ -16,7 +16,7 @@ use App\Http\Requests\Interfaces\CheckAgent;
 use App\Models\CompanyImage;
 class PersonalController extends Controller
 {
-    use CheckResetPwd,CheckResetInfo;
+    use CheckResetPwd,CheckResetInfo,CheckAgent;
     public function index()
     {
 
@@ -130,14 +130,14 @@ class PersonalController extends Controller
                         foreach($depart_ids_arr as $val)
                             OrderDepart::firstOrCreate(['depart_id' => $val['depart_id'],'user_id'=>\Auth::id()]);
                     }
-                    /* 登记服务 */
+                    /* 扩展服务 */
                     $service_type_ids_arr = json_decode($request->service_type_ids,true);
                     if(is_array($service_type_ids_arr))
                     {
                         foreach($depart_ids_arr as $val)
                             OrderService::firstOrCreate(['service_id' => $val['service_type_id'],'user_id'=>\Auth::id()]);
                     }
-                    /* 登记医院 */
+                    /* 扩展医院 */
                     $hospitals_arr = json_decode($request->hospitals,true);
                     if(is_array($hospitals_arr))
                     {
@@ -148,17 +148,7 @@ class PersonalController extends Controller
                             OrderHospital::firstOrCreate(['hospital_id' => $hospital_id,'user_id'=>\Auth::id()]);
                         }
                     }
-                    $updata = [
-                        'is_agent' => 1,
-                        'real_name'=>$request->real_name,
-                        'sex'=>$request->sex,
-                        'email'=>$request->email,
-                        'province'=>$request->province,
-                        'city'=>$request->city,
-                        'area'=>$request->area,
-                    ];
-                    User::where('id', \Auth::id())->update($updata);
-                    return response()->json(['code'=>200, 'status' => 1,'message' => '登记成功' ]);
+                    return response()->json(['code'=>200, 'status' => 1,'message' => '修改成功' ]);
                 }
                 else
                     return response()->json(['code'=>200, 'status' => 0,'message' => $result['message'] ]);
