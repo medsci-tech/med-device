@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Interfaces\CheckResetPwd;
 use App\Models\Product;
 use App\User;
+
 class HomeController extends Controller
 {
     use CheckResetPwd;
@@ -98,5 +99,26 @@ class HomeController extends Controller
         } catch (\Exception $e) {
             return ['code' => 200, 'status' => 0, 'message' => $e->getMessage()];
         }
+    }
+
+    /**
+     * 服务类型
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function getService(Request $request)
+    {
+        return $this->getServices();
+    }
+    /**
+     * 科室列表
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function getDepart(Request $request)
+    {
+        return $this->getDeparts();
     }
 }

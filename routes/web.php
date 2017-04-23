@@ -25,7 +25,8 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
     Route::get('/', 'HomeController@index');//首页
     Route::any('/forget', 'HomeController@forget'); // 忘记密码
     Route::any('/helper', 'HomeController@helper'); // 忘记密码
-    Route::get('/my_page', 'HomeController@my_page');
+    Route::get('/get-service', 'HomeController@getService');//服务类型
+    Route::get('/get-depart', 'HomeController@getDepart');//科室列表
 
     Route::group(['prefix'=>'','middleware'=>'throttle:20'],function(){
         Route::post('/send-code', 'HomeController@sendCode');//发送验证码
