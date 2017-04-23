@@ -33,9 +33,11 @@ class AgentController extends Controller
 
             $data = $request->all();
             $result =$this->checkAgent($request->all());
-            if(\Auth::user()->is_agent)
-                return response()->json(['code' => 200, 'status' => 0, 'message' => '您已经登记过了!']);
-
+            if (\Auth::check())
+            {
+                if(\Auth::user()->is_agent)
+                    return response()->json(['code' => 200, 'status' => 0, 'message' => '您已经登记过了!']);
+            }
             $data['user_id'] = \Auth::id();
             try {
                 if($result['status'] ==1)
