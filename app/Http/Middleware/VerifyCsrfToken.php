@@ -22,6 +22,7 @@ class VerifyCsrfToken extends BaseVerifier
         '/market/store',
         '/personal/pwd-edit',
         'agent/agent-sign',
+        'personal/expertise',
         '/personal/info-edit'
     ];
 }

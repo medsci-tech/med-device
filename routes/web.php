@@ -64,10 +64,10 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
     });
     Route::group(['prefix' => 'search', 'namespace' => 'Search'], function () {
         Route::get('/', 'SearchController@index'); // 搜索相关
-
+        Route::get('/{id}', 'SearchController@keywords');// 关键词搜索
     });
 	
-    Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {
+    Route::group(['prefix' => 'personal', 'namespace' => 'Personal','middleware' => 'auth'], function () {
 
         Route::get('/', 'PersonalController@index');
         Route::get('/collection', 'PersonalController@collection');
@@ -77,7 +77,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
         Route::any('/appointment-detail', 'PersonalController@appointmentDetail');//我的预约
         Route::any('/info-edit', 'PersonalController@infoEdit');// 资料修改
         Route::any('/pwd-edit', 'PersonalController@pwdEdit');// 密码修改
-        Route::get('/expertise', 'PersonalController@expertise');// 个人专长
+        Route::any('/expertise', 'PersonalController@expertise');// 个人专长
         Route::any('/enterprise', 'PersonalController@enterprise');// 企业信息
         Route::get('/about-us', 'PersonalController@aboutUs');
         Route::post('/upload-head', 'PersonalController@uploadHead');// 个人图像上传

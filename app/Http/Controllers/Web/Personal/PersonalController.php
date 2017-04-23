@@ -8,10 +8,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Interfaces\CheckResetPwd;
 use App\Http\Requests\Interfaces\CheckResetInfo;
 use App\User;
+use App\Models\OrderDepart;
+use App\Models\OrderService;
+use App\Models\OrderHospital;
+use App\Models\Hospital;
+use App\Http\Requests\Interfaces\CheckAgent;
 use App\Models\CompanyImage;
 class PersonalController extends Controller
 {
-    use CheckResetPwd,CheckResetInfo;
+    use CheckResetPwd,CheckResetInfo,CheckAgent;
     public function index()
     {
 
@@ -105,6 +110,53 @@ class PersonalController extends Controller
      */
     public function expertise(Request $request)
     {
+        if ($request->isMethod('post')) {
+
+            $data = $request->all();
+            $data['real_name']=\Auth::user()->real_name;
+            $data['province']=\Auth::user()->province;
+            $data['city']=\Auth::user()->city;
+            $data['sex']=\Auth::user()->sex;
+            $data['email']=\Auth::user()->email;
+            $result =$this->checkAgent($data);
+            $data['user_id'] = \Auth::id();
+            try {
+                if($result['status'] ==1)
+                {
+                    /* 扩展科室 */
+                    $depart_ids_arr = json_decode($request->depart_ids,true);
+                    if(is_array($depart_ids_arr))
+                    {
+                        foreach($depart_ids_arr as $val)
+                            OrderDepart::firstOrCreate(['depart_id' => $val['depart_id'],'user_id'=>\Auth::id()]);
+                    }
+                    /* 扩展服务 */
+                    $service_type_ids_arr = json_decode($request->service_type_ids,true);
+                    if(is_array($service_type_ids_arr))
+                    {
+                        foreach($depart_ids_arr as $val)
+                            OrderService::firstOrCreate(['service_id' => $val['service_type_id'],'user_id'=>\Auth::id()]);
+                    }
+                    /* 扩展医院 */
+                    $hospitals_arr = json_decode($request->hospitals,true);
+                    if(is_array($hospitals_arr))
+                    {
+                        foreach($hospitals_arr as $val)
+                        {
+                            $model = Hospital::firstOrCreate(['province'=>$val['province'],'city'=>$val['city'],'hospital'=>$val['hospital']]);
+                            $hospital_id = $model->id;
+                            OrderHospital::firstOrCreate(['hospital_id' => $hospital_id,'user_id'=>\Auth::id()]);
+                        }
+                    }
+                    return response()->json(['code'=>200, 'status' => 1,'message' => '修改成功' ]);
+                }
+                else
+                    return response()->json(['code'=>200, 'status' => 0,'message' => $result['message'] ]);
+
+            } catch (\Exception $e) {
+                return response()->json(['code' => 200, 'status' => 0, 'message' => '服务器异常!']);
+            }
+        }
         return view('web.personal.expertise', ['data' => null]);
     }
     /**

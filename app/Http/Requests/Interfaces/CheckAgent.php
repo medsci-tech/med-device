@@ -22,7 +22,7 @@ trait CheckAgent
         $rules = [
             'real_name' => 'required|max:25',//真实姓名
             'sex' => "required",//类型
-            'email' => 'required|email',
+           // 'email' => 'required|email',
             'province' => 'required',
             'city' => 'required',
            // 'depart_ids' => 'required',//科室
@@ -32,7 +32,7 @@ trait CheckAgent
         $messages = [
             'real_name.required' => '真实姓名不能为空',
             'sex.required' => '性别不能为空',
-            'email.required' => '邮箱不能为空',
+            //'email.required' => '邮箱不能为空',
             'province.required' => 'province省不能为空',
             'city.required' => 'city市不能为空',
            // 'depart_ids.required' => '科室id不能为空',

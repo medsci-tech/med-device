@@ -55,8 +55,9 @@
                 </div>
                 <p class="hot" style="text-align: center;padding-right: 0">
                     热门搜索词：
-                    <a href="search">外科器材</a>
-                    <a href="search">基础器材</a>
+                @foreach ($keywords as $data)
+                        <a href="/search/{{$data['id']}}">{{$data['name']}}</a>
+                @endforeach
                 </p>
             </div>
             <div class="col-md-3 contect" style="padding: 14px 0 0 60px">
