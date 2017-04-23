@@ -32,7 +32,7 @@ class AgentController extends Controller
         if ($request->isMethod('post')) {
 
             $data = $request->all();
-            $result =$this->checkAgent($request->all());
+            $result =$this->checkAgent($data);
             if (\Auth::check())
             {
                 if(\Auth::user()->is_agent)

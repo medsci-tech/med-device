@@ -114,10 +114,11 @@
 			<div class="content business">
 				{!! $data->description !!}
 			</div>
-			<div class="content video"><div id="id_video_container" style="width:100%; height:auto;"></div>;
+			<div class="content video">
+
 				@if($data->videos)
 					@foreach($data->videos as $video)
-
+						<div id="id_video_container_{{ $video->qcloud_file_id }}" style="width:100%;height:360px;"></div>
 					@endforeach
 				@endif
 			</div>
@@ -140,6 +141,17 @@
 <script src="/../js/vendor.js"></script>
 <script src="/../js/product-detail.js"></script>
 <script src="http://qzonestyle.gtimg.cn/open/qcloud/video/h5/h5connect.js"></script>
+<script src="https://qzonestyle.gtimg.cn/open/qcloud/video/h5/h5connect.js" charset="utf-8"></script>
+<script type="text/javascript">
+	(function(){
+		@if($data->videos)
+			@foreach($data->videos as $video)
+	    var option_{{ $video->qcloud_file_id }} ={"auto_play":"0","file_id":"{{ $video->qcloud_file_id }}","app_id":"{{ $video->qcloud_app_id }}","width":640,"height":360,"https":1, "remember": 1};
+	     /*调用播放器进行播放*/
+		new qcVideo.Player( "id_video_container_{{ $video->qcloud_file_id }}", option_{{ $video->qcloud_file_id }});
+			@endforeach
+		@endif
+	})() </script>
 <script>
     //弹出面板
     $('.btn-business').on('click', function () {
@@ -148,21 +160,6 @@
 		@endif
     });
 
-    // 视频播放
-    $(function () {
-        // 腾讯视频
-        var option = {
-            "auto_play": "0",
-            "file_id": "1253586357",
-            "app_id": "9031868222912344050",
-            "width": 700,
-            "height": 500,
-            "remember": 1,
-            "stretch_patch": true,
-        };
-		/*调用播放器进行播放*/
-        new qcVideo.Player("id_video_container", option);
-    });
 
 </script>
 
