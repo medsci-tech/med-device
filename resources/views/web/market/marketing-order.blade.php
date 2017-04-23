@@ -60,7 +60,7 @@
 				<div>
 					<div class="required">*</div>
 					<label for="product-name">产品名称</label>
-					<input id="product-name" type="text" name="name" placeholder="输入产品名称">
+					<input id="product-name" type="text" name="name" placeholder="输入产品名称" @if ($product)value="{{ $product->name }}" @endif>
 				</div>
 				<div>
 					<div class="required">*</div>

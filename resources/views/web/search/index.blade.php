@@ -13,9 +13,9 @@
 				&nbsp;&nbsp;首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页&nbsp;&nbsp;
 				<div class="strip"></div>
 			</a>
-			<a href="product">药械产品招商</a>
-			<a href="market">药械营销服务</a>
-			<a href="agent">药械经纪人</a>
+			<a href="/product">药械产品招商</a>
+			<a href="/market">药械营销服务</a>
+			<a href="/agent">药械经纪人</a>
 		</div>
 	</div>
 
