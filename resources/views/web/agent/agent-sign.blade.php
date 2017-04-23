@@ -101,8 +101,8 @@
 		<div class="btn-panel">选择</div>
 		<img src="/img/broker-sign/u899.png">
 		<p>选择覆盖区域</p>
-		<div class="province"><div></div></div>
-		<div class="city"><div></div></div>
+		<div class="province"><span>请选择</span><div class="drop-item"></div></div>
+		<div class="city"><span>请选择</span><div class="drop-item"></div></div>
 		<input class="search-box" type="text" name="hospital" placeholder="请输入医院名字">
 		<div class="items"></div>
 	</div>

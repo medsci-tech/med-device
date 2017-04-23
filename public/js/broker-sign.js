@@ -8,6 +8,186 @@ webpackJsonp([22],{
 
 $(document).ready(function () {
 
+	//初始化数据
+	var data, originData, province = [], cities = [], hospitals = []
+	$.post({
+		url: '/get-hospital',
+		success : function(data){
+			originData = {
+  "code": 200,
+  "status": 1,
+  "message": "医院列表",
+  "data": [
+    {
+      "id": 11069,
+      "province": "湖北",
+      "city": "武汉",
+      "area": "蔡甸",
+      "hospital": "武汉市蔡甸妇幼保健"
+    },
+    {
+      "id": 11072,
+      "province": "湖南",
+      "city": "武汉",
+      "area": "东西湖",
+      "hospital": "武汉兰青肿瘤医院"
+    },
+    {
+      "id": 11073,
+      "province": "河北",
+      "city": "武汉",
+      "area": "东西湖",
+      "hospital": "武汉明仁中医医院"
+    },
+    {
+      "id": 11088,
+      "province": "湖北",
+      "city": "宜昌",
+      "area": "汉阳",
+      "hospital": "武汉华西医院"
+    }
+  ]
+}
+		}
+	}).then(function(asd){
+		console.log(asd)
+		data = originData.data
+		for (var i = 0; i < data.length; i++) {
+			if (!isRepeat(province, data[i].province)){
+				province.push(data[i].province)
+			}
+		}
+		for (var i = 0; i < province.length; i++) {
+			$('<div>' + province[i] + '</div>').addClass('item').click(function(){
+				var provName = $(this).text()
+				$('.province span').text(provName)
+				$('.city span').text("")
+				filterCity(provName)
+				filterHospital(provName)
+				refreshCityBox()
+				refreshHospitalBox()
+			}).appendTo($('.province .drop-item'))
+		}
+	})
+	function filterCity(province){
+		cities = []
+		for (var i = 0; i < data.length; i++) {
+			if (data[i].province === province && !isRepeat(cities, data[i].city)){
+				cities.push(data[i].city)
+			}
+		}
+	}
+	function filterHospital(province, city){
+		hospitals = []
+		if (city){
+			for (var i = 0; i < data.length; i++) {
+				var dataItem = data[i]
+				if (dataItem.province === province && dataItem.city === city && !isRepeat(hospitals, dataItem.hospital)){
+					hospitals.push(dataItem.hospital)
+				}
+			}
+		} else{
+			for (var i = 0; i < data.length; i++) {
+				var dataItem = data[i]
+				if (dataItem.province === province && !isRepeat(hospitals, dataItem.hospital)){
+					hospitals.push(dataItem.hospital)
+				}
+			}
+		}
+		
+	}
+	function isRepeat(arr, ele){
+		for (var i = 0; i < arr.length; i++) {
+			if (arr[i] === ele){
+				return true
+			}
+		}
+		return false
+	}
+
+	//医院名字筛选搜索
+	$('.search-box').on('keyup', function(){
+		var value = $(this).val()
+		$('.items .item').each(function(){
+			var $name = $(this).children('.name')
+			console.log($name.text())
+			if ($name.text().indexOf(value) === -1){
+				$(this).hide()
+				$(this).children('input')[0].checked = false
+			} else {
+				$(this).show()
+			}
+		})
+	})
+
+	//省市下拉框事件
+	$('.province,.city').click(function(event){
+		event.stopPropagation()
+		$(this).children('.drop-item').slideToggle(160)
+	})
+
+	$('body').click(function(){
+		$('.drop-item').slideUp(160)
+	})
+
+	function refreshHospitalBox(){
+		var container = $('#panel2 .items')
+		container.empty()
+		for (var i = 0; i < hospitals.length; i++){
+			var item_hos = $('<div class="item"><span class="name">' + hospitals[i] + '</span></div>')
+			var checkbox = $('<input type="checkbox">').appendTo(item_hos)
+			item_hos.click(function(){
+				checkbox.click()
+			})
+			checkbox.click(function(){
+				$(this).click()
+			})
+			item_hos.appendTo(container)
+		}
+	}
+
+	function refreshCityBox(){
+		var container = $('.city .drop-item')
+		container.empty()
+		for (var i = 0; i < cities.length; i++) {
+			$('<div>' + cities[i] + '</div>').addClass('item').click(function(){
+				var cityName = $(this).text()
+				$('.city span').text(cityName)
+				filterHospital($('.province span').text(), cityName)
+				refreshHospitalBox()
+			}).appendTo(container)
+		}
+	}
+
+	//选择覆盖区域
+	var container_appendHosItem = function(title){
+		var cancelBtn = $('<span class="icon"><span class="icon2"></span></span>')
+		var item = $('<div class="item" style="display:block"><span class="inner">' + title + '</span></div>').append(cancelBtn).appendTo($('#item-container2'))
+		cancelBtn.click(function(){
+			item.remove()
+		})
+	}
+	$('#panel2 .btn-panel').click(function(){
+		$('#item-container2').empty()
+
+		var $items = $('.items .item');
+		for (var i = 0; i < $items.length; i++) {
+			if ($items.eq(i).children('input')[0].checked){
+				container_appendHosItem($items.eq(i).children('.name').text())
+			}
+		}
+	})
+	$('#hospital').click(function () {
+		$('#panel2').fadeIn();
+		$('.shielder').show();
+	});
+
+
+
+
+
+
+
 	function manager(data, index) {
 		this.data = data;
 		this.index = index;
@@ -146,61 +326,6 @@ $(document).ready(function () {
 		$('item-email').text('');
 	})
 
-	//选择覆盖区域
-	var hospitals = ['武汉同济医院', '武汉大学医院', '武汉大学附属医院', '武汉光谷医院', '武汉大学口腔医院']
-	var panel_appendHosItem = function(title){
-		var item_hos = $('<div class="item"><span class="name">' + title + '</span></div>')
-		var checkbox = $('<input type="checkbox">').appendTo(item_hos)
-		item_hos.click(function(){
-			checkbox.click()
-		})
-		checkbox.click(function(){
-			$(this).click()
-		})
-		item_hos.appendTo($('.items'))
-	}
-	var initHospitals = function(){
-		for (var i = 0; i < hospitals.length; i++){
-			panel_appendHosItem(hospitals[i])
-		}
-	}
-	var container_appendHosItem = function(title){
-		var cancelBtn = $('<span class="icon"><span class="icon2"></span></span>')
-		var item = $('<div class="item" style="display:block"><span class="inner">' + title + '</span></div>').append(cancelBtn).appendTo($('#item-container2'))
-		cancelBtn.click(function(){
-			item.remove()
-		})
-	}
-	$('#panel2 .btn-panel').click(function(){
-		$('#item-container2').empty()
-
-		var $items = $('.items .item');
-		for (var i = 0; i < $items.length; i++) {
-			if ($items.eq(i).children('input')[0].checked){
-				container_appendHosItem($items.eq(i).children('.name').text())
-			}
-		}
-	})
-	$('#hospital').click(function () {
-		$('#panel2').fadeIn();
-		$('.shielder').show();
-	});
-	initHospitals()
-
-	//医院名字筛选搜索
-	$('.search-box').on('keyup', function(){
-		var value = $(this).val()
-		$('.items .item').each(function(){
-			var $name = $(this).children('.name')
-			console.log($name.text())
-			if ($name.text().indexOf(value) === -1){
-				$(this).hide()
-				$(this).children('input')[0].checked = false
-			} else {
-				$(this).show()
-			}
-		})
-	})
 
 });
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
