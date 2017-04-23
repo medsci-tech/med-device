@@ -466,10 +466,43 @@
   left: 46px;
   width: 180px;
   height: 40px;
+  line-height: 40px;
+  padding-left: 20px;
   border: 1px solid #d7d7d7;
 }
 .panel2 .city{
   left: 234px;
+}
+.panel2 .province > div,
+.panel2 .city > div{
+  display: none;
+  position: absolute;
+  width: 100%;
+  max-height: 240px;
+  top: 39px;
+  left: 0;
+  border: 1px solid #d7d7d7;
+  border-top: none;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  z-index: 9
+}
+.panel2 .province > div .item,
+.panel2 .city > div .item{
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  margin: 0;
+  padding-left: 20px;
+  border: none;
+  background-color: #fff;
+  cursor: default;
+}
+.panel2 .province > div .item:hover,
+.panel2 .city > div .item:hover{
+  background-color: #f2f2f2;
+  cursor: default;
+  color: #333
 }
 .panel2 .search-box{
   display: block;
