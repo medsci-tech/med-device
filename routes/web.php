@@ -60,7 +60,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
 
     Route::group(['prefix' => 'agent', 'namespace' => 'Agent'], function () {
         Route::get('/', 'AgentController@index'); // 药械经纪人
-        Route::get('/agent-sign', 'AgentController@agentSign'); // 等记经纪人
+        Route::any('/agent-sign', 'AgentController@agentSign'); // 登记经纪人
     });
     Route::group(['prefix' => 'search', 'namespace' => 'Search'], function () {
         Route::get('/', 'SearchController@index'); // 搜索相关
