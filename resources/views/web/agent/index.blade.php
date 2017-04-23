@@ -9,6 +9,7 @@
 <script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
 <script src="/js/sweetalert/sweetalert.min.js"></script>
 @section('content')
+<div class="container-fluid">
 	<div class="row nav">
 		<div class="col-md-offset-1 col-md-11">
 			<a href="/">&nbsp;&nbsp;首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页&nbsp;&nbsp;</a>
@@ -20,7 +21,8 @@
 			</a>
 		</div>
 	</div>
-
+</div>
+<div class="container-fluid">
 	<div class="row mid">
 		<div class="shielder"></div>
 		<div class="mid-content">
@@ -28,6 +30,7 @@
 			<a class="reserve" @if (!Auth::guest()) href="{{ url('agent/agent-sign') }}" @endif>成为药械经纪人</a>
 		</div>
 	</div>
+</div>
 @endsection
 
 @section('page_js')

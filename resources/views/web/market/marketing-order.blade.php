@@ -96,7 +96,7 @@
 				<div>
 					<div class="required">*</div>
 					<label for="datetimepicker">预约日期</label>
-					<input id="datetimepicker" type="text" name="phone" placeholder="年/月/日">
+					<input id="datetimepicker" type="text" name="phone" placeholder="年/月/日" data-date-format="yyyy-mm-dd">
 				</div>
 				<div>
 					<div class="required">*</div>

@@ -5,9 +5,6 @@
 <title>@yield('title')</title>
 <link rel="stylesheet" type="text/css" href="/style/vendor.css">
 @yield('page_css')
-<style type="text/css">
-    .nav{border-top: 1px solid #dcdcdc}
-</style>
 </head>
 <body>
 <div class="page-wrapper">
@@ -120,6 +117,7 @@
             </div>
         </div>
     </div>
+    <div class="container-fulid" style="border-bottom: 1px solid #dcdcdc"></div>
     @yield('content')
     <div class="container-fulid">
         <div class="row footer">

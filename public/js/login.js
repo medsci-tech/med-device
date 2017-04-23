@@ -20,7 +20,26 @@ module.exports = __webpack_require__(33);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+$(document).ready(function(){
 
+	$('#submit').click(function(){
+		var name = $('#name').val()
+		var password = $('#password').val()
+		var remember = $('#remember')[0].checked
+		$.ajax({
+			url : '/login',
+			data : {
+				name : name,
+				password : password,
+				remember : remember
+			},
+			success : function(data){
+				
+			}
+		})
+	})
+
+})
 
 /***/ })
 

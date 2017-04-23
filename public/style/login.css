@@ -83,6 +83,7 @@
   font-size: 18px;
   border-radius: 6px;
   background-color: #01b9fe;
+  cursor: pointer;
 }
 .panel p {
   text-align: center;

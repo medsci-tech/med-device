@@ -66,6 +66,14 @@ $(document).ready(function () {
 	$('#drop-type li').on('click', function (e) {
 		$('#service-type').val($(e.target).text());
 	});
+
+	$('#datetimepicker').datetimepicker({
+	    minView: "month", //选择日期后，不会再跳转去选择时分秒 
+　　format: "yyyy-mm-dd", //选择日期后，文本框显示的日期格式 
+　　language: 'zh-CN', //汉化 
+　　autoclose:true //选择日期后自动关闭 
+	});
+
 });
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 

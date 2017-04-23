@@ -50,21 +50,21 @@
 				<div class="form">
 					
 					<h4>覆盖科室（可添加多个）</h4>
-					<div id="item-container1" class="item-container"></div>
-					<div id="department" class="btn-choose">选择科室</div>
-					<div class="separate-line"></div>
-		
-					<h4>覆盖医院（可添加多个）</h4>
-					<div id="item-container2" class="item-container"></div>
-					<div id="hospital" class="btn-choose">选择医院</div>
-					<div class="separate-line"></div>
-		
-					<h4>擅长服务类型（可添加多个）</h4>
-					<div id="item-container3" class="item-container"></div>
-					<div id="service" class="btn-choose">选择服务</div>
-					<div class="separate-line"></div>
-		
-					<input class="submit" type="submit" name="submit" value="确定">
+			<div id="item-container1" class="item-container"></div>
+			<div id="department" class="btn-choose">选择科室</div>
+			<div class="separate-line"></div>
+
+			<h4>覆盖医院（可添加多个）</h4>
+			<div id="item-container2" class="item-container"></div>
+			<div id="hospital" class="btn-choose">选择医院</div>
+			<div class="separate-line"></div>
+
+			<h4>擅长服务类型（可添加多个）</h4>
+			<div id="item-container3" class="item-container"></div>
+			<div id="service" class="btn-choose">选择服务</div>
+			<div class="separate-line"></div>
+
+			<input class="submit" type="submit" name="submit" value="确定">
 
 				</div>
 			</div>
@@ -80,17 +80,21 @@
 <div class="shielder"></div>
 <div id="panel1" class="panel panel1">
 	<div class="btn-panel">选择</div>
-	<img src="img/broker-sign/u899.png">
+	<img src="/img/broker-sign/u899.png">
 	<p>选择科室(可添加多个）</p>
 </div>
 <div id="panel2" class="panel panel2">
 	<div class="btn-panel">选择</div>
-	<img src="img/broker-sign/u899.png">
+	<img src="/img/broker-sign/u899.png">
 	<p>选择覆盖区域</p>
+	<div class="province"><span>请选择</span><div class="drop-item"></div></div>
+	<div class="city"><span>请选择</span><div class="drop-item"></div></div>
+	<input class="search-box" type="text" name="hospital" placeholder="请输入医院名字">
+	<div class="items"></div>
 </div>
 <div id="panel3" class="panel panel3">
 	<div class="btn-panel">选择</div>
-	<img src="img/broker-sign/u899.png">
+	<img src="/img/broker-sign/u899.png">
 	<p>选择服务类型(可添加多个）</p>
 </div>
 @endsection
