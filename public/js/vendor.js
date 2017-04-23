@@ -264,6 +264,7 @@ var
 	fcamelCase = function( all, letter ) {
 		return letter.toUpperCase();
 	};
+	window.jQuery = window.$ = jQuery;
 
 jQuery.fn = jQuery.prototype = {
 
