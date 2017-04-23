@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Web\Agent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\User;
+use App\Models\OrderDepart;
+use App\Models\OrderService;
+use App\Models\OrderHospital;
 use App\Http\Requests\Interfaces\CheckAgent;
 class AgentController extends Controller
 {
@@ -35,12 +39,27 @@ class AgentController extends Controller
             try {
                 if($result['status'] ==1)
                 {
+                    /* 登记科室 */
+                    $depart_ids_arr = json_decode($request->depart_ids,true);
+                    if(is_array($depart_ids_arr))
+                    {
+                        foreach($depart_ids_arr as $val)
+                            $user = User::firstOrCreate(['name' => 'John']);如果不存在只能插入name字段
 
+
+                    }
                    // $user = User::firstOrCreate(['name' => 'John']);如果不存在只能插入name字段
 
-                    $user = \Auth::user();
-                    $user->is_agent =1; // 标记已登记
-                   // $user->save();
+                    $updata = [
+                        'is_agent' => 1,
+                        'real_name'=>$request->real_name,
+                        'sex'=>$request->sex,
+                        'email'=>$request->email,
+                        'province'=>$request->province,
+                        'city'=>$request->city,
+                        'area'=>$request->area,
+                    ];
+                    User::where('id', \Auth::id())->update($updata);
                     return response()->json(['code'=>200, 'status' => 1,'message' => '修改成功' ]);
                 }
                 else

@@ -25,9 +25,9 @@ trait CheckAgent
             'email' => 'required|email',
             'province' => 'required',
             'city' => 'required',
-            'depart_ids' => 'required',//科室
-            'service_type_ids' => 'required',//服务类型
-            'hospitals' => 'required',//省市区医院
+           // 'depart_ids' => 'required',//科室
+            //'service_type_ids' => 'required',//服务类型
+           // 'hospitals' => 'required',//省市区医院
         ];
         $messages = [
             'real_name.required' => '真实姓名不能为空',
@@ -35,17 +35,17 @@ trait CheckAgent
             'email.required' => '邮箱不能为空',
             'province.required' => 'province省不能为空',
             'city.required' => 'city市不能为空',
-            'depart_ids.required' => '科室id不能为空',
-            'service_type_ids.required' => '服务类型id不能为空',
-            'hospitals.required' => '省市区医院不能为空',
+           // 'depart_ids.required' => '科室id不能为空',
+           // 'service_type_ids.required' => '服务类型id不能为空',
+           // 'hospitals.required' => '省市区医院不能为空',
         ];
         $validator = \Validator::make($data, $rules, $messages);
         $validator->after(function($validator) use ($data) {
-            if (!$this->is_json($data['depart_ids']))
+            if (!$this->is_json($data['depart_ids']) && $data['depart_ids'])
                 $validator->errors()->add('depart_ids', 'depart_ids无效的json');
-            if (!$this->is_json($data['service_type_ids']))
+            if (!$this->is_json($data['service_type_ids'])  && $data['service_type_ids'])
                 $validator->errors()->add('service_type_ids', 'service_type_ids无效的json');
-            if (!$this->is_json($data['hospitals']))
+            if (!$this->is_json($data['hospitals']) && $data['hospitals'])
                 $validator->errors()->add('hospitals', 'hospitals无效的json');
     });
         $validator_error_first = $validator->errors()->first();
