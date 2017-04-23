@@ -39,7 +39,7 @@ class ProductController extends Controller
             abort(404);
         }
 
-        return view('web.product.detail')->with(['data' => $data,'data_similar' => $data_similar]);
+        return view('web.product.detail')->with(['data' => $data,'data_similar' => $data_similar,'id'=>$id]);
     }
 
     /**

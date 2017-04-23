@@ -97,7 +97,7 @@
 	</div>
 
 	<div class="row">
-		<div class="order-now col-md-offset-1 col-md-10"><a href="{{ url('market/marketing-order',['id'=>222]) }}">立刻预约></a></div>
+		<div class="order-now col-md-offset-1 col-md-10"><a href="{{ url('market/marketing-order?id='.$id) }}">立刻预约></a></div>
 	</div>
 
 	<div class="row">
@@ -159,8 +159,6 @@
         sweetAlert("您还没有登录!");
 		@endif
     });
-
-
 </script>
 
 

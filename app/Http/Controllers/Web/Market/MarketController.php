@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Market;
 
 use App\Models\ServiceType;
 use App\Models\Appointment;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -26,11 +27,17 @@ class MarketController extends Controller
      */
     public function marketingOrder(Request $request)
     {
+        $id = $request->id;
         $model = new ServiceType();
         $data = $model->lists($type=['type'=>1]); // 服务类型
+        if($id)
+            $product = Product::find($id);
+        else
+            $product = null;
 
         return view('web.market.marketing-order')->with([
-            'data' => $data
+            'data' => $data,
+            'product' => $product
         ]);
     }
 

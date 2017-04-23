@@ -85,9 +85,8 @@ class HomeController extends Controller
 
             $code = \Helper::generateMessageVerify();
             $phone = $request->phone;
-            //$res = \Helper::sendCode($phone,$code);
+            $res = \Helper::sendCode($phone,$code);
 
-            $res=['msg'=>'ok'];//临时
             if($res['msg']=='ok')
             {
                 \Cache::put($phone, $code,2);
