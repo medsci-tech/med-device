@@ -41,11 +41,11 @@ trait CheckAgent
         ];
         $validator = \Validator::make($data, $rules, $messages);
         $validator->after(function($validator) use ($data) {
-            if (!$this->is_json($data['depart_ids']) && $data['depart_ids'])
+            if (isset($data['depart_ids']) && !$this->is_json($data['depart_ids']))
                 $validator->errors()->add('depart_ids', 'depart_ids无效的json');
-            if (!$this->is_json($data['service_type_ids'])  && $data['service_type_ids'])
+            if (isset($data['service_type_ids']) &&  !$this->is_json($data['service_type_ids']))
                 $validator->errors()->add('service_type_ids', 'service_type_ids无效的json');
-            if (!$this->is_json($data['hospitals']) && $data['hospitals'])
+            if (isset($data['hospitals']) && !$this->is_json($data['hospitals']))
                 $validator->errors()->add('hospitals', 'hospitals无效的json');
     });
         $validator_error_first = $validator->errors()->first();
