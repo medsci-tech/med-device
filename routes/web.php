@@ -67,7 +67,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
 
     });
 	
-    Route::group(['prefix' => 'personal', 'namespace' => 'Personal'], function () {
+    Route::group(['prefix' => 'personal', 'namespace' => 'Personal','middleware' => 'auth'], function () {
 
         Route::get('/', 'PersonalController@index');
         Route::get('/collection', 'PersonalController@collection');
