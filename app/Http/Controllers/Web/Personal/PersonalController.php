@@ -15,6 +15,7 @@ use App\Models\OrderHospital;
 use App\Models\Hospital;
 use App\Http\Requests\Interfaces\CheckAgent;
 use App\Models\CompanyImage;
+use App\Models\Appointment;
 class PersonalController extends Controller
 {
     use CheckResetPwd,CheckResetInfo,CheckAgent;
@@ -48,11 +49,19 @@ class PersonalController extends Controller
         $list = $user->cooperationsWithProducts()->paginate(config('params')['paginate']);
         return view('web.personal.cooperation', ['list' => $list]);
     }
-
-    public function appointment()
+    /**
+     * 预约列表
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function appointment(Request $request)
     {
-
-        return view('web.personal.appointment', ['data' => null]);
+        $user = \Auth::user();
+        $where= ['status'=>$request->status];
+        $count = Appointment::where($where)->count();
+        $list = Appointment::where(['user_id'=>$user->id])->paginate(config('params')['paginate']);
+        return view('web.personal.appointment', ['list' => $list,'count'=>$count]);
     }
     /**
      * 合作详情
@@ -65,7 +74,6 @@ class PersonalController extends Controller
         try {
             $id = $request->id;
             $data = Product::find($id);
-
         }
         catch (\Exception $e) {
             abort(404);
