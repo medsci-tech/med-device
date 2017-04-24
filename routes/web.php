@@ -68,7 +68,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
 
         Route::get('/cooperation', 'PersonalController@cooperation');//我的合作
         Route::get('/appointment', 'PersonalController@appointment');//我的预约
-        Route::any('/appointment-detail', 'PersonalController@appointmentDetail');//我的预约
+        Route::any('/appointment-detail/{id}', 'PersonalController@appointmentDetail');//我的预约
         Route::any('/info-edit', 'PersonalController@infoEdit');// 资料修改
         Route::any('/pwd-edit', 'PersonalController@pwdEdit');// 密码修改
         Route::any('/expertise', 'PersonalController@expertise');// 个人专长

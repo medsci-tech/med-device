@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Web\Personal;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -35,11 +36,17 @@ class PersonalController extends Controller
 
         return view('web.personal.collection', ['list' => $list]);
     }
-
+    /**
+     * 个人合作列表
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
     public function cooperation()
     {
-
-        return view('web.personal.cooperation', ['data' => null]);
+        $user = \Auth::user();
+        $list = $user->cooperationsWithProducts()->paginate(config('params')['paginate']);
+        return view('web.personal.cooperation', ['list' => $list]);
     }
 
     public function appointment()
@@ -47,10 +54,23 @@ class PersonalController extends Controller
 
         return view('web.personal.appointment', ['data' => null]);
     }
-    public function appointmentDetail()
+    /**
+     * 合作详情
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function appointmentDetail(Request $request)
     {
+        try {
+            $id = $request->id;
+            $data = Product::find($id);
 
-        return view('web.personal.appointment-detail', ['data' => null]);
+        }
+        catch (\Exception $e) {
+            abort(404);
+        }
+        return view('web.personal.appointment-detail', ['data' => Product::find($request->id)]);
     }
     /**
      * 个人资料修改

@@ -24,5 +24,9 @@ class Cooperation extends Model
         'contact_phone',
         'work_type',
     ];
+    public function products()
+    {
+        return $this->belongsToMany(\App\Models\Product::class, 'cooperations', 'id', 'product_id');
+    }
 
 }
