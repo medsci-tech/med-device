@@ -21,7 +21,7 @@
 
 	<div class="row nav2">
 		<div class="col-md-offset-1 col-md-11">
-			关于 &nbsp;<span>{{ $keyword  }}</span> &nbsp;的搜索结果共&nbsp; <span>8</span> &nbsp;个
+			关于 &nbsp;<span>{{ $keyword  }}</span> &nbsp;的搜索结果共&nbsp; <span>{{ $count or 0  }}</span> &nbsp;个
 		</div>
 	</div>
 
