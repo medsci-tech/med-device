@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'paginate'=>2,
     // 合作类型
     'join_type' => [
         1 => '代理产品',

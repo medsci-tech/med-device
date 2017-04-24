@@ -8,17 +8,26 @@ use App\Http\Requests;
 use App\Models\Product;
 use App\Models\Cooperation;
 use App\Models\Collection;
+use App\Models\Category;
 use App\Http\Requests\Interfaces\CheckCollection;
 use App\Http\Requests\StoreCooperation;
 class ProductController extends Controller
 {
-
     use CheckCollection;
     public function index(Request $request)
     {
-        return view('web.product.index')->with([
-            'result' => json_encode('test')
-        ]);
+        $id = $request->id;
+        $where = ['category_id'=>$id];
+        $keyword = $request->keyword;
+        $catogary =  Category::orderBy('id')->get();
+
+        if(!$id)
+            unset($where['category_id']);
+        $product = Product::where($where)->paginate(config('params')['paginate']);
+
+
+        return view('web.product.index', compact('product','keyword','catogary'));
+
     }
 
     /**

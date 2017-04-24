@@ -1,0 +1,2 @@
+[21-Apr-2017 05:51:26 UTC] PHP Warning:  move_uploaded_file(D:\web\med-device\public/uploads/092656d2fwzfbz131a2eqf.jpg): failed to open stream: No such file or directory in D:\web\med-device\public\js\uploadify\uploadify.php on line 23
+[21-Apr-2017 05:51:26 UTC] PHP Warning:  move_uploaded_file(): Unable to move 'C:\Users\ming\AppData\Local\Temp\phpE982.tmp' to 'D:\web\med-device\public/uploads/092656d2fwzfbz131a2eqf.jpg' in D:\web\med-device\public\js\uploadify\uploadify.php on line 23

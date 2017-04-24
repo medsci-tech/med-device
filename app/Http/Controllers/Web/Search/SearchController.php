@@ -6,15 +6,21 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Models\Keyword;
+use App\Models\Product;
 class SearchController extends Controller
 {
 
-
+    /**
+     * 搜索列表
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
     public function index(Request $request)
     {
-        return view('web.search.index')->with([
-            'result' => json_encode('test')
-        ]);
+        $keyword = $request->keyword;
+        $product = Product::where('name','like','%'.$keyword.'%')->paginate(config('params')['paginate']);
+        return view('web.search.index', compact('product','keyword'));
     }
 
     /**

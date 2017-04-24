@@ -39,19 +39,13 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
         Route::get('/detail/{id}', 'ProductController@detail');# 产品宣传页
         Route::post('collect', 'ProductController@collect');# 产品收藏
         Route::post('join', 'ProductController@join');# 合作意向
+        Route::get('/category/{id}', 'ProductController@index');// 分类产品
     });
 
     Route::group(['prefix' => 'market', 'namespace' => 'Market'], function () {
         Route::get('/', 'MarketController@index'); // 药械营销服务
         Route::get('/marketing-order', 'MarketController@marketingOrder'); // 药械营销服务
         Route::post('/store', 'MarketController@store'); // 预约服务提交
-
-        Route::group(['prefix' => 'order'], function () {
-            Route::get('/', 'OrderController@index');
-            Route::post('generate-config', 'OrderController@generateConfig');
-            Route::post('create', 'OrderController@create');
-            Route::get('/{id}', 'OrderController@detail');
-        });
 
         // Route::get('/yiyuan-commodity/{id}', 'CommodityController@yiyuanShow');
         // Route::resource('/commodity', 'CommodityController');

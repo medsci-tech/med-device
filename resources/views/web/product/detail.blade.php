@@ -5,10 +5,8 @@
 @section('page_css')
 <link rel="stylesheet" type="text/css" href="/../style/vendor.css">
 <link rel="stylesheet" type="text/css" href="/../../style/product-detail.css">
-<link rel="stylesheet" type="text/css" href="/js/sweetalert/sweetalert.css">
 @endsection
-<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
-<script src="/js/sweetalert/sweetalert.min.js"></script>
+
 @section('content')
 	<div class="row nav">
 		<div class="col-md-offset-1 col-md-11">
@@ -146,7 +144,7 @@
 	(function(){
 		@if($data->videos)
 			@foreach($data->videos as $video)
-	    var option_{{ $video->qcloud_file_id }} ={"auto_play":"0","file_id":"{{ $video->qcloud_file_id }}","app_id":"{{ $video->qcloud_app_id }}","width":640,"height":360,"https":1, "remember": 1};
+	    var option_{{ $video->qcloud_file_id }} ={"auto_play":"0","file_id":"{{ $video->qcloud_file_id }}","app_id":"{{ $video->qcloud_app_id }}","width":1024,"height":576,"https":1, "remember": 1};
 	     /*调用播放器进行播放*/
 		new qcVideo.Player( "id_video_container_{{ $video->qcloud_file_id }}", option_{{ $video->qcloud_file_id }});
 			@endforeach
