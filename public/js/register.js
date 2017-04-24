@@ -46,6 +46,11 @@ $(document).ready(function () {
 
 	//获取手机验证码
 	$('#getCaptcha').click(function(){
+		var self = $(this)
+		setTimeout(function(){
+			self.text('发送中...')
+		},100)
+
 		$.ajax({
 			url : '/send-code',
 			type : 'post',
@@ -53,13 +58,19 @@ $(document).ready(function () {
 				phone : $('#phone').val()
 			},
 			success : function(data){
-				alert(data.message)
+				if (data.status === 1){
+					self.text('已发送')
+				} else {
+					self.text('获取验证码')
+					alert(data.message)
+				}
 			}
 		})
 	})
 
 	//点击注册
 	$('#submit').click(function(){
+
 		var name = $('#name').val()
 		var password = $('#password').val()
 		var password_confirmation = $('#password_confirmation').val()

@@ -391,9 +391,11 @@
   clear: both;
 }
 .similar .item {
+  position: relative;
   display: inline-block;
   padding: 34px 20px;
   width: 22%;
+  height: 340px;
   min-width: 200px;
   margin: 10px;
   color: #6B6B6B;
@@ -406,14 +408,22 @@
   width: 84%;
   margin: 0 auto 20px;
 }
-.similar .item span {
+.similar .item .price-num{
+  position: absolute;
+  bottom: 74px;
+  left: 100px;
+  font-size: 19px;
   color: #FF6633;
 }
 .similar .item .price-type{
-  color: #999;
+  position: absolute;
+  bottom: 76px;
+  left: 20px;
+  font-size: 15px;
 }
-.similar .item .price-num {
-  font-size: 24px;
+.similar .item p{
+  position: absolute;
+  top: 270px;
 }
 /* footer */
 .footer {

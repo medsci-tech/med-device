@@ -1,6 +1,13 @@
 .header {
   background-color: #01a4e4;
 }
+li.dropdown{
+  display: block;
+  margin-top: 14px
+}
+li.dropdown > a{
+  color: white;
+}
 .btn-login,
 .btn-register {
   display: inline-block;
@@ -207,15 +214,16 @@
 }
 .products .item .price-num{
   position: absolute;
-  bottom: 72px;
-  left: 82px;
-  font-size: 24px;
+  bottom: 74px;
+  left: 100px;
+  font-size: 19px;
   color: #FF6633;
 }
 .products .item .price-type{
   position: absolute;
   bottom: 76px;
   left: 20px;
+  font-size: 15px;
 }
 .products .item p{
   position: absolute;

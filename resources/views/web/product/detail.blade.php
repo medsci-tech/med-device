@@ -88,7 +88,7 @@
 					<div class="value">{{ $data->stock  }}</div>
 				</div>
 				<div class="btn-business">我要合作</div>
-				<div class="save">&nbsp;&nbsp;&nbsp;收藏</div>
+				<div id="save" class="save">&nbsp;&nbsp;&nbsp;收藏</div>
 			</div>
 		</div>
 		<div class="col-md-1"></div>
@@ -104,7 +104,7 @@
 				<div class="tabset-tab focus">产品详情</div>
 				<div class="tabset-tab">招商信息</div>
 				<div class="tabset-tab">教育视频</div>
-				<div class="tabset-tab">同类产品</div>
+				<div class="tabset-tab">相关产品</div>
 			</div>
 			<div class="content product-detail">
 				{!! $data->detail !!}
@@ -125,6 +125,9 @@
 					@foreach ($data_similar as $val)
 						<div class="col-md-2 item">
 							<a href="{{ url('product/detail/'.$val->id) }}" target="_blank"><img src="{{ $val->logo }}?imageView2/1/w/220/h/220/q/90"></a>
+							<span class="price-type">零售价格</span>
+                			<span class="price-num" style="left: 82px">￥</span>
+							<span class="price-num">{{ $val->price }}</span>
 							<p>{{ $val->name }}</p>
 						</div>
 					@endforeach

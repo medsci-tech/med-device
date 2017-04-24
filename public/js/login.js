@@ -26,19 +26,29 @@ $(document).ready(function(){
 		var name = $('#name').val()
 		var password = $('#password').val()
 		var remember = $('#remember')[0].checked
+		var data = {
+			name : name,
+			password : password,
+			remember : remember
+		}
 		$.ajax({
 			url : '/login',
 			type : 'post',
-			data : {
-				name : name,
-				password : password,
-				remember : remember
-			},
+			data : data,
 			success : function(data){
-				alert(data.message)
-				console.log(data)
+				if (data.status === 1){
+					location.href = '/'
+				} else{
+					alert(data.message)
+				}
 			}
 		})
+	})
+
+	$(document).on('keydown', function(e){
+		if (e.keyCode === 13){
+			$('#submit').click()
+		}
 	})
 
 })

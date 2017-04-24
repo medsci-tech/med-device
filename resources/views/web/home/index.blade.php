@@ -45,6 +45,7 @@
 
                 <a href="{{ url('product/detail/'.$val->id) }}" target="_blank"><img src="{{ $val->logo }}?imageView2/1/w/220/h/220/q/90"></a><p>{{ $val->name }}</p>
                 <span class="price-type">零售价格</span>
+                <span class="price-num" style="left: 82px">￥</span>
                 <span class="price-num">{{ $val->price }}</span>
                 <p>{{ $val->name }}</p>
             </div>

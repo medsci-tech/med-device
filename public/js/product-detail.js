@@ -32,7 +32,8 @@ $(document).ready(function () {
 	});
 
 	//收藏按钮效果
-	$('.save').on('click', function () {
+	$('#save').on('click', function (event) {
+		event.stopPropagation()
 		$(this).toggleClass('save-focus');
 	});
 
