@@ -5,10 +5,8 @@
 @section('page_css')
 <link rel="stylesheet" type="text/css" href="/../style/vendor.css">
 <link rel="stylesheet" type="text/css" href="/../../style/product-detail.css">
-<link rel="stylesheet" type="text/css" href="/js/sweetalert/sweetalert.css">
 @endsection
-<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
-<script src="/js/sweetalert/sweetalert.min.js"></script>
+
 @section('content')
 	<div class="row nav">
 		<div class="col-md-offset-1 col-md-11">
@@ -26,9 +24,9 @@
 		<div class="col-md-offset-1 col-md-11">
 			<a href="/product">所有产品</a>
 			<a>></a>
-			<a>胰岛素</a>
+			<a>{{ $data->category->name or '全部' }}</a>
 			<a>></a>
-			<a id="product-name">诺和笔5胰岛素笔式数显注射器</a>
+			<a id="product-name">{{ $data->name }}</a>
 		</div>
 	</div>
 
@@ -115,10 +113,10 @@
 				{!! $data->description !!}
 			</div>
 			<div class="content video">
-
+				<!-- 视频加载 -->
 				@if($data->videos)
 					@foreach($data->videos as $video)
-						<div id="id_video_container_{{ $video->qcloud_file_id }}" style="width:100%;height:360px;"></div>
+						<div id="id_video_container_{{ $loop->index }}" style="width:100%;height:360px;"></div>
 					@endforeach
 				@endif
 			</div>
@@ -146,12 +144,13 @@
 	(function(){
 		@if($data->videos)
 			@foreach($data->videos as $video)
-	    var option_{{ $video->qcloud_file_id }} ={"auto_play":"0","file_id":"{{ $video->qcloud_file_id }}","app_id":"{{ $video->qcloud_app_id }}","width":640,"height":360,"https":1, "remember": 1};
+	    var option_{{ $loop->index }} ={"auto_play":"0","file_id":"{{ $video->qcloud_file_id }}","app_id":"{{ $video->qcloud_app_id }}","width":1024,"height":576,"https":1, "remember": 1};
 	     /*调用播放器进行播放*/
-		new qcVideo.Player( "id_video_container_{{ $video->qcloud_file_id }}", option_{{ $video->qcloud_file_id }});
+		new qcVideo.Player( "id_video_container_{{ $loop->index }}", option_{{ $loop->index }});
 			@endforeach
 		@endif
-	})() </script>
+	})()
+</script>
 <script>
     //弹出面板
     $('.btn-business').on('click', function () {

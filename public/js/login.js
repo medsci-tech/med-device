@@ -28,13 +28,15 @@ $(document).ready(function(){
 		var remember = $('#remember')[0].checked
 		$.ajax({
 			url : '/login',
+			type : 'post',
 			data : {
 				name : name,
 				password : password,
 				remember : remember
 			},
 			success : function(data){
-				
+				alert(data.message)
+				console.log(data)
 			}
 		})
 	})

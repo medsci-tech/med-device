@@ -200,7 +200,7 @@
 
                             <div class="am-u-sm-3"><input type="text" value="{{$video->qcloud_app_id}}" readonly>
                             </div>
-                            <div class="am-u-sm-3"><input type="text" value="{{$video->qcloud_app_id}}" readonly>
+                            <div class="am-u-sm-3"><input type="text" value="{{$video->qcloud_file_id}}" readonly>
                             </div>
                             <div class="am-u-sm-3 am-btn-toolbar">
                                 <a href="/admin/video/{{$video->id}}/edit"

@@ -4,7 +4,13 @@
 <meta charset="utf-8">
 <title>@yield('title')</title>
 <link rel="stylesheet" type="text/css" href="/style/vendor.css">
+<link rel="stylesheet" type="text/css" href="/js/sweetalert/sweetalert.css">
 @yield('page_css')
+<style type="text/css">
+    .nav{border-top: 1px solid #dcdcdc}
+</style>
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/sweetalert/sweetalert.min.js"></script>
 </head>
 <body>
 <div class="page-wrapper">
@@ -47,16 +53,18 @@
                 <p>互联网医药信息服务证：9982561</p>
             </div>
             <div class="col-md-6">
+                <form  method="get" action="{{url('search')}}" name="searchForm">
                 <div class="searcher">
                     <div class="input">
-                        <input type="text" name="product" placeholder="输入产品名称">
+                        <input type="text" id="keyword" name="keyword" placeholder="输入产品名称">
                     </div>
-                    <div class="button">搜索</div>
+                    <div class="button" onclick="SendForm();" style="cursor: pointer">搜索</div>
                 </div>
+                </form>
                 <p class="hot" style="text-align: center;padding-right: 0">
                     热门搜索词：
                 @foreach ($keywords as $data)
-                        <a href="/search/{{$data['id']}}">{{$data['name']}}</a>
+                        <a href="{{ url('search/'.$data['id']) }}">{{$data['name']}}</a>
                 @endforeach
                 </p>
             </div>
@@ -152,6 +160,28 @@
 </div>
 @yield('panel')
 <script src="/js/vendor.js"></script>
+<script>
+    function SendForm ()
+    {
+        if(CheckPost())
+        {
+            document.searchForm.submit();
+        }
+    }
+
+    function CheckPost ()
+    {
+        if (searchForm.keyword.value == "")
+        {
+            sweetAlert("请输入搜索关键词!");
+            searchForm.keyword.focus();
+            return false;
+        }
+
+        return true;
+    }
+
+</script>
 @yield('page_js')
 </body>
 </html>

@@ -43,7 +43,7 @@
 		<div class="content col-md-8">
 			<div class="infomanager">
 				<div class="panel">信息管理</div>
-				<img src="{{ isset(\Auth::user()->head_img) ? \Auth::user()->head_img.'?imageView2/1/w/120/h/120/q/90' : '' }}">
+				<img src="{{ isset(\Auth::user()->head_img) ? \Auth::user()->head_img.'?imageView2/1/w/120/h/120/q/90' : config('params')['default_head'].'?imageView2/1/w/120/h/120/q/90' }}">
 				<div class="welcome">
 					<p>尊敬的&nbsp;<span id="name" class="name">{{ \Auth::user()->name }}</span>&nbsp;您好，欢迎您回来!</p>
 					<a href="/personal/info-edit">基本信息</a><span>（未完善）</span>
@@ -54,8 +54,8 @@
 			<div class="mymessage">
 				<div class="panel">我的消息</div>
 				<div class="item-message">
-					<span class="time">2017-3-31 12：00</span>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
+					<span class="time">{{ \Auth::user()->created_at  }}</span>
+					<p>欢迎注册药械通</p>
 				</div>
 			</div>
 		</div>

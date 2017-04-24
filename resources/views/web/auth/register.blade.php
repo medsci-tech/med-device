@@ -89,36 +89,36 @@
 <div class="row">
   <div class="form-area">
     <h2 class="title">欢迎注册</h2>
-    <form class="form" action="" method="POST">
+    <form class="form">
       <div>
         <div class="required">*</div>
-        <label for="">用户名</label>
-        <input type="text" name="name" placeholder="您的账户名和登录名" required>
+        <label>用户名</label>
+        <input id="name" type="text" name="name" placeholder="您的账户名和登录名" required>
       </div>
       <div>
         <div class="required">*</div>
-        <label for="">设置密码</label>
-        <input type="password" name="password" placeholder="请输入密码">
+        <label>设置密码</label>
+        <input id="password" type="password" name="password" placeholder="请输入密码" required>
       </div>
       <div>
         <div class="required">*</div>
-        <label for="">确认密码</label>
-        <input type="password" name="confirm" placeholder="请再次输入密码">
+        <label>确认密码</label>
+        <input id="password_confirmation" type="password" name="password_confirmation" placeholder="请再次输入密码" required>
       </div>
       <div>
         <div class="required">*</div>
-        <label for="">手机号</label>
-        <input type="text" name="phone" placeholder="建议使用常用手机">
+        <label>手机号</label>
+        <input id="phone" type="text" name="phone" placeholder="建议使用常用手机" required>
       </div>
       <div class="captcha">
         <div class="required">*</div>
-        <label for="">验证码</label>
-        <input type="text" name="captcha" placeholder="请输入手机验证码">
+        <label>验证码</label>
+        <input id="code" type="text" name="code" placeholder="请输入手机验证码" required>
         <div id="getCaptcha">获取验证码</div>
       </div>
       <div>
-        <label for="">真实姓名</label>
-        <input type="text" name="realname" placeholder="请输入真实姓名">
+        <label>真实姓名</label>
+        <input id="real_name" type="text" name="real_name" placeholder="请输入真实姓名">
       </div>
       <div class="no-border">
         <label>性别</label>
@@ -126,17 +126,17 @@
         <input class="sex-radio" type="radio" name="sex" value="女"><span>女</span>
       </div>
       <div>
-        <label for="">电子邮箱</label>
-        <input type="text" name="email" placeholder="请输入电子邮箱">
+        <label>电子邮箱</label>
+        <input id="email" type="text" name="email" placeholder="请输入电子邮箱">
       </div>
       <div>
-        <label for="">工作区域</label>
+        <label>工作区域</label>
       </div>
       <div class="no-border">
-        <input class="confirm-agree" type="checkbox" name="agree" checked>
+        <input id="agree" class="confirm-agree" type="checkbox" name="agree" checked>
         <span>我同意</span><a data-toggle="modal" data-target="#myModal" style="cursor: pointer;">药械通用户服务协议</a>
       </div>
-      <input class="submit" type="submit" name="submit" value="注册">
+      <div id="submit" class="submit" style="cursor: pointer;">注册</div>
       <p>已有账号？ <a href="login">请登录</a></p>
     </form>
   </div>
@@ -168,7 +168,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
       </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal -->
+    </div>
+  </div>
 </div>
 @endsection

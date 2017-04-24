@@ -21,9 +21,15 @@ class Collection extends Model
         'product_id',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(\App\User::class);
+    }
+
     public function products()
     {
-        return $this->belongsToMany(\App\Models\Product::class,'collections','id', 'product_id');
+        return $this->belongsToMany(\App\Models\Product::class, 'collections', 'id', 'product_id');
     }
+
 
 }

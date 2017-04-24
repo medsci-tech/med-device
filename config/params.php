@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'default_head'=>'http://oocc7psxo.bkt.clouddn.com/head/jpg/timg.jpg',
+    'paginate'=>2,
     // 合作类型
     'join_type' => [
         1 => '代理产品',
@@ -19,7 +21,7 @@ return [
         8 => '企业法人委托书原件',
         9=> '发票和出库单样票',
         10=> '企业公示信息',
-        11=> '企业公示信息'
+        11=> '质保协议'
     ],
 
 ];

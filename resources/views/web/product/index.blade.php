@@ -14,8 +14,8 @@
 				药械产品招商
 				<div class="strip"></div>
 			</a>
-			<a href="market">药械营销服务</a>
-			<a href="agent">药械经纪人</a>
+			<a href="/market">药械营销服务</a>
+			<a href="/agent">药械经纪人</a>
 		</div>
 	</div>
 
@@ -24,64 +24,26 @@
 			<h3>所有产品</h3>
 			<div class="panel">
 				<span>分类：</span>
-				<a href="">所有</a>
-				<a href="">A类</a>
-				<a href="">B类</a>
-				<a href="">C类</a>
+				<a href="{{ url('product/') }}">所有</a>
+				@if($catogary)
+					@foreach ($catogary as $val)
+				<a href="{{ url('product/category/'.$val->id) }}">{{ $val->name }}</a>
+					@endforeach
+				@endif
 			</div>
+			@if($product)
+				@foreach ($product as $val)
 			<div class="col-md-2 item">
-				<img src="/img/home/u148.jpg">
+				<a href="{{ url('product/detail/'.$val->id) }}" target="_blank"><img src="{{ $val->logo }}?imageView2/1/w/220/h/220/q/90"></a>
 				<span class="price-type">￥</span>
-				<span class="price-num">12.80</span>
-				<p>怡成血糖仪家用电子血糖仪JPS系列 华鸿一次性无菌采血针 </p>
+				<span class="price-num">{{ $val->price }}</span>
+				<p>{{ $val->name }}</p>
 			</div>
-			<div class="col-md-2 item">
-				<img src="/img/home/u148.jpg">
-				<span class="price-type">￥</span>
-				<span class="price-num">12.80</span>
-				<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-			</div>
-			<div class="col-md-2 item">
-				<img src="/img/home/u148.jpg">
-				<span class="price-type">￥</span>
-				<span class="price-num">12.80</span>
-				<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-			</div>
-			<div class="col-md-2 item">
-				<img src="/img/home/u148.jpg">
-				<span class="price-type">￥</span>
-				<span class="price-num">12.80</span>
-				<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-			</div>
-			<div class="col-md-2 item">
-				<img src="/img/home/u148.jpg">
-				<span class="price-type">￥</span>
-				<span class="price-num">12.80</span>
-				<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-			</div>
-			<div class="col-md-2 item">
-				<img src="/img/home/u148.jpg">
-				<span class="price-type">￥</span>
-				<span class="price-num">12.80</span>
-				<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-			</div>
-			<div class="col-md-2 item">
-				<img src="/img/home/u148.jpg">
-				<span class="price-type">￥</span>
-				<span class="price-num">12.80</span>
-				<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-			</div>
-			<div class="col-md-2 item">
-				<img src="/img/home/u148.jpg">
-				<span class="price-type">￥</span>
-				<span class="price-num">12.80</span>
-				<p>雅思 雅斯血糖仪家用GLM-76 电子血糖仪试纸</p>
-			</div>
-			<ul class="pagination">
-				<li><a href="">上一页</a></li>
-				<li><a href="">1</a></li>
-				<li><a href="">下一页</a></li>
-			</ul>
+				@endforeach
+			@endif
+
+			{{$product->appends(['keyword'=>$keyword])->links()}}
+
 		</div>
 	</div>
 @endsection

@@ -20,13 +20,13 @@
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="collection">
+				<a class="button" href="/collection">
 					<span class="img2"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;我的收藏
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="cooperation">
+				<a class="button" href="/cooperation">
 					<span class="img3"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;我的合作
 				</a>
@@ -38,7 +38,7 @@
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="pwd-edit">
+				<a class="button" href="/pwd-edit">
 					<span class="img5"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;修改密码
 				</a>
@@ -56,9 +56,11 @@
 				</div>
 				<div class="strip"></div>
 				<div class="orders">
+					@if($list)
+						@foreach($list as $order)
 					<div class="order-item">
 						<div>
-							<span class="title">怡成血糖仪家用电子血糖仪JPS系列</span>
+							<span class="title">{{ $order->name }}</span>
 							<span class="type">临床反馈</span>
 							<span class="state">（未完成）</span>
 						</div>
@@ -66,8 +68,11 @@
 							<span class="location">湖北省武汉市洪山区高新大道</span>
 							<span class="time">2017-3-30</span>
 						</div>
-						<a class="btn-detail" href="appointment-detail">详情</a>
+						<a class="btn-detail" href="{{ url('personal/appointment-detail/'.$order->id) }}">详情</a>
 					</div>
+						@endforeach
+					@endif
+						{{$list->links()}}
 				</div>
 			</div>
 		</div>

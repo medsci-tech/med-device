@@ -84,11 +84,11 @@
             <h2>欢迎登录</h2>
             <div class="id">
                 <img src="/img/login/u1294.png">
-                <input id="name" class="input" type="text" name="name" placeholder="请输入用户名或手机号">
+                <input class="input" type="text" name="name" placeholder="请输入用户名或手机号">
             </div>
             <div class="password">
                 <img src="/img/login/u1296.png">
-                <input id="password" class="input" type="text" name="password" placeholder="请输入密码">
+                <input class="input" type="text" name="password" placeholder="请输入密码">
             </div>
             <div class="password-option">
                 <input id="remember" class="checkbox" type="checkbox" name="remember">
