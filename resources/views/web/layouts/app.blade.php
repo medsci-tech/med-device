@@ -58,13 +58,13 @@
                     <div class="input">
                         <input type="text" id="keyword" name="keyword" placeholder="输入产品名称">
                     </div>
-                    <div class="button" onclick="SendForm();">搜索</div>
+                    <div class="button" onclick="SendForm();" style="cursor: pointer">搜索</div>
                 </div>
                 </form>
                 <p class="hot" style="text-align: center;padding-right: 0">
                     热门搜索词：
                 @foreach ($keywords as $data)
-                        <a href="/search/{{$data['id']}}">{{$data['name']}}</a>
+                        <a href="{{ url('search/'.$data['id']) }}">{{$data['name']}}</a>
                 @endforeach
                 </p>
             </div>
