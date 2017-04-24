@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'default_head'=>'http://oocc7psxo.bkt.clouddn.com/head/jpg/timg.jpg',
     'paginate'=>2,
     // 合作类型
     'join_type' => [

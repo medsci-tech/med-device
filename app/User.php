@@ -4,7 +4,6 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
 class User extends Authenticatable
 {
     use Notifiable;
@@ -32,6 +31,17 @@ class User extends Authenticatable
      */
     public function collections()
     {
-        return $this->hasMany('App\Models\Collection');
+        return $this->hasMany( \App\Models\Collection::class);
     }
+    /**
+     * @return mixed
+     */
+    public function collectionsWithProducts()
+    {
+        return $this->collections()->with(['products' => function ($query) {
+            $query->get();
+        }]);
+    }
+
+
 }

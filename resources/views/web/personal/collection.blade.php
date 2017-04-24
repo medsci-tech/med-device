@@ -43,18 +43,18 @@
 		<div class="content col-md-8">
 			<div class="mycollect">
 				<div class="panel">我的收藏</div>
+				@if($list)
+					@foreach($list as $order)
+						@foreach($order->products as $product)
 				<div class="collect-item">
-					<a class="pic" href="/product/detail" target="_blank"><img src="/img/home/u150.jpg"></a>
-					<a class="link" href="/product/detail">怡成血糖仪家用电子血糖仪JPS系列 华鸿一次性无菌采血针</a>
+					<a class="pic" href="{{ url('product/detail/'.$product->id) }}" target="_blank"><img src="{{ $product->logo }}?imageView2/1/w/220/h/220/q/90"></a>
+					<a class="link" href="/product/detail">{{ $product->name }}</a>
 					<div class="btn-cancle">取消收藏</div>
 				</div>
-
-				<div class="collect-item">
-					<a class="pic" href="/product/detail" target="_blank"><img src="/img/home/u150.jpg"></a>
-					<a class="link" href="/product/detail">怡成血糖仪家用电子血糖仪JPS系列 华鸿一次性无菌采血针</a>
-					<div class="btn-cancle">取消收藏</div>
-				</div>
-				
+					@endforeach
+					@endforeach
+				@endif
+				{{$list->links()}}
 			</div>
 		</div>
 	</div>

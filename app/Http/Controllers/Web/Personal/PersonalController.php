@@ -17,20 +17,23 @@ use App\Models\CompanyImage;
 class PersonalController extends Controller
 {
     use CheckResetPwd,CheckResetInfo,CheckAgent;
+
     public function index()
     {
-
         return view('web.personal.index', ['data' => null]);
     }
-
+    /**
+     * 个人收藏
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
     public function collection()
     {
-        $res = \App\User::find(\Auth::id())->collections;
-        foreach ($res as $role) {
+        $user = \Auth::user();
+        $list = $user->collectionsWithProducts()->paginate(config('params')['paginate']);
 
-        }
-
-        return view('web.personal.collection', ['data' => null]);
+        return view('web.personal.collection', ['list' => $list]);
     }
 
     public function cooperation()

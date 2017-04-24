@@ -56,9 +56,9 @@ class Product extends Common
         return $this->belongsTo('App\Models\ProductType', 'type_id');
     }
 
-    public function orders()
+    public function collections()
     {
-        return $this->belongsToMany(Order::class)->withPivot(['quantity', 'specification_id']);
+        return $this->belongsToMany(Collection::class);
     }
 
     public function banners()
