@@ -48,11 +48,11 @@
 			<div class="content-orders">
 				<div class="panel">我的预约</div>
 				<div class="tabs">
-					<span>全部预约<span id="order-all"> ( {{ $count }} )</span></span>
-					<span><a href="">已预约</a><span id="order-ordered"> ( {{ isset($count_list[2]) ? $count_list[2] : 0 }} )</span></span>
-					<span><a href="">已审核</a><span id="order-audit"> ( {{ isset($count_list[1]) ? $count_list[1] : 0 }} )</span></span>
-					<span><a href="">进行中</a><span id="order-on"> ( {{ isset($count_list[0]) ? $count_list[0] : 0 }} )</span></span>
-					<span><a href="">已完成</a><span id="order-done"> ( {{ isset($count_list[3]) ? $count_list[3] : 0 }} )</span></span>
+					<span><a href="{{ url('personal/appointment/') }}">全部预约</a><span id="order-all"> ( {{ $count }} )</span></span>
+					<span><a href="{{ url('personal/appointment/2') }}">已预约</a><span id="order-ordered"> ( {{ isset($count_list[2]) ? $count_list[2] : 0 }} )</span></span>
+					<span><a href="{{ url('personal/appointment/1') }}">已审核</a><span id="order-audit"> ( {{ isset($count_list[1]) ? $count_list[1] : 0 }} )</span></span>
+					<span><a href="{{ url('personal/appointment/0') }}">进行中</a><span id="order-on"> ( {{ isset($count_list[0]) ? $count_list[0] : 0 }} )</span></span>
+					<span><a href="{{ url('personal/appointment/3') }}">已完成</a><span id="order-done"> ( {{ isset($count_list[3]) ? $count_list[3] : 0 }} )</span></span>
 				</div>
 				<div class="strip"></div>
 				<div class="orders">
