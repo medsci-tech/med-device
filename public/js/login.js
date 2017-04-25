@@ -20,9 +20,8 @@ module.exports = __webpack_require__(33);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+ var url = document.referrer;
 $(document).ready(function(){
-	var url = document.referrer;
-
 	$('#submit').click(function(){
 		var name = $('#name').val()
 		var password = $('#password').val()
