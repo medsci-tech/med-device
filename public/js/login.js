@@ -21,6 +21,7 @@ module.exports = __webpack_require__(33);
 
 "use strict";
 $(document).ready(function(){
+	var url = document.referrer;
 
 	$('#submit').click(function(){
 		var name = $('#name').val()
@@ -37,7 +38,15 @@ $(document).ready(function(){
 			data : data,
 			success : function(data){
 				if (data.status === 1){
-					location.href = '/'
+					if(!url)
+					{
+                        location.href = '/'
+					}
+					else
+					{
+                        window.location.href=url;
+					}
+
 				} else{
 					alert(data.message)
 				}
