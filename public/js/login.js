@@ -19,7 +19,7 @@ module.exports = __webpack_require__(33);
 /***/ 7:
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
+//"use strict";
  var url = document.referrer;
 $(document).ready(function(){
 	$('#submit').click(function(){
@@ -27,6 +27,7 @@ $(document).ready(function(){
 		var password = $('#password').val()
 		var remember = $('#remember')[0].checked
 		var data = {
+            url : url,
 			name : name,
 			password : password,
 			remember : remember
