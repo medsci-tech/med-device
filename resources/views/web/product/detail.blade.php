@@ -38,7 +38,8 @@
 				</div>
 				<div class="thumbnails">
 					<div class="tab"></div>
-					<!-- 缩略图前端请更新这里 -->
+					<!-- 缩略图前端请更新这里,切换主图域请加载大图显示,宽度参数为：?imageView2/1/w/450/h/450/q/90 -->
+					<div class="thumbnail" style="background-image:{{$data->logo }}?imageView2/1/w/60/h/60/q/90"></div><!-- 加载主图 -->
 					@if($data->banners)
 						@foreach($data->banners as $banner)
 					<div class="thumbnail" style="background-image:{{$banner->image_url }}?imageView2/1/w/60/h/60/q/90"></div>

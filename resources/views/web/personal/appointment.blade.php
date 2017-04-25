@@ -62,7 +62,8 @@
 						<div>
 							<span class="title">{{ $order->product_name }}</span>
 							<span class="type">{{ isset(\App\Models\Appointment::find($order->id)->service->name) ? \App\Models\Appointment::find($order->id)->service->name : '' }}</span>
-							<span class="state">（@if ($order->status===0)
+							<span class="state">（
+								@if ($order->status===0)
 									进行中
 								@elseif ($order->status===1)
 									已审核
@@ -70,11 +71,12 @@
 									已预约
 								@else
 									已完成
-								@endif）</span>
+								@endif
+								）</span>
 						</div>
 						<div>
 							<span class="location">{{ $order->province.$order->city.$order->area }}</span>
-							<span class="time">{{ $order->appoint_at }}</span>
+							<span class="time">{{ str_limit($order->appoint_at, $limit = 10, $end = '') }}</span>
 						</div>
 						<a class="btn-detail" href="{{ url('personal/appointment-detail/'.$order->id) }}">详情</a>
 					</div>
