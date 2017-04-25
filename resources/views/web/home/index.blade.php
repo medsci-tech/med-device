@@ -11,14 +11,15 @@
 @endsection
 
 @section('content')
-<div class="container">
-    <div class="row nav">
-            <a class="focus">&nbsp;&nbsp;首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页&nbsp;&nbsp;<div class="strip"></div></a>
-            <a href="product">药械产品招商</a>
-            <a href="market">药械营销服务</a>
-            <a href="agent">药械经纪人</a>
+<div class="row nav">
+    <div class="container">
+        <a class="focus">&nbsp;&nbsp;首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页&nbsp;&nbsp;<div class="strip"></div></a>
+        <a href="product">药械产品招商</a>
+        <a href="market">药械营销服务</a>
+        <a href="agent">药械经纪人</a>
     </div>
 </div>
+
 <div class="container-fluid">
     <div id="banner" class="row banner">
         <div class="col-md-offset-1 col-md-11">
