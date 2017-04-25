@@ -18,7 +18,7 @@
 			<div class="item">
 				<a class="button" href="collection">
 					<span class="img2"></span>
-					&nbsp;&nbsp;&nbsp;&nbsp;我的合作
+					&nbsp;&nbsp;&nbsp;&nbsp;我的收藏
 				</a>
 			</div>
 			<div class="item">
