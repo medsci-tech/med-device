@@ -29,8 +29,10 @@ class AgentController extends Controller
      */
     public function agentSign(Request $request)
     {
-        if ($request->isMethod('post')) {
+        if (!\Auth::check())
+            return redirect('/login');
 
+        if ($request->isMethod('post')) {
             $data = $request->all();
             $result =$this->checkAgent($data);
             if (\Auth::check())
