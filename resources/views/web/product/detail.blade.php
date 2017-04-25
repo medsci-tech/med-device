@@ -139,8 +139,8 @@
 @endsection
 
 @section('page_js')
-<script src="/../js/vendor.js"></script>
-<script src="/../js/product-detail.js"></script>
+<script>var $product_id = {{ $id }}</script>
+<script src="/js/product-detail.js"></script>
 <script src="http://qzonestyle.gtimg.cn/open/qcloud/video/h5/h5connect.js"></script>
 <script src="https://qzonestyle.gtimg.cn/open/qcloud/video/h5/h5connect.js" charset="utf-8"></script>
 <script type="text/javascript">

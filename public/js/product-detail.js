@@ -31,10 +31,30 @@ $(document).ready(function () {
 		$('.shielder,#panel').show();
 	});
 
-	//收藏按钮效果
+	//收藏按钮效果及数据上传
 	$('#save').on('click', function (event) {
-		event.stopPropagation()
-		$(this).toggleClass('save-focus');
+		var self = $(this)
+		var action = 1
+		if (self.hasClass('save-focus')){
+			action = 0
+		}
+		$.ajax({
+			url : '/product/collect',
+			type : 'post',
+			data : {
+				product_id : $product_id,
+				action : action
+			},
+			success : function(data){
+				console.log(data)
+				if (data.status === 1){
+					self.text('&nbsp;&nbsp;&nbsp;已收藏').toggleClass('save-focus');
+				} else {
+					alert(data.message)
+				}
+			}
+		})
+
 	});
 
 	var index = 0;
