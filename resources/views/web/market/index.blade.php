@@ -29,12 +29,4 @@
 
 @section('page_js')
 <script src="/js/service.js"></script>
-<script>
-    //弹出面板
-    $('.reserve').on('click', function () {
-        @if (Auth::guest())
-        sweetAlert("您还没有登录!");
-		@endif
-    });
-</script>
 @endsection
