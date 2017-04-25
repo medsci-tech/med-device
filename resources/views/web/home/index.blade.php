@@ -57,7 +57,7 @@
 <div class="container-fulid">
     <div class="row appointment">
         <h2>药械营销服务预约</h2>
-        <a href="{{ url('market/marketing-order/') }}" target="_blank">查看详情></a>
+        <a href="@if (Auth::guest()) {{ url('login') }} @else {{ url('market/marketing-order/') }} @endif" target="_blank">查看详情></a>
     </div>
 </div>
 @endsection
