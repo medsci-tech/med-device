@@ -20,13 +20,13 @@
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="/collection">
+				<a class="button" href="/personal/collection">
 					<span class="img2"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;我的收藏
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="/cooperation">
+				<a class="button" href="/personal/cooperation">
 					<span class="img3"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;我的合作
 				</a>
@@ -38,7 +38,7 @@
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="/pwd-edit">
+				<a class="button" href="/personal/pwd-edit">
 					<span class="img5"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;修改密码
 				</a>
@@ -48,11 +48,11 @@
 			<div class="content-orders">
 				<div class="panel">我的预约</div>
 				<div class="tabs">
-					<span>全部预约<span id="order-all"> ( 5 )</span></span>
-					<span>已预约<span id="order-ordered"> ( 1 )</span></span>
-					<span>已审核<span id="order-audit"> ( 1 )</span></span>
-					<span>进行中<span id="order-on"> ( 1 )</span></span>
-					<span>已完成<span id="order-done"> ( 2 )</span></span>
+					<span>全部预约<span id="order-all"> ( {{ $count }} )</span></span>
+					<span><a href="">已预约</a><span id="order-ordered"> ( {{ isset($count_list[2]) ? $count_list[2] : 0 }} )</span></span>
+					<span><a href="">已审核</a><span id="order-audit"> ( {{ isset($count_list[1]) ? $count_list[1] : 0 }} )</span></span>
+					<span><a href="">进行中</a><span id="order-on"> ( {{ isset($count_list[0]) ? $count_list[0] : 0 }} )</span></span>
+					<span><a href="">已完成</a><span id="order-done"> ( {{ isset($count_list[3]) ? $count_list[3] : 0 }} )</span></span>
 				</div>
 				<div class="strip"></div>
 				<div class="orders">
@@ -60,19 +60,19 @@
 						@foreach($list as $order)
 					<div class="order-item">
 						<div>
-							<span class="title">{{ $order->name }}</span>
-							<span class="type">临床反馈</span>
+							<span class="title">{{ $order->product_name }}</span>
+							<span class="type">{{ isset(\App\Models\Appointment::find($order->id)->service->name) ? \App\Models\Appointment::find($order->id)->service->name : '' }}</span>
 							<span class="state">（未完成）</span>
 						</div>
 						<div>
-							<span class="location">湖北省武汉市洪山区高新大道</span>
-							<span class="time">2017-3-30</span>
+							<span class="location">{{ $order->province.$order->city.$order->area }}</span>
+							<span class="time">{{ $order->appoint_at }}</span>
 						</div>
 						<a class="btn-detail" href="{{ url('personal/appointment-detail/'.$order->id) }}">详情</a>
 					</div>
 						@endforeach
 					@endif
-						{{$list->links()}}
+						{{$list->appends(['status'=>$status])->links()}}
 				</div>
 			</div>
 		</div>
