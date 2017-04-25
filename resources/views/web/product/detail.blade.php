@@ -89,14 +89,14 @@
 					<div class="value">{{ $data->stock  }}</div>
 				</div>
 				<div class="btn-business">我要合作</div>
-				<div id="save" class="save">&nbsp;&nbsp;&nbsp;收藏</div>
+				<div id="save" class="save @if ($is_collect== 1) save-focus @endif">&nbsp;&nbsp;&nbsp;收藏</div>
 			</div>
 		</div>
 		<div class="col-md-1"></div>
 	</div>
 
 	<div class="row">
-		<div class="order-now col-md-offset-1 col-md-10"><a href="{{ url('market/marketing-order?id='.$id) }}">立刻预约></a></div>
+		<div class="order-now col-md-offset-1 col-md-10"><a href="@if (Auth::guest()) {{ url('login') }} @else {{ url('market/marketing-order?id='.$id) }} @endif">立刻预约></a></div>
 	</div>
 
 	<div class="row">
@@ -159,7 +159,7 @@
     //弹出面板
     $('.btn-business').on('click', function () {
         @if (Auth::guest())
-        sweetAlert("您还没有登录!");
+        window.location.href='/login';
 		@endif
     });
 </script>
