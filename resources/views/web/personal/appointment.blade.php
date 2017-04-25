@@ -62,7 +62,15 @@
 						<div>
 							<span class="title">{{ $order->product_name }}</span>
 							<span class="type">{{ isset(\App\Models\Appointment::find($order->id)->service->name) ? \App\Models\Appointment::find($order->id)->service->name : '' }}</span>
-							<span class="state">（未完成）</span>
+							<span class="state">（@if ($order->status===0)
+									进行中
+								@elseif ($order->status===1)
+									已审核
+								@elseif ($order->status===2)
+									已预约
+								@else
+									已完成
+								@endif）</span>
 						</div>
 						<div>
 							<span class="location">{{ $order->province.$order->city.$order->area }}</span>
