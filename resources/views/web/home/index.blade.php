@@ -37,7 +37,7 @@
     <div class="row products">
             <div>
                 <h2>热销产品</h2>
-                <span class="link-all">所有产品></span>
+                <a class="link-all" href="/product">所有产品></a>
             </div>
         @if($data)
             @foreach ($data as $val)
