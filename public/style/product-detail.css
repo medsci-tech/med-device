@@ -236,19 +236,6 @@
   border-radius: 6px;
   cursor: pointer;
 }
-.product-info .btn-business_guest {
-  display: inline-block;
-  width: 274px;
-  height: 56px;
-  line-height: 56px;
-  margin: 80px 28px 0 0;
-  font-size: 18px;
-  text-align: center;
-  color: white;
-  background-color: #01a4e4;
-  border-radius: 6px;
-  cursor: pointer;
-}
 .product-info .save {
   display: inline-block;
   width: 98px;
