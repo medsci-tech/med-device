@@ -11,14 +11,15 @@
 @endsection
 
 @section('content')
-<div class="container">
-    <div class="row nav">
-            <a class="focus">&nbsp;&nbsp;首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页&nbsp;&nbsp;<div class="strip"></div></a>
-            <a href="product">药械产品招商</a>
-            <a href="market">药械营销服务</a>
-            <a href="agent">药械经纪人</a>
+<div class="row nav">
+    <div class="container">
+        <a class="focus">&nbsp;&nbsp;首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页&nbsp;&nbsp;<div class="strip"></div></a>
+        <a href="product">药械产品招商</a>
+        <a href="market">药械营销服务</a>
+        <a href="agent">药械经纪人</a>
     </div>
 </div>
+
 <div class="container-fluid">
     <div id="banner" class="row banner">
         <div class="col-md-offset-1 col-md-11">
@@ -37,7 +38,7 @@
     <div class="row products">
             <div>
                 <h2>热销产品</h2>
-                <a class="link-all" href="/product">所有产品></a>
+                <span class="link-all"><a href="{{ url('product') }}"> 所有产品</a></span>
             </div>
         @if($data)
             @foreach ($data as $val)
@@ -56,7 +57,7 @@
 <div class="container-fulid">
     <div class="row appointment">
         <h2>药械营销服务预约</h2>
-        <a href="{{ url('market/marketing-order/') }}" target="_blank">查看详情></a>
+        <a href="@if (Auth::guest()) {{ url('login') }} @else {{ url('market/marketing-order/') }} @endif" target="_blank">查看详情></a>
     </div>
 </div>
 @endsection

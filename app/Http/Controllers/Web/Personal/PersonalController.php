@@ -58,13 +58,19 @@ class PersonalController extends Controller
     public function appointment(Request $request)
     {
         $user = \Auth::user();
-        $where= ['status'=>$request->status];
-        $count = Appointment::where($where)->count();
-        $list = Appointment::where(['user_id'=>$user->id])->paginate(config('params')['paginate']);
-        return view('web.personal.appointment', ['list' => $list,'count'=>$count]);
+        $status = $request->id;
+        $where= ['status'=>$status,'user_id'=>$user->id];
+        if($status===NULL)
+            unset($where['status']);
+
+        $count_arr = Appointment::select(\DB::raw('count(*) as count,status'))->where(['user_id'=>$user->id])->groupBy('status')->get()->toArray();
+        $count_list= array_column($count_arr, 'count', 'status');
+        $count = array_sum($count_list); //总数
+        $list = Appointment::where($where)->paginate(config('params')['paginate']);
+        return view('web.personal.appointment', compact('list','count','count_list','status'));
     }
     /**
-     * 合作详情
+     * 预约详情
      * @author      lxhui<772932587@qq.com>
      * @since 1.0
      * @return array
@@ -73,12 +79,18 @@ class PersonalController extends Controller
     {
         try {
             $id = $request->id;
-            $data = Product::find($id);
+            $order = Appointment::find($id);
+            try{
+                $service_name =$order->service->name;
+            }
+            catch (\Exception $e) {
+                $service_name = '';
+            }
         }
         catch (\Exception $e) {
             abort(404);
         }
-        return view('web.personal.appointment-detail', ['data' => Product::find($request->id)]);
+        return view('web.personal.appointment-detail', ['order' => $order,'service_name'=>$service_name]);
     }
     /**
      * 个人资料修改

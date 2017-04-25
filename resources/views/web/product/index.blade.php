@@ -7,8 +7,9 @@
 @endsection
 
 @section('content')
-	<div class="row nav">
-		<div class="col-md-offset-1 col-md-11">
+<div class="row nav">
+	<div class="container">
+		<div class="col-md-12">
 			<a href="/">&nbsp;&nbsp;首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页&nbsp;&nbsp;</a>
 			<a class="focus">
 				药械产品招商
@@ -18,9 +19,11 @@
 			<a href="/agent">药械经纪人</a>
 		</div>
 	</div>
+</div>
 
-	<div class="row products">
-		<div class="col-md-offset-1 col-md-10">
+<div class="row products">
+	<div class="container">
+		<div class="col-md-12">
 			<h3>所有产品</h3>
 			<div class="panel">
 				<span>分类：</span>
@@ -36,7 +39,7 @@
 			<div class="col-md-2 item">
 				<a href="{{ url('product/detail/'.$val->id) }}" target="_blank"><img src="{{ $val->logo }}?imageView2/1/w/220/h/220/q/90"></a>
 				<span class="price-type">零售价格</span>
-                <span class="price-num" style="left: 82px">￥</span>
+	            <span class="price-num" style="left: 82px">￥</span>
 				<span class="price-num">{{ $val->price }}</span>
 				<p>{{ $val->name }}</p>
 			</div>
@@ -44,9 +47,10 @@
 			@endif
 
 			{{$product->appends(['keyword'=>$keyword])->links()}}
-
 		</div>
 	</div>
+</div>
+
 @endsection
 
 @section('page_js')

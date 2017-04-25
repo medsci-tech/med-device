@@ -10,19 +10,19 @@
 	<div class="row">
 		<div class="col-md-2 nav">
 			<div class="item">
-				<a class="button" href="personal">
+				<a class="button" href="{{ url('personal') }}">
 					<span class="img1"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;信息管理
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="collection">
+				<a class="button" href="{{ url('personal/collection') }}">
 					<span class="img2"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;我的收藏
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="cooperation">
+				<a class="button" href="{{ url('personal/cooperation') }}">
 					<span class="img3"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;我的合作
 				</a>
@@ -34,7 +34,7 @@
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="pwd-edit">
+				<a class="button" href="{{ url('personal/pwd-edit') }}">
 					<span class="img5"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;修改密码
 				</a>
@@ -43,28 +43,36 @@
 		<div class="content col-md-8">
 			<div class="profile-basic">
 				<div class="panel">
-					<a href="/personal/appointment">我的预约</a>
+					<a href="{{ url('personal/appointment') }}">我的预约</a>
 					<span> &nbsp;> &nbsp;预约详情</span>
 				</div>
 
 				<div class="detail">
-					<div class="state">进行中</div>
+					<div class="state">@if ($order->status===0)
+							进行中
+						@elseif ($order->status===1)
+							已审核
+						@elseif ($order->status===2)
+							已预约
+						@else
+							已完成
+						@endif</div>
 					<div class="title">预约服务详情</div>
 					<div class="detail-row">
 						<span class="key">产品名称</span>
-						<span class="value">胰岛素笔</span>
+						<span class="value">{{ $order->product_name }}</span>
 					</div>
 					<div class="detail-row">
 						<span class="key">服务类型</span>
-						<span class="value"></span>
+						<span class="value">{{ $service_name }}</span>
 					</div>
 					<div class="detail-row">
 						<span class="key">所在地点</span>
-						<span class="value"></span>
+						<span class="value">{{ $order->province.$order->city.$order->area }}</span>
 					</div>
 					<div class="detail-row">
 						<span class="key">服务预约时间</span>
-						<span class="value"></span>
+						<span class="value">{{ str_limit($order->appoint_at, $limit = 10, $end = '') }}</span>
 					</div>
 				</div>
 

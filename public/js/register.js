@@ -76,9 +76,37 @@ $(document).ready(function () {
 		var password_confirmation = $('#password_confirmation').val()
 		var phone = $('#phone').val()
 		var code = $('#code').val()
+
+		if (name === ''){
+			alert('请填写用户名')
+			return
+		}
+		if (password === ''){
+			alert('请填写密码')
+			return
+		}
+		if (password_confirmation === ''){
+			alert('请填写密码确认')
+			return
+		}
+		if (phone === ''){
+			alert('请填写手机号')
+			return
+		}
+		if (code === ''){
+			alert('请填写验证码')
+			return
+		}
+		if (password !== password_confirmation){
+			alert('密码与密码确认不一致！')
+			return
+		}
+
 		var real_name = $('#real_name').val()
 		var email = $('#email').val()
 		var agree = $('#agree')[0].checked
+		var sex = $('input:radio[name="sex"]:checked').val()
+
 		$.ajax({
 			url : '/register',
 			type : 'post',
@@ -90,7 +118,8 @@ $(document).ready(function () {
 				code : code,
 				real_name :real_name,
 				email : email,
-				agree : agree
+				agree : agree,
+				sex : sex
 			},
 			success : function(data){
 				if (data.message){
@@ -98,6 +127,56 @@ $(document).ready(function () {
 				console.log(data)
 			}
 		})
+	})
+
+	//邮箱后缀
+	$('#email').on('keyup', function(){
+		$('.email-dropdown').show();
+
+		var value = $('#email').val();
+		var $items = $('.item-email');
+		$items.each(function(){
+			var index = value.indexOf('@');
+			if (index !== -1){
+				var str = value.substring(index);
+				if ($(this).data('value').indexOf(str) === -1){
+					$(this).hide();
+				}
+			} else {
+				$(this).show();
+				$(this).text(value + $(this).data('value'));
+			}
+		})
+	})
+	function initDom(data){
+		for (var i = 0;i < data.length; i++){
+			$('<div></div>').addClass('item-email').data('value', data[i]).css({
+				width : '100%',
+				height : '40px',
+				lineHeight : '40px',
+				paddingLeft : '10px',
+				borderBottom : '1px solid #f2f2f2',
+				overflow : 'hidden'
+			}).click(function(){
+				$('#email').val($(this).text());
+			}).appendTo($('.email-dropdown'))
+		}
+	}
+	var data = [
+		'@163.com',
+		'@sina.com',
+		'@qq.com',
+		'@126.com',
+		'@vip.sina.com',
+		'@gmail.com',
+		'@hotmail.com',
+		'@sohu.com',
+		'@139.com',
+	]
+	initDom(data);
+	$('body').click(function(){
+		$('.email-dropdown').hide();
+		$('item-email').text('');
 	})
 
 });

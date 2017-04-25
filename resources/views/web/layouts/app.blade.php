@@ -8,6 +8,8 @@
 @yield('page_css')
 <style type="text/css">
     .nav{border-top: 1px solid #dcdcdc}
+    li.dropdown{display: block;margin-top: 14px}
+    li.dropdown > a{color: white}
 </style>
 <script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
 <script src="/js/sweetalert/sweetalert.min.js"></script>

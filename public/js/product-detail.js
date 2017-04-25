@@ -22,7 +22,7 @@ $(document).ready(function () {
 	});
 
 	//隐藏面板
-	$('#btn-submit,.shielder,#cancel').on('click', function () {
+	$('#btn-submit,.shielder,#panel img').on('click', function () {
 		$('.shielder,#panel').hide();
 	});
 
@@ -32,12 +32,16 @@ $(document).ready(function () {
 	});
 
 	//收藏按钮效果及数据上传
-	$('#save').on('click', function (event) {
-		var self = $(this)
-		var action = 1
-		if (self.hasClass('save-focus')){
-			action = 0
-		}
+	var $btn_save = $('#save'),action = 1
+	if ($btn_save.hasClass('save-focus')){
+		$btn_save.text('已收藏')
+		action = 0
+	} else {
+		$btn_save.text('收藏')
+		action = 1
+	}
+
+	$btn_save.on('click', function () {
 		$.ajax({
 			url : '/product/collect',
 			type : 'post',
@@ -48,7 +52,7 @@ $(document).ready(function () {
 			success : function(data){
 				console.log(data)
 				if (data.status === 1){
-					self.text('&nbsp;&nbsp;&nbsp;已收藏').toggleClass('save-focus');
+					$btn_save.text(action === 0 ? '收藏' : '已收藏').toggleClass('save-focus');
 				} else {
 					alert(data.message)
 				}

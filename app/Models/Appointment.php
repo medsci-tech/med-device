@@ -32,5 +32,9 @@ class Appointment extends Model
         'appoint_at',
         'comment',
     ];
+    public function service()
+    {
+        return $this->belongsTo(\App\Models\ServiceType::class,'service_type_id');
+    }
 
 }

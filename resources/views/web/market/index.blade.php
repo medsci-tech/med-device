@@ -6,35 +6,28 @@
 <link rel="stylesheet" type="text/css" href="/style/service.css">
 @endsection
 @section('content')
-	<div class="row nav">
-		<div class="col-md-offset-1 col-md-11">
-			<a href="/">&nbsp;&nbsp;首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页&nbsp;&nbsp;</a>
-			<a href="product">药械产品招商</a>
-			<a class="focus">
-				药械营销服务
-				<div class="strip"></div>
-			</a>
-			<a href="agent">药械经纪人</a>
-		</div>
+<div class="row nav">
+	<div class="container">
+		<a href="/">&nbsp;&nbsp;首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页&nbsp;&nbsp;</a>
+		<a href="product">药械产品招商</a>
+		<a class="focus">
+			药械营销服务
+			<div class="strip"></div>
+		</a>
+		<a href="agent">药械经纪人</a>
 	</div>
+</div>
 
 	<div class="row mid">
 		<div class="shielder"></div>
 		<div class="mid-content">
 			<p></p>
-			<a class="reserve" href="{{ url('market/marketing-order/') }}" style="cursor: pointer;margin-top: 110px">预约营销服务</a>
+			<a style="margin-top: 110px" class="reserve" href="@if (Auth::guest()) {{ url('login') }} @else {{ url('market/marketing-order/') }} @endif" >预约营销服务</a>
 		</div>
 	</div>
+</div>
 @endsection
 
 @section('page_js')
 <script src="/js/service.js"></script>
-<script>
-    //弹出面板
-    $('.reserve').on('click', function () {
-        @if (Auth::guest())
-        sweetAlert("您还没有登录!");
-		@endif
-    });
-</script>
 @endsection

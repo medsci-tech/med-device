@@ -27,6 +27,9 @@ class MarketController extends Controller
      */
     public function marketingOrder(Request $request)
     {
+        if (!\Auth::check())
+            return redirect('/login');
+
         $id = $request->id;
         $model = new ServiceType();
         $data = $model->lists($type=['type'=>1]); // 服务类型

@@ -79,7 +79,7 @@
 			<div id="service" class="btn-choose">选择服务</div>
 			<div class="separate-line"></div>
 
-			<input class="submit" type="submit" name="submit" value="立刻预约">
+			<input class="submit" type="submit" name="submit" value="成为经纪人">
 
 		</form>
 	</div>

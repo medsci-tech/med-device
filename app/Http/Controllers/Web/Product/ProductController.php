@@ -25,7 +25,6 @@ class ProductController extends Controller
             unset($where['category_id']);
         $product = Product::where($where)->paginate(config('params')['paginate']);
 
-
         return view('web.product.index', compact('product','keyword','catogary'));
 
     }
@@ -42,13 +41,24 @@ class ProductController extends Controller
             $data = Product::find($id);
             if($data)
                 Product::find($id)->increment('view_counts');
-            $data_similar = Product::orderBy('id')->offset(0)->where(['is_hot'=>1])->limit(8)->get();
+
+            $tags = strtr($data->tags,",","|");
+            $tags = $tags ? $tags : ' ';
+            $data_similar = Product::orderBy('id','desc')->offset(0)->whereRaw("tags REGEXP '".$tags."'")->limit(8)->get();//相关商品
+            $is_collect =false;// 验证是否收藏
+            if (\Auth::check()) {
+                //产品是否收藏
+                if(Collection::where(['user_id'=> \Auth::id(),'product_id'=>$id])->first())
+                    $is_collect = 1;
+                else
+                    $is_collect = 0;
+            }
         }
         catch (\Exception $e) {
             abort(404);
         }
 
-        return view('web.product.detail')->with(['data' => $data,'data_similar' => $data_similar,'id'=>$id]);
+        return view('web.product.detail')->with(['data' => $data,'data_similar' => $data_similar,'id'=>$id,'is_collect'=>$is_collect]);
     }
 
     /**

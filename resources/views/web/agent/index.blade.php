@@ -26,8 +26,8 @@
 	<div class="row mid">
 		<div class="shielder"></div>
 		<div class="mid-content">
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
-			<a class="reserve" @if (!Auth::guest()) href="{{ url('agent/agent-sign') }}" @endif>成为药械经纪人</a>
+			<p></p>
+			<a style="margin-top: 110px" class="reserve"  href="@if (Auth::guest()) {{ url('login') }} @else {{ url('agent/agent-sign') }} @endif" >成为药械经纪人</a>
 		</div>
 	</div>
 </div>
@@ -35,13 +35,6 @@
 
 @section('page_js')
 <script src="/js/broker.js"></script>
-<script>
-    //弹出面板
-    $('.reserve').on('click', function () {
-        @if (Auth::guest())
-        sweetAlert("您还没有登录!");
-		@endif
-    });
-    </script>
+
 @endsection
 

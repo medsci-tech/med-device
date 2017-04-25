@@ -55,8 +55,7 @@
 			</ul>
 			<!-- 下拉框结束 -->
 
-			<form class="form" action="" method="POST">
-
+			<form class="form">
 				<div>
 					<div class="required">*</div>
 					<label for="product-name">产品名称</label>

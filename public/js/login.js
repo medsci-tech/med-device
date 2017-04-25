@@ -19,14 +19,24 @@ module.exports = __webpack_require__(33);
 /***/ 7:
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
+//"use strict";
+ var url = document.referrer;
 $(document).ready(function(){
-
 	$('#submit').click(function(){
 		var name = $('#name').val()
 		var password = $('#password').val()
+		if (name === '') {
+			alert('请输入账号')
+			return
+		}
+		if (password === '') {
+			alert('请输入密码')
+			return
+		}
+
 		var remember = $('#remember')[0].checked
 		var data = {
+            url : url,
 			name : name,
 			password : password,
 			remember : remember
@@ -37,7 +47,15 @@ $(document).ready(function(){
 			data : data,
 			success : function(data){
 				if (data.status === 1){
-					location.href = '/'
+					if(!url)
+					{
+                        location.href = '/'
+					}
+					else
+					{
+                        window.location.href=url;
+					}
+
 				} else{
 					alert(data.message)
 				}
