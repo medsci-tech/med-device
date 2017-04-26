@@ -4,7 +4,13 @@ webpackJsonp([8],{
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+$(document).ready(function(){
 
+	$('.btn-cancel').click(function(){
+		$(this).parents('.collect-item').fadeOut()
+	})
+
+})
 
 /***/ }),
 

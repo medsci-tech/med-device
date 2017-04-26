@@ -21,8 +21,8 @@
 	<div class="row mid">
 		<div class="shielder"></div>
 		<div class="mid-content">
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
-			<a class="reserve" href="@if (Auth::guest()) {{ url('login') }} @else {{ url('market/marketing-order/') }} @endif" >预约营销服务</a>
+			<p></p>
+			<a style="margin-top: 110px" class="reserve" href="@if (Auth::guest()) {{ url('login') }} @else {{ url('market/marketing-order/') }} @endif" >预约营销服务</a>
 		</div>
 	</div>
 </div>

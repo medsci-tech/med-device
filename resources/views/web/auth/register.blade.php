@@ -128,6 +128,7 @@
       <div>
         <label>电子邮箱</label>
         <input id="email" type="text" name="email" placeholder="请输入电子邮箱">
+        <div class="email-dropdown"></div>
       </div>
       <div>
         <label>工作区域</label>

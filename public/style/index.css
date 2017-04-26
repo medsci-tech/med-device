@@ -1,13 +1,6 @@
 .header {
   background-color: #01a4e4;
 }
-li.dropdown{
-  display: block;
-  margin-top: 14px
-}
-li.dropdown > a{
-  color: white;
-}
 .btn-login,
 .btn-register {
   display: inline-block;

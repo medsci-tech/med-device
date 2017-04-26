@@ -49,7 +49,8 @@
 				<div class="collect-item">
 					<a class="pic" href="{{ url('product/detail/'.$product->id) }}" target="_blank"><img src="{{ $product->logo }}?imageView2/1/w/220/h/220/q/90"></a>
 					<a class="link" href="{{ url('product/detail/'.$product->id) }}" target="_blank">{{ $product->name }}</a>
-					<div class="btn-cancle" product_id="{{ $product->id }}">取消收藏</div>
+					<div class="btn-cancel">取消收藏</div>
+
 				</div>
 					@endforeach
 					@endforeach

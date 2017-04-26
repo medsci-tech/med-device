@@ -45,30 +45,30 @@
 				<div class="panel">修改密码</div>
 			</div>
 
-			<form class="form" action="" method="POST">
+			<form class="form">
 				<div>
-					<label for="">手机号</label>
-					<input type="text" name="phone" placeholder="建议使用常用手机" value="{{ \Auth::user()->phone }}">
+					<label>手机号</label>
+					<input id="phone" type="text" name="phone" placeholder="建议使用常用手机" value="{{ \Auth::user()->phone }}">
 				</div>
 				<div class="captcha">
-					<label for="">验证码</label>
-					<input type="text" name="captcha" placeholder="请输入手机验证码">
+					<label>验证码</label>
+					<input id="code" type="text" name="captcha" placeholder="请输入手机验证码">
 					<div id="getCaptcha">获取验证码</div>
 				</div>
 				<div>
-					<label for="">设置密码</label>
-					<input type="password" name="password" placeholder="请输入密码">
+					<label>设置密码</label>
+					<input id="password" type="password" name="password" placeholder="请输入密码">
 				</div>
 				<div>
-					<label for="">确认密码</label>
-					<input type="password" name="confirm" placeholder="请再次输入密码">
+					<label>确认密码</label>
+					<input id="password_confirmation" type="password" name="confirm" placeholder="请再次输入密码">
 				</div>
-				<input class="submit" type="submit" name="submit" value="确认">
+				<div id="submit" class="submit" style="cursor: pointer;">确认</div>
 			</form>
 		</div>
 	</div>
 @endsection
 
 @section('page_js')
-<script src="/js/profile-change-passwordjs"></script>
+<script src="/js/profile-change-password.js"></script>
 @endsection

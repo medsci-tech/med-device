@@ -89,7 +89,7 @@
 					<div class="value">{{ $data->stock  }}</div>
 				</div>
 				<div class="btn-business">我要合作</div>
-				<div id="save" class="save @if ($is_collect== 1) save-focus @endif">&nbsp;&nbsp;&nbsp;收藏</div>
+				<div id="save" class="save @if ($is_collect== 1) save-focus @endif"></div>
 			</div>
 		</div>
 		<div class="col-md-1"></div>

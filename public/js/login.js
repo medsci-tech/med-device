@@ -25,6 +25,15 @@ $(document).ready(function(){
 	$('#submit').click(function(){
 		var name = $('#name').val()
 		var password = $('#password').val()
+		if (name === '') {
+			alert('请输入账号')
+			return
+		}
+		if (password === '') {
+			alert('请输入密码')
+			return
+		}
+
 		var remember = $('#remember')[0].checked
 		var data = {
             url : url,
