@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <title>@yield('title')</title>
+<meta name="description" content="施康培科技（武汉）有限公司版权所有!" />
+<meta name="Keywords" content="药械通" />
 <link rel="stylesheet" type="text/css" href="/style/vendor.css">
 <link rel="stylesheet" type="text/css" href="/js/sweetalert/sweetalert.css">
 @yield('page_css')
