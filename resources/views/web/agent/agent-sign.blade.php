@@ -39,8 +39,8 @@
 			<h4>基础信息</h4>
 			<div class="input-box">
         		<div class="required">*</div>
-				<label for="">真实姓名</label>
-				<input type="text" name="realname" placeholder="请输入真实姓名" @if (Auth::check()) value="{{ \Auth::user()->real_name }}" @endif>
+				<label>真实姓名</label>
+				<input id="name" type="text" name="realname" placeholder="请输入真实姓名" @if (Auth::check()) value="{{ \Auth::user()->real_name }}" @endif>
 			</div>
 			<div class="no-border input-box">
         		<div class="required">*</div>
@@ -79,7 +79,7 @@
 			<div id="service" class="btn-choose">选择服务</div>
 			<div class="separate-line"></div>
 
-			<input class="submit" type="submit" name="submit" value="成为经纪人">
+			<div id="submit" class="submit" style="cursor: pointer;">成为经纪人</div>
 
 		</form>
 	</div>

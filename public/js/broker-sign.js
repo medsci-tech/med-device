@@ -9,6 +9,23 @@ webpackJsonp([22],{
 $(document).ready(function () {
 
 	//初始化数据
+	//获取科室
+	var departs,service_types
+	$.ajax({
+		url : '/get-depart',
+		success : function(data){
+			departs = data
+			var manager3 = new manager(departs, 2);
+		}
+	})
+	$.ajax({
+		url : '/get-service',
+		success : function(data){
+			service_types = data
+			var manager1 = new manager(service_types, 0);
+		}
+	})
+
 	var data, originData, province = [], cities = [], hospitals = []
 	$.post({
 		url: '/get-hospital',
@@ -82,15 +99,15 @@ $(document).ready(function () {
 		if (city){
 			for (var i = 0; i < data.length; i++) {
 				var dataItem = data[i]
-				if (dataItem.province === province && dataItem.city === city && !isRepeat(hospitals, dataItem.hospital)){
-					hospitals.push(dataItem.hospital)
+				if (dataItem.province === province && dataItem.city === city && !isJsonArrRepeat(hospitals, 'hospital', dataItem.hospital)){
+					hospitals.push(dataItem)
 				}
 			}
 		} else{
 			for (var i = 0; i < data.length; i++) {
 				var dataItem = data[i]
-				if (dataItem.province === province && !isRepeat(hospitals, dataItem.hospital)){
-					hospitals.push(dataItem.hospital)
+				if (dataItem.province === province && !isJsonArrRepeat(hospitals, 'hospital', dataItem.hospital)){
+					hospitals.push(dataItem)
 				}
 			}
 		}
@@ -99,6 +116,14 @@ $(document).ready(function () {
 	function isRepeat(arr, ele){
 		for (var i = 0; i < arr.length; i++) {
 			if (arr[i] === ele){
+				return true
+			}
+		}
+		return false
+	}
+	function isJsonArrRepeat(arr, key, ele){
+		for (var i = 0; i < arr.length; i++) {
+			if (arr[i][key] === ele){
 				return true
 			}
 		}
@@ -134,10 +159,13 @@ $(document).ready(function () {
 		var container = $('#panel2 .items')
 		container.empty()
 		for (var i = 0; i < hospitals.length; i++){
-			var item_hos = $('<div class="item"><span class="name">' + hospitals[i] + '</span></div>')
+			var dataItem = hospitals[i]
+			var item_hos = $('<div class="item" data-json=' + JSON.stringify(dataItem) + '><span class="name">' + dataItem.hospital + '</span></div>')
+//			item_hos.data('province', dataItem.province).data('city', dataItem.city)
+//			item_hos.data(dataItem)
 			var checkbox = $('<input type="checkbox">').appendTo(item_hos)
 			item_hos.click(function(){
-				checkbox.click()
+				$(this).children('input').click()
 			})
 			checkbox.click(function(){
 				$(this).click()
@@ -160,9 +188,9 @@ $(document).ready(function () {
 	}
 
 	//选择覆盖区域
-	var container_appendHosItem = function(title){
+	var container_appendHosItem = function(data){
 		var cancelBtn = $('<span class="icon"><span class="icon2"></span></span>')
-		var item = $('<div class="item" style="display:block"><span class="inner">' + title + '</span></div>').append(cancelBtn).appendTo($('#item-container2'))
+		var item = $('<div class="item" style="display:block" data-json=' + JSON.stringify(data) + '><span class="inner">' + data.hospital + '</span></div>').append(cancelBtn).appendTo($('#item-container2'))
 		cancelBtn.click(function(){
 			item.remove()
 		})
@@ -173,7 +201,7 @@ $(document).ready(function () {
 		var $items = $('.items .item');
 		for (var i = 0; i < $items.length; i++) {
 			if ($items.eq(i).children('input')[0].checked){
-				container_appendHosItem($items.eq(i).children('.name').text())
+				container_appendHosItem($items.eq(i).data('json'))
 			}
 		}
 	})
@@ -189,7 +217,11 @@ $(document).ready(function () {
 
 
 	function manager(data, index) {
-		this.data = data;
+		this.json = data;
+		this.data = this.json.map(function(obj){
+			return obj.name
+		});
+
 		this.index = index;
 		this.panel = $('.panel').eq(index);
 		this.container = $('.item-container').eq(index);
@@ -237,8 +269,6 @@ $(document).ready(function () {
 		$('.shielder,.panel').hide();
 	});
 
-	var manager1 = new manager(['科室一', '科室二还是发卡机舒服还是', '科室三'], 0);
-	var manager3 = new manager(['科室一', '科室二', '科室'], 2);
 
 	//隐藏下拉框
 	$('body').on('click', function () {
@@ -324,6 +354,52 @@ $(document).ready(function () {
 	$('body').click(function(){
 		$('.email-dropdown').hide();
 		$('item-email').text('');
+	})
+
+	//==================表单提交===========================
+	$('#submit').click(function(){
+		var name = $('#name').val()
+		var email = $('#email').val()
+		var sex = $('input:radio[name="sex"]:checked').val()
+
+		var _province,_city,_area
+		_province = _city = _area = "";
+		var work_space = $('#area').val().split(' - ')
+		_province = work_space[0]
+		if (work_space.length === 2){
+			_city = work_space[1]
+		}
+		if (work_space.length === 3){
+			_city = work_space[1]
+			_area = work_space[2]
+		}
+
+		var _hospitals = [],_depart_ids = [],_service_type_ids = []
+		$('#item-container2 .item').each(function(){
+			_hospitals.push($(this).data('json'))
+		})
+
+
+		var data = {
+			real_name : name,
+			sex : sex,
+			email : email,
+			province : _province,
+			city : _city,
+			area : _area,
+			depart_ids : _depart_ids,
+			service_type_ids : _service_type_ids,
+			hospitals : _hospitals
+		}
+
+		// $.ajax({
+		// 	url : '/agent/agent-sign',
+		// 	type : 'post',
+		// 	data : data,
+		// 	success : function(data){
+
+		// 	}
+		// })
 	})
 
 

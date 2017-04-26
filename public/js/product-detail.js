@@ -61,7 +61,9 @@ $(document).ready(function () {
 
 	});
 
+	//缩略图切换
 	var index = 0;
+	$('.thumbnail').eq(0).css('border', '2px solid #01a4e4')
 	for (var i = 0; i < $('.thumbnail').length; i++){
 		$('.thumbnail').eq(i).data('index', i);
 		$('.thumbnail').eq(i).on('click', (function(i){
@@ -87,7 +89,40 @@ $(document).ready(function () {
 
 	function refresh(index){
 		$('.big img').attr('src', $('.thumbnail').eq(index).attr('style').substring(17));
+		$('.thumbnail').css('border', 'none')
+		$('.thumbnail').eq(index).css('border', '2px solid #01a4e4')
 	}
+
+	//提交合作
+	$('.btn-submit').click(function(){
+		var phone = $('#phone').val()
+		var name = $('#name').val()
+		var join_type = ''
+		$('.checkboxs input').each(function(){
+			if (this.checked){
+				join_type += ',' + $(this).attr('value')
+			}
+		})
+		if (join_type != ''){
+			join_type = join_type.substring(1)
+		}
+
+		$.ajax({
+			url : '/product/join',
+			type : 'post',
+			data : {
+				contact_phone : phone,
+				real_name : name,
+				product_id : $product_id,
+				join_type : join_type
+			},
+			success : function(data){
+				$('.shielder,#panel').hide()
+				alert(data.message)
+			}
+		})
+
+	})
 
 
 });
