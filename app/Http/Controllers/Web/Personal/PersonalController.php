@@ -14,15 +14,19 @@ use App\Models\OrderService;
 use App\Models\OrderHospital;
 use App\Models\Hospital;
 use App\Http\Requests\Interfaces\CheckAgent;
+use App\Http\Requests\Interfaces\RequestGetUser;
 use App\Models\CompanyImage;
 use App\Models\Appointment;
 class PersonalController extends Controller
 {
-    use CheckResetPwd,CheckResetInfo,CheckAgent;
+    use CheckResetPwd,CheckResetInfo,CheckAgent,RequestGetUser;
 
     public function index()
     {
-        return view('web.personal.index', ['data' => null]);
+        $use_completion = $this->getUserCompletion();
+        $ent_completion = $this->getEnterpriseCompletion();
+        $order_completion = $this->getOrderCompletion();
+        return view('web.personal.index', ['use_completion' => $use_completion,'ent_completion' => $ent_completion,'order_completion' => $order_completion]);
     }
     /**
      * 个人收藏
