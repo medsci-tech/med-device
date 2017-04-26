@@ -4,7 +4,10 @@
 <meta charset="utf-8">
 <title>@yield('title')</title>
 <link rel="stylesheet" type="text/css" href="/style/vendor.css">
+<link rel="stylesheet" type="text/css" href="/js/sweetalert/sweetalert.css">
 @yield('page_css')
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/sweetalert/sweetalert.min.js"></script>
 </head>
 <body>
 <div class="container-fluid">

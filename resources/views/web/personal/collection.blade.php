@@ -49,7 +49,7 @@
 				<div class="collect-item">
 					<a class="pic" href="{{ url('product/detail/'.$product->id) }}" target="_blank"><img src="{{ $product->logo }}?imageView2/1/w/220/h/220/q/90"></a>
 					<a class="link" href="{{ url('product/detail/'.$product->id) }}" target="_blank">{{ $product->name }}</a>
-					<div class="btn-cancle">取消收藏</div>
+					<div class="btn-cancle" product_id="{{ $product->id }}">取消收藏</div>
 				</div>
 					@endforeach
 					@endforeach
@@ -62,4 +62,31 @@
 
 @section('page_js')
 <script src="/js/profile-collect.js"></script>
+	<script>
+        $(document).ready(function() {
+            $('.btn-cancle').click(function () {
+				//var product_id = $(this).attr('product_id');
+                swal({
+                    title: "您确定要删除吗？",
+                    text: "您确定要删除这条数据？",
+                    type: "warning",
+                    showCancelButton: true,
+                    closeOnConfirm: false,
+                    cancelButtonText: "取消操作",
+                    confirmButtonText: "是的，我要取消收藏",
+                    confirmButtonColor: "#ec6c62"
+                }, function() {
+                    $.post('/product/collect', {product_id: product_id,action:0}, function(data) {
+                        if(data.status==1)
+                            //location.reload();
+						else
+                            alert(data.message)
+                        location.reload();
+                    })
+                });
+            })
+        })
+
+
+	</script>
 @endsection
