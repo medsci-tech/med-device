@@ -233,8 +233,13 @@ class PersonalController extends Controller
             } else
                 return response()->json(['code'=>200, 'status' => 0,'message' => '上传失败' ]);
         }
+        $data = CompanyImage::where(['user_id'=> \Auth::id()])->first();
+        if($data)
+            $data = $data->toArray();
+        else
+            $data=[];
 
-        return view('web.personal.enterprise', ['data' => null]);
+        return view('web.personal.enterprise', ['data' => $data]);
     }
     /**
      * 个人图像上传
