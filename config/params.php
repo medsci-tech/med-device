@@ -2,7 +2,7 @@
 
 return [
     'default_head'=>'http://oocc7psxo.bkt.clouddn.com/head/jpg/timg.jpg',
-    'paginate'=>2,
+    'paginate'=>4,
     // 合作类型
     'join_type' => [
         1 => '代理产品',
