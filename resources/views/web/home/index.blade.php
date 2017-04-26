@@ -38,7 +38,7 @@
     <div class="row products">
             <div>
                 <h2>热销产品</h2>
-                <span class="link-all"><a href="{{ url('product') }}"> 所有产品</a></span>
+                <span class="link-all"><a href="{{ url('product') }}"> 所有产品</a> >></span>
             </div>
         @if($data)
             @foreach ($data as $val)
