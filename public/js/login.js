@@ -18,7 +18,6 @@ module.exports = __webpack_require__(33);
 
 /***/ 7:
 /***/ (function(module, exports, __webpack_require__) {
-
 //"use strict";
  var url = document.referrer;
 $(document).ready(function(){
@@ -26,11 +25,11 @@ $(document).ready(function(){
 		var name = $('#name').val()
 		var password = $('#password').val()
 		if (name === '') {
-			alert('请输入账号')
+            swal("登录提醒!", "请输入用户名或手机号", "error");
 			return
 		}
 		if (password === '') {
-			alert('请输入密码')
+            swal("登录提醒!", "请输入密码", "error");
 			return
 		}
 
