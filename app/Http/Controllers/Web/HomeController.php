@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Interfaces\CheckResetPwd;
 use App\Models\Product;
+use App\Models\Banner;
 use App\User;
 
 class HomeController extends Controller
@@ -32,8 +33,10 @@ class HomeController extends Controller
     {
         $model = new Product();
         $data = $model->products(['is_hot'=>1],0,8);
+        $banners = Banner::orderBy('weight')->get();
         return view('web.home.index')->with([
-            'data' => $data
+            'data' => $data,
+            'banners' => $banners
         ]);
     }
 
