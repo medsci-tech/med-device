@@ -154,6 +154,10 @@
                                         class="am-icon-cloud-upload"></i> 选择要上传的文件
                             </button>
                         </div>
+                        <div class="am-u-sm-2" style="float: left">
+                            <img class="am-img-thumbnail am-img-bdrs" src="{{$product->logo}}">
+
+                        </div>
                         <input type="file" name="logo">
                     </div>
 
@@ -174,11 +178,11 @@
                                 <div class="am-u-sm-2" style="float: left">
                                     <img class="am-img-thumbnail am-img-bdrs" src="{{$banner->image_url}}">
 
-                                    <a href="/admin/banner/{{$banner->id}}/edit"
+                                    <a href="/admin/product-banner/{{$banner->id}}/edit"
                                        class="am-btn am-btn-primary am-btn-xs"><span
                                                 class="am-icon-pencil"></span> 修改</a>
                                     <a type="button" class="am-btn am-btn-danger am-btn-xs"
-                                       id="delete{{ $banner->id }}" url="/admin/banner/"><span
+                                       id="delete{{ $banner->id }}" url="/admin/product-banner/"><span
                                                 class="am-icon-remove"></span>
                                         删除</a>
 

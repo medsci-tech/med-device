@@ -154,7 +154,7 @@ class Product extends Common
 
     public function products(array $where=[],$offset,$limit)
     {
-        return $this::offset($offset)->where($where)->orderBy('weight', 'asc')->orderBy('created_at', 'desc')->limit($limit)->get();
+        return $this::offset($offset)->where($where)->orderBy('weight', 'desc')->orderBy('created_at', 'desc')->limit($limit)->get();
     }
 
 }

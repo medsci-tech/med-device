@@ -63,7 +63,7 @@ class ProductBannerController extends Controller
         $spec = ProductBanner::find($id);
         $data = $this->formatData($request);
         $spec->update($data);
-        return redirect()->route('admin.product-banner.index');
+        return redirect()->route('product-banner.index');
     }
 
     /**
@@ -92,14 +92,14 @@ class ProductBannerController extends Controller
             return false;
         }
         $file = $request->file('banner');
+
         if ($file->isValid()) {
-            $clientName = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension();
-            $newName = md5(date('ymdhis') . $clientName) . "." . $extension;
-            Image::make($request->file('banner'))->resize(640, 320)->save('uploads/productImages/' . $newName);
-            return '/uploads/productImages/' . $newName;
-        } else {
+            $imageUrl = \Helper::qiniuUpload($file);
+            return $imageUrl;
+        }
+        else {
             return false;
         }
+        
     }
 }
