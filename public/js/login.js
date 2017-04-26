@@ -56,7 +56,7 @@ $(document).ready(function(){
 					}
 
 				} else{
-					alert(data.message)
+                    swal("登录提醒!", data.message, "error");
 				}
 			}
 		})
