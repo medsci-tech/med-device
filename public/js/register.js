@@ -62,7 +62,15 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			},
 			success: function success(data) {
 				if (data.status === 1) {
-					self.text('已发送');
+					var count = 60;
+					var t = setInterval(function () {
+						if (count <= 0) {
+							self.text('获取验证码');
+							clearInterval(t);
+						} else {
+							self.text(count + '秒后重新获取');
+						}
+					});
 				} else {
 					self.text('获取验证码');
 					alert(data.message);
