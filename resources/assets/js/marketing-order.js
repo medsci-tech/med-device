@@ -86,17 +86,29 @@ $(document).ready(function () {
 			return
 		}
 
+		var _province,_city,_area
+		_province = _city = _area = "";
+		var work_space = $('#area').val().split(' - ')
+		_province = work_space[0]
+		if (work_space.length === 2){
+			_city = work_space[1]
+		}
+		if (work_space.length === 3){
+			_city = work_space[1]
+			_area = work_space[2]
+		}
+
 		var data = {
 			product_name : name,
 		//	service_type_id : service_type_id,
-			province : '',
-			city : '',
-			area : '',
+			province : _province,
+			city : _city,
+			area : _area,
 			appoint_at : date,
 			contact_name : contact,
 			contact_phone : tel
 		}
-
+ 
 		if (hospital !== ''){
 			data.hospital_name = hospital
 		}
