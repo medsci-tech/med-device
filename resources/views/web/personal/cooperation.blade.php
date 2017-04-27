@@ -41,7 +41,7 @@
 				</a>
 			</div>
 		</div>
-		<div class="content col-md-9">
+		<div class="content col-md-9" style="margin-bottom: 80px">
 			<div class="business">
 				<div class="panel">我的合作</div>
 				@if($list)

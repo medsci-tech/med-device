@@ -48,7 +48,7 @@
 					<span> &nbsp;> &nbsp;预约详情</span>
 				</div>
 
-				<div class="detail">
+				<div class="detail" style="margin-bottom: 80px">
 					<div class="state">@if ($order->status===0)
 							进行中
 						@elseif ($order->status===1)
