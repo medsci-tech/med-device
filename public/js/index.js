@@ -1,65 +1,35 @@
-webpackJsonp([18],{
+webpackJsonp([12],{
 
-/***/ 32:
-/***/ (function(module, exports) {
+/***/ 36:
+/***/ (function(module, exports, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+module.exports = __webpack_require__(5);
+
 
 /***/ }),
 
-/***/ 6:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 5:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function($) {
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_swiper__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_swiper___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_swiper__);
 
-$(document).ready(function () {
-	var $buttons = $('.btn-banner');
-	var index = 1;
 
-	function interval() {
-		change(index);
 
-		index++;
-		if (index >= 5) {
-			index = 1;
-		}
-	}
+new __WEBPACK_IMPORTED_MODULE_1_swiper___default.a('.swiper-container', {
+	loop: true,
+	zoom: true,
+	autoplay: 3000,
+	pagination: '.swiper-pagination',
+	paginationClickable: true,
+	effect: 'fade'
 
-	$('#buttonset').on('click', function (e) {
-		var $target = $(e.target);
-
-		if ($target.hasClass('btn-banner')) {
-			clearInterval(t);
-			t = setInterval(interval, 2000);
-
-			index = Number($target.data('index'));
-			change(index);
-		}
-	});
-
-	var t = setInterval(interval, 2000);
-
-	function change(index) {
-		for (var i = 0; i < $buttons.length; i++) {
-			$buttons.eq(i).css('background-color', '#cccccc');
-		}
-		$buttons.eq(index - 1).css('background-color', '#01a4e4');
-		$('#banner').css('background-image', 'url(img/home/' + index + '.jpg)');
-	}
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-
-/***/ 68:
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(6);
-module.exports = __webpack_require__(32);
-
 
 /***/ })
 
-},[68]);
-//# sourceMappingURL=index.js.map
+},[36]);

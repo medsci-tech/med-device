@@ -1,9 +1,9 @@
-@extends('web.layouts.app2')
+@extends('web.layouts.app')
 
 @section('title', '登录')
 
 @section('page_css')
-<link rel="stylesheet" type="text/css" href="style/login.css">
+<link rel="stylesheet" type="text/css" href="/style/login.css">
 @endsection
 
 @section('page_js')

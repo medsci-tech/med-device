@@ -1,4 +1,4 @@
-@extends('web.layouts.left')
+@extends('web.layouts.app')
 
 @section('title', '我的合作')
 
@@ -7,8 +7,9 @@
 @endsection
 
 @section('content')
+<div class="container">
 	<div class="row">
-		<div class="col-md-2 nav">
+		<div class="col-md-3 nav">
 			<div class="item">
 				<a class="button" href="/personal">
 					<span class="img1"></span>
@@ -40,7 +41,7 @@
 				</a>
 			</div>
 		</div>
-		<div class="content col-md-8">
+		<div class="content col-md-9">
 			<div class="business">
 				<div class="panel">我的合作</div>
 				@if($list)
@@ -60,6 +61,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 @endsection
 
 @section('js')

@@ -1,0 +1,22 @@
+{
+  "/js/vendor.js": "/js/vendor.js",
+  "/js/common.js": "/js/common.js",
+  "/style/common.css": "/style/common.css",
+  "/style/index.css": "/style/index.css",
+  "/style/login.css": "/style/login.css",
+  "/style/product-detail.css": "/style/product-detail.css",
+  "/js/register.js": "/js/register.js",
+  "/js/profile-expertise.js": "/js/profile-expertise.js",
+  "/js/profile-collect.js": "/js/profile-collect.js",
+  "/js/profile-change-password.js": "/js/profile-change-password.js",
+  "/js/profile-basic.js": "/js/profile-basic.js",
+  "/js/product-detail.js": "/js/product-detail.js",
+  "/js/password.js": "/js/password.js",
+  "/js/marketing-order.js": "/js/marketing-order.js",
+  "/js/login.js": "/js/login.js",
+  "/js/loc.js": "/js/loc.js",
+  "/js/index.js": "/js/index.js",
+  "/js/help.js": "/js/help.js",
+  "/js/broker-sign.js": "/js/broker-sign.js",
+  "/js/manifest.js": "/js/manifest.js"
+}

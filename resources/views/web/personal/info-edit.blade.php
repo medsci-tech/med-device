@@ -1,16 +1,16 @@
-@extends('web.layouts.left')
+@extends('web.layouts.app')
 
 @section('title', '个人资料修改')
 
 @section('page_css')
 <link rel="stylesheet" type="text/css" href="/style/profile-basic.css">
-@endsection
-<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
-<script src="/js/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="/js/uploadify/uploadify.css">
+@endsection
+
 @section('content')
+<div class="container">
 	<div class="row">
-		<div class="col-md-2 nav">
+		<div class="col-md-3 nav">
 			<div class="item">
 				<a class="button focus">
 					<span class="img1"></span>
@@ -42,7 +42,7 @@
 				</a>
 			</div>
 		</div>
-		<div class="content col-md-8">
+		<div class="content col-md-9">
 			<span class="profile-basic">
 				<div class="panel">
 					<a href="/personal">信息管理</a>
@@ -110,55 +110,10 @@
 			</div>
 		</div>
 	</div>
+</div>
 @endsection
 
 @section('page_js')
+<script src="/js/uploadify/jquery.uploadify.js"></script>
 <script src="/js/profile-basic.js"></script>
-<script type="text/javascript">
-    $(function() {
-        $('#choose-icon').uploadify({
-            'debug'    : false,
-            'method'   : 'post',
-            'formData'     : {
-                '_token'     : '{{ csrf_token() }}'
-            },
-            'onInit'   : function(instance) { //初始化加载
-                //$('#choose-icon-queue').hide();
-            },
-            'buttonText' : '上传图像',
-            'fileSizeLimit' : '2MB',
-            'fileTypeExts' : '*.gif; *.jpg; *.png',
-            'fileTypeDesc' : '只能上传图片',//选择文件的时候的提示信息
-            'swf'      : "{{ asset('js/uploadify/uploadify.swf') }}",
-            'buttonImage' : '',//重载按钮图片
-            'buttonClass' : '',//重载按钮样式
-            'uploader' : "{{ url('personal/upload-head') }}",
-            'width'    : 80,
-            'onSelect' : function(file) {
-                if(file.size>1024000*2){//文件太大，取消上传该文件
-                    alert("文件大小超过限制！");
-                    $('#choose-icon').uploadify('cancel',file.id);
-                }
-
-            },
-            'onUploadSuccess' : uploadFile,
-            'onUploadError' : function(file, errorCode, errorMsg, errorString) {
-                alert('The file ' + file.name + ' could not be uploaded: ' + errorString);
-            }
-//            'onUploadSuccess' : function(file, data, response) {
-//                alert('The file ' + file.name + ' was successfully uploaded with a response of ' + response + ':' + data);
-//            }
-        });
-        function uploadFile(file, data) {
-            var data = $.parseJSON(data);
-            if(data.status==1){
-                $('img[name=head]').attr('src',data.data.head_img);
-            }
-            else{
-         		alert('上传失败!');
-            }
-        }
-
-    });
-</script>
 @endsection

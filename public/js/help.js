@@ -1,36 +1,40 @@
-webpackJsonp([19],{
+webpackJsonp([13],{
 
-/***/ 31:
-/***/ (function(module, exports) {
+/***/ 35:
+/***/ (function(module, exports, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+module.exports = __webpack_require__(4);
+
 
 /***/ }),
 
-/***/ 5:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 4:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function($) {
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 
-$(document).ready(function () {
 
-	for (var i = 0; i < $('.nav-item').length; i++) {
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
 
-		$('.nav-item').eq(i).on('click', function (i) {
+	for (var i = 0; i < __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.nav-item').length; i++) {
+
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.nav-item').eq(i).on('click', function (i) {
 			return function () {
-				if (!$(this).hasClass('focus')) {
-					$('.nav-item').removeClass('focus');
-					$(this).addClass('focus');
+				if (!__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).hasClass('focus')) {
+					__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.nav-item').removeClass('focus');
+					__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).addClass('focus');
 				}
 
-				$('.content').hide();
-				$('.content').eq(i).show();
+				__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.content').hide();
+				__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.content').eq(i).show();
 			};
 		}(i));
 	}
 
-	$('.nav-item:target').click()
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.nav-item:target').click();
 
 	// $('#link-about').click(function(event){
 	// 	$('#about').click();
@@ -44,22 +48,11 @@ $(document).ready(function () {
 	// $('#link-problems').click(function(event){
 	// 	$('#problems').click();
 	// })
-	$('.footer-link').click(function(){
-		$('#' + $(this).data('target')).click()
-	})
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.footer-link').click(function () {
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#' + __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('target')).click();
+	});
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-
-/***/ 67:
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(5);
-module.exports = __webpack_require__(31);
-
 
 /***/ })
 
-},[67]);
-//# sourceMappingURL=help.js.map
+},[35]);

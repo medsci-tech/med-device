@@ -1,15 +1,12 @@
-@extends('web.layouts.app2')
+@extends('web.layouts.app')
 
 @section('title', '登录')
 
 @section('page_css')
-<link rel="stylesheet" type="text/css" href="style/login.css">
-<link rel="stylesheet" type="text/css" href="/js/sweetalert/sweetalert.css">
+<link rel="stylesheet" type="text/css" href="/style/login.css">
 @endsection
 
 @section('page_js')
-<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
-<script src="/js/sweetalert/sweetalert.min.js"></script>
 <script src="/js/login.js"></script>
 @endsection
 

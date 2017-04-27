@@ -1,16 +1,16 @@
-@extends('web.layouts.left')
+@extends('web.layouts.app')
 
 @section('title', '企业信息修改')
 
 @section('page_css')
 <link rel="stylesheet" type="text/css" href="/style/profile-enterprise.css">
-@endsection
-<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
-<script src="/js/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="/js/uploadify/uploadify.css">
+@endsection
+
 @section('content')
+<div class="container">
 	<div class="row">
-		<div class="col-md-2 nav">
+		<div class="col-md-3 nav">
 			<div class="item">
 				<a class="button focus">
 					<span class="img1"></span>
@@ -42,7 +42,7 @@
 				</a>
 			</div>
 		</div>
-		<div class="content col-md-8">
+		<div class="content col-md-9">
 			<div class="infomanager">
 				<div class="panel">
 					<a href="/personal">信息管理</a>
@@ -68,6 +68,7 @@
 
 @section('page_js')
 <script src="/js/profile-enterprise.js"></script>
+<script src="/js/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function() {
         $('#choose-icon').uploadify({

@@ -1,4 +1,4 @@
-@extends('web.layouts.left')
+@extends('web.layouts.app')
 
 @section('title', '我的预约')
 
@@ -11,8 +11,9 @@
 @endsection
 
 @section('content')
+<div class="container">
 	<div class="row">
-		<div class="col-md-2 nav">
+		<div class="col-md-3 nav">
 			<div class="item">
 				<a class="button" href="/personal">
 					<span class="img1"></span>
@@ -44,7 +45,7 @@
 				</a>
 			</div>
 		</div>
-		<div class="content col-md-8">
+		<div class="content col-md-9">
 			<div class="content-orders">
 				<div class="panel">我的预约</div>
 				<div class="tabs">
@@ -87,6 +88,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 @endsection
 
 @section('js')
