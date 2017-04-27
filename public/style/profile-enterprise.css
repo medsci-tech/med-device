@@ -48,6 +48,9 @@
 .panel a:hover {
   text-decoration: none;
 }
+.infomanager {
+  min-width: 860px;
+}
 .infomanager::after {
   content: '';
   display: block;
@@ -107,4 +110,3 @@
   color: #01B9FE;
   border-color: #01B9FE;
 }
-/*# sourceMappingURL=profile-enterprise.css.map*/

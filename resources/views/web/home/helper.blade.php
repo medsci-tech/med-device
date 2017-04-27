@@ -14,7 +14,7 @@
 @section('content')
 <div class="container">
 	<div class="row mid">
-		<div class=" col-md-offset-1 col-md-10">
+		<div class="col-md-10">
 			<div class="nav">
 				<div id="problems" class="nav-item focus">常见问题</div>
 				<div id="buy" class="nav-item">购买流程</div>
