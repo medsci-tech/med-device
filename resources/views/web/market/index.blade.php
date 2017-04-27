@@ -22,7 +22,7 @@
 		<div class="shielder"></div>
 		<div class="mid-content">
 			<p></p>
-			<a style="margin-top: 110px" class="reserve" href="@if (Auth::guest()) {{ url('login') }} @else {{ url('market/marketing-order/') }} @endif" >预约营销服务</a>
+			<a style="margin-top: 110px;border-radius: 6px" class="reserve" href="@if (Auth::guest()) {{ url('login') }} @else {{ url('market/marketing-order/') }} @endif" >预约营销服务</a>
 		</div>
 	</div>
 </div>
