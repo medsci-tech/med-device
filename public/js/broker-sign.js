@@ -237,7 +237,7 @@ $(document).ready(function () {
 			var item1 = $('<div class="item"><span>' + this.data[i] + '</span></div>').appendTo(this.panel);
 			//container里的item
 			var cancelBtn = $('<span class="icon"><span class="icon2"></span></span>');
-			var item2 = $('<div class="item"><span class="inner">' + this.data[i] + '</span></div>').append(cancelBtn).appendTo(this.container);
+			var item2 = $('<div class="item" data-json=' + JSON.stringify(this.json[i]) + '><span class="inner">' + this.data[i] + '</span></div>').append(cancelBtn).appendTo(this.container);
 			list1.push(item1);
 			list2.push(item2);
 
@@ -377,6 +377,16 @@ $(document).ready(function () {
 		var _hospitals = [],_depart_ids = [],_service_type_ids = []
 		$('#item-container2 .item').each(function(){
 			_hospitals.push($(this).data('json'))
+		})
+		$('#item-container1 .item').each(function(){
+			if ($(this).hasClass('item-chosen')){
+				_service_type_ids.push($(this).data('json'))	
+			}
+		})
+		$('#item-container3 .item').each(function(){
+			if ($(this).hasClass('item-chosen')){
+				_depart_ids.push($(this).data('json'))	
+			}
 		})
 
 
