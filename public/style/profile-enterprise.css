@@ -16,10 +16,37 @@
   border-radius: 6px;
   font-size: 16px;
 }
+.nav .item a .img1 {
+  background-image: url(/img/profile/u1942.png);
+}
+.nav .item a .img2 {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAASCAYAAAC0EpUuAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF2SURBVDhPrZQvT8NAGMavFwSCNKmrmOAjTGBJ6Efov5AlE0yQTIJYyIJAk0BoggDXJQjM2mJwSOQcCD4AAoGYmFxanrd3HQ1XOtj6Sy7vc++99+T+9KoxSRRFLc75SZZlO2impmmfiI/IBbZtT2UZC8NwU9f1Psb3izqkX9M0Pfc8741qctM4jrsIN2hb1C+DiVO0HiY8JEmyB32HdEuMfoP8HGHouu6FhsJtJF6QUAx/MEJdFyvbkH0FabzLIU4hlhkSB3WGBI2jnXHotkg1RptMTaEbwyTTD6EbY0Kmz0I3A+7oiS7qEnomUutBt4/vNeL4rt4hhjK/LgPf9yeLF4UHcIVwJHorMXIcp0eCzjQHiWOEQPT+zdgwjEOpxTMts8KKybBjWRa9ppzFSgtoxTjwgewuQzEkFFOCfgowpuP4FYzfVhkSyvbL4Cj6mHxd8eYDeQeV1JoS+M96CPeFMe0AO6m90Mrtl4HBGKGDNvuLIWOMfQHUDpsHTE1E0wAAAABJRU5ErkJggg==);
+}
+.nav .item a .img3 {
+  background-image: url(/img/profile/u1869.png);
+}
+.nav .item a .img4 {
+  background-image: url(/img/profile/u1856.png);
+}
+.nav .item a .img5 {
+  background-image: url(/img/profile/u1843.png);
+}
 .nav .item a:hover {
   color: #01B9FE;
   text-decoration: none;
   cursor: pointer;
+}
+.nav .item a:hover .img2 {
+  background-image: url(/img/profile/u2294.png);
+}
+.nav .item a:hover .img3 {
+  background-image: url(/img/profile/u2281.png);
+}
+.nav .item a:hover .img4 {
+  background-image: url(/img/profile/u2268.png);
+}
+.nav .item a:hover .img5 {
+  background-image: url(/img/profile/u2255.png);
 }
 .nav .item span {
   display: inline-block;
