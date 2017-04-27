@@ -49,7 +49,7 @@
 			<form class="form">
 				<div>
 					<label>手机号</label>
-					<input id="phone" type="text" name="phone" placeholder="建议使用常用手机" value="{{ \Auth::user()->phone }}">
+					<input id="phone" type="text" name="phone" readonly placeholder="建议使用常用手机" value="{{ \Auth::user()->phone }}">
 				</div>
 				<div class="captcha">
 					<label>验证码</label>
