@@ -111,7 +111,7 @@
 			<label for="desc">要求描述</label>
 			<textarea id="desc" placeholder="请填写详细的要求"></textarea>
 		</div>
-		<input class="submit" type="submit" name="submit" value="立刻预约">
+		<div class="submit" id="submit">立刻预约</div>
 	</form>
 </div>
 @endsection
