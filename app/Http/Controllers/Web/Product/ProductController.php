@@ -23,7 +23,7 @@ class ProductController extends Controller
 
         if(!$id)
             unset($where['category_id']);
-        $product = Product::orderBy('weight', 'desc')->where($where)->paginate(config('params')['paginate']);
+        $product = Product::orderBy('weight', 'desc')->where($where)->paginate(20);
 
         return view('web.product.index', compact('product','keyword','catogary'));
 
