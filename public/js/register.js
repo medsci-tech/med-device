@@ -97,6 +97,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 		var password_confirmation = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#password_confirmation').val();
 		var phone = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#phone').val();
 		var code = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#code').val();
+		var birthday = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('input[name="birthday"]').val();
 
 		if (name === '') {
 			sweetAlert('请填写用户名');
@@ -146,6 +147,9 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			success: function success(data) {
 				if (data.message) {
 					sweetAlert(data.message);
+				}
+				if (data.status === 1) {
+					location.replace('/personal');
 				}
 				console.log(data);
 			}

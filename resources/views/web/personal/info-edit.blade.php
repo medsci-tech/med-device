@@ -65,14 +65,13 @@
 					</div>
 					<div class="no-border">
 
-						<label for="gender" class="control-label input-group">性别</label>
-    					<div class="btn-group" data-toggle="buttons">
-    					    
-    					    <label class="btn btn-danger active">
-    					        <input type="radio" name="gender" value="男" @if (\Auth::user()->sex =='男')checked @endif>男</label>
-    					    <label class="btn btn-success">
-    					        <input type="radio" name="gender" value="女" @if (\Auth::user()->sex =='女')checked @endif>女</label>
-    					</div>
+						<label for="gender" class="control-label input-group" style="margin:8px 61px 0 10px">性别</label>
+						<div class="btn-group" data-toggle="buttons">
+							<label class="btn btn-default active">
+								<input type="radio" name="gender" value="男" @if (\Auth::user()->sex =='男')checked @endif>男</label>
+							<label class="btn btn-default">
+								<input type="radio" name="gender" value="女" @if (\Auth::user()->sex =='女')checked @endif>女</label>
+						</div>
 
 					</div>
 					<div>
@@ -81,7 +80,7 @@
 					</div>
 					<div>
 						<label class="normal-label">工作地址</label>
-						<input id="area" class="normal-input" type="text" name="area">
+						<input data-type="area" class="normal-input" type="text" name="area">
 					</div>
 
 					<div class="submit" id="submit">确定</div>

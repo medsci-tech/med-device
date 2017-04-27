@@ -1,5 +1,7 @@
 import $ from 'jquery'
 window.$ = window.jQuery = $
+import './loc'
+
 
 $('form[name="searchForm"]').on('submit', function(e){
 	if(this.keyword.value.trim()){
@@ -9,4 +11,8 @@ $('form[name="searchForm"]').on('submit', function(e){
 		sweetAlert("请输入搜索关键词!")
 		e.preventDefault()
 	}
+})
+
+$('input[data-type="area"]').locationSelector({
+	a: 123
 })

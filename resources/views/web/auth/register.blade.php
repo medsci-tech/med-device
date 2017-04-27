@@ -14,160 +14,95 @@
 @endsection
 
 @section('content')
-<!--
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">默认Register</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
--->
 <div class="form-area">
-  <h2 class="title">欢迎注册</h2>
-  <form class="form">
-    <div>
-      <div class="required">*</div>
-      <label>用户名</label>
-      <input id="name" type="text" name="name" placeholder="您的账户名和登录名" required>
-    </div>
-    <div>
-      <div class="required">*</div>
-      <label>设置密码</label>
-      <input id="password" type="password" name="password" placeholder="请输入密码" required>
-    </div>
-    <div>
-      <div class="required">*</div>
-      <label>确认密码</label>
-      <input id="password_confirmation" type="password" name="password_confirmation" placeholder="请再次输入密码" required>
-    </div>
-    <div>
-      <div class="required">*</div>
-      <label>手机号</label>
-      <input id="phone" type="text" name="phone" placeholder="建议使用常用手机" required>
-    </div>
-    <div class="captcha">
-      <div class="required">*</div>
-      <label>验证码</label>
-      <input id="code" type="text" name="code" placeholder="请输入手机验证码" required>
-      <div id="getCaptcha">获取验证码</div>
-    </div>
-    <div>
-      <label>真实姓名</label>
-      <input id="real_name" type="text" name="real_name" placeholder="请输入真实姓名">
-    </div>
-    <div class="no-border">
-      <label for="gender" class="control-label input-group">性别</label>
-      <div class="btn-group" data-toggle="buttons">
-        
-        <label class="btn btn-danger active">
-            <input type="radio" name="gender" value="男">男</label>
-        <label class="btn btn-success">
-            <input type="radio" name="gender" value="女">女</label>
-      </div>
-    </div>
-    <div>
-      <label>电子邮箱</label>
-      <input id="email" type="text" name="email" placeholder="请输入电子邮箱">
-      <div class="email-dropdown"></div>
-    </div>
-    <div>
-      <label>工作区域</label>
-    </div>
-    <div>
-      <label>出生日期</label>
-      <input id="datetimepicker" type="text" name="birthday" placeholder="年/月/日" data-date-format="yyyy-mm-dd">
-      <div class="email-dropdown"></div>
-    </div>
-    <div class="no-border">
-      <input id="agree" class="confirm-agree" type="checkbox" name="agree" checked>
-      <span>我同意</span><a data-toggle="modal" data-target="#myModal" style="cursor: pointer;">药械通用户服务协议</a>
-    </div>
-    <div id="submit" class="submit" style="cursor: pointer;">注册</div>
-    <p>已有账号？ <a href="login">请登录</a></p>
-  </form>
+	<h2 class="title">欢迎注册</h2>
+	<form class="form">
+		<div>
+			<div class="required">*</div>
+			<label>用户名</label>
+			<input id="name" type="text" name="name" placeholder="您的账户名和登录名" required>
+		</div>
+		<div>
+			<div class="required">*</div>
+			<label>设置密码</label>
+			<input id="password" type="password" name="password" placeholder="请输入密码" required>
+		</div>
+		<div>
+			<div class="required">*</div>
+			<label>确认密码</label>
+			<input id="password_confirmation" type="password" name="password_confirmation" placeholder="请再次输入密码" required>
+		</div>
+		<div>
+			<div class="required">*</div>
+			<label>手机号</label>
+			<input id="phone" type="text" name="phone" placeholder="建议使用常用手机" required>
+		</div>
+		<div class="captcha">
+			<div class="required">*</div>
+			<label>验证码</label>
+			<input id="code" type="text" name="code" placeholder="请输入手机验证码" required>
+			<div id="getCaptcha">获取验证码</div>
+		</div>
+		<div>
+			<label>真实姓名</label>
+			<input id="real_name" type="text" name="real_name" placeholder="请输入真实姓名">
+		</div>
+		<div class="no-border">
+			<div class="form-group">
+				<label class="control-label input-group">性别</label>
+				<div class="btn-group" data-toggle="buttons">
+					<label class="btn btn-default active">
+							<input type="radio" name="gender" value="男">男</label>
+					<label class="btn btn-default">
+							<input type="radio" name="gender" value="女">女</label>
+				</div>
+			</div>
+		</div>
+		<div>
+			<label>电子邮箱</label>
+			<input id="email" type="text" name="email" placeholder="请输入电子邮箱">
+			<div class="email-dropdown"></div>
+		</div>
+		<div>
+			<label>工作区域</label>
+			<input id="area" type="text" data-type="area" name="area" placeholder="请输入工作区域">
+		</div>
+		<div>
+			<label>出生日期</label>
+			<input id="datetimepicker" type="text" name="birthday" placeholder="年/月/日" data-date-format="yyyy-mm-dd">
+			<div class="email-dropdown"></div>
+		</div>
+		<div class="no-border">
+			<div class="checkbox" style="float: none;text-align: center; white-space: nowrap">
+				<label style="width: auto; float: none; display: inline">
+					<input id="agree" type="checkbox" style="display: inline; float: none; margin-top: 20px;" name="agree" checked>
+					我同意 <a data-toggle="modal" data-target="#myModal" style="cursor: pointer; float: none; display: inline">药械通用户服务协议</a>
+				</label>
+			</div>
+		</div>
+		<div id="submit" class="submit" style="cursor: pointer;">注册</div>
+		<p>已有账号？ <a href="login">请登录</a></p>
+	</form>
 </div>
 @endsection
 
 @section('panel')
+<div class="modal fade" id="locSelector" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	asjflaskjfl
+</div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-          &times;
-        </button>
-        <h4 class="modal-title" id="myModalLabel">
-          药械通用户服务协议
-        </h4>
-      </div>
-      <div class="modal-body">
-        用户注册协议<br><br>
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					药械通用户服务协议
+				</h4>
+			</div>
+			<div class="modal-body">
+				用户注册协议<br><br>
 《用户注册协议》（以下简称“本协议”）由【施康培医疗科技（武汉）有限公司】（以下简称“【施康培】”）在提供域名为【www.bestmedevice.com】（以下简称“药械通”或“本站”）的网站服务时与药械通用户达成的关于使用本站的各项规则、条款和条件。本协议在药械通用户接受注册时生效。 <br>
 您在成为药械通用户前，必须仔细阅读并接受本协议中所述的所有规则、条款和条件，包括因被提及而纳入的条款和条件。强烈建议您阅读本协议时，同时阅读本协议中提及的其他网页所包含的内容，因为其可能包含对作为药械通用户的您适用的进一步条款和条件。 <br>
 
@@ -240,12 +175,12 @@ d)  由于黑客攻击、电信部门技术调整或故障、银行方面的问�
 1.  【施康培】尊重用户和消费者的合法权利，本协议及药械通上发布的各类规则、声明等其他内容，均是为了更好的、更加便利的为用户提供服务。药械通欢迎用户和社会各界提出意见和建议，【施康培】将虚心接受并适时修改本协议及药械通的各类规则。<br>
 2.  【施康培】有权不时地对本协议及本站的内容进行修改，并在药械通公示，无须另行通知用户。在法律允许的最大限度范围内，【施康培】对本协议及药械通内容拥有解释权。
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
-      </div>
-    </div>
-  </div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+			</div>
+		</div>
+	</div>
 </div>
 @endsection
 

@@ -65,5 +65,5 @@
 @endsection
 
 @section('page_js')
-<script src="/js/profile.js"></script>
+<!--script src="/js/profile.js"></script-->
 @endsection

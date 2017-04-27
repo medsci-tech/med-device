@@ -47,8 +47,6 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#service-type').val(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(e.target).text());
 	});
 
-	console.log(__WEBPACK_IMPORTED_MODULE_0_jquery___default.a);
-
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#choose-icon').uploadify({
 		'debug': false,
 		'method': 'post',

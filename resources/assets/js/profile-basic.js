@@ -38,8 +38,6 @@ $(function () {
 		$('#service-type').val($(e.target).text());
 	});
 
-console.log($)
-
 	$('#choose-icon').uploadify({
 		'debug'    : false,
 		'method'   : 'post',

@@ -88,6 +88,7 @@ $(function () {
 		var password_confirmation = $('#password_confirmation').val()
 		var phone = $('#phone').val()
 		var code = $('#code').val()
+		var birthday = $('input[name="birthday"]').val()
 
 		if (name === ''){
 			sweetAlert('请填写用户名')
@@ -123,20 +124,24 @@ $(function () {
 			url : '/register',
 			type : 'post',
 			data : {
-				name : name,
-				password : password,
-				password_confirmation : password_confirmation,
-				phone : phone,
-				code : code,
-				real_name :real_name,
-				email : email,
-				agree : agree,
-				birthday : birthday,
-				sex : sex
+				name,
+				password,
+				password_confirmation,
+				phone,
+				code,
+				real_name,
+				email,
+				agree,
+				birthday,
+				sex
 			},
 			success : function(data){
-				if (data.message){
-				sweetAlert(data.message)}
+				if(data.message){
+					sweetAlert(data.message)
+				}
+				if(data.status === 1){
+					location.replace('/personal')
+				}
 				console.log(data)
 			}
 		})
