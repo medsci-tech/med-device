@@ -2,8 +2,17 @@ import $ from 'jquery'
 
 $(function(){
 
-	//获取手机验证码
+	//获取手机验证码 
+	var count = 60
 	$('#getCaptcha').click(function(){
+		if (count < 60){
+			return
+		}
+		var phone = $('#phone').val()
+		if (phone === ''){
+			sweetAlert('请填写手机号')
+			return
+		}
 		var self = $(this)
 		setTimeout(function(){
 			self.text('发送中...')
@@ -17,7 +26,16 @@ $(function(){
 			},
 			success : function(data){
 				if (data.status === 1){
-					self.text('已发送')
+					var t = setInterval(function(){
+						if (count <= 0){
+							self.text('获取验证码')
+							clearInterval(t)
+							count = 60
+						} else {
+							count --
+							self.text(count + '秒后重新获取')
+						}
+					}, 1000)
 				} else {
 					self.text('获取验证码')
 					sweetAlert(data.message)
