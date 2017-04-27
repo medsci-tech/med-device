@@ -17,25 +17,25 @@
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="personal/collection">
+				<a class="button" href="/personal/collection">
 					<span class="img2"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;我的收藏
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="personal/cooperation">
+				<a class="button" href="/personal/cooperation">
 					<span class="img3"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;我的合作
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="personal/appointment">
+				<a class="button" href="/personal/appointment">
 					<span class="img4"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;我的预约
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="personal/pwd-edit">
+				<a class="button" href="/personal/pwd-edit">
 					<span class="img5"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;修改密码
 				</a>
@@ -52,7 +52,7 @@
 					<a href="/personal/enterprise">企业信息</a><span>（{{ $ent_completion ? '已完善' : '未完善' }}）</span>
 				</div>
 			</div>
-			<div class="mymessage">
+			<div class="mymessage" style="margin-bottom: 80px">
 				<div class="panel">我的消息</div>
 				<div class="item-message">
 					<span class="time">{{ \Auth::user()->created_at  }}</span>
