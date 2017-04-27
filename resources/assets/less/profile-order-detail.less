@@ -1,3 +1,4 @@
+
 .nav .item {
   width: 200px;
   height: 68px;
@@ -76,66 +77,40 @@
   background-color: #f2f2f2;
   font-size: 16px;
 }
-.tabs {
-  font-size: 16px;
-  border-bottom: 1px solid #f2f2f2;
-}
-.tabs > span {
-  display: inline-block;
-  width: 140px;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-  cursor: pointer;
-}
-.tabs > span span {
-  color: #ff6600;
-}
-.tabs > span #order-done {
-  color: #AEAEAE;
-}
-.strip {
-  width: 140px;
-  height: 2px;
-  background-color: #01a4e4;
-}
-.order-item {
-  position: relative;
-  height: 120px;
-  padding: 26px 0 0 10px;
-  color: #6B6B6B;
-  border-bottom: 1px solid #f2f2f2;
-}
-.order-item span {
-  display: inline-block;
-  margin-right: 10px;
-  line-height: 32px;
-}
-.order-item span.type {
+.panel a {
   color: black;
 }
-.order-item span.state {
-  color: #01a4e4;
+.panel a:hover {
+  text-decoration: none;
 }
-.btn-detail {
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+.detail {
+  padding: 40px 60px;
+  background-color: #f2f2f2;
+}
+.detail .state {
+  display: inline-block;
+  float: right;
   width: 80px;
   height: 30px;
   line-height: 30px;
   border-radius: 15px;
   text-align: center;
-  color: #c9c9c9;
+  color: #AEAEAE;
+  background-color: white;
   border: 1px solid #c9c9c9;
-  cursor: pointer;
 }
-.btn-detail:hover {
-  color: #01a4e4;
-  border-color: #01a4e4;
-  text-decoration: none;
+.detail .title {
+  display: inline-block;
+  margin-bottom: 60px;
+  color: #6B6B6B;
 }
-/*# sourceMappingURL=profile-orders.css.map*/
+.detail .detail-row {
+  height: 40px;
+}
+.detail .detail-row .key {
+  display: inline-block;
+  width: 120px;
+  color: #6B6B6B;
+}
+
+/*# sourceMappingURL=profile-order-detail.css.map*/

@@ -1,13 +1,5 @@
 webpackJsonp([13],{
 
-/***/ 35:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(4);
-
-
-/***/ }),
-
 /***/ 4:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -53,6 +45,14 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
 	});
 });
 
+/***/ }),
+
+/***/ 54:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(4);
+
+
 /***/ })
 
-},[35]);
+},[54]);

@@ -86,7 +86,8 @@
 .collect-item > * {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 .collect-item .pic {
   left: 10px;
@@ -122,5 +123,4 @@
   color: #01a4e4;
   border-color: #01a4e4;
 }
-
 /*# sourceMappingURL=profile-collect.css.map*/
