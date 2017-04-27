@@ -38,27 +38,38 @@
 			<h4>基础信息</h4>
 			<div class="input-box">
         		<div class="required">*</div>
-				<label>真实姓名</label>
-				<input id="name" type="text" name="realname" placeholder="请输入真实姓名" @if (Auth::check()) value="{{ \Auth::user()->real_name }}" @endif>
+				<label class="normal-label">真实姓名</label>
+				<input id="name" class="normal-input" type="text" name="realname" placeholder="请输入真实姓名" @if (Auth::check()) value="{{ \Auth::user()->real_name }}" @endif>
 			</div>
 			<div class="no-border input-box">
         		<div class="required">*</div>
-				<label>性别</label>
+
+<!-- 				<label>性别</label>
 				<input class="sex-radio" type="radio" name="sex" value="男" @if (Auth::check() && \Auth::user()->sex=='男') checked @endif><span>男</span>
-				<input class="sex-radio" type="radio" name="sex" value="女" @if (Auth::check() && \Auth::user()->sex=='女') checked @endif><span>女</span>
+				<input class="sex-radio" type="radio" name="sex" value="女" @if (Auth::check() && \Auth::user()->sex=='女') checked @endif><span>女</span> -->
+
+				<label for="gender" class="control-label input-group">性别</label>
+    			<div class="btn-group" data-toggle="buttons">
+    			    
+    			    <label class="btn btn-danger active">
+    			        <input type="radio" name="gender" value="男" @if (Auth::check() && \Auth::user()->sex=='男') checked @endif>男</label>
+    			    <label class="btn btn-success">
+    			        <input type="radio" name="gender" value="女" @if (Auth::check() && \Auth::user()->sex=='女') checked @endif>女</label>
+    			</div>
+
 			</div>
 			<div class="input-box">
         		<div class="required">*</div>
-				<label for="email">电子邮箱</label>
-				<input id="email" type="text" name="email" placeholder="请输入电子邮箱" @if (Auth::check()) value="{{ \Auth::user()->email }}" @endif>
+				<label class="normal-label">电子邮箱</label>
+				<input id="email" class="normal-input" type="text" name="email" placeholder="请输入电子邮箱" @if (Auth::check()) value="{{ \Auth::user()->email }}" @endif>
 				<div class="email-dropdown"></div>
 			</div>
 			<div class="input-box">
         		<div class="required">*</div>
-				<label for="">工作区域</label>
+				<label class="normal-label">工作区域</label>
 				
 				<div id="loc-wrapper">
-					<input id="area" style="display: block" readonly type="text" name="area" placeholder="请选择省市地区">
+					<input id="area" class="normal-input" style="display: block" readonly type="text" name="area" placeholder="请选择省市地区">
 				</div>
 			</div>
 			<div class="separate-line"></div>

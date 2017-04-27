@@ -64,7 +64,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 						action = 1;
 					}
 				} else {
-					alert(data.message);
+					sweetAlert(data.message);
 				}
 			}
 		});
@@ -101,6 +101,14 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.btn-submit').click(function () {
 		var phone = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#phone').val();
 		var name = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#name').val();
+		if (name === '') {
+			sweetAlert('请填写姓名');
+			return;
+		}
+		if (phone === '') {
+			sweetAlert('请填写联系电话');
+			return;
+		}
 		var join_type = '';
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.checkboxs input').each(function () {
 			if (this.checked) {
@@ -122,7 +130,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			},
 			success: function success(data) {
 				__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.shielder,#panel').hide();
-				alert(data.message);
+				sweetAlert(data.message);
 			}
 		});
 	});

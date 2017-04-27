@@ -37,7 +37,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 					self.text('已发送');
 				} else {
 					self.text('获取验证码');
-					alert(data.message);
+					sweetAlert(data.message);
 				}
 			}
 		});
@@ -61,9 +61,9 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			},
 			success: function success(data) {
 				if (data.status === 1) {
-					//alert()
+					//sweetAlert()
 				}
-				alert(data.message);
+				sweetAlert(data.message);
 			}
 		});
 	});

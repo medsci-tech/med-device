@@ -44,7 +44,7 @@ $(function () {
 			}
 		}).then(function(data){
 			if (data.status !== 1){
-				alert(data.message)
+				sweetAlert(data.message)
 				return
 			}
 			var container = $('#panel2 .items')
@@ -341,7 +341,7 @@ $(function () {
 			type : 'post',
 			data : data,
 			success : function(data){
-				alert('data.message')
+				sweetAlert('data.message')
 			}
 		})
 	})

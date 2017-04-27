@@ -122,9 +122,14 @@
       <input id="real_name" type="text" name="real_name" placeholder="请输入真实姓名">
     </div>
     <div class="no-border">
-      <label>性别</label>
-      <input class="sex-radio" type="radio" name="sex" value="男"><span>男</span>
-      <input class="sex-radio" type="radio" name="sex" value="女"><span>女</span>
+      <label for="gender" class="control-label input-group">性别</label>
+      <div class="btn-group" data-toggle="buttons">
+        
+        <label class="btn btn-danger active">
+            <input type="radio" name="gender" value="男">男</label>
+        <label class="btn btn-success">
+            <input type="radio" name="gender" value="女">女</label>
+      </div>
     </div>
     <div>
       <label>电子邮箱</label>

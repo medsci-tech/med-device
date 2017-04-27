@@ -11,8 +11,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 
-	//获取手机验证码
+	//获取手机验证码 
+	var count = 60;
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#getCaptcha').click(function () {
+		if (count < 60) {
+			return;
+		}
+		var phone = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#phone').val();
+		if (phone === '') {
+			sweetAlert('请填写手机号');
+			return;
+		}
 		var self = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this);
 		setTimeout(function () {
 			self.text('发送中...');
@@ -26,10 +35,19 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			},
 			success: function success(data) {
 				if (data.status === 1) {
-					self.text('已发送');
+					var t = setInterval(function () {
+						if (count <= 0) {
+							self.text('获取验证码');
+							clearInterval(t);
+							count = 60;
+						} else {
+							count--;
+							self.text(count + '秒后重新获取');
+						}
+					}, 1000);
 				} else {
 					self.text('获取验证码');
-					alert(data.message);
+					sweetAlert(data.message);
 				}
 			}
 		});
@@ -53,9 +71,9 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			},
 			success: function success(data) {
 				if (data.status === 1) {
-					//alert()
+					//sweetAlert()
 				}
-				alert(data.message);
+				sweetAlert(data.message);
 			}
 		});
 	});

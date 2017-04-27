@@ -60,17 +60,17 @@ console.log($)
 		'width'    : 80,
 		'onSelect' : function(file) {
 			if(file.size>1024000*2){//文件太大，取消上传该文件
-				alert("文件大小超过限制！");
+				sweetAlert("文件大小超过限制！");
 				$('#choose-icon').uploadify('cancel',file.id);
 			}
 
 		},
 		'onUploadSuccess' : uploadFile,
 		'onUploadError' : function(file, errorCode, errorMsg, errorString) {
-			alert('The file ' + file.name + ' could not be uploaded: ' + errorString);
+			sweetAlert('The file ' + file.name + ' could not be uploaded: ' + errorString);
 		}
 //            'onUploadSuccess' : function(file, data, response) {
-//                alert('The file ' + file.name + ' was successfully uploaded with a response of ' + response + ':' + data);
+//                sweetAlert('The file ' + file.name + ' was successfully uploaded with a response of ' + response + ':' + data);
 //            }
 	});
 	function uploadFile(file, data) {
@@ -79,7 +79,7 @@ console.log($)
 			$('img[name=head]').attr('src',data.data.head_img);
 		}
 		else{
-			alert('上传失败!');
+			sweetAlert('上传失败!');
 		}
 	}
 

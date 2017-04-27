@@ -20,7 +20,7 @@ $(function(){
 					self.text('已发送')
 				} else {
 					self.text('获取验证码')
-					alert(data.message)
+					sweetAlert(data.message)
 				}
 			}
 		})
@@ -44,9 +44,9 @@ $(function(){
 			},
 			success : function(data){
 				if (data.status === 1){
-					//alert()
+					//sweetAlert()
 				}
-				alert(data.message)
+				sweetAlert(data.message)
 			}
 		})
 

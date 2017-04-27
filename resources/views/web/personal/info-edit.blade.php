@@ -48,64 +48,43 @@
 					<a href="/personal">信息管理</a>
 					<span> &nbsp;> &nbsp;基础信息修改</span>
 				</div>
-				<form class="form" action="" method="POST">
+				<form class="form">
 					<div class="icon"><img name="head" src="{{ isset(\Auth::user()->head_img) ? \Auth::user()->head_img.'?imageView2/1/w/150/h/150/q/90' : config('params')['default_head'].'?imageView2/1/w/150/h/150/q/90' }}"> </div>
 					<div id="choose-icon">上传头像</div>
 					<div>
-						<label for="">用户名</label>
-						<input type="text" name="name" placeholder="您的账户名和登录名" value="{{ \Auth::user()->name }}" readonly>
+						<label class="normal-label">用户名</label>
+						<input class="normal-input" type="text" name="name" placeholder="您的账户名和登录名" value="{{ \Auth::user()->name }}" readonly>
 					</div>
 					<div>
-						<label for="">手机号</label>
-						<input type="text" name="phone" placeholder="建议使用常用手机" value="{{ \Auth::user()->phone }}" readonly>
+						<label class="normal-label">手机号</label>
+						<input class="normal-input" type="text" name="phone" placeholder="建议使用常用手机" value="{{ \Auth::user()->phone }}" readonly>
 					</div>
 					<div>
-						<label for="">真实姓名</label>
-						<input type="text" name="realname" placeholder="请输入真实姓名" value="{{ \Auth::user()->real_name }}">
+						<label class="normal-label">真实姓名</label>
+						<input class="normal-input" type="text" name="realname" placeholder="请输入真实姓名" value="{{ \Auth::user()->real_name }}">
 					</div>
 					<div class="no-border">
-						<label>性别</label>
-						<input class="sex-radio" type="radio" name="sex" value="男" @if (\Auth::user()->sex =='男')checked @endif><span>男</span>
-						<input class="sex-radio" type="radio" name="sex" value="女" @if (\Auth::user()->sex =='女')checked @endif><span>女</span>
+
+						<label for="gender" class="control-label input-group">性别</label>
+    					<div class="btn-group" data-toggle="buttons">
+    					    
+    					    <label class="btn btn-danger active">
+    					        <input type="radio" name="gender" value="男" @if (\Auth::user()->sex =='男')checked @endif>男</label>
+    					    <label class="btn btn-success">
+    					        <input type="radio" name="gender" value="女" @if (\Auth::user()->sex =='女')checked @endif>女</label>
+    					</div>
+
 					</div>
 					<div>
-						<label for="">电子邮箱</label>
-						<input type="text" name="email" placeholder="请输入电子邮箱" value="{{ \Auth::user()->email }}">
+						<label class="normal-label">电子邮箱</label>
+						<input class="normal-input" type="text" name="email" placeholder="请输入电子邮箱" value="{{ \Auth::user()->email }}">
 					</div>
 					<div>
-						<label for="">工作地址</label>
-						<input id="area" type="text" name="area">
-						<div id="province" class="province">
-							<div id="value-province">省</div>
-							<div id="btn-dropdown-province" class="btn-dropdown"></div>
-						</div>
-						<div id="city" class="city">
-							<div id="value-city">市</div>
-							<div id="btn-dropdown-city" class="btn-dropdown"></div>
-						</div>
-						<div id="county" class="county">
-							<div id="value-county">县</div>
-							<div id="btn-dropdown-county" class="btn-dropdown"></div>
-						</div>
+						<label class="normal-label">工作地址</label>
+						<input id="area" class="normal-input" type="text" name="area">
 					</div>
-					<!-- 下拉框 -->
-					<ul id="drop-province" class="drop-down">
-						<li>湖北省</li>
-						<li>湖南省</li>
-						<li>广东省</li>
-					</ul>
-					<ul id="drop-city" class="drop-down">
-						<li>市一</li>
-						<li>市二</li>
-						<li>市三</li>
-					</ul>
-					<ul id="drop-county" class="drop-down">
-						<li>一县</li>
-						<li>二县</li>
-						<li>三县</li>
-					</ul>
-					<!-- 下拉框结束 -->
-					<input class="submit" type="submit" name="submit" value="确定">
+
+					<div class="submit" id="submit">确定</div>
 				</form>
 			</div>
 		</div>

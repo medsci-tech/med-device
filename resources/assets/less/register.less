@@ -51,17 +51,10 @@
   color: red;
   font-size: 24px;
 }
-.form-area .form > div * {
-  display: block;
-  float: left;
-  height: 50px;
-  line-height: 50px;
-  font-weight: normal;
-}
 .form-area .form label {
   width: 80px;
   padding-left: 20px;
-  margin-right: 20px;
+  font-weight: normal;
 }
 .form-area .form input[type="text"],
 .form-area .form input[type="password"] {
@@ -69,6 +62,7 @@
   width: 300px;
   height: 46px;
   margin-top: 1px;
+  margin-left: 20px;
   outline-color: #fff;
   border: none;
 }
@@ -102,16 +96,19 @@
   text-align: center;
 }
 .form-area .form .captcha {
+  position: relative;
   margin-bottom: 40px;
 }
 .form-area .form .captcha input {
-  width: 200px;
+  width: 180px;
 }
 #getCaptcha {
-  width: 100px;
+  position: absolute;
+  right: 5px;
+  top: 7px;
+  width: 120px;
   height: 32px;
   line-height: 32px;
-  margin: 7px 0 0 10px;
   text-align: center;
   border-radius: 6px;
   background-color: #f2f2f2;

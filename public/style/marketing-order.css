@@ -220,22 +220,6 @@
           transform: rotateZ(180deg);
   cursor: pointer;
 }
-.form-area .form .province .btn-dropdown,
-.form-area .form .city .btn-dropdown,
-.form-area .form .county .btn-dropdown {
-  top: 0;
-}
-.form-area .form #area {
-  display: none;
-}
-.form-area .form .province,
-.form-area .form .city,
-.form-area .form .county {
-  position: relative;
-  width: 94px;
-  height: 60px;
-  margin-right: 10px;
-}
 .form-area .form > div {
   position: relative;
   width: 100%;
@@ -250,14 +234,15 @@
   color: red;
   font-size: 24px;
 }
-.form-area .form > div * {
+.form-area .form > div .normal-label,
+.form-area .form > div .normal-input {
   display: block;
   float: left;
   height: 50px;
   line-height: 50px;
   font-weight: normal;
 }
-.form-area .form label {
+.form-area .form .normal-label {
   width: 80px;
   margin-right: 20px;
   text-align: center;

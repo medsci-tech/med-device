@@ -93,14 +93,15 @@
   margin: 12px 0;
   border: 1px solid #d7d7d7;
 }
-.form > div * {
+.form > div .normal-input,
+.form > div .normal-label {
   display: block;
   float: left;
   height: 60px;
   line-height: 60px;
   font-weight: normal;
 }
-.form label {
+.form .normal-label {
   width: 80px;
   margin-right: 20px;
   text-align: center;

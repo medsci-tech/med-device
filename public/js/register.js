@@ -48,7 +48,16 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 	// });
 
 	//获取手机验证码
+	var count = 60;
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#getCaptcha').click(function () {
+		if (count < 60) {
+			return;
+		}
+		var phone = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#phone').val();
+		if (phone === '') {
+			sweetAlert('请填写手机号');
+			return;
+		}
 		var self = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this);
 		setTimeout(function () {
 			self.text('发送中...');
@@ -62,18 +71,19 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			},
 			success: function success(data) {
 				if (data.status === 1) {
-					var count = 60;
 					var t = setInterval(function () {
 						if (count <= 0) {
 							self.text('获取验证码');
 							clearInterval(t);
+							count = 60;
 						} else {
+							count--;
 							self.text(count + '秒后重新获取');
 						}
-					});
+					}, 1000);
 				} else {
 					self.text('获取验证码');
-					alert(data.message);
+					sweetAlert(data.message);
 				}
 			}
 		});
@@ -89,27 +99,27 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 		var code = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#code').val();
 
 		if (name === '') {
-			alert('请填写用户名');
+			sweetAlert('请填写用户名');
 			return;
 		}
 		if (password === '') {
-			alert('请填写密码');
+			sweetAlert('请填写密码');
 			return;
 		}
 		if (password_confirmation === '') {
-			alert('请填写密码确认');
+			sweetAlert('请填写密码确认');
 			return;
 		}
 		if (phone === '') {
-			alert('请填写手机号');
+			sweetAlert('请填写手机号');
 			return;
 		}
 		if (code === '') {
-			alert('请填写验证码');
+			sweetAlert('请填写验证码');
 			return;
 		}
 		if (password !== password_confirmation) {
-			alert('密码与密码确认不一致！');
+			sweetAlert('密码与密码确认不一致！');
 			return;
 		}
 
@@ -135,7 +145,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			},
 			success: function success(data) {
 				if (data.message) {
-					alert(data.message);
+					sweetAlert(data.message);
 				}
 				console.log(data);
 			}
@@ -175,12 +185,19 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			}).appendTo(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.email-dropdown'));
 		}
 	}
-	var data = ['@163.com', '@sina.com', '@qq.com', '@126.com', '@vip.sina.com', '@gmail.com', '@hotmail.com', '@sohu.com', '@139.com'];
+	var data = ['@qq.com', '@163.com', '@126.com', '@sina.com', '@hptmail.com', '@gmail.com', '@hotmail.com', '@sohu.com', '@21cn.com'];
 	initDom(data);
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').click(function () {
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.email-dropdown').hide();
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('item-email').text('');
 	});
+
+	//datetimepicker
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#datetimepicker').datetimepicker({
+		minView: "month", //选择日期后，不会再跳转去选择时分秒 
+		format: "yyyy-mm-dd", //选择日期后，文本框显示的日期格式 
+		language: 'zh-CN', //汉化 
+		autoclose: true });
 });
 
 /***/ }),

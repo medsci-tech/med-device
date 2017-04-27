@@ -56,4 +56,15 @@
 @endsection
 
 @section('page_js')
+<script type="text/javascript">
+	var path = location.pathname
+	if (path.match(/^\/product(?:\/category\/(\d+))/)){
+		$('.panel a').each(function(){
+			var href = $(this).attr('href')
+			if (href.substring(href.lastIndexOf('/') + 1) === '{{id}}'){
+				$(this).css({'color':'orange', 'font-weight':'bold'})
+			}
+		})
+	}
+</script>
 @endsection

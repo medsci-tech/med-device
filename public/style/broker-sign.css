@@ -189,16 +189,16 @@
   color: red;
   font-size: 24px;
 }
-.form > div * {
+.form > div .normal-label,
+.form > div .normal-input {
   display: block;
   float: left;
   height: 50px;
   line-height: 50px;
   font-weight: normal;
 }
-.form label {
+.form .normal-label {
   width: 80px;
-  margin-right: 20px;
   text-align: center;
 }
 .form input[type="text"],

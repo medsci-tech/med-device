@@ -66,23 +66,23 @@ $(document).ready(function () {
 		var desc = $('#desc').val()
 
 		if (name === ''){
-			alert('请填写产品名称')
+			sweetAlert('请填写产品名称')
 			return
 		}
 		if (type === ''){
-			alert('请选择服务类型')
+			sweetAlert('请选择服务类型')
 			return
 		}
 		if (date === ''){
-			alert('请选择预约日期')
+			sweetAlert('请选择预约日期')
 			return
 		}
 		if (contact === ''){
-			alert('请填写联系人')
+			sweetAlert('请填写联系人')
 			return
 		}
 		if (tel === ''){
-			alert('请填写联系电话')
+			sweetAlert('请填写联系电话')
 			return
 		}
 
@@ -125,7 +125,7 @@ $(document).ready(function () {
 			data : data,
 			success : function(data){
 				if (data.message){
-					alert(data.message)
+					sweetAlert(data.message)
 				}
 			}
 		})

@@ -57,7 +57,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			}
 		}).then(function (data) {
 			if (data.status !== 1) {
-				alert(data.message);
+				sweetAlert(data.message);
 				return;
 			}
 			var container = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#panel2 .items');
@@ -338,7 +338,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			type: 'post',
 			data: data,
 			success: function success(data) {
-				alert('data.message');
+				sweetAlert('data.message');
 			}
 		});
 	});

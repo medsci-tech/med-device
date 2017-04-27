@@ -55,7 +55,7 @@ $(function () {
 						action = 1
 					}
 				} else {
-					alert(data.message)
+					sweetAlert(data.message)
 				}
 			}
 		})
@@ -94,6 +94,14 @@ $(function () {
 	$('.btn-submit').click(function(){
 		var phone = $('#phone').val()
 		var name = $('#name').val()
+		if (name === ''){
+			sweetAlert('请填写姓名')
+			return
+		}
+		if (phone === ''){
+			sweetAlert('请填写联系电话')
+			return
+		}
 		var join_type = ''
 		$('.checkboxs input').each(function(){
 			if (this.checked){
@@ -115,7 +123,7 @@ $(function () {
 			},
 			success : function(data){
 				$('.shielder,#panel').hide()
-				alert(data.message)
+				sweetAlert(data.message)
 			}
 		})
 	})

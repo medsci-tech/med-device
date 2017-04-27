@@ -58,57 +58,44 @@
 	<form class="form">
 		<div>
 			<div class="required">*</div>
-			<label for="product-name">产品名称</label>
-			<input id="product-name" type="text" name="name" placeholder="输入产品名称" @if ($product)value="{{ $product->	name }}" @endif>
+			<label class="normal-label" for="product-name">产品名称</label>
+			<input id="product-name" class="normal-input" type="text" name="name" placeholder="输入产品名称" @if ($product)value="{{ $product->	name }}" @endif>
 		</div>
 		<div>
 			<div class="required">*</div>
-			<label for="service-type">服务类型</label>
-			<input id="service-type" type="text" name="type" placeholder="选择服务类型" readonly style="background-color: 	white">
+			<label class="normal-label" for="service-type">服务类型</label>
+			<input id="service-type" class="normal-input" type="text" name="type" placeholder="选择服务类型" readonly style="background-color: 	white">
 			<div id="btn-dropdown-type" class="btn-dropdown"></div>
 		</div>
 		<div>
 			<div class="required">*</div>
-			<label for="area">预约区域</label>
-			<input id="area" type="text" name="area">
-			<div id="province" class="province">
-				<div id="value-province">省</div>
-				<div id="btn-dropdown-province" class="btn-dropdown"></div>
-			</div>
-			<div id="city" class="city">
-				<div id="value-city">市</div>
-				<div id="btn-dropdown-city" class="btn-dropdown"></div>
-			</div>
-			<div id="county" class="county">
-				<div id="value-county">县</div>
-				<div id="btn-dropdown-county" class="btn-dropdown"></div>
-			</div>
+			<label class="normal-label" for="area">预约区域</label>
 		</div>
 		<div>
-			<label for="hospital">医院</label>
-			<input id="hospital" type="text" name="phone" placeholder="可填写多家医院">
+			<label class="normal-label" for="hospital">医院</label>
+			<input id="hospital"  class="normal-input"type="text" name="phone" placeholder="可填写多家医院">
 		</div>
 		<div>
-			<label for="department">科室</label>
-			<input id="department" type="text" name="phone" placeholder="可填写多家科室">
+			<label class="normal-label" for="department">科室</label>
+			<input id="department"  class="normal-input"type="text" name="phone" placeholder="可填写多家科室">
 		</div>
 		<div>
 			<div class="required">*</div>
-			<label for="datetimepicker">预约日期</label>
-			<input id="datetimepicker" type="text" name="phone" placeholder="年/月/日" data-date-format="yyyy-mm-dd">
+			<label class="normal-label" for="datetimepicker">预约日期</label>
+			<input id="datetimepicker" class="normal-input" type="text" name="phone" placeholder="年/月/日" data-date-format="yyyy-mm-dd">
 		</div>
 		<div>
 			<div class="required">*</div>
-			<label for="contact">联系人</label>
-			<input id="contact" type="text" name="realname" placeholder="请输入联系人姓名">
+			<label class="normal-label" for="contact">联系人</label>
+			<input id="contact" class="normal-input" type="text" name="realname" placeholder="请输入联系人姓名">
 		</div>
 		<div>
 			<div class="required">*</div>
-			<label for="tel">联系电话</label>
-			<input id="tel" type="text" name="email" placeholder="请输入联系电话">
+			<label class="normal-label" for="tel">联系电话</label>
+			<input id="tel" class="normal-input" type="text" name="email" placeholder="请输入联系电话">
 		</div>
 		<div class="desc">
-			<label for="desc">要求描述</label>
+			<label class="normal-label" for="desc">要求描述</label>
 			<textarea id="desc" placeholder="请填写详细的要求"></textarea>
 		</div>
 		<div class="submit" id="submit">立刻预约</div>

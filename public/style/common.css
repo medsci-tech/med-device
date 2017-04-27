@@ -6769,6 +6769,7 @@ body > header .top-nav .btn-register {
   background-color: white;
   font-size: 14px;
   border-radius: 4px;
+  border: 1px solid #01a4e4;
 }
 body > header .top-nav .btn-login:hover,
 body > header .top-nav .btn-register:hover {
