@@ -12,98 +12,89 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 
 	//初始化数据
+	//获取科室
+	var departs, service_types;
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+		url: '/get-depart',
+		success: function success(data) {
+			departs = data;
+			var manager1 = new manager(departs, 0);
+		}
+	});
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+		url: '/get-service',
+		success: function success(data) {
+			service_types = data;
+			var manager3 = new manager(service_types, 2);
+		}
+	});
+
 	var data,
 	    originData,
-	    province = [],
-	    cities = [],
+	    province = "",
+	    city = "",
 	    hospitals = [];
-	__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.post({
-		url: '/get-hospital',
-		success: function success(data) {
-			originData = {
-				"code": 200,
-				"status": 1,
-				"message": "医院列表",
-				"data": [{
-					"id": 11069,
-					"province": "湖北",
-					"city": "武汉",
-					"area": "蔡甸",
-					"hospital": "武汉市蔡甸妇幼保健"
-				}, {
-					"id": 11072,
-					"province": "湖南",
-					"city": "武汉",
-					"area": "东西湖",
-					"hospital": "武汉兰青肿瘤医院"
-				}, {
-					"id": 11073,
-					"province": "河北",
-					"city": "武汉",
-					"area": "东西湖",
-					"hospital": "武汉明仁中医医院"
-				}, {
-					"id": 11088,
-					"province": "湖北",
-					"city": "宜昌",
-					"area": "汉阳",
-					"hospital": "武汉华西医院"
-				}]
-			};
-		}
-	}).then(function (asd) {
-		console.log(asd);
-		data = originData.data;
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.getJSON('/json/loc.json').then(function (data) {
+		data = data;
 		for (var i = 0; i < data.length; i++) {
-			if (!isRepeat(province, data[i].province)) {
-				province.push(data[i].province);
-			}
-		}
-		for (var i = 0; i < province.length; i++) {
-			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div>' + province[i] + '</div>').addClass('item').click(function () {
+			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div>' + data[i].name + '</div>').addClass('item').click(function () {
 				var provName = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).text();
 				__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.province span').text(provName);
 				__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.city span').text("");
-				filterCity(provName);
-				filterHospital(provName);
-				refreshCityBox();
-				refreshHospitalBox();
+				province = provName;
+				refreshCityBox(data, provName);
 			}).appendTo(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.province .drop-item'));
 		}
 	});
-	function filterCity(province) {
-		cities = [];
+
+	function refreshHospitalBox(prov, city) {
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+			url: '/get-hospital',
+			type: 'post',
+			data: {
+				province: prov,
+				city: city
+			}
+		}).then(function (data) {
+			if (data.status !== 1) {
+				alert(data.message);
+				return;
+			}
+			var container = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#panel2 .items');
+			container.empty();
+			var hospital_list = data.data;
+			for (var i = 0; i < hospital_list.length; i++) {
+				var dataItem = hospital_list[i];
+				var item_hos = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item" data-json=' + JSON.stringify(dataItem) + '><span class="name">' + dataItem.hospital + '</span></div>');
+				var checkbox = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<input type="checkbox">').appendTo(item_hos);
+				item_hos.click(function () {
+					__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).children('input').click();
+				});
+				checkbox.click(function () {
+					__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).click();
+				});
+				item_hos.appendTo(container);
+			}
+		});
+	}
+
+	function refreshCityBox(data, prov) {
+		var container = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.city .drop-item');
+		container.empty();
 		for (var i = 0; i < data.length; i++) {
-			if (data[i].province === province && !isRepeat(cities, data[i].city)) {
-				cities.push(data[i].city);
-			}
-		}
-	}
-	function filterHospital(province, city) {
-		hospitals = [];
-		if (city) {
-			for (var i = 0; i < data.length; i++) {
-				var dataItem = data[i];
-				if (dataItem.province === province && dataItem.city === city && !isRepeat(hospitals, dataItem.hospital)) {
-					hospitals.push(dataItem.hospital);
+			if (data[i].name === prov) {
+				var cities = data[i].cities;
+				for (var j = 0; j < cities.length; j++) {
+					__WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div data-prov="' + prov + '">' + cities[j].name + '</div>').addClass('item').click(function () {
+						var cityName = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).text();
+						__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.city span').text(cityName);
+						city = cityName;
+						refreshHospitalBox(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('prov'), cityName);
+					}).appendTo(container);
 				}
-			}
-		} else {
-			for (var i = 0; i < data.length; i++) {
-				var dataItem = data[i];
-				if (dataItem.province === province && !isRepeat(hospitals, dataItem.hospital)) {
-					hospitals.push(dataItem.hospital);
-				}
+				break;
 			}
 		}
-	}
-	function isRepeat(arr, ele) {
-		for (var i = 0; i < arr.length; i++) {
-			if (arr[i] === ele) {
-				return true;
-			}
-		}
-		return false;
 	}
 
 	//医院名字筛选搜索
@@ -131,39 +122,10 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.drop-item').slideUp(160);
 	});
 
-	function refreshHospitalBox() {
-		var container = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#panel2 .items');
-		container.empty();
-		for (var i = 0; i < hospitals.length; i++) {
-			var item_hos = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item"><span class="name">' + hospitals[i] + '</span></div>');
-			var checkbox = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<input type="checkbox">').appendTo(item_hos);
-			item_hos.click(function () {
-				checkbox.click();
-			});
-			checkbox.click(function () {
-				__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).click();
-			});
-			item_hos.appendTo(container);
-		}
-	}
-
-	function refreshCityBox() {
-		var container = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.city .drop-item');
-		container.empty();
-		for (var i = 0; i < cities.length; i++) {
-			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div>' + cities[i] + '</div>').addClass('item').click(function () {
-				var cityName = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).text();
-				__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.city span').text(cityName);
-				filterHospital(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.province span').text(), cityName);
-				refreshHospitalBox();
-			}).appendTo(container);
-		}
-	}
-
 	//选择覆盖区域
-	var container_appendHosItem = function container_appendHosItem(title) {
+	var container_appendHosItem = function container_appendHosItem(data) {
 		var cancelBtn = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<span class="icon"><span class="icon2"></span></span>');
-		var item = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item" style="display:block"><span class="inner">' + title + '</span></div>').append(cancelBtn).appendTo(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2'));
+		var item = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item" style="display:block" data-json=' + JSON.stringify(data) + '><span class="inner">' + data.hospital + '</span></div>').append(cancelBtn).appendTo(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2'));
 		cancelBtn.click(function () {
 			item.remove();
 		});
@@ -174,7 +136,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 		var $items = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.items .item');
 		for (var i = 0; i < $items.length; i++) {
 			if ($items.eq(i).children('input')[0].checked) {
-				container_appendHosItem($items.eq(i).children('.name').text());
+				container_appendHosItem($items.eq(i).data('json'));
 			}
 		}
 	});
@@ -184,7 +146,11 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 	});
 
 	function manager(data, index) {
-		this.data = data;
+		this.json = data;
+		this.data = this.json.map(function (obj) {
+			return obj.name;
+		});
+
 		this.index = index;
 		this.panel = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.panel').eq(index);
 		this.container = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.item-container').eq(index);
@@ -200,7 +166,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			var item1 = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item"><span>' + this.data[i] + '</span></div>').appendTo(this.panel);
 			//container里的item
 			var cancelBtn = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<span class="icon"><span class="icon2"></span></span>');
-			var item2 = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item"><span class="inner">' + this.data[i] + '</span></div>').append(cancelBtn).appendTo(this.container);
+			var item2 = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item" data-json=' + JSON.stringify(this.json[i]) + '><span class="inner">' + this.data[i] + '</span></div>').append(cancelBtn).appendTo(this.container);
 			list1.push(item1);
 			list2.push(item2);
 
@@ -232,8 +198,41 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.shielder,.panel').hide();
 	});
 
-	var manager1 = new manager(['科室一', '科室二还是发卡机舒服还是', '科室三'], 0);
-	var manager3 = new manager(['科室一', '科室二', '科室'], 2);
+	//==================表单提交===========================
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#submit').click(function () {
+
+		var _hospitals = [],
+		    _depart_ids = [],
+		    _service_type_ids = [];
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2 .item').each(function () {
+			_hospitals.push(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json'));
+		});
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container1 .item').each(function () {
+			if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).hasClass('item-chosen')) {
+				_depart_ids.push(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json'));
+			}
+		});
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container3 .item').each(function () {
+			if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).hasClass('item-chosen')) {
+				_service_type_ids.push(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json'));
+			}
+		});
+
+		var data = {
+			depart_ids: _depart_ids,
+			service_type_ids: _service_type_ids,
+			hospitals: _hospitals
+		};
+
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+			url: '/personal/expertise',
+			type: 'post',
+			data: data,
+			success: function success(data) {
+				alert('data.message');
+			}
+		});
+	});
 });
 
 /***/ }),

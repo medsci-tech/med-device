@@ -51,21 +51,21 @@
 				<div class="form">
 					
 					<h4>覆盖科室（可添加多个）</h4>
-			<div id="item-container1" class="item-container"></div>
-			<div id="department" class="btn-choose">选择科室</div>
-			<div class="separate-line"></div>
-
-			<h4>覆盖医院（可添加多个）</h4>
-			<div id="item-container2" class="item-container"></div>
-			<div id="hospital" class="btn-choose">选择医院</div>
-			<div class="separate-line"></div>
-
-			<h4>擅长服务类型（可添加多个）</h4>
-			<div id="item-container3" class="item-container"></div>
-			<div id="service" class="btn-choose">选择服务</div>
-			<div class="separate-line"></div>
-
-			<input class="submit" type="submit" name="submit" value="确定">
+					<div id="item-container1" class="item-container"></div>
+					<div id="department" class="btn-choose">选择科室</div>
+					<div class="separate-line"></div>
+		
+					<h4>覆盖医院（可添加多个）</h4>
+					<div id="item-container2" class="item-container"></div>
+					<div id="hospital" class="btn-choose">选择医院</div>
+					<div class="separate-line"></div>
+		
+					<h4>擅长服务类型（可添加多个）</h4>
+					<div id="item-container3" class="item-container"></div>
+					<div id="service" class="btn-choose">选择服务</div>
+					<div class="separate-line"></div>
+		
+					<div class="submit" id="submit">确定</div>
 
 				</div>
 			</div>

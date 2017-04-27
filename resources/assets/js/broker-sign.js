@@ -9,119 +9,79 @@ $(function () {
 		url : '/get-depart',
 		success : function(data){
 			departs = data
-			var manager3 = new manager(departs, 2);
+			var manager1 = new manager(departs, 0);
 		}
 	})
 	$.ajax({
 		url : '/get-service',
 		success : function(data){
 			service_types = data
-			var manager1 = new manager(service_types, 0);
+			var manager3 = new manager(service_types, 2);
 		}
 	})
 
-	var data, originData, province = [], cities = [], hospitals = []
-	$.post({
-		url: '/get-hospital',
-		success : function(data){
-			originData = {
-  "code": 200,
-  "status": 1,
-  "message": "医院列表",
-  "data": [
-    {
-      "id": 11069,
-      "province": "湖北",
-      "city": "武汉",
-      "area": "蔡甸",
-      "hospital": "武汉市蔡甸妇幼保健"
-    },
-    {
-      "id": 11072,
-      "province": "湖南",
-      "city": "武汉",
-      "area": "东西湖",
-      "hospital": "武汉兰青肿瘤医院"
-    },
-    {
-      "id": 11073,
-      "province": "河北",
-      "city": "武汉",
-      "area": "东西湖",
-      "hospital": "武汉明仁中医医院"
-    },
-    {
-      "id": 11088,
-      "province": "湖北",
-      "city": "宜昌",
-      "area": "汉阳",
-      "hospital": "武汉华西医院"
-    }
-  ]
-}
-		}
-	}).then(function(asd){
-		console.log(asd)
-		data = originData.data
+	var data, originData, province = "", city = "", hospitals = []
+	$.getJSON('/json/loc.json').then(function(data){
+		data = data;
 		for (var i = 0; i < data.length; i++) {
-			if (!isRepeat(province, data[i].province)){
-				province.push(data[i].province)
-			}
-		}
-		for (var i = 0; i < province.length; i++) {
-			$('<div>' + province[i] + '</div>').addClass('item').click(function(){
+			$('<div>' + data[i].name + '</div>').addClass('item').click(function(){
 				var provName = $(this).text()
 				$('.province span').text(provName)
 				$('.city span').text("")
-				filterCity(provName)
-				filterHospital(provName)
-				refreshCityBox()
-				refreshHospitalBox()
+				province = provName
+				refreshCityBox(data, provName)
 			}).appendTo($('.province .drop-item'))
 		}
 	})
-	function filterCity(province){
-		cities = []
+
+	function refreshHospitalBox(prov, city){
+		$.ajax({
+			url : '/get-hospital',
+			type : 'post',
+			data : {
+				province : prov,
+				city : city
+			}
+		}).then(function(data){
+			if (data.status !== 1){
+				alert(data.message)
+				return
+			}
+			var container = $('#panel2 .items')
+			container.empty()
+			var hospital_list = data.data
+			for (var i = 0; i < hospital_list.length; i++){
+				var dataItem = hospital_list[i]
+				var item_hos = $('<div class="item" data-json=' + JSON.stringify(dataItem) + '><span class="name">' + dataItem.hospital + '</span></div>')
+				var checkbox = $('<input type="checkbox">').appendTo(item_hos)
+				item_hos.click(function(){
+					$(this).children('input').click()
+				})
+				checkbox.click(function(){
+					$(this).click()
+				})
+				item_hos.appendTo(container)
+			}
+		})
+	}
+
+	function refreshCityBox(data, prov){
+		var container = $('.city .drop-item')
+		container.empty()
 		for (var i = 0; i < data.length; i++) {
-			if (data[i].province === province && !isRepeat(cities, data[i].city)){
-				cities.push(data[i].city)
-			}
-		}
-	}
-	function filterHospital(province, city){
-		hospitals = []
-		if (city){
-			for (var i = 0; i < data.length; i++) {
-				var dataItem = data[i]
-				if (dataItem.province === province && dataItem.city === city && !isJsonArrRepeat(hospitals, 'hospital', dataItem.hospital)){
-					hospitals.push(dataItem)
+			if (data[i].name === prov){
+				var cities = data[i].cities
+				for (var j = 0; j < cities.length; j++) {
+					$('<div data-prov="' + prov + '">' + cities[j].name + '</div>').addClass('item').click(function(){
+						var cityName = $(this).text()
+						$('.city span').text(cityName)
+						city = cityName
+						refreshHospitalBox($(this).data('prov'), cityName)
+					}).appendTo(container)
 				}
-			}
-		} else{
-			for (var i = 0; i < data.length; i++) {
-				var dataItem = data[i]
-				if (dataItem.province === province && !isJsonArrRepeat(hospitals, 'hospital', dataItem.hospital)){
-					hospitals.push(dataItem)
-				}
+				break
 			}
 		}
-		
-	}
-	function isRepeat(arr, ele){
-		for (var i = 0; i < arr.length; i++) {
-			if (arr[i] === ele){
-				return true
-			}
-		}
-		return false
-	}
-	function isJsonArrRepeat(arr, key, ele){
-		for (var i = 0; i < arr.length; i++) {
-			if (arr[i][key] === ele){
-				return true
-			}
-		}
-		return false
 	}
 
 	//医院名字筛选搜索
@@ -148,38 +108,6 @@ $(function () {
 	$('body').click(function(){
 		$('.drop-item').slideUp(160)
 	})
-
-	function refreshHospitalBox(){
-		var container = $('#panel2 .items')
-		container.empty()
-		for (var i = 0; i < hospitals.length; i++){
-			var dataItem = hospitals[i]
-			var item_hos = $('<div class="item" data-json=' + JSON.stringify(dataItem) + '><span class="name">' + dataItem.hospital + '</span></div>')
-//			item_hos.data('province', dataItem.province).data('city', dataItem.city)
-//			item_hos.data(dataItem)
-			var checkbox = $('<input type="checkbox">').appendTo(item_hos)
-			item_hos.click(function(){
-				$(this).children('input').click()
-			})
-			checkbox.click(function(){
-				$(this).click()
-			})
-			item_hos.appendTo(container)
-		}
-	}
-
-	function refreshCityBox(){
-		var container = $('.city .drop-item')
-		container.empty()
-		for (var i = 0; i < cities.length; i++) {
-			$('<div>' + cities[i] + '</div>').addClass('item').click(function(){
-				var cityName = $(this).text()
-				$('.city span').text(cityName)
-				filterHospital($('.province span').text(), cityName)
-				refreshHospitalBox()
-			}).appendTo(container)
-		}
-	}
 
 	//选择覆盖区域
 	var container_appendHosItem = function(data){
@@ -231,7 +159,7 @@ $(function () {
 			var item1 = $('<div class="item"><span>' + this.data[i] + '</span></div>').appendTo(this.panel);
 			//container里的item
 			var cancelBtn = $('<span class="icon"><span class="icon2"></span></span>');
-			var item2 = $('<div class="item"><span class="inner">' + this.data[i] + '</span></div>').append(cancelBtn).appendTo(this.container);
+			var item2 = $('<div class="item" data-json=' + JSON.stringify(this.json[i]) + '><span class="inner">' + this.data[i] + '</span></div>').append(cancelBtn).appendTo(this.container);
 			list1.push(item1);
 			list2.push(item2);
 
@@ -333,7 +261,7 @@ $(function () {
 			}).appendTo($('.email-dropdown'))
 		}
 	}
-	var data = [
+	var email_data = [
 		'@163.com',
 		'@sina.com',
 		'@qq.com',
@@ -344,7 +272,7 @@ $(function () {
 		'@sohu.com',
 		'@139.com',
 	]
-	initDom(data);
+	initDom(email_data);
 	$('body').click(function(){
 		$('.email-dropdown').hide();
 		$('item-email').text('');
@@ -372,6 +300,16 @@ $(function () {
 		$('#item-container2 .item').each(function(){
 			_hospitals.push($(this).data('json'))
 		})
+		$('#item-container1 .item').each(function(){
+			if ($(this).hasClass('item-chosen')){
+				_depart_ids.push($(this).data('json'))
+			}
+		})
+		$('#item-container3 .item').each(function(){
+			if ($(this).hasClass('item-chosen')){
+				_service_type_ids.push($(this).data('json'))
+			}
+		})
 
 
 		var data = {
@@ -386,14 +324,14 @@ $(function () {
 			hospitals : _hospitals
 		}
 
-		// $.ajax({
-		// 	url : '/agent/agent-sign',
-		// 	type : 'post',
-		// 	data : data,
-		// 	success : function(data){
-
-		// 	}
-		// })
+		$.ajax({
+			url : '/agent/agent-sign',
+			type : 'post',
+			data : data,
+			success : function(data){
+				alert('data.message')
+			}
+		})
 	})
 
 

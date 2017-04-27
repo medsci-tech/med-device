@@ -50,6 +50,7 @@
 }
 .infomanager {
   min-width: 860px;
+  margin-bottom: 80px;
 }
 .infomanager::after {
   content: '';
