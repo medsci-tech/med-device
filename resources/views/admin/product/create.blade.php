@@ -44,34 +44,10 @@
                             <input type="text" id="weight" placeholder="权重越大,排序越靠前" name="weight">
                         </div>
                     </div>
-                    <div class="am-form-group"><label for="user-name" class="am-u-sm-3 am-form-label">联系方式</label>
-                        <div class="am-u-sm-4"><input type="text"  placeholder="请输入联系人" name="contact_name">
-                        </div>
-                        <div class="am-u-sm-4"><input type="text" placeholder="请输入联系电话" name="contact_phone">
-                        </div>
-                    </div>
                     <div class="am-form-group">
-                        <label for="weight" class="am-u-sm-3 am-form-label">生产企业</label>
+                        <label for="weight" class="am-u-sm-3 am-form-label">产品组成</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="enterprise" placeholder="请输入生产企业" name="enterprise">
-                        </div>
-                    </div>
-                    <div class="am-form-group">
-                        <label for="weight" class="am-u-sm-3 am-form-label">适用部位</label>
-                        <div class="am-u-sm-9">
-                            <input type="text" id="standard" placeholder="请输入适用部位" name="standard">
-                        </div>
-                    </div>
-                    <div class="am-form-group">
-                        <label for="weight" class="am-u-sm-3 am-form-label">注册证号</label>
-                        <div class="am-u-sm-9">
-                            <input type="text" id="registration" placeholder="请输入注册证号" name="registration">
-                        </div>
-                    </div>
-                    <div class="am-form-group">
-                        <label for="weight" class="am-u-sm-3 am-form-label">适用科室</label>
-                        <div class="am-u-sm-9">
-                            <input type="text" id="office" placeholder="请输入科室" name="office">
+                            <input type="text" id="attention" placeholder="请输入产品组成" name="attention">
                         </div>
                     </div>
                     <div class="am-form-group">
@@ -81,15 +57,15 @@
                         </div>
                     </div>
                     <div class="am-form-group">
-                        <label for="weight" class="am-u-sm-3 am-form-label">产品组成</label>
+                        <label for="weight" class="am-u-sm-3 am-form-label">适用科室</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="attention" placeholder="请输入产品组成" name="attention">
+                            <input type="text" id="office" placeholder="请输入科室" name="office">
                         </div>
                     </div>
                     <div class="am-form-group">
-                        <label for="weight" class="am-u-sm-3 am-form-label">库存</label>
+                        <label for="weight" class="am-u-sm-3 am-form-label">适用部位</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="stock" placeholder="请输入库存,建议数字" name="stock">
+                            <input type="text" id="standard" placeholder="请输入适用部位" name="standard">
                         </div>
                     </div>
                     <div class="am-form-group">
@@ -100,7 +76,18 @@
                             <small></small>
                         </div>
                     </div>
-
+                    <div class="am-form-group">
+                        <label for="weight" class="am-u-sm-3 am-form-label">注册证号</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" id="registration" placeholder="请输入注册证号" name="registration">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="weight" class="am-u-sm-3 am-form-label">生产企业</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" id="enterprise" placeholder="请输入生产企业" name="enterprise">
+                        </div>
+                    </div>
                     <div class="am-form-group" id="price">
                         <label for="price" class="am-u-sm-3 am-form-label">零售价格</label>
 
@@ -113,6 +100,18 @@
                             <button type="button" class="am-btn am-btn-success" id="add-spec">
                                 <span class="am-icon-plus"></span>添加规格
                             </button>
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="weight" class="am-u-sm-3 am-form-label">库存</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" id="stock" placeholder="请输入库存,建议数字" name="stock">
+                        </div>
+                    </div>
+                    <div class="am-form-group"><label for="user-name" class="am-u-sm-3 am-form-label">联系方式</label>
+                        <div class="am-u-sm-4"><input type="text"  placeholder="请输入联系人" name="contact_name">
+                        </div>
+                        <div class="am-u-sm-4"><input type="text" placeholder="请输入联系电话" name="contact_phone">
                         </div>
                     </div>
                     <div class="am-form-group am-form-file">
