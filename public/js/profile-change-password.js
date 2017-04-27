@@ -1,80 +1,74 @@
-webpackJsonp([9],{
+webpackJsonp([5],{
 
-/***/ 15:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 12:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-$(document).ready(function(){
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+
+
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 
 	//获取手机验证码
-	$('#getCaptcha').click(function(){
-		var self = $(this)
-		setTimeout(function(){
-			self.text('发送中...')
-		},100)
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#getCaptcha').click(function () {
+		var self = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this);
+		setTimeout(function () {
+			self.text('发送中...');
+		}, 100);
 
-		$.ajax({
-			url : '/send-code',
-			type : 'post',
-			data : {
-				phone : $('#phone').val()
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+			url: '/send-code',
+			type: 'post',
+			data: {
+				phone: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#phone').val()
 			},
-			success : function(data){
-				if (data.status === 1){
-					self.text('已发送')
+			success: function success(data) {
+				if (data.status === 1) {
+					self.text('已发送');
 				} else {
-					self.text('获取验证码')
-					alert(data.message)
+					self.text('获取验证码');
+					alert(data.message);
 				}
 			}
-		})
-	})
+		});
+	});
 
 	//点击提交
-	$('#submit').click(function(){
-		var phone = $('#phone').val()
-		var code = $('#code').val()
-		var password = $('#password').val()
-		var password_confirmation = $('#password_confirmation').val()
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#submit').click(function () {
+		var phone = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#phone').val();
+		var code = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#code').val();
+		var password = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#password').val();
+		var password_confirmation = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#password_confirmation').val();
 
-		$.ajax({
-			url : '/personal/pwd-edit',
-			type : 'post',
-			data : {
-				phone : phone,
-				code : code,
-				password : password,
-				password_confirmation : password_confirmation
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+			url: '/personal/pwd-edit',
+			type: 'post',
+			data: {
+				phone: phone,
+				code: code,
+				password: password,
+				password_confirmation: password_confirmation
 			},
-			success : function(data){
-				if (data.status === 1){
+			success: function success(data) {
+				if (data.status === 1) {
 					//alert()
 				}
-				alert(data.message)
+				alert(data.message);
 			}
-		})
-
-	})
-
-})
+		});
+	});
+});
 
 /***/ }),
 
-/***/ 41:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 77:
+/***/ 42:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(15);
-module.exports = __webpack_require__(41);
+module.exports = __webpack_require__(12);
 
 
 /***/ })
 
-},[77]);
-//# sourceMappingURL=profile-change-password.js.map
+},[42]);

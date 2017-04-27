@@ -1,4 +1,4 @@
-@extends('web.layouts.left')
+@extends('web.layouts.app')
 
 @section('title', '个人中心')
 
@@ -7,8 +7,9 @@
 @endsection
 
 @section('content')
+<div class="container">
 	<div class="row">
-		<div class="col-md-2 nav">
+		<div class="col-md-3 nav">
 			<div class="item">
 				<a class="button focus">
 					<span class="img1"></span>
@@ -40,7 +41,7 @@
 				</a>
 			</div>
 		</div>
-		<div class="content col-md-8">
+		<div class="content col-md-9">
 			<div class="infomanager">
 				<div class="panel">信息管理</div>
 				<img src="{{ \Auth::user()->head_img ? \Auth::user()->head_img.'?imageView2/1/w/120/h/120/q/90' : config('params')['default_head'].'?imageView2/1/w/120/h/120/q/90' }}">
@@ -60,6 +61,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 @endsection
 
 @section('page_js')

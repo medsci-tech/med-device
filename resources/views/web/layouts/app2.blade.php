@@ -22,7 +22,7 @@
     </div>
 </div>
 @yield('content')
-<div class="container-fulid">
+<div>
         <div class="row footer">
             <div class="container">
                 <div class="row">

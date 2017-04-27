@@ -1,0 +1,243 @@
+@import 'bootstrap/bootstrap';
+@import '~swiper/dist/css/swiper.css';
+
+.row{ margin: 0 }
+
+body{
+	min-width: 1200px;
+	>header{
+		.top-nav {
+			background-color: #01a4e4;
+			height: 51px;
+			line-height: 51px;
+			.btn-login, .btn-register {
+				display: inline-block;
+				width: 100px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				margin: 10px 14px 10px 0;
+				color: #33CCFF;
+				background-color: white;
+				font-size: 14px;
+				border-radius: 4px;
+			}
+			.btn-login:hover,
+			.btn-register:hover {
+				text-decoration: none;
+			}
+			.btn-register {
+				background-color: #01a4e4;
+				color: white;
+				border: 1px solid white;
+				opacity: 0.7;
+			}
+			.btn-link{
+				color: white;
+				&.icon{
+					padding-left: 28px;
+					background-repeat: no-repeat;
+					background-position: 0 50%;
+					&.icon-161{ background-image: url(/img/home/u161.png); }
+					&.icon-163{ background-image: url(/img/home/u163.png); }
+					&.icon-165{ background-image: url(/img/home/u165.png); }
+				}
+			}
+		}
+	}
+	>footer{
+		height: 200px;
+		color: #5E5E5E;
+		background-color: #f2f2f2;
+		.info-footer a {
+			display: inline-block;
+			margin: 34px 70px 30px 0;
+		}
+		.info-footer p {
+			margin-bottom: 10px;
+		}
+		.qr-code img {
+			display: inline-block;
+			width: 126px;
+			margin: 30px 0px 6px -10px;
+		}
+	}
+}
+
+.search {
+	border-bottom: 1px solid #DCDCDC;
+	.logo {
+		display: inline-block;
+		width: 60px;
+		height: 60px;
+	}
+	.h1 {
+		display: inline-block;
+		color: #01a4e4;
+		vertical-align: bottom;
+		font-size: 38px;
+	}
+	p {
+		font-size: 14px;
+		color: #999999;
+		margin: 8px 0;
+	}
+	.searcher {
+		width: 572px;
+		height: 52px;
+		margin: 26px auto 0;
+	
+		.input {
+			float: left;
+			width: 446px;
+			height: 100%;
+			background-color: #f2f2f2;
+			border: 1px solid #DCDCDC;
+			border-radius: 4px 0 0 4px;
+		}
+		.input input {
+			width: 96%;
+			height: 80%;
+			margin: 6px 10px;
+			font-size: 14px;
+			background-color: #f2f2f2;
+			outline: none;
+			border: none;
+		}
+		.button {
+			float: left;
+			width: 122px;
+			height: 52px;
+			margin-left: -1px;
+			background-color: #01a4e4;
+			border-radius: 0 4px 4px 0;
+			line-height: 52px;
+			color: white;
+			font-size: 18px;
+			text-align: center;
+		}
+	}
+	.hot {
+		font-size: 13px;
+		color: #AEAEAE;
+		text-align: right;
+		padding-right: 70px;
+		a {
+			color: #666;
+			margin: 10px;
+			font-size: 14px;
+		}
+	}
+	.contect span {
+		display: inline-block;
+		color: #AEAEAE;
+		margin: 28px 14px 0 0;
+	}
+	.contect .wechat {
+		display: inline-block;
+	}
+	.contect .wechat:hover .wechat-code {
+		display: block;
+		position: absolute;
+		transform: translate(-90%, -5px);
+	}
+	.contect .wechat-code {
+		display: none;
+	}
+}
+
+.nav{
+	a {
+		display: inline-block;
+		position: relative;
+		text-align: center;
+		height: 56px;
+		line-height: 56px;
+		margin-right: 60px;
+		color: #666666;
+		font-size: 16px;
+		&:hover{
+			text-decoration: none;
+		}
+	}
+	a.focus {
+		color: #01a4e4;
+	}
+	.strip {
+		position: absolute;
+		bottom: 6px;
+		width: 76px;
+		height: 6px;
+		border-radius: 3px;
+		background-color: #01a4e4;
+	}
+}
+
+.products {
+	padding: 20px 0 50px;
+	overflow: hidden;
+}
+.products h2 {
+	display: inline-block;
+	font-size: 32px;
+	color: #01B9FE;
+}
+.products .link-all {
+	display: inline-block;
+	float: right;
+	margin-top: 30px;
+	font-size: 16px;
+	color: #999999;
+}
+.products .item {
+	position: relative;
+	display: inline-block;
+	padding: 34px 20px;
+	width: 22%;
+	height: 340px;
+	min-width: 200px;
+	margin: 10px;
+	color: #6B6B6B;
+}
+.products .item:hover {
+	box-shadow: 0 0 10px gray;
+}
+.products .item img {
+	display: block;
+	width: 84%;
+	margin: 0 auto 20px;
+}
+.products .item .price-tab{
+	position: absolute;
+	bottom: 74px;
+}
+.products .item .price-num{
+	font-size: 19px;
+	color: #FF6633;
+}
+.products .item .price-type{
+	font-size: 15px;
+}
+.products .item p{
+	position: absolute;
+	top: 270px;
+}
+
+.appointment {
+	background-image: url(http://oocc7psxo.bkt.clouddn.com/banner3.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 400px;
+	padding-top: 160px;
+	h2 {
+		color: white;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	a {
+		display: block;
+		width: 90px;
+		margin: 0 auto;
+		font-size: 16px;
+	}
+}

@@ -1,4 +1,4 @@
-@extends('web.layouts.left')
+@extends('web.layouts.app')
 
 @section('title', '预约详情')
 
@@ -7,8 +7,9 @@
 @endsection
 
 @section('content')
+<div class="container">
 	<div class="row">
-		<div class="col-md-2 nav">
+		<div class="col-md-3 nav">
 			<div class="item">
 				<a class="button" href="{{ url('personal') }}">
 					<span class="img1"></span>
@@ -40,7 +41,7 @@
 				</a>
 			</div>
 		</div>
-		<div class="content col-md-8">
+		<div class="content col-md-9">
 			<div class="profile-basic">
 				<div class="panel">
 					<a href="{{ url('personal/appointment') }}">我的预约</a>
@@ -75,10 +76,10 @@
 						<span class="value">{{ str_limit($order->appoint_at, $limit = 10, $end = '') }}</span>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
+</div>
 @endsection
 
 @section('page_js')
