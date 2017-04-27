@@ -231,13 +231,8 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			//panel里的item
 			var item1 = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item"><span>' + this.data[i] + '</span></div>').appendTo(this.panel);
 			//container里的item
-<<<<<<< HEAD
-			var cancelBtn = $('<span class="icon"><span class="icon2"></span></span>');
-			var item2 = $('<div class="item" data-json=' + JSON.stringify(this.json[i]) + '><span class="inner">' + this.data[i] + '</span></div>').append(cancelBtn).appendTo(this.container);
-=======
 			var cancelBtn = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<span class="icon"><span class="icon2"></span></span>');
 			var item2 = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item"><span class="inner">' + this.data[i] + '</span></div>').append(cancelBtn).appendTo(this.container);
->>>>>>> 6c02072054be48323979847fbf39d4491b1dd669
 			list1.push(item1);
 			list2.push(item2);
 
@@ -363,30 +358,12 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			_area = work_space[2];
 		}
 
-<<<<<<< HEAD
-		var _hospitals = [],_depart_ids = [],_service_type_ids = []
-		$('#item-container2 .item').each(function(){
-			_hospitals.push($(this).data('json'))
-		})
-		$('#item-container1 .item').each(function(){
-			if ($(this).hasClass('item-chosen')){
-				_service_type_ids.push($(this).data('json'))	
-			}
-		})
-		$('#item-container3 .item').each(function(){
-			if ($(this).hasClass('item-chosen')){
-				_depart_ids.push($(this).data('json'))	
-			}
-		})
-
-=======
 		var _hospitals = [],
 		    _depart_ids = [],
 		    _service_type_ids = [];
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2 .item').each(function () {
 			_hospitals.push(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json'));
 		});
->>>>>>> 6c02072054be48323979847fbf39d4491b1dd669
 
 		var data = {
 			real_name: name,
