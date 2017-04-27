@@ -4,9 +4,12 @@
 
 @section('page_css')
 <link rel="stylesheet" type="text/css" href="style/register.css">
+<link rel="stylesheet" type="text/css" href="/style/bootstrap-datetimepicker.min.css">
 @endsection
 
 @section('page_js')
+<script src="/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/js/bootstrap-datetimepicker.zh-CN.js"></script>
 <script src="/js/register.js"></script>
 @endsection
 
@@ -133,6 +136,11 @@
       <div>
         <label>工作区域</label>
       </div>
+      <div>
+        <label>出生日期</label>
+        <input id="datetimepicker" type="text" name="birthday" placeholder="年/月/日" data-date-format="yyyy-mm-dd">
+        <div class="email-dropdown"></div>
+      </div>
       <div class="no-border">
         <input id="agree" class="confirm-agree" type="checkbox" name="agree" checked>
         <span>我同意</span><a data-toggle="modal" data-target="#myModal" style="cursor: pointer;">药械通用户服务协议</a>
@@ -238,3 +246,4 @@ d)  由于黑客攻击、电信部门技术调整或故障、银行方面的问�
   </div>
 </div>
 @endsection
+

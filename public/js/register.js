@@ -122,6 +122,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 				real_name: real_name,
 				email: email,
 				agree: agree,
+				birthday: birthday,
 				sex: sex
 			},
 			success: function success(data) {

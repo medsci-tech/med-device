@@ -113,6 +113,7 @@ $(function () {
 				real_name :real_name,
 				email : email,
 				agree : agree,
+				birthday : birthday,
 				sex : sex
 			},
 			success : function(data){
