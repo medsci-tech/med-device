@@ -148,13 +148,13 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 		if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2 .inner').length === 0) {
 			return false;
 		}
+		var is_repeat = false;
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2 .inner').each(function () {
-			var asd = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).text();
 			if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).text() === name) {
-				return true;
+				is_repeat = true;
 			}
 		});
-		return false;
+		return is_repeat;
 	}
 
 	function manager(data, index) {

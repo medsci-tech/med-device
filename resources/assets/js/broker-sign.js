@@ -135,13 +135,13 @@ $(function () {
 		if ($('#item-container2 .inner').length === 0){
 			return false
 		}
+		var is_repeat = false
 		$('#item-container2 .inner').each(function(){
-			var asd = $(this).text()
 			if ($(this).text() === name){
-				return true
+				is_repeat = true
 			}
 		})
-		return false
+		return is_repeat
 	}
 
 
