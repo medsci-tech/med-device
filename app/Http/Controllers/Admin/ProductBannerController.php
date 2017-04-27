@@ -100,6 +100,6 @@ class ProductBannerController extends Controller
         else {
             return false;
         }
-        
+
     }
 }

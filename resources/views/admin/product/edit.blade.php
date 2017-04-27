@@ -65,9 +65,9 @@
                         </div>
                     </div>
                     <div class="am-form-group">
-                        <label for="weight" class="am-u-sm-3 am-form-label">生产标准</label>
+                        <label for="weight" class="am-u-sm-3 am-form-label">适用部位</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="standard" placeholder="请输入生产标准" name="standard" value="{{$product->standard}}">
+                            <input type="text" id="standard" placeholder="请输入适用部位" name="standard" value="{{$product->standard}}">
                         </div>
                     </div>
                     <div class="am-form-group">
@@ -89,9 +89,9 @@
                         </div>
                     </div>
                     <div class="am-form-group">
-                        <label for="weight" class="am-u-sm-3 am-form-label">使用注意</label>
+                        <label for="weight" class="am-u-sm-3 am-form-label">产品组成</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="attention" placeholder="请输入注意事项" name="attention"  value="{{$product->attention}}">
+                            <input type="text" id="attention" placeholder="请输入产品组成" name="attention"  value="{{$product->attention}}">
                         </div>
                     </div>
                     <div class="am-form-group">
@@ -102,7 +102,7 @@
                     </div>
 
                     <div class="am-form-group">
-                        <label for="default_spec" class="am-u-sm-3 am-form-label">商品规格</label>
+                        <label for="default_spec" class="am-u-sm-3 am-form-label">产品规格</label>
 
                         <div class="am-u-sm-9">
                             <input type="text" id="default_spec" placeholder="默认规格" name="default_spec"
@@ -112,7 +112,7 @@
                     </div>
 
                     <div class="am-form-group" id="price">
-                        <label for="user-name" class="am-u-sm-3 am-form-label">商品价格</label>
+                        <label for="user-name" class="am-u-sm-3 am-form-label">零售价格</label>
 
                         <div class="am-u-sm-6">
                             <input type="text" placeholder="商品价格" name="price" value="{{$product->price}}"
@@ -127,7 +127,7 @@
                         </div>
                     </div>
                     @foreach($product->specifications as $spec)
-                        <div class="am-form-group"><label for="user-name" class="am-u-sm-3 am-form-label">商品规格</label>
+                        <div class="am-form-group"><label for="user-name" class="am-u-sm-3 am-form-label">产品规格</label>
 
                             <div class="am-u-sm-3"><input type="text" value="{{$spec->specification_name}}" readonly>
                             </div>

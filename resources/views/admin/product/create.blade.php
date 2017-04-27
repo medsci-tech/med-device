@@ -57,9 +57,9 @@
                         </div>
                     </div>
                     <div class="am-form-group">
-                        <label for="weight" class="am-u-sm-3 am-form-label">生产标准</label>
+                        <label for="weight" class="am-u-sm-3 am-form-label">适用部位</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="standard" placeholder="请输入生产标准" name="standard">
+                            <input type="text" id="standard" placeholder="请输入适用部位" name="standard">
                         </div>
                     </div>
                     <div class="am-form-group">
@@ -81,9 +81,9 @@
                         </div>
                     </div>
                     <div class="am-form-group">
-                        <label for="weight" class="am-u-sm-3 am-form-label">使用注意</label>
+                        <label for="weight" class="am-u-sm-3 am-form-label">产品组成</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="attention" placeholder="请输入注意事项" name="attention">
+                            <input type="text" id="attention" placeholder="请输入产品组成" name="attention">
                         </div>
                     </div>
                     <div class="am-form-group">
@@ -93,19 +93,19 @@
                         </div>
                     </div>
                     <div class="am-form-group">
-                        <label for="specifications" class="am-u-sm-3 am-form-label">默认规格</label>
+                        <label for="specifications" class="am-u-sm-3 am-form-label">产品规格</label>
 
                         <div class="am-u-sm-9">
-                            <input type="text" id="default_spec" placeholder="商品规格" name="default_spec" required>
+                            <input type="text" id="default_spec" placeholder="产品规格" name="default_spec" required>
                             <small></small>
                         </div>
                     </div>
 
                     <div class="am-form-group" id="price">
-                        <label for="price" class="am-u-sm-3 am-form-label">商品价格</label>
+                        <label for="price" class="am-u-sm-3 am-form-label">零售价格</label>
 
                         <div class="am-u-sm-6">
-                            <input type="text" id="price" placeholder="商品价格" name="price" required>
+                            <input type="text" id="price" placeholder="零售价格" name="price" required>
                             <small></small>
                         </div>
 

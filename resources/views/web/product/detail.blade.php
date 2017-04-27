@@ -55,32 +55,32 @@
 			<div class="product-info">
 				<h2>{{ $data->name  }}</h2>
 				<div class="info-row">
-					<div class="key">产品规格</div>
-					<div class="value">{{ $data->default_spec  }}</div>
-				</div>
-				<div class="info-row">
-					<div class="key">生产企业</div>
-					<div class="value">{{ $data->enterprise  }}</div>
-				</div>
-				<div class="info-row">
-					<div class="key">生产标准</div>
-					<div class="value">{{ $data->standard  }}</div>
-				</div>
-				<div class="info-row">
-					<div class="key">注册证号</div>
-					<div class="value">{{ $data->registration  }}</div>
-				</div>
-				<div class="info-row">
-					<div class="key">适用科室</div>
-					<div class="value">{{ $data->office  }}</div>
+					<div class="key">产品组成</div>
+					<div class="value">{{ $data->attention  }}</div>
 				</div>
 				<div class="info-row">
 					<div class="key">适用范围</div>
 					<div class="value">{{ $data->scope  }}</div>
 				</div>
 				<div class="info-row">
-					<div class="key">使用注意</div>
-					<div class="value">{{ $data->attention  }}</div>
+					<div class="key">适用科室</div>
+					<div class="value">{{ $data->office  }}</div>
+				</div>
+				<div class="info-row">
+					<div class="key">适用部位</div>
+					<div class="value">{{ $data->standard  }}</div>
+				</div>
+				<div class="info-row">
+					<div class="key">产品规格</div>
+					<div class="value">{{ $data->default_spec  }}</div>
+				</div>
+				<div class="info-row">
+					<div class="key">注册证号</div>
+					<div class="value">{{ $data->registration  }}</div>
+				</div>
+				<div class="info-row">
+					<div class="key">生产企业</div>
+					<div class="value">{{ $data->enterprise  }}</div>
 				</div>
 				<div class="info-row">
 					<div class="key">零售价格</div>
