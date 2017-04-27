@@ -36,5 +36,6 @@
   "/js/index.js": "/js/index.js",
   "/js/help.js": "/js/help.js",
   "/js/broker-sign.js": "/js/broker-sign.js",
-  "/js/manifest.js": "/js/manifest.js"
+  "/js/manifest.js": "/js/manifest.js",
+  "/style/profile-enterprise.css": "/style/profile-enterprise.css"
 }
