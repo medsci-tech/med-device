@@ -1,6 +1,6 @@
 webpackJsonp([12],{
 
-/***/ 35:
+/***/ 36:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(5);
@@ -32,4 +32,4 @@ new __WEBPACK_IMPORTED_MODULE_1_swiper___default.a('.swiper-container', {
 
 /***/ })
 
-},[35]);
+},[36]);

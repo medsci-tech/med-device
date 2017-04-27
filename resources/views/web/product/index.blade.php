@@ -40,7 +40,7 @@
 				<a href="{{ url('product/detail/'.$val->id) }}" target="_blank"><img src="{{ $val->logo }}?imageView2/1/w/220/h/220/q/90"></a>
 				<div class="price-tab">
 					<span class="price-type">零售价格</span>
-	            	<span class="price-num" style="left: 82px">￥</span>
+					<span class="price-num" style="left: 82px">￥</span>
 					<span class="price-num">{{ $val->price }}</span>
 				</div>
 				<p>{{ $val->name }}</p>
@@ -56,5 +56,4 @@
 @endsection
 
 @section('page_js')
-<script src="/js/products.js"></script>
 @endsection

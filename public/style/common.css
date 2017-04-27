@@ -6749,6 +6749,9 @@ button.close {
 body {
   min-width: 1200px;
 }
+body > header {
+  border-bottom: 1px solid #dcdcdc;
+}
 body > header .top-nav {
   background-color: #01a4e4;
   height: 51px;

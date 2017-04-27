@@ -21,7 +21,9 @@ let scripts = ['common', 'index', 'login',
 		'marketing-order', 'password', 'product-detail',
 		'profile-basic', 'profile-change-password', 'profile-collect', 'profile-expertise', 'register'
 	],
-	styles = ['common', 'index', 'login']
+	styles = ['common', 'index', 'login',
+		'product-detail'
+	]
 
 /* javascript compile */
 scripts.forEach(js => mix.js(`resources/assets/js/${ js }.js`, 'public/js'))

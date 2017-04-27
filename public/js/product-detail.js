@@ -38,10 +38,10 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 	var $btn_save = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#save'),
 	    action = 1;
 	if ($btn_save.hasClass('save-focus')) {
-		$btn_save.text('已收藏');
+		$btn_save.find('span').text('已收藏');
 		action = 0;
 	} else {
-		$btn_save.text('收藏');
+		$btn_save.find('span').text('收藏');
 		action = 1;
 	}
 
@@ -54,9 +54,15 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 				action: action
 			},
 			success: function success(data) {
-				console.log(data);
 				if (data.status === 1) {
-					$btn_save.text(action === 0 ? '收藏' : '已收藏').toggleClass('save-focus');
+					$btn_save.find('span').text(action === 0 ? '收藏' : '已收藏');
+					if (action === 1) {
+						$btn_save.addClass('save-focus');
+						action = 0;
+					} else {
+						$btn_save.removeClass('save-focus');
+						action = 1;
+					}
 				} else {
 					alert(data.message);
 				}
@@ -65,36 +71,31 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 	});
 
 	//缩略图切换
-	var index = 0;
-	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.thumbnail').eq(0).css('border', '2px solid #01a4e4');
-	for (var i = 0; i < __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.thumbnail').length; i++) {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.thumbnail').eq(i).data('index', i);
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.thumbnail').eq(i).on('click', function (i) {
-			return function () {
-				index = i;
-				refresh(i);
-			};
-		}(i));
+	var thumbs = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.thumbnail');
+	function setActive(thumb) {
+		thumbs.removeClass('active');
+		thumb.addClass('active');
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.big img').attr('src', thumb.data('url') + '?imageView2/1/w/450/h/450/q/90');
 	}
-
+	thumbs.on('mouseover', function (e) {
+		setActive(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this));
+	});
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.tab').eq(0).on('click', function () {
-		if (index > 0) {
-			index--;
-			refresh(index);
+		var active = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.thumbnail.active').prev();
+		if (active.hasClass('thumbnail')) {
+			setActive(active);
+		} else {
+			setActive(thumbs.last());
 		}
 	});
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.tab').eq(1).on('click', function () {
-		if (index < __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.thumbnail').length - 1) {
-			index++;
-			refresh(index);
+		var active = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.thumbnail.active').next();
+		if (active.hasClass('thumbnail')) {
+			setActive(active);
+		} else {
+			setActive(thumbs.first());
 		}
 	});
-
-	function refresh(index) {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.big img').attr('src', __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.thumbnail').eq(index).attr('style').substring(17));
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.thumbnail').css('border', 'none');
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.thumbnail').eq(index).css('border', '2px solid #01a4e4');
-	}
 
 	//提交合作
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.btn-submit').click(function () {
@@ -129,7 +130,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 
 /***/ }),
 
-/***/ 40:
+/***/ 41:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(10);
@@ -137,4 +138,4 @@ module.exports = __webpack_require__(10);
 
 /***/ })
 
-},[40]);
+},[41]);

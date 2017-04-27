@@ -26,12 +26,12 @@ $(function () {
 	});
 
 	//收藏按钮效果及数据上传
-	var $btn_save = $('#save'),action = 1
+	var $btn_save = $('#save'), action = 1
 	if ($btn_save.hasClass('save-focus')){
-		$btn_save.text('已收藏')
+		$btn_save.find('span').text('已收藏')
 		action = 0
 	} else {
-		$btn_save.text('收藏')
+		$btn_save.find('span').text('收藏')
 		action = 1
 	}
 
@@ -44,48 +44,51 @@ $(function () {
 				action : action
 			},
 			success : function(data){
-				console.log(data)
 				if (data.status === 1){
-					$btn_save.text(action === 0 ? '收藏' : '已收藏').toggleClass('save-focus');
+					$btn_save.find('span').text(action === 0 ? '收藏' : '已收藏')
+					if(action === 1){
+						$btn_save.addClass('save-focus')
+						action = 0
+					}
+					else{
+						$btn_save.removeClass('save-focus')
+						action = 1
+					}
 				} else {
 					alert(data.message)
 				}
 			}
 		})
-
 	});
 
 	//缩略图切换
-	var index = 0;
-	$('.thumbnail').eq(0).css('border', '2px solid #01a4e4')
-	for (var i = 0; i < $('.thumbnail').length; i++){
-		$('.thumbnail').eq(i).data('index', i);
-		$('.thumbnail').eq(i).on('click', (function(i){
-			return function(){
-				index = i;
-				refresh(i);
-			}
-		})(i))
+	let thumbs = $('.thumbnail')
+	function setActive(thumb){
+		thumbs.removeClass('active')
+		thumb.addClass('active')
+		$('.big img').attr('src', thumb.data('url') + '?imageView2/1/w/450/h/450/q/90')
 	}
-
-	$('.tab').eq(0).on('click', function(){
-		if (index > 0) {
-			index--
-			refresh(index)
+	thumbs.on('mouseover', function(e){
+		setActive($(this))
+	})
+	$('.tab').eq(0).on('click', () => {
+		let active = $('.thumbnail.active').prev()
+		if(active.hasClass('thumbnail')){
+			setActive(active)
+		}
+		else{
+			setActive(thumbs.last())
 		}
 	})
-	$('.tab').eq(1).on('click', function(){
-		if (index < $('.thumbnail').length - 1) {
-			index++
-			refresh(index)
+	$('.tab').eq(1).on('click', () => {
+		let active = $('.thumbnail.active').next()
+		if(active.hasClass('thumbnail')){
+			setActive(active)
+		}
+		else{
+			setActive(thumbs.first())
 		}
 	})
-
-	function refresh(index){
-		$('.big img').attr('src', $('.thumbnail').eq(index).attr('style').substring(17));
-		$('.thumbnail').css('border', 'none')
-		$('.thumbnail').eq(index).css('border', '2px solid #01a4e4')
-	}
 
 	//提交合作
 	$('.btn-submit').click(function(){
@@ -115,8 +118,5 @@ $(function () {
 				alert(data.message)
 			}
 		})
-
 	})
-
-
 });
