@@ -7,9 +7,9 @@
 @endsection
 
 @section('content')
-<div class="container-fluid">
-	<div class="row nav">
-		<div class="col-md-11 col-md-offset-1">
+<div class="container">
+	<div class="row nav" style="border-bottom: none;">
+		<div class="col-md-12">
 			<a href="/">&nbsp;&nbsp;首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页&nbsp;&nbsp;</a>
 			<a href="/product">药械产品招商</a>
 			<a href="/market">药械营销服务</a>
@@ -20,13 +20,12 @@
 		</div>
 	</div>
 </div>
-<div class="container-fluid"></div>
-	<div class="row nav2">
-		<div class="col-md-offset-1 col-md-11">
-			<a href="/agent">药械经纪人</a>
-			<a>></a>
-			<a>经纪人登记</a>
-		</div>
+<div style="border-bottom: 1px solid #01a4e4"></div>
+<div class="nav2">
+	<div class="container">
+		<a href="/agent">药械经纪人</a>
+		<a>></a>
+		<a>经纪人登记</a>
 	</div>
 </div>
 <div class="container">

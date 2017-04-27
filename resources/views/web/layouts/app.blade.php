@@ -55,7 +55,7 @@
 				<span>药械小助手 400-8648883</span>
 				<div class="wechat">
 					<img class="wechat-logo" src="/img/home/u103.png">
-					<img class="wechat-code" src="/img/home/u101.png" >
+					<img class="wechat-code" src="/img/home/u101.png" style="z-index: 9">
 				</div>
 			</div>
 		</div>
@@ -68,7 +68,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 info-footer">
-				<a href="/helper#ablout">关于我们</a>
+				<a href="/helper#about">关于我们</a>
 				<a href="/helper#contact">联系我们</a>
 				<a href="/helper#buy">购买方式</a>
 				<a href="/helper#problems">常见问题</a>

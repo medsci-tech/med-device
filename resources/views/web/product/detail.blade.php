@@ -36,7 +36,7 @@
 		</div>
 	</div>
 </section>
-{{ $data->banners }}
+
 <div class="container">
 	<div class="row detail">
 		<div class="col-md-5">

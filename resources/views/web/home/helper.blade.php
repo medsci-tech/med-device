@@ -1,4 +1,4 @@
-@extends('web.layouts.app2')
+@extends('web.layouts.app')
 
 @section('title', '帮助')
 
@@ -12,7 +12,7 @@
 
 
 @section('content')
-    <div class="row line"><div></div></div>
+<div class="container">
 	<div class="row mid">
 		<div class=" col-md-offset-1 col-md-10">
 			<div class="nav">
@@ -44,4 +44,5 @@
 			<div class="content contact">4</div>
 		</div>
 	</div>
+</div>
 @endsection

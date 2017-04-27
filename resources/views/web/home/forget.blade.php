@@ -1,4 +1,4 @@
-@extends('web.layouts.app2')
+@extends('web.layouts.app')
 
 @section('title','找回密码')
 
@@ -7,8 +7,7 @@
 @endsection
 
 @section('content')
-    <div class="row line"></div>
-
+<div class="container">
     <div class="row">
         <div class="form-area">
             <h2 class="title">找回密码</h2>
@@ -38,6 +37,7 @@
             </form>
         </div>
     </div>
+</div>
 @endsection
 
 @section('page_js')
