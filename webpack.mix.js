@@ -22,7 +22,13 @@ let scripts = ['common', 'index', 'login',
 		'profile-basic', 'profile-change-password', 'profile-collect', 'profile-expertise', 'register'
 	],
 	styles = ['common', 'index', 'login',
-		'product-detail'
+		'broker-sign', 'broker', 'help', 'marketing-order',
+		'marketing', 'password', 'product-detail',
+		'products', 'profile-basic', 'profile-business',
+		'profile-change-password', 'profile-collect',
+		'profile-enterprise', 'profile-expertise',
+		'profile-order-detail', 'profile-orders', 'profile',
+		'register', 'search-result', 'service'
 	]
 
 /* javascript compile */

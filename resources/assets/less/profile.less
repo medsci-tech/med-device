@@ -1,3 +1,4 @@
+
 .nav .item {
   width: 200px;
   height: 68px;
@@ -57,147 +58,60 @@
   background-color: #f2f2f2;
   font-size: 16px;
 }
-.panel a {
-  color: black;
+.infomanager::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
 }
-.panel a:hover {
-  text-decoration: none;
+.infomanager img {
+  display: block;
+  float: left;
+  width: 124px;
+  height: 124px;
+  margin: 16px 30px 24px 20px;
 }
-.form {
-  position: relative;
-  width: 420px;
-  margin: 40px auto 100px;
+.infomanager .welcome {
+  float: left;
+  padding-top: 20px;
 }
-.form .icon {
-  width: 150px;
-  height: 150px;
-  margin: 0 auto;
-}
-.form #choose-icon {
-  width: 80px;
-  height: 30px;
-  line-height: 30px;
-  margin: 14px auto 40px;
-  border: 1px solid #d7d7d7;
-  border-radius: 15px;
-  text-align: center;
-  cursor: pointer;
-}
-.form #choose-icon:hover {
+.infomanager .welcome .name {
   color: #01a4e4;
-  border-color: #01a4e4;
+  margin-right: 0;
+  font-weight: bold;
 }
-.form > div {
-  width: 100%;
-  height: 60px;
-  margin: 12px 0;
-  border: 1px solid #d7d7d7;
-}
-.form > div * {
-  display: block;
-  float: left;
-  height: 60px;
-  line-height: 60px;
-  font-weight: normal;
-}
-.form label {
-  width: 80px;
-  margin-right: 20px;
-  text-align: center;
-}
-.form input[type="text"],
-.form input[type="password"] {
+.infomanager .welcome a {
   display: inline-block;
-  width: 300px;
-  height: 56px;
-  outline: none;
-  border: none;
-}
-.form .no-border {
-  border: none;
-}
-.form .no-border * {
-  display: block;
-  float: left;
-}
-.form .sex-radio {
-  margin: 0 0 0 40px;
-}
-.form .submit {
-  display: block;
-  width: 100%;
-  height: 60px;
-  background-color: #01b9fe;
-  border-radius: 4px;
-  color: white;
+  width: 80px;
+  margin: 60px 0 0;
+  line-height: 30px;
+  color: black;
   text-align: center;
-  line-height: 60px;
-  border: none;
-  font-size: 18px;
+  text-decoration: none;
+  border-radius: 15px;
+  border: 1px solid #f2f2f2;
 }
-.form .btn-dropdown {
-  position: absolute;
-  right: 0;
-  width: 20px;
-  height: 20px;
-  margin-top: 20px;
-  background-position: center;
-  background-repeat: no-repeat;
-  -webkit-transform: rotateZ(180deg);
-          transform: rotateZ(180deg);
-  cursor: pointer;
+.infomanager .welcome a:hover {
+  border: 1px solid #01a4e4;
+  color: #01a4e4;
 }
-.form .province .btn-dropdown,
-.form .city .btn-dropdown,
-.form .county .btn-dropdown {
-  top: 0;
+.infomanager .welcome span {
+  display: inline-block;
+  margin-right: 60px;
+  color: #AEAEAE;
 }
-.form #area {
-  display: none;
-}
-.form .province,
-.form .city,
-.form .county {
+.item-message {
   position: relative;
-  width: 94px;
-  height: 60px;
-  margin-right: 10px;
+  min-height: 130px;
+  padding-left: 200px;
+  border-bottom: 1px solid #AEAEAE;
 }
-/* 三个下拉框 */
-.drop-down {
-  display: none;
+.item-message .time {
   position: absolute;
-  padding-left: 0;
-  border: 1px solid #B9B9B9;
-  border-radius: 4px;
-  box-shadow: 0 3px 8px #AEAEAE;
-  background-color: white;
-  z-index: 99;
+  left: 30px;
+  color: #AEAEAE;
 }
-.drop-down li {
-  display: block;
-  cursor: pointer;
-  height: 50px;
-  line-height: 50px;
-  padding-left: 20px;
-  text-align: left;
-}
-.drop-down li:hover {
-  background-color: #F0F0F0;
-}
-#drop-province {
-  width: 94px;
-  top: 640px;
-  left: 92px;
-}
-#drop-city {
-  width: 94px;
-  top: 640px;
-  left: 196px;
-}
-#drop-county {
-  width: 94px;
-  top: 640px;
-  left: 302px;
-}
-/*# sourceMappingURL=profile-basic.css.map*/
+
+/*# sourceMappingURL=profile.css.map*/

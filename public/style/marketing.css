@@ -106,7 +106,8 @@
 .search .contect .wechat:hover .wechat-code {
   display: block;
   position: absolute;
-  transform: translate(-90%, -5px);
+  -webkit-transform: translate(-90%, -5px);
+          transform: translate(-90%, -5px);
 }
 .search .contect .wechat-code {
   display: none;
@@ -192,5 +193,4 @@
   width: 126px;
   margin: 30px 0px 6px -10px;
 }
-
 /*# sourceMappingURL=marketing.css.map*/

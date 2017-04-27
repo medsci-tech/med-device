@@ -1,13 +1,5 @@
 webpackJsonp([12],{
 
-/***/ 36:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(5);
-
-
-/***/ }),
-
 /***/ 5:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -30,6 +22,14 @@ new __WEBPACK_IMPORTED_MODULE_1_swiper___default.a('.swiper-container', {
 
 });
 
+/***/ }),
+
+/***/ 55:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(5);
+
+
 /***/ })
 
-},[36]);
+},[55]);

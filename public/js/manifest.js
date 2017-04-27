@@ -87,7 +87,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "\\js\\" + ({"0":"/js/vendor","1":"/js/common","2":"/js/register","3":"/js/profile-expertise","4":"/js/profile-collect","5":"/js/profile-change-password","6":"/js/profile-basic","7":"/js/product-detail","8":"/js/password","9":"/js/marketing-order","10":"/js/login","11":"/js/loc","12":"/js/index","13":"/js/help","14":"/js/broker-sign"}[chunkId]||chunkId) + ".js";
+/******/ 		script.src = __webpack_require__.p + "js/" + ({"0":"/js/common","1":"/js/vendor","2":"/js/register","3":"/js/profile-expertise","4":"/js/profile-collect","5":"/js/profile-change-password","6":"/js/profile-basic","7":"/js/product-detail","8":"/js/password","9":"/js/marketing-order","10":"/js/login","11":"/js/loc","12":"/js/index","13":"/js/help","14":"/js/broker-sign"}[chunkId]||chunkId) + ".js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
