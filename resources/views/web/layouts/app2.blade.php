@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <title>@yield('title')</title>
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/sweetalert/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/style/vendor.css">
 <meta name="description" content="施康培科技（武汉）有限公司版权所有!" />
 <meta name="Keywords" content="药械通" />

@@ -43,6 +43,13 @@ $(document).ready(function () {
 	// $('#drop-type li').on('click', function (e) {
 	// 	$('#service-type').val($(e.target).text());
 	// });
+    $('#datetimepicker').datetimepicker({
+        minView: "month", //选择日期后，不会再跳转去选择时分秒
+        format: "yyyy-mm-dd", //选择日期后，文本框显示的日期格式
+        language: 'zh-CN', //汉化
+        autoclose:true, //选择日期后自动关闭
+        minDate: 0
+    });
 
 	//获取手机验证码
 	$('#getCaptcha').click(function(){
@@ -106,6 +113,7 @@ $(document).ready(function () {
 		var email = $('#email').val()
 		var agree = $('#agree')[0].checked
 		var sex = $('input:radio[name="sex"]:checked').val()
+        var birthday = $('#datetimepicker').val()
 
 		$.ajax({
 			url : '/register',
@@ -118,7 +126,8 @@ $(document).ready(function () {
 				code : code,
 				real_name :real_name,
 				email : email,
-				agree : agree,
+                agree : agree,
+                birthday : birthday,
 				sex : sex
 			},
 			success : function(data){

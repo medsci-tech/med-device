@@ -91,7 +91,7 @@
             </div>
             <div class="password">
                 <img src="/img/login/u1296.png">
-                <input id="password" class="input" type="text" name="password" placeholder="请输入密码">
+                <input id="password" class="input" type="password" name="password" placeholder="请输入密码">
             </div>
             <div class="password-option">
                 <input id="remember" class="checkbox" type="checkbox" name="remember">
