@@ -70,7 +70,6 @@
 		<div>
 			<label>出生日期</label>
 			<input id="datetimepicker" type="text" name="birthday" placeholder="年/月/日" data-date-format="yyyy-mm-dd">
-			<div class="email-dropdown"></div>
 		</div>
 		<div class="no-border">
 			<div class="checkbox" style="float: none;text-align: center; white-space: nowrap">

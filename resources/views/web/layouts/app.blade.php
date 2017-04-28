@@ -69,7 +69,7 @@ window.$CSRFTOKEN = '{!! csrf_token() !!}'
 				<span>药械小助手 400-8648883</span>
 				<div class="wechat">
 					<img class="wechat-logo" src="/img/home/u103.png">
-					<img class="wechat-code" src="/img/home/u101.png" style="z-index: 9">
+					<img class="wechat-code" src="/img/home/u101.jpg" style="z-index: 9;width: 200px;height: 200px">
 				</div>
 			</div>
 		</div>
@@ -93,11 +93,11 @@ window.$CSRFTOKEN = '{!! csrf_token() !!}'
 			<div class="col-md-4 qr-code">
 				<div class="row">
 					<div class="col-md-6">
-						<img width="100%" src="/img/home/u101.png">
+						<img width="100%" src="/img/home/u101.jpg">
 						<p>药械通官方微信</p>
 					</div>
 					<div class="col-md-6">
-						<img width="100%" src="/img/home/u192.png">
+						<img width="100%" src="/img/home/u191.jpg">
 						<p>药械通企业号</p>
 					</div>
 				</div>
