@@ -38,24 +38,9 @@
 		<li type="{{ $val->id }}">{{ $val->name }}</li>
 		@endforeach
 	</ul>
-	<ul id="drop-province" class="drop-down">
-		<li>湖北省</li>
-		<li>湖南省</li>
-		<li>湖东省</li>
-	</ul>
-	<ul id="drop-city" class="drop-down">
-		<li>市一</li>
-		<li>市二</li>
-		<li>市三</li>
-	</ul>
-	<ul id="drop-county" class="drop-down">
-		<li>一县</li>
-		<li>二县</li>
-		<li>三县</li>
-	</ul>
 	<!-- 下拉框结束 -->
 	
-	<form class="form">
+	<form class="form" id="order-form">
 		<div>
 			<div class="required">*</div>
 			<label class="normal-label" for="product-name">产品名称</label>
@@ -64,26 +49,29 @@
 		<div>
 			<div class="required">*</div>
 			<label class="normal-label" for="service-type">服务类型</label>
-			<input id="service-type" class="normal-input" type="text" name="type" placeholder="选择服务类型" readonly style="background-color: 	white">
-			<div id="btn-dropdown-type" class="btn-dropdown"></div>
+			<select name="type" class="form-control select-control">
+				@foreach ($data as $val)
+				<option value="{{ $val->id }}">{{ $val->name }}</option>
+				@endforeach
+			</select>
 		</div>
 		<div>
 			<div class="required">*</div>
 			<label class="normal-label" for="area">预约区域</label>
-			<input id="area" data-type="area" class="normal-input" type="text" name="phone" placeholder="选择地区">
+			<input id="area" data-type="area" class="normal-input" type="text" name="area" placeholder="选择地区">
 		</div>
 		<div>
 			<label class="normal-label" for="hospital">医院</label>
-			<input id="hospital"  class="normal-input" type="text" name="phone" placeholder="可填写多家医院">
+			<input id="hospital"  class="normal-input" type="text" name="hospital" placeholder="可填写多家医院">
 		</div>
 		<div>
 			<label class="normal-label" for="department">科室</label>
-			<input id="department"  class="normal-input" type="text" name="phone" placeholder="可填写多家科室">
+			<input id="department"  class="normal-input" type="text" name="department" placeholder="可填写多家科室">
 		</div>
 		<div>
 			<div class="required">*</div>
 			<label class="normal-label" for="datetimepicker">预约日期</label>
-			<input id="datetimepicker" class="normal-input" type="text" name="phone" placeholder="年/月/日" data-date-format="yyyy-mm-dd">
+			<input id="datetimepicker" class="normal-input" type="text" name="date" placeholder="年/月/日" data-date-format="yyyy-mm-dd">
 		</div>
 		<div>
 			<div class="required">*</div>
@@ -93,13 +81,13 @@
 		<div>
 			<div class="required">*</div>
 			<label class="normal-label" for="tel">联系电话</label>
-			<input id="tel" class="normal-input" type="text" name="email" placeholder="请输入联系电话">
+			<input id="tel" class="normal-input" type="text" name="tel" placeholder="请输入联系电话">
 		</div>
 		<div class="desc">
 			<label class="normal-label" for="desc">要求描述</label>
-			<textarea id="desc" placeholder="请填写详细的要求"></textarea>
+			<textarea id="desc" placeholder="请填写详细的要求" name="desc"></textarea>
 		</div>
-		<div class="submit" id="submit">立刻预约</div>
+		<button class="submit" type="submit" id="submit">立刻预约</button>
 	</form>
 </div>
 @endsection
