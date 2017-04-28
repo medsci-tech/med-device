@@ -8,6 +8,9 @@
 <link rel="stylesheet" type="text/css" href="/style/common.css">
 <link rel="stylesheet" type="text/css" href="/js/sweetalert/sweetalert.css">
 @yield('page_css')
+<script>
+window.$User = {!! Auth::user() ? Auth::user() : 'null' !!}
+</script>
 </head>
 <body>
 <header>

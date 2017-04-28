@@ -136,7 +136,7 @@
 				<!-- 视频加载 -->
 				@if($data->videos)
 					@foreach($data->videos as $video)
-						<div id="id_video_container_{{ $loop->index }}" style="width:100%;height:360px;"></div>
+						<div id="id_video_container_{{ $loop->index }}" style="width:100%;height:600px;"></div>
 					@endforeach
 				@endif
 			</div>
@@ -163,7 +163,7 @@
 <script>var $product_id = {{ $id }}</script>
 <script src="/js/product-detail.js"></script>
 <script src="//qzonestyle.gtimg.cn/open/qcloud/video/h5/h5connect.js"></script>
-<script type="text/javascript">
+<script>
 	(function(){
 		@if($data->videos)
 			@foreach($data->videos as $video)
@@ -174,16 +174,6 @@
 		@endif
 	})()
 </script>
-<script>
-    //弹出面板
-    $('.btn-business').on('click', function () {
-        @if (Auth::guest())
-        window.location.href='/login';
-		@endif
-    });
-</script>
-
-
 @endsection
 
 @section('panel')
