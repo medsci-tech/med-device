@@ -41,7 +41,7 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;修改密码
 				</a>
 			</div>
-		</div>
+		</div>{!! config('params') !!}
 		<div class="content col-md-9">
 			<div class="infomanager">
 				<div class="panel">
