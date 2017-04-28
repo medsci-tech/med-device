@@ -35,8 +35,10 @@ window.$CSRFTOKEN = '{!! csrf_token() !!}'
 	<div class="container">
 		<div class="row search" style="border: none;">
 			<div class="col-md-3">
-				<img class="logo" src="/img/home/u61.jpg">
-				<h1 class="h1">药械通</h1>
+				<a class="logo-link" href="/">
+					<img class="logo" src="/img/home/u61.jpg">
+					<h1 class="h1">药械通</h1>
+				</a>
 				<p>互联网医药信息服务证：9982561</p>
 			</div>
 			<div class="col-md-6">

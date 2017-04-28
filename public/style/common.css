@@ -6752,6 +6752,9 @@ body {
 body > header {
   border-bottom: 1px solid #dcdcdc;
 }
+body > header .logo-link:hover {
+  text-decoration: none;
+}
 body > header .top-nav {
   background-color: #01a4e4;
   height: 51px;
