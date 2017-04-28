@@ -23,8 +23,8 @@ trait CheckAgent
             'real_name' => 'required|max:25',//真实姓名
             'sex' => "required",//类型
            // 'email' => 'required|email',
-            'province' => 'required',
-            'city' => 'required',
+           // 'province' => 'required',
+            //'city' => 'required',
            // 'depart_ids' => 'required',//科室
             //'service_type_ids' => 'required',//服务类型
            // 'hospitals' => 'required',//省市区医院
