@@ -25,7 +25,8 @@ class OrderDepart extends Model
 
     public function departs()
     {
-        return $this->belongsToMany(\App\Models\Department::class, 'order_departsx', 'depart_id', 'depart_id');
+        return $this->belongsToMany(\App\Models\Department::class, 'order_departs','depart_id', 'id');
+
     }
 
 
