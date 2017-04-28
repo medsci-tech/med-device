@@ -12,3 +12,4 @@ Homestead.yaml
 /php_errors.log
 /app/Http/Requests
 /app/Http/Requests/Interfaces/SendCode.php
+/public/php_errors.log
