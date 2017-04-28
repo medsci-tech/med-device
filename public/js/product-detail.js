@@ -31,7 +31,11 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 
 	//弹出面板
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.btn-business').on('click', function () {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.shielder,#panel').show();
+		if ($User) {
+			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.shielder,#panel').show();
+		} else {
+			location.href = '/login';
+		}
 	});
 
 	//收藏按钮效果及数据上传

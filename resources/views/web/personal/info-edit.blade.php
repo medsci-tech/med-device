@@ -48,9 +48,13 @@
 					<a href="/personal">信息管理</a>
 					<span> &nbsp;> &nbsp;基础信息修改</span>
 				</div>
-				<form class="form" id="profile-form">
-					<div class="icon"><img name="head" src="{{ isset(\Auth::user()->head_img) ? \Auth::user()->head_img.'?imageView2/1/w/150/h/150/q/90' : config('params')['default_head'].'?imageView2/1/w/150/h/150/q/90' }}"> </div>
+				<div style="text-align: center; margin: 0 338px">
+					<div class="icon">
+						<img name="head" src="{{ isset(\Auth::user()->head_img) ? \Auth::user()->head_img.'?imageView2/1/w/150/h/150/q/90' : config('params')['default_head'].'?imageView2/1/w/150/h/150/q/90' }}">
+					</div>
 					<div id="choose-icon">上传头像</div>
+				</div>
+				<form class="form" id="profile-form">
 					<div>
 						<label class="normal-label">用户名</label>
 						<input class="normal-input" type="text" name="name" placeholder="您的账户名和登录名" value="{{ \Auth::user()->name }}" readonly>

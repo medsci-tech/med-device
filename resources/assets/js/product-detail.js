@@ -22,7 +22,12 @@ $(function () {
 
 	//弹出面板
 	$('.btn-business').on('click', function () {
-		$('.shielder,#panel').show();
+		if($User){
+			$('.shielder,#panel').show();
+		}
+		else{
+			location.href = '/login'
+		}
 	});
 
 	//收藏按钮效果及数据上传
