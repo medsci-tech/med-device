@@ -46,7 +46,7 @@ class User extends Authenticatable
      */
     public function departs()
     {
-       return $this->hasMany( \App\Models\OrderDepart::class);
+       return $this->hasMany( \App\Models\OrderDepart::class,'depart_id','id');
     }
     /**
      * @return mixed
