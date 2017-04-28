@@ -30,11 +30,11 @@ window.$CSRFTOKEN = '{!! csrf_token() !!}'
 					<a class="btn btn-link icon icon-165" href="/helper">帮助中心</a>
 				</span>
 				<span class="personal hide pull-right">
-					<a class="btn btn-link" href="/">药械通首页</a>
+					<a class="btn btn-link icon icon-home" href="/">药械通首页</a>
 					<a class="btn btn-link icon icon-165" href="/helper">帮助中心</a>
 				</span>
 				<span class="helper hide pull-right">
-					<a class="btn btn-link" href="/">药械通首页</a>
+					<a class="btn btn-link icon icon-home" href="/">药械通首页</a>
 					<a class="btn btn-link icon icon-161" href="/personal">个人中心</a>
 				</span>
 		</div>

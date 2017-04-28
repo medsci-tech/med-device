@@ -133,11 +133,6 @@ $(function () {
 	});
 
 
-
-
-
-
-
 	function manager(data, index) {
 		this.json = data;
 		this.data = this.json.map(function(obj){
@@ -215,13 +210,15 @@ $(function () {
 			service_type_ids : _service_type_ids,
 			hospitals : _hospitals
 		}
-
+		console.log(data)
 		$.ajax({
 			url : '/personal/expertise',
-			type : 'post',
-			data : data,
+			method : 'POST',
+			data : JSON.stringify(data),
+			dataType: 'json',
+			contentType: 'application/json',
 			success : function(data){
-				sweetAlert('data.message')
+				sweetAlert(data.message)
 			}
 		})
 	})

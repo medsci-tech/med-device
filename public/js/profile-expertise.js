@@ -223,13 +223,15 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			service_type_ids: _service_type_ids,
 			hospitals: _hospitals
 		};
-
+		console.log(data);
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
 			url: '/personal/expertise',
-			type: 'post',
-			data: data,
+			method: 'POST',
+			data: JSON.stringify(data),
+			dataType: 'json',
+			contentType: 'application/json',
 			success: function success(data) {
-				sweetAlert('data.message');
+				sweetAlert(data.message);
 			}
 		});
 	});
