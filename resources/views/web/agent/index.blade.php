@@ -26,7 +26,7 @@
 	<div class="shielder"></div>
 	<div class="mid-content">
 		<p></p>
-		<a style="margin-top: 110px;border-radius: 6px" class="reserve"  href="@if (Auth::guest()) {{ url('login') }} @else {{ url('agent/agent-sign') }} @endif" >成为药械经纪人</a>
+		<a style="margin-top: 110px;border-radius: 6px" class="reserve"  href="@if (Auth::guest()) {{ url('login') }} @elseif (\Auth::user()->is_agent==1) {{ url('personal/expertise') }} @else  {{ url('agent/agent-sign') }} @endif" >成为药械经纪人</a>
 	</div>
 </div>
 @endsection
