@@ -58,7 +58,6 @@
 						@else
 							已完成
 						@endif</div>
-					<div class="title">预约服务详情</div>
 					<div class="detail-row">
 						<span class="key">产品名称</span>
 						<span class="value">{{ $order->product_name }}</span>
@@ -72,8 +71,28 @@
 						<span class="value">{{ $order->province.$order->city.$order->area }}</span>
 					</div>
 					<div class="detail-row">
+						<span class="key">医院</span>
+						<span class="value">{{ $order->hospital_name }}</span>
+					</div>
+					<div class="detail-row">
+						<span class="key">科室</span>
+						<span class="value">{{ $order->departments }}</span>
+					</div>
+					<div class="detail-row">
 						<span class="key">服务预约时间</span>
 						<span class="value">{{ str_limit($order->appoint_at, $limit = 10, $end = '') }}</span>
+					</div>
+					<div class="detail-row">
+						<span class="key">联系人</span>
+						<span class="value">{{ $order->contact_name }}</span>
+					</div>
+					<div class="detail-row">
+						<span class="key">联系电话</span>
+						<span class="value">{{ $order->contact_phone }}</span>
+					</div>
+					<div class="detail-row">
+						<span class="key">描述</span>
+						<span class="value">{{ $order->comment }}</span>
 					</div>
 				</div>
 			</div>

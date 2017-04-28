@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class OrderService extends Model
 {
-
+    protected $hidden = ['updated_at','created_at'];
     /**
      * The attributes that are mass assignable.
      *
@@ -21,6 +21,10 @@ class OrderService extends Model
         'service_type_id',
         'user_id'
     ];
+    public function serviceTypes()
+    {
+        return $this->belongsToMany(\App\Models\ServiceType::class,'order_services', 'id','service_type_id');
+    }
 
 
 }

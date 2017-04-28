@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Web\Personal;
+use App\Models\Department;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -275,14 +276,126 @@ class PersonalController extends Controller
     {
         $user = \Auth::user();
         $res = $user->ordersWithDeparts()->get();
-        foreach($res as $order)
-        {  echo $order->id.'?';
-            foreach($order->departs as $val )
-            {
-            //echo $val->id;
+        $list =[];
+        if($res)
+        {
+            try{
+                foreach($res as $key=>$order)
+                {
+                    foreach($order->departs as $val )
+                        $list[$key]=['id'=>$order->id,'name'=>$val->name];
+                }
+            }
+            catch (\Exception $e) {
+                $list = [];
             }
         }
+        else
+            $list = [];
+        return $list;
+    }
 
+    /**
+     * 个人专长-服务类型
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function getService(Request $request)
+    {
+        $user = \Auth::user();
+        $res = $user->ordersWithServices()->get();
+        $list =[];
+        if($res)
+        {
+            try{
+                foreach($res as $key=>$order)
+                {
+                    foreach($order->serviceTypes as $val )
+                        $list[$key]=['id'=>$order->id,'name'=>$val->name];
+                }
+            }
+            catch (\Exception $e) {
+                $list = [];
+            }
+        }
+        else
+            $list = [];
+        return $list;
+    }
+
+    /**
+     * 个人专长-医院列表
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function getHospital(Request $request)
+    {
+        $user = \Auth::user();
+        $res = $user->ordersWithHospitals()->get();
+        $list =[];
+        if($res)
+        {
+            try{
+                foreach($res as $key=>$order)
+                {
+                    foreach($order->hospitals as $val )
+                        $list[$key]=['id'=>$order->id,'hospital'=>$val->hospital];
+                }
+            }
+            catch (\Exception $e) {
+                $list = [];
+            }
+        }
+        else
+            $list = [];
+        return $list;
+    }
+
+    /**
+     * 个人专长-删除
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function delExpertise(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            $data = $request->all();
+            $rules = [
+                'id' => 'required',
+                'type' => 'required|in:depart,service,hospital',
+            ];
+            $messages = [
+                'id.required' => 'id不能为空',
+                'type.required' => 'type不能为空',
+                'type.in' => 'type只能为depart,service,hospital'
+            ];
+            $validator = \Validator::make($data, $rules, $messages);
+
+            $validator_error_first = $validator->errors()->first();
+            if($validator_error_first)
+                return ['code'=>200, 'status' => 0,'message' => $validator_error_first ];
+
+            try
+            {
+                $where= ['user_id'=>\Auth::id(),'id'=>$request->id];
+                if($request->type=='hospital')
+                    OrderHospital::where($where)->delete();
+                elseif ($request->type=='service')
+                    OrderService::where($where)->delete();
+                elseif($request->type=='depart')
+                    OrderDepart::where($where)->delete();
+                else
+                    return response()->json(['code'=>200, 'status' => 0,'message' => '删除失败' ]);
+
+                return response()->json(['code'=>200, 'status' =>1,'message' => '删除成功' ]);
+            }
+            catch (\Exception $e) {
+                return response()->json(['code'=>200, 'status' => 0,'message' => '删除失败' ]);
+            }
+        }
 
     }
 

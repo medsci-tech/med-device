@@ -76,7 +76,10 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
         Route::any('/enterprise', 'PersonalController@enterprise');// 企业信息
         Route::get('/about-us', 'PersonalController@aboutUs');
         Route::post('/upload-head', 'PersonalController@uploadHead');// 个人图像上传
-        Route::get('/get-depart', 'PersonalController@getDepart');
+        Route::get('/get-depart', 'PersonalController@getDepart');//专长列表
+        Route::get('/get-service', 'PersonalController@getService');//专长服务列表
+        Route::get('/get-hospital', 'PersonalController@getHospital');//专长医院列表
+        Route::post('/del-expertise', 'PersonalController@delExpertise');//专长删除
     });
 
 });

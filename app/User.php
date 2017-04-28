@@ -48,6 +48,7 @@ class User extends Authenticatable
     {
        return $this->hasMany( \App\Models\OrderDepart::class,'user_id');
     }
+
     /**
      * @return mixed
      */
@@ -57,6 +58,40 @@ class User extends Authenticatable
             $query->get();
         }]);
     }
+    /**
+     * 获取指定用户的所有服务类型
+     */
+    public function servicesTypes()
+    {
+        return $this->hasMany( \App\Models\OrderService::class,'user_id');
+    }
+    /**
+     * @return mixed
+     */
+    public function ordersWithServices()
+    {
+        return $this->servicesTypes()->with(['serviceTypes' => function ($query) {
+            $query->get();
+        }]);
+    }
+
+    /**
+     * 获取指定用户的所有医院
+     */
+    public function hospitals()
+    {
+        return $this->hasMany( \App\Models\OrderHospital::class,'user_id');
+    }
+    /**
+     * @return mixed
+     */
+    public function ordersWithHospitals()
+    {
+        return $this->hospitals()->with(['hospitals' => function ($query) {
+            $query->get();
+        }]);
+    }
+
     /**
      * @return mixed
      */

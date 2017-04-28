@@ -23,6 +23,7 @@ class VerifyCsrfToken extends BaseVerifier
         '/personal/pwd-edit',
         'agent/agent-sign',
         'personal/expertise',
+         'personal/del-expertise',
         '/personal/info-edit'
     ];
 }
