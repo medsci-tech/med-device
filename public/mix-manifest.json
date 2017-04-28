@@ -15,6 +15,7 @@
   "/style/profile-business.css": "/style/profile-business.css",
   "/style/profile-change-password.css": "/style/profile-change-password.css",
   "/style/profile-collect.css": "/style/profile-collect.css",
+  "/style/profile-enterprise.css": "/style/profile-enterprise.css",
   "/style/profile-expertise.css": "/style/profile-expertise.css",
   "/style/profile-order-detail.css": "/style/profile-order-detail.css",
   "/style/profile-orders.css": "/style/profile-orders.css",
@@ -25,6 +26,7 @@
   "/js/vendor.js": "/js/vendor.js",
   "/js/register.js": "/js/register.js",
   "/js/profile-expertise.js": "/js/profile-expertise.js",
+  "/js/profile-enterprise.js": "/js/profile-enterprise.js",
   "/js/profile-collect.js": "/js/profile-collect.js",
   "/js/profile-change-password.js": "/js/profile-change-password.js",
   "/js/profile-basic.js": "/js/profile-basic.js",
@@ -36,6 +38,5 @@
   "/js/index.js": "/js/index.js",
   "/js/help.js": "/js/help.js",
   "/js/broker-sign.js": "/js/broker-sign.js",
-  "/js/manifest.js": "/js/manifest.js",
-  "/style/profile-enterprise.css": "/style/profile-enterprise.css"
+  "/js/manifest.js": "/js/manifest.js"
 }

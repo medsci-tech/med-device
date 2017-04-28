@@ -1,6 +1,6 @@
 webpackJsonp([3],{
 
-/***/ 14:
+/***/ 15:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -219,9 +219,15 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 		});
 
 		var data = {
-			depart_ids: _depart_ids,
-			service_type_ids: _service_type_ids,
-			hospitals: _hospitals
+			depart_ids: _depart_ids.map(function (d) {
+				return { depart_id: d.depart_id };
+			}),
+			service_type_ids: _service_type_ids.map(function (s) {
+				return { service_type_id: s.service_type_id };
+			}),
+			hospitals: _hospitals.map(function (h) {
+				return { city: h.city, hospital: h.hospital, province: h.province };
+			})
 		};
 		console.log(data);
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
@@ -239,12 +245,12 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 
 /***/ }),
 
-/***/ 64:
+/***/ 66:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(14);
+module.exports = __webpack_require__(15);
 
 
 /***/ })
 
-},[64]);
+},[66]);

@@ -1,14 +1,6 @@
-webpackJsonp([11],{
+webpackJsonp([12],{
 
-/***/ 56:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(6);
-
-
-/***/ }),
-
-/***/ 6:
+/***/ 1:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -155,6 +147,14 @@ function locationSelector(config) {
 	return this;
 }
 
+/***/ }),
+
+/***/ 57:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(1);
+
+
 /***/ })
 
-},[56]);
+},[57]);
