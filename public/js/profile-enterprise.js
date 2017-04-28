@@ -11,11 +11,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.btn-upload').each(function (i, upload) {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default()(upload).uploadify({
+		var $up = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(upload);
+		$up.uploadify({
 			'debug': false,
 			'method': 'post',
 			'formData': {
-				'file_id': 5,
+				'file_id': $up.data('id'),
 				'_token': $CSRFTOKEN
 			},
 			'onInit': function onInit(instance) {//初始化加载

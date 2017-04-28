@@ -219,23 +219,21 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 		});
 
 		var data = {
-			depart_ids: _depart_ids.map(function (d) {
+			depart_ids: JSON.stringify(_depart_ids.map(function (d) {
 				return { depart_id: d.depart_id };
-			}),
-			service_type_ids: _service_type_ids.map(function (s) {
+			})),
+			service_type_ids: JSON.stringify(_service_type_ids.map(function (s) {
 				return { service_type_id: s.service_type_id };
-			}),
-			hospitals: _hospitals.map(function (h) {
+			})),
+			hospitals: JSON.stringify(_hospitals.map(function (h) {
 				return { city: h.city, hospital: h.hospital, province: h.province };
-			})
+			}))
 		};
 		console.log(data);
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
 			url: '/personal/expertise',
 			method: 'POST',
-			data: JSON.stringify(data),
-			dataType: 'json',
-			contentType: 'application/json',
+			data: data,
 			success: function success(data) {
 				sweetAlert(data.message);
 			}
