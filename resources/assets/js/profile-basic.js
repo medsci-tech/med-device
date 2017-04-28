@@ -42,7 +42,7 @@ $(function () {
 		'debug'    : false,
 		'method'   : 'post',
 		'formData'     : {
-			'_token'     : '{{ csrf_token() }}'
+			'_token': $CSRFTOKEN
 		},
 		'onInit'   : function(instance) { //初始化加载
 			//$('#choose-icon-queue').hide();
@@ -73,6 +73,7 @@ $(function () {
 	});
 	function uploadFile(file, data) {
 		var data = $.parseJSON(data);
+		console.log(arguments)
 		if(data.status==1){
 			$('img[name=head]').attr('src',data.data.head_img);
 		}

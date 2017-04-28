@@ -10,6 +10,7 @@
 @yield('page_css')
 <script>
 window.$User = {!! Auth::user() ? Auth::user() : 'null' !!}
+window.$CSRFTOKEN = '{!! csrf_token() !!}'
 </script>
 </head>
 <body>

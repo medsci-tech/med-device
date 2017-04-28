@@ -51,7 +51,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 		'debug': false,
 		'method': 'post',
 		'formData': {
-			'_token': '{{ csrf_token() }}'
+			'_token': $CSRFTOKEN
 		},
 		'onInit': function onInit(instance) {//初始化加载
 			//$('#choose-icon-queue').hide();
@@ -82,6 +82,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 	});
 	function uploadFile(file, data) {
 		var data = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.parseJSON(data);
+		console.log(arguments);
 		if (data.status == 1) {
 			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('img[name=head]').attr('src', data.data.head_img);
 		} else {
