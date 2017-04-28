@@ -19,7 +19,9 @@ mix.autoload({
 let scripts = ['common', 'index', 'login',
 		'broker-sign', 'help', 'loc',
 		'marketing-order', 'password', 'product-detail',
-		'profile-basic', 'profile-change-password', 'profile-collect', 'profile-expertise', 'register'
+		'profile-basic', 'profile-change-password', 'profile-collect',
+		'profile-expertise', 'profile-enterprise',
+		'register'
 	],
 	styles = ['common', 'index', 'login',
 		'broker-sign', 'broker', 'help', 'marketing-order',

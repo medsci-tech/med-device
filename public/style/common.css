@@ -6792,6 +6792,10 @@ body > header .top-nav .btn-link.icon {
   background-repeat: no-repeat;
   background-position: 0 50%;
 }
+body > header .top-nav .btn-link.icon.icon-home {
+  background-image: url(/img/home.png);
+  background-size: 26px auto;
+}
 body > header .top-nav .btn-link.icon.icon-161 {
   background-image: url(/img/home/u161.png);
 }

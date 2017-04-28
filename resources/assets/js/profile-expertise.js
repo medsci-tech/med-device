@@ -133,11 +133,6 @@ $(function () {
 	});
 
 
-
-
-
-
-
 	function manager(data, index) {
 		this.json = data;
 		this.data = this.json.map(function(obj){
@@ -211,17 +206,19 @@ $(function () {
 
 
 		var data = {
-			depart_ids : _depart_ids,
-			service_type_ids : _service_type_ids,
-			hospitals : _hospitals
+			depart_ids : _depart_ids.map(d => ({ depart_id: d.depart_id })),
+			service_type_ids : _service_type_ids.map(s => ({ service_type_id: s.service_type_id })),
+			hospitals : _hospitals.map(h => ({ city: h.city, hospital: h.hospital, province: h.province }))
 		}
-
+		console.log(data)
 		$.ajax({
 			url : '/personal/expertise',
-			type : 'post',
-			data : data,
+			method : 'POST',
+			data : JSON.stringify(data),
+			dataType: 'json',
+			contentType: 'application/json',
 			success : function(data){
-				sweetAlert('data.message')
+				sweetAlert(data.message)
 			}
 		})
 	})
