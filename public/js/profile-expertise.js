@@ -239,6 +239,30 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			}
 		});
 	});
+
+	//获取个人专长数据
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+		url: '/personal/get-hospital'
+	}).then(function (data) {
+		console.log(data);
+		for (var i = 0; i < data.length; i++) {
+			container_appendHosItem(data[i]);
+		}
+	});
+
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+		url: '/personal/get-depart'
+	}).then(function (data) {
+		for (var i = 0; i < data.length; i++) {
+			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container1 .item').each(function () {
+				var a1 = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json').name;
+				var a2 = data[i].name;
+				if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json').name === data[i].name) {
+					__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).addClass('item-chosen');
+				}
+			});
+		}
+	});
 });
 
 /***/ }),

@@ -222,4 +222,29 @@ $(function () {
 	})
 
 
+	//获取个人专长数据
+	$.ajax({
+		url : '/personal/get-hospital'
+	}).then(function(data){
+		console.log(data)
+		for (var i = 0; i < data.length; i++) {
+			container_appendHosItem(data[i])
+		}
+	})
+
+	$.ajax({
+		url : '/personal/get-depart'
+	}).then(function(data){
+		for (var i = 0; i < data.length; i++) {
+			$('#item-container1 .item').each(function(){
+				var a1 = $(this).data('json').name
+				var a2 = data[i].name
+				if ($(this).data('json').name === data[i].name){
+					$(this).addClass('item-chosen')
+				}
+			})
+		}
+	})
+
+
 });
