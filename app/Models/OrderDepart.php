@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class OrderDepart extends Model
 {
-
+    protected $hidden = ['updated_at','created_at'];
     /**
      * The attributes that are mass assignable.
      *
@@ -22,9 +22,12 @@ class OrderDepart extends Model
         'user_id'
     ];
 
-    public function depart()
+
+    public function departs()
     {
-        return $this->belongsTo(Department::class, 'depart_id');
+        return $this->belongsToMany(\App\Models\Department::class, 'order_departs','depart_id', 'id');
+
     }
+
 
 }

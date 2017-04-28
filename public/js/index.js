@@ -23,7 +23,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 new __WEBPACK_IMPORTED_MODULE_1_swiper___default.a('.swiper-container', {
 	loop: true,
 	zoom: true,
-	autoplay: 3000,
+	autoplay: 5000,
 	pagination: '.swiper-pagination',
 	paginationClickable: true,
 	effect: 'fade'

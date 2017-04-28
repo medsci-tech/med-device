@@ -265,4 +265,16 @@ class PersonalController extends Controller
             return response()->json(['code'=>200, 'status' => 0,'message' => '上传失败' ]);
     }
 
+    /**
+     * 个人专长-科室
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function getDepart(Request $request)
+    {
+        $user = \Auth::user();
+        dd($user->ordersWithDeparts()->get());
+    }
+
 }

@@ -3,7 +3,7 @@
 return [
     'default_head'=>'http://oocc7psxo.bkt.clouddn.com/head/jpg/timg.jpg',
     'default_image'=>'http://oocc7psxo.bkt.clouddn.com/enterpriseno.jpg',
-    'paginate'=>4,
+    'paginate'=>20,
     // 合作类型
     'join_type' => [
         1 => '代理产品',

@@ -76,6 +76,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
         Route::any('/enterprise', 'PersonalController@enterprise');// 企业信息
         Route::get('/about-us', 'PersonalController@aboutUs');
         Route::post('/upload-head', 'PersonalController@uploadHead');// 个人图像上传
+        Route::get('/get-depart', 'PersonalController@getDepart');
     });
 
 });

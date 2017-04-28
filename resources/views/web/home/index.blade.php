@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 
-@section('title', '首页')
+@section('title', '药械通')
 
 @section('page_css')
 <link rel="stylesheet" href="/style/index.css">
