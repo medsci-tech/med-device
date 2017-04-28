@@ -291,14 +291,23 @@ $(function () {
 	})
 
 	//==================表单提交===========================
-	$('#submit').click(function(){
-		var name = $('#name').val()
-		var email = $('#email').val()
-		var sex = $('input:radio[name="sex"]:checked').val()
+	$('#sign-form').on('submit', function(e){
+		e.preventDefault()
+		let name = this.name.value.trim(),
+			email = this.email.value.trim(),
+			sex = this.sex.value
 
-		var _province,_city,_area
-		_province = _city = _area = "";
-		var work_space = $('#area').val().split(' - ')
+		if(!name){
+			return sweetAlert('姓名不能为空')
+		}
+		if(!email){
+			return sweetAlert('邮箱不能为空')
+		}
+
+
+		let _province, _city, _area
+		_province = _city = _area = '';
+		var work_space = this.area.value.split(' - ')
 		_province = work_space[0]
 		if (work_space.length === 2){
 			_city = work_space[1]
@@ -331,9 +340,9 @@ $(function () {
 			province : _province,
 			city : _city,
 			area : _area,
-			depart_ids : _depart_ids,
-			service_type_ids : _service_type_ids,
-			hospitals : _hospitals
+			depart_ids : JSON.stringify(_depart_ids),
+			service_type_ids : JSON.stringify(_service_type_ids),
+			hospitals : JSON.stringify(_hospitals)
 		}
 
 		$.ajax({
@@ -341,7 +350,7 @@ $(function () {
 			type : 'post',
 			data : data,
 			success : function(data){
-				sweetAlert('data.message')
+				sweetAlert(data.message)
 			}
 		})
 	})
