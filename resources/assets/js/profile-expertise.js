@@ -118,11 +118,9 @@ $(function () {
 		})
 	}
 	$('#panel2 .btn-panel').click(function(){
-		$('#item-container2').empty()
-
 		var $items = $('.items .item');
 		for (var i = 0; i < $items.length; i++) {
-			if ($items.eq(i).children('input')[0].checked){
+			if ($items.eq(i).children('input')[0].checked && !isRepeat($items.eq(i).children('.name').text())){
 				container_appendHosItem($items.eq(i).data('json'))
 			}
 		}
@@ -131,6 +129,20 @@ $(function () {
 		$('#panel2').fadeIn();
 		$('.shielder').show();
 	});
+
+	//选择医院是否重复
+	function isRepeat(name){
+		if ($('#item-container2 .inner').length === 0){
+			return false
+		}
+		var is_repeat = false
+		$('#item-container2 .inner').each(function(){
+			if ($(this).text() === name){
+				is_repeat = true
+			}
+		})
+		return is_repeat
+	}
 
 
 	function manager(data, index) {

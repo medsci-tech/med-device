@@ -131,11 +131,9 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 		});
 	};
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#panel2 .btn-panel').click(function () {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2').empty();
-
 		var $items = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.items .item');
 		for (var i = 0; i < $items.length; i++) {
-			if ($items.eq(i).children('input')[0].checked) {
+			if ($items.eq(i).children('input')[0].checked && !isRepeat($items.eq(i).children('.name').text())) {
 				container_appendHosItem($items.eq(i).data('json'));
 			}
 		}
@@ -144,6 +142,20 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#panel2').fadeIn();
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.shielder').show();
 	});
+
+	//选择医院是否重复
+	function isRepeat(name) {
+		if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2 .inner').length === 0) {
+			return false;
+		}
+		var is_repeat = false;
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2 .inner').each(function () {
+			if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).text() === name) {
+				is_repeat = true;
+			}
+		});
+		return is_repeat;
+	}
 
 	function manager(data, index) {
 		this.json = data;
