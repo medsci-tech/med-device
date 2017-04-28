@@ -55,8 +55,8 @@ class AgentController extends Controller
                     $service_type_ids_arr = json_decode($request->service_type_ids,true);
                     if(is_array($service_type_ids_arr))
                     {
-                        foreach($depart_ids_arr as $val)
-                            OrderService::firstOrCreate(['service_id' => $val['service_type_id'],'user_id'=>\Auth::id()]);
+                        foreach($service_type_ids_arr as $val)
+                            OrderService::firstOrCreate(['service_type_id' => $val['service_type_id'],'user_id'=>\Auth::id()]);
                     }
                     /* 登记医院 */
                     $hospitals_arr = json_decode($request->hospitals,true);
