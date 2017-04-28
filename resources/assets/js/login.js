@@ -43,10 +43,17 @@ $(function(){
 		})
 	})
 
-	$(document).on('keydown', function(e){
-		if (e.keyCode === 13){
-			$('#submit').click()
-		}
-	})
+	// function submit(e){
+	// 	if (e.keyCode === 13){
+	// 		$('#submit').click()
+	// 	}
+	// }
+
+	// $('#name,#password').on('focus', function(){
+	// 	document.addEventListener('keydown', submit)
+	// })
+	// .on('blur', function(){
+	// 	document.removeEventListener('keydown', submit)
+	// })
 
 })
