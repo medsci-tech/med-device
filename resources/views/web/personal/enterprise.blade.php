@@ -41,7 +41,7 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;修改密码
 				</a>
 			</div>
-		</div>{!! config('params') !!}
+		</div>
 		<div class="content col-md-9">
 			<div class="infomanager">
 				<div class="panel">
@@ -51,11 +51,11 @@
 				<div class="items">
 					@foreach(config('params')['cimpany_image'] as $key =>$val)
 						<div class="info-item">
-							<h4>{{ $val }}  {{ $key }}</h4>
-							<img src="{{ config('params')['default_image'] }}?imageView2/1/w/215/h/145/q/90" alt="上传照片">
+							<h4>{{ $val }}  {{ $key }} </h4>
+							<img src="{{ $data['file_' . $key] ? $data['file_' . $key] : config('params')['default_image'] }}?imageView2/1/w/215/h/145/q/90" alt="上传照片">
 							<div>
 								<p><span>要求：</span><br>上传图片分辨最小为1200X800，图片大小不得超过1M，图片上文字及内容必须清晰可见。</p>
-								<div class="btn-upload" id="file_upload_{{ $key }}" file_id="{{ $key }}">上传照片{{$key}}</div>
+								<div class="btn-upload" id="file_upload_{{ $key }}" data-id="{{ $key }}">上传照片{{$key}}</div>
 							</div>
 						</div>
 					@endforeach

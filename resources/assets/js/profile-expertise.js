@@ -206,17 +206,15 @@ $(function () {
 
 
 		var data = {
-			depart_ids : _depart_ids.map(d => ({ depart_id: d.depart_id })),
-			service_type_ids : _service_type_ids.map(s => ({ service_type_id: s.service_type_id })),
-			hospitals : _hospitals.map(h => ({ city: h.city, hospital: h.hospital, province: h.province }))
+			depart_ids : JSON.stringify(_depart_ids.map(d => ({ depart_id: d.depart_id }))),
+			service_type_ids : JSON.stringify(_service_type_ids.map(s => ({ service_type_id: s.service_type_id }))),
+			hospitals : JSON.stringify(_hospitals.map(h => ({ city: h.city, hospital: h.hospital, province: h.province })))
 		}
 		console.log(data)
 		$.ajax({
 			url : '/personal/expertise',
 			method : 'POST',
-			data : JSON.stringify(data),
-			dataType: 'json',
-			contentType: 'application/json',
+			data : data,
 			success : function(data){
 				sweetAlert(data.message)
 			}

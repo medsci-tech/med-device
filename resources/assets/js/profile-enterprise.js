@@ -2,11 +2,12 @@ import $ from 'jquery'
 
 $(function() {
 	$('.btn-upload').each(function(i, upload){
-		$(upload).uploadify({
+		let $up = $(upload)
+		$up.uploadify({
 			'debug'    : false,
 			'method'   : 'post',
 			'formData'     : {
-				'file_id' : 5,
+				'file_id' : $up.data('id'),
 				'_token'     : $CSRFTOKEN
 			},
 			'onInit'   : function(instance) { //初始化加载
