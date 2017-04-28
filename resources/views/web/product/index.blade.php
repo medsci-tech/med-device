@@ -27,10 +27,10 @@
 			<h3>所有产品</h3>
 			<div class="panel">
 				<span>分类：</span>
-				<a href="{{ url('product/') }}">所有</a>
+				<a data-category="all" href="{{ url('product/') }}">所有</a>
 				@if($catogary)
 					@foreach ($catogary as $val)
-				<a href="{{ url('product/category/'.$val->id) }}">{{ $val->name }}</a>
+				<a data-category="{{ $val->id }}" href="{{ url('product/category/'.$val->id) }}">{{ $val->name }}</a>
 					@endforeach
 				@endif
 			</div>
@@ -57,14 +57,21 @@
 
 @section('page_js')
 <script type="text/javascript">
-	// var path = location.pathname
-	// if (path.match(/^\/product(?:\/category\/(\d+))/)){
-	// 	$('.panel a').each(function(){
-	// 		var href = $(this).attr('href')
-	// 		if (href.substring(href.lastIndexOf('/') + 1) === '{{id}}'){
-	// 			$(this).css({'color':'orange', 'font-weight':'bold'})
-	// 		}
-	// 	})
-	// }
+$(function(){
+	var m = location.pathname.match(/^\/product(?:\/category\/(\d+))?/)
+	console.log(m)
+	var style = {
+		color: 'orange',
+		fontWeight: 'bold'
+	}
+	if(m){
+		if(m[1]){
+			$('a[data-category="' + m[1] + '"]').css(style)
+		}
+		else{
+			$('a[data-category="all"]').css(style)
+		}
+	}
+})
 </script>
 @endsection 
