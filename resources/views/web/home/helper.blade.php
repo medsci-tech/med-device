@@ -16,10 +16,10 @@
 	<div class="row mid">
 		<div class="col-md-10">
 			<div class="nav">
-				<div id="problems" class="nav-item focus">常见问题</div>
-				<div id="buy" class="nav-item">购买流程</div>
-				<div id="about" class="nav-item">关于我们</div>
+				<div id="about" class="nav-item focus">关于我们</div>
 				<div id="contact" class="nav-item">联系方式</div>
+				<div id="problems" class="nav-item">常见问题</div>
+				<div id="buy" class="nav-item">购买流程</div>
 			</div>
 			<div class="content problems">
 				<div class="item">
