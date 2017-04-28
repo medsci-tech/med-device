@@ -184,6 +184,12 @@ if (location.pathname.indexOf('/personal') === 0) {
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.search-wrapper, .contect').addClass('hide');
 }
 
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
+	if (swal) {
+		swal.setDefaults({ confirmButtonText: '确定' });
+	}
+});
+
 /***/ }),
 /* 5 */,
 /* 6 */,

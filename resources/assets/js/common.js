@@ -26,3 +26,9 @@ else if(location.pathname.indexOf('/helper') === 0){
 	$('.top-nav .helper').removeClass('hide')
 	$('.search-wrapper, .contect').addClass('hide')
 }
+
+$(function(){
+	if(swal){
+		swal.setDefaults({ confirmButtonText: '确定' });
+	}
+})

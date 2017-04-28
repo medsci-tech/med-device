@@ -350,7 +350,20 @@ $(function () {
 			type : 'post',
 			data : data,
 			success : function(data){
-				sweetAlert(data.message)
+				if(data.status === 1){
+					swal({
+						text: `欢迎您成为药械经纪人，<a href="/">返回首页</a>`,
+						html: true,
+						type: 'success'
+					});
+				}
+				else{
+					swal({
+						title: '',
+						text: data.message,
+						type: 'error'
+					})
+				}
 			}
 		})
 	})
