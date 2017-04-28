@@ -15,7 +15,7 @@ $(function() {
 				//$('#choose-icon-queue').hide();
 			},
 			'buttonText' : '上传图像',
-			'fileSizeLimit' : '1MB',
+			'fileSizeLimit' : '2MB',
 			'fileTypeExts' : '*.gif; *.jpg; *.png',
 			'fileTypeDesc' : '只能上传图片',//选择文件的时候的提示信息
 			'swf'      : '/js/uploadify/uploadify.swf',
@@ -24,7 +24,7 @@ $(function() {
 			'uploader' : '/personal/enterprise',
 			'width'    : 80,
 			'onSelect' : function(file) {
-				if(file.size > 1024000){//文件太大，取消上传该文件
+				if(file.size > 1024000 * 2 ){//文件太大，取消上传该文件
 					swal("文件大小超过限制！");
 					$up.uploadify('cancel', file.id);
 				}
