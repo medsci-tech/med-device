@@ -210,42 +210,6 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.shielder,.panel').hide();
 	});
 
-	//隐藏下拉框
-	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').on('click', function () {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.drop-down').slideUp(200);
-	});
-
-	//绑定下拉框显示事件
-	function bindShowEvent(triggerId, targetId) {
-
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#' + triggerId).on('click', function (event) {
-			event.stopPropagation();
-			if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#' + targetId).css('display') === 'block') {
-				__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.drop-down').slideUp(200);
-			} else {
-				__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.drop-down').slideUp(200);
-				__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#' + targetId).toggle(200);
-			}
-		});
-	}
-	bindShowEvent('btn-dropdown-type', 'drop-type');
-	bindShowEvent('btn-dropdown-province', 'drop-province');
-	bindShowEvent('btn-dropdown-city', 'drop-city');
-	bindShowEvent('btn-dropdown-county', 'drop-county');
-
-	//填值
-	function autoValue(triggerId, targetId) {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#' + triggerId + ' li').on('click', function (e) {
-			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#' + targetId).text(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(e.target).text());
-		});
-	}
-	autoValue('drop-province', 'value-province');
-	autoValue('drop-city', 'value-city');
-	autoValue('drop-county', 'value-county');
-	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#drop-type li').on('click', function (e) {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#service-type').val(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(e.target).text());
-	});
-
 	//邮箱后缀
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email').on('keyup', function () {
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.email-dropdown').show();

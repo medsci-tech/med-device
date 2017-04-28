@@ -11,42 +11,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 
-	//隐藏下拉框
-	// $('body').on('click', function () {
-	// 	$('.drop-down').slideUp(200);
-	// });
-
-	// //绑定下拉框显示事件
-	// function bindShowEvent(triggerId, targetId) {
-
-	// 	$('#' + triggerId).on('click', function (event) {
-	// 		event.stopPropagation();
-	// 		if ($('#' + targetId).css('display') === 'block') {
-	// 			$('.drop-down').slideUp(200);
-	// 		} else {
-	// 			$('.drop-down').slideUp(200);
-	// 			$('#' + targetId).toggle(200);
-	// 		}
-	// 	});
-	// }
-	// bindShowEvent('btn-dropdown-type', 'drop-type');
-	// bindShowEvent('btn-dropdown-province', 'drop-province');
-	// bindShowEvent('btn-dropdown-city', 'drop-city');
-	// bindShowEvent('btn-dropdown-county', 'drop-county');
-
-	// //填值
-	// function autoValue(triggerId, targetId) {
-	// 	$('#' + triggerId + ' li').on('click', function (e) {
-	// 		$('#' + targetId).text($(e.target).text());
-	// 	});
-	// }
-	// autoValue('drop-province', 'value-province');
-	// autoValue('drop-city', 'value-city');
-	// autoValue('drop-county', 'value-county');
-	// $('#drop-type li').on('click', function (e) {
-	// 	$('#service-type').val($(e.target).text());
-	// });
-
 	//获取手机验证码
 	var count = 60;
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#getCaptcha').click(function () {
@@ -155,6 +119,29 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			}
 		});
 	});
+
+	//表单验证
+	function inputCheckEmpty(id, message) {
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#' + id).on('blur', function () {
+			if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).val() === '') {
+				__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parent('div').css('border-color', 'red');
+				if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).siblings('.warn').length === 0) {
+					var css = {
+						color: 'red',
+						textAlign: 'center',
+						lineHeight: 1
+					};
+					__WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="warn">' + message + '</div>').css(css).appendTo(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parent());
+				} else {
+					__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).siblings('.warn').show();
+				}
+			} else {
+				__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).siblings('.warn').hide();
+				__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parent('div').css('border-color', '#d7d7d7');
+			}
+		});
+	}
+	inputCheckEmpty('name', "请输入用户名");
 
 	//邮箱后缀
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email').on('keyup', function () {
