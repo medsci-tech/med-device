@@ -24,10 +24,18 @@ window.$CSRFTOKEN = '{!! csrf_token() !!}'
 					<a class="btn-login">{{ Auth::user()->name }}</a>
 					<a class="btn-register" href="/logout"><i class="fa fa-btn fa-sign-out"></i>退出</a></a>
 				@endif
-				<span class="pull-right">
+				<span class="common pull-right">
 					<a class="btn btn-link icon icon-161" href="/personal">个人中心</a>
 					<a class="btn btn-link icon icon-163" href="/personal">我的消息</a>
 					<a class="btn btn-link icon icon-165" href="/helper">帮助中心</a>
+				</span>
+				<span class="personal hide pull-right">
+					<a class="btn btn-link" href="/">药械通首页</a>
+					<a class="btn btn-link icon icon-165" href="/helper">帮助中心</a>
+				</span>
+				<span class="helper hide pull-right">
+					<a class="btn btn-link" href="/">药械通首页</a>
+					<a class="btn btn-link icon icon-161" href="/personal">个人中心</a>
 				</span>
 		</div>
 	</div>
@@ -41,7 +49,7 @@ window.$CSRFTOKEN = '{!! csrf_token() !!}'
 				</a>
 				<p>互联网医药信息服务证：9982561</p>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-6 search-wrapper">
 				<form  method="get" action="{{url('search')}}" name="searchForm">
 				<div class="searcher">
 					<div class="input">

@@ -39,6 +39,16 @@
 
 <div class="container">
 	<div class="row detail">
+		<div class="detail-control">
+			<div class="btn-business">我要合作</div>
+			@if (Auth::guest())
+				<div class="save" data-href="{{ url('login') }}"><i class="glyphicon glyphicon-heart"></i>&nbsp;&nbsp;收藏</div>
+			@else
+				<div class="save @if ($is_collect == 1) save-focus @endif"
+					id="save"
+				><i class="glyphicon glyphicon-heart"></i>&nbsp;&nbsp;<span></span></div>
+			@endif
+		</div>
 		<div class="col-md-5">
 			<div class="preview">
 				<div class="big">
@@ -94,20 +104,12 @@
 				</div>
 				<div class="info-row">
 					<div class="key">零售价格</div>
-					<div class="value">{{ $data->price  }}</div>
+					<div class="value text-danger">{{ $data->price  }}</div>
 				</div>
 				<div class="info-row">
 					<div class="key">库存</div>
 					<div class="value">{{ $data->stock  }}</div>
 				</div>
-				<div class="btn-business">我要合作</div>
-				@if (Auth::guest())
-					<div class="save" data-href="{{ url('login') }}"><i class="glyphicon glyphicon-heart"></i>&nbsp;&nbsp;收藏</div>
-				@else
-					<div class="save @if ($is_collect == 1) save-focus @endif"
-						id="save"
-					><i class="glyphicon glyphicon-heart"></i>&nbsp;&nbsp;<span></span></div>
-				@endif
 			</div>
 		</div>
 	</div>

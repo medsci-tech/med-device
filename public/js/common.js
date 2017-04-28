@@ -26,6 +26,15 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()('form[name="searchForm"]').on('su
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()('input[data-type="area"]').locationSelector({
 	a: 123
 });
+if (location.pathname.indexOf('/personal') === 0) {
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.top-nav .common').addClass('hide');
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.top-nav .personal').removeClass('hide');
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.search-wrapper, .contect').addClass('hide');
+} else if (location.pathname.indexOf('/helper') === 0) {
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.top-nav .common').addClass('hide');
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.top-nav .helper').removeClass('hide');
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.search-wrapper, .contect').addClass('hide');
+}
 
 /***/ }),
 /* 4 */,

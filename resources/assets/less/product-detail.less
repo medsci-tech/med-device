@@ -11,6 +11,50 @@
 .nav2 a:hover {
 	text-decoration: none;
 }
+.detail{
+	position: relative;
+	.detail-control{
+		position: absolute;
+		right: 157px;
+		bottom: 25px;
+		.btn-business {
+			display: inline-block;
+			width: 274px;
+			height: 56px;
+			line-height: 56px;
+			margin: 80px 28px 0 0;
+			font-size: 18px;
+			text-align: center;
+			color: white;
+			background-color: #01a4e4;
+			border-radius: 6px;
+			cursor: pointer;
+		}
+		.save {
+			display: inline-block;
+			width: 98px;
+			height: 30px;
+			line-height: 28px;
+			text-align: center;
+			background-repeat: no-repeat;
+			background-position: 20%;
+			border: 1px solid #e4e4e4;
+			border-radius: 4px;
+			cursor: pointer;
+			i{
+				color: #797979;
+			}
+		}
+		.save-focus,
+		.save:hover {
+			color: #01a4e4;
+			border-color: #01a4e4;
+			i{
+				color: #FF6633;
+			}
+		}
+	}
+}
 .preview {
 	width: 450px;
 	margin: 20px auto;
@@ -71,52 +115,16 @@
 	.info-row {
 		width: 480px;
 		color: #797979;
-		border-bottom: 1px solid #e4e4e4;
+		border-bottom: 1px dotted #e4e4e4;
 		position: relative;
-		padding: 4px 0 4px 90px;
+		padding: 8px 0 8px 90px;
 		.key {
 			width: 60px;
 			text-align: right;
-			margin: 4px 20px 4px 10px;
+			margin: 8px 20px 8px 10px;
 			position: absolute;
 			left: 0;
 			top: 0;
-		}
-	}
-	.btn-business {
-		display: inline-block;
-		width: 274px;
-		height: 56px;
-		line-height: 56px;
-		margin: 80px 28px 0 0;
-		font-size: 18px;
-		text-align: center;
-		color: white;
-		background-color: #01a4e4;
-		border-radius: 6px;
-		cursor: pointer;
-	}
-	.save {
-		display: inline-block;
-		width: 98px;
-		height: 30px;
-		line-height: 28px;
-		text-align: center;
-		background-repeat: no-repeat;
-		background-position: 20%;
-		border: 1px solid #e4e4e4;
-		border-radius: 4px;
-		cursor: pointer;
-		i{
-			color: #797979;
-		}
-	}
-	.save-focus,
-	.save:hover {
-		color: #01a4e4;
-		border-color: #01a4e4;
-		i{
-			color: #FF6633;
 		}
 	}
 }
