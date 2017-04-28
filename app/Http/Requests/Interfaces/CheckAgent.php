@@ -41,11 +41,11 @@ trait CheckAgent
         ];
         $validator = \Validator::make($data, $rules, $messages);
         $validator->after(function($validator) use ($data) {
-            if (isset($data['depart_ids']) && !$this->is_json($data['depart_ids']))
+            if (isset($data['depart_ids']) && !$this->IsJsonString($data['depart_ids']))
                 $validator->errors()->add('depart_ids', 'depart_ids无效的json');
-            if (isset($data['service_type_ids']) &&  !$this->is_json($data['service_type_ids']))
+            if (isset($data['service_type_ids']) &&  !$this->IsJsonString($data['service_type_ids']))
                 $validator->errors()->add('service_type_ids', 'service_type_ids无效的json');
-            if (isset($data['hospitals']) && !$this->is_json($data['hospitals']))
+            if (isset($data['hospitals']) && !$this->IsJsonString($data['hospitals']))
                 $validator->errors()->add('hospitals', 'hospitals无效的json');
     });
         $validator_error_first = $validator->errors()->first();
@@ -60,10 +60,13 @@ trait CheckAgent
      * @since 1.0
      * @return array
      */
-    public function is_json($string)
-    {
-         json_decode($string);
-         return (json_last_error() == JSON_ERROR_NONE);
+    function IsJsonString($str){
+        try{
+            $jObject = json_decode($str);
+        }catch(\Exception $e){
+            return false;
+        }
+        return (json_last_error() == JSON_ERROR_NONE);
     }
 
 }
