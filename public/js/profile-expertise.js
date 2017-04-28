@@ -255,8 +255,18 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 	}).then(function (data) {
 		for (var i = 0; i < data.length; i++) {
 			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container1 .item').each(function () {
-				var a1 = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json').name;
-				var a2 = data[i].name;
+				if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json').name === data[i].name) {
+					__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).addClass('item-chosen');
+				}
+			});
+		}
+	});
+
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+		url: '/personal/get-service'
+	}).then(function (data) {
+		for (var i = 0; i < data.length; i++) {
+			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container3 .item').each(function () {
 				if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json').name === data[i].name) {
 					__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).addClass('item-chosen');
 				}

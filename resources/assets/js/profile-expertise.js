@@ -237,8 +237,18 @@ $(function () {
 	}).then(function(data){
 		for (var i = 0; i < data.length; i++) {
 			$('#item-container1 .item').each(function(){
-				var a1 = $(this).data('json').name
-				var a2 = data[i].name
+				if ($(this).data('json').name === data[i].name){
+					$(this).addClass('item-chosen')
+				}
+			})
+		}
+	})
+
+	$.ajax({
+		url : '/personal/get-service'
+	}).then(function(data){
+		for (var i = 0; i < data.length; i++) {
+			$('#item-container3 .item').each(function(){
 				if ($(this).data('json').name === data[i].name){
 					$(this).addClass('item-chosen')
 				}
