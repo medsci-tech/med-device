@@ -31,7 +31,7 @@
 <div class="container">
 	<div class="row">
 
-		<form class="form">
+		<form class="form" id="sign-form">
 			<h2>经纪人登记</h2>
 			<div class="separate-line"></div>
 
@@ -48,13 +48,13 @@
 				<input class="sex-radio" type="radio" name="sex" value="男" @if (Auth::check() && \Auth::user()->sex=='男') checked @endif><span>男</span>
 				<input class="sex-radio" type="radio" name="sex" value="女" @if (Auth::check() && \Auth::user()->sex=='女') checked @endif><span>女</span> -->
 
-				<label for="gender" class="control-label input-group" style="margin: 7px 45px 4px 8px">性别</label>
+				<label for="sex" class="control-label input-group" style="margin: 7px 45px 4px 8px">性别</label>
     			<div class="btn-group" data-toggle="buttons">
     			    
     			    <label class="btn btn-default active">
-    			        <input type="radio" name="gender" value="男" @if (Auth::check() && \Auth::user()->sex=='男') checked @endif>男</label>
+    			        <input type="radio" name="sex" value="男" @if (Auth::check() && \Auth::user()->sex=='男') checked @endif>男</label>
     			    <label class="btn btn-default">
-    			        <input type="radio" name="gender" value="女" @if (Auth::check() && \Auth::user()->sex=='女') checked @endif>女</label>
+    			        <input type="radio" name="sex" value="女" @if (Auth::check() && \Auth::user()->sex=='女') checked @endif>女</label>
     			</div>
 
 			</div>
@@ -89,7 +89,7 @@
 			<div id="service" class="btn-choose">选择服务</div>
 			<div class="separate-line"></div>
 
-			<div id="submit" class="submit" style="cursor: pointer;">成为经纪人</div>
+			<button id="submit" type="submit" class="submit" style="cursor: pointer;">成为经纪人</button>
 
 		</form>
 	</div>

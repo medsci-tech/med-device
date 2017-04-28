@@ -2,42 +2,6 @@ import $ from 'jquery'
 
 $(function () {
 
-	//隐藏下拉框
-	// $('body').on('click', function () {
-	// 	$('.drop-down').slideUp(200);
-	// });
-
-	// //绑定下拉框显示事件
-	// function bindShowEvent(triggerId, targetId) {
-
-	// 	$('#' + triggerId).on('click', function (event) {
-	// 		event.stopPropagation();
-	// 		if ($('#' + targetId).css('display') === 'block') {
-	// 			$('.drop-down').slideUp(200);
-	// 		} else {
-	// 			$('.drop-down').slideUp(200);
-	// 			$('#' + targetId).toggle(200);
-	// 		}
-	// 	});
-	// }
-	// bindShowEvent('btn-dropdown-type', 'drop-type');
-	// bindShowEvent('btn-dropdown-province', 'drop-province');
-	// bindShowEvent('btn-dropdown-city', 'drop-city');
-	// bindShowEvent('btn-dropdown-county', 'drop-county');
-
-	// //填值
-	// function autoValue(triggerId, targetId) {
-	// 	$('#' + triggerId + ' li').on('click', function (e) {
-	// 		$('#' + targetId).text($(e.target).text());
-	// 	});
-	// }
-	// autoValue('drop-province', 'value-province');
-	// autoValue('drop-city', 'value-city');
-	// autoValue('drop-county', 'value-county');
-	// $('#drop-type li').on('click', function (e) {
-	// 	$('#service-type').val($(e.target).text());
-	// });
-
 	//获取手机验证码
 	var count = 60
 	$('#getCaptcha').click(function(){
@@ -147,6 +111,9 @@ $(function () {
 		})
 	})
 
+
+
+
 	//邮箱后缀
 	$('#email').on('keyup', function(){
 		$('.email-dropdown').show();
@@ -189,7 +156,7 @@ $(function () {
 		'@gmail.com',
 		'@hotmail.com',
 		'@sohu.com',
-		'@21cn.com',
+		'@21cn.com'
 	]
 	initDom(data);
 	$('body').click(function(){

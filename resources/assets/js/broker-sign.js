@@ -202,44 +202,7 @@ $(function () {
 	$('.panel img,.shielder,.btn-panel').on('click', function () {
 		$('.shielder,.panel').hide();
 	});
-
-
-	//隐藏下拉框
-	$('body').on('click', function () {
-		$('.drop-down').slideUp(200);
-	});
-
-	//绑定下拉框显示事件
-	function bindShowEvent(triggerId, targetId) {
-
-		$('#' + triggerId).on('click', function (event) {
-			event.stopPropagation();
-			if ($('#' + targetId).css('display') === 'block') {
-				$('.drop-down').slideUp(200);
-			} else {
-				$('.drop-down').slideUp(200);
-				$('#' + targetId).toggle(200);
-			}
-		});
-	}
-	bindShowEvent('btn-dropdown-type', 'drop-type');
-	bindShowEvent('btn-dropdown-province', 'drop-province');
-	bindShowEvent('btn-dropdown-city', 'drop-city');
-	bindShowEvent('btn-dropdown-county', 'drop-county');
-
-	//填值
-	function autoValue(triggerId, targetId) {
-		$('#' + triggerId + ' li').on('click', function (e) {
-			$('#' + targetId).text($(e.target).text());
-		});
-	}
-	autoValue('drop-province', 'value-province');
-	autoValue('drop-city', 'value-city');
-	autoValue('drop-county', 'value-county');
-	$('#drop-type li').on('click', function (e) {
-		$('#service-type').val($(e.target).text());
-	});
-
+	
 	//邮箱后缀
 	$('#email').on('keyup', function(){
 		$('.email-dropdown').show();
@@ -291,14 +254,23 @@ $(function () {
 	})
 
 	//==================表单提交===========================
-	$('#submit').click(function(){
-		var name = $('#name').val()
-		var email = $('#email').val()
-		var sex = $('input:radio[name="sex"]:checked').val()
+	$('#sign-form').on('submit', function(e){
+		e.preventDefault()
+		let name = this.name.value.trim(),
+			email = this.email.value.trim(),
+			sex = this.sex.value
 
-		var _province,_city,_area
-		_province = _city = _area = "";
-		var work_space = $('#area').val().split(' - ')
+		if(!name){
+			return sweetAlert('姓名不能为空')
+		}
+		if(!email){
+			return sweetAlert('邮箱不能为空')
+		}
+
+
+		let _province, _city, _area
+		_province = _city = _area = '';
+		var work_space = this.area.value.split(' - ')
 		_province = work_space[0]
 		if (work_space.length === 2){
 			_city = work_space[1]
@@ -331,9 +303,9 @@ $(function () {
 			province : _province,
 			city : _city,
 			area : _area,
-			depart_ids : _depart_ids,
-			service_type_ids : _service_type_ids,
-			hospitals : _hospitals
+			depart_ids : JSON.stringify(_depart_ids),
+			service_type_ids : JSON.stringify(_service_type_ids),
+			hospitals : JSON.stringify(_hospitals)
 		}
 
 		$.ajax({
@@ -341,7 +313,20 @@ $(function () {
 			type : 'post',
 			data : data,
 			success : function(data){
-				sweetAlert('data.message')
+				if(data.status === 1){
+					swal({
+						text: `欢迎您成为药械经纪人，<a href="/">返回首页</a>`,
+						html: true,
+						type: 'success'
+					});
+				}
+				else{
+					swal({
+						title: '',
+						text: data.message,
+						type: 'error'
+					})
+				}
 			}
 		})
 	})
