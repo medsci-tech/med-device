@@ -27,20 +27,8 @@ else if(location.pathname.indexOf('/helper') === 0){
 	$('.search-wrapper, .contect').addClass('hide')
 }
 
-function inputCheckEmpty(id, message){
-	$('#' + id).on('blur', function(){
-		if ($(this).val() === ''){
-			$(this).parent('div').css('border-color', 'red')
-		}
-		var css = {
-			color : 'red'
-		}
-		$('<div>' + message + '</div>').css(css).appendTo($(this).parent())
-	})
-}
-
-$('#password_confirmation').on('blur', function(){
-	if ($(this).val() !== $('#password').val()){
-		sweetAlert('密码与密码确认不一致！')
+$(function(){
+	if(swal){
+		swal.setDefaults({ confirmButtonText: '确定' });
 	}
 })

@@ -111,28 +111,7 @@ $(function () {
 		})
 	})
 
-	//表单验证
-	function inputCheckEmpty(id, message){
-		$('#' + id).on('blur', function(){
-			if ($(this).val() === ''){
-				$(this).parent('div').css('border-color', 'red')
-				if ($(this).siblings('.warn').length === 0){
-					var css = {
-						color : 'red',
-						textAlign : 'center',
-						lineHeight : 1
-					}
-					$('<div class="warn">' + message + '</div>').css(css).appendTo($(this).parent())
-				} else {
-					$(this).siblings('.warn').show()
-				}
-			} else {
-				$(this).siblings('.warn').hide()
-				$(this).parent('div').css('border-color', '#d7d7d7')
-			}
-		})
-	}
-	inputCheckEmpty('name', "请输入用户名")
+
 
 
 	//邮箱后缀

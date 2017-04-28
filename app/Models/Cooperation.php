@@ -22,7 +22,7 @@ class Cooperation extends Model
         'user_id',
         'real_name',
         'contact_phone',
-        'work_type',
+        'join_type',
     ];
     public function products()
     {

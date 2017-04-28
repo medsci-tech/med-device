@@ -184,21 +184,9 @@ if (location.pathname.indexOf('/personal') === 0) {
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.search-wrapper, .contect').addClass('hide');
 }
 
-function inputCheckEmpty(id, message) {
-	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#' + id).on('blur', function () {
-		if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).val() === '') {
-			__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parent('div').css('border-color', 'red');
-		}
-		var css = {
-			color: 'red'
-		};
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div>' + message + '</div>').css(css).appendTo(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).parent());
-	});
-}
-
-__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#password_confirmation').on('blur', function () {
-	if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).val() !== __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#password').val()) {
-		sweetAlert('密码与密码确认不一致！');
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
+	if (swal) {
+		swal.setDefaults({ confirmButtonText: '确定' });
 	}
 });
 

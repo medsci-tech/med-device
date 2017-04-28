@@ -251,14 +251,24 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 	});
 
 	//==================表单提交===========================
-	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#submit').click(function () {
-		var name = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#name').val();
-		var email = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email').val();
-		var sex = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('input:radio[name="sex"]:checked').val();
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#sign-form').on('submit', function (e) {
+		e.preventDefault();
+		var name = this.name.value.trim(),
+		    email = this.email.value.trim(),
+		    sex = this.sex.value;
 
-		var _province, _city, _area;
-		_province = _city = _area = "";
-		var work_space = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#area').val().split(' - ');
+		if (!name) {
+			return sweetAlert('姓名不能为空');
+		}
+		if (!email) {
+			return sweetAlert('邮箱不能为空');
+		}
+
+		var _province = void 0,
+		    _city = void 0,
+		    _area = void 0;
+		_province = _city = _area = '';
+		var work_space = this.area.value.split(' - ');
 		_province = work_space[0];
 		if (work_space.length === 2) {
 			_city = work_space[1];
@@ -292,9 +302,9 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			province: _province,
 			city: _city,
 			area: _area,
-			depart_ids: _depart_ids,
-			service_type_ids: _service_type_ids,
-			hospitals: _hospitals
+			depart_ids: JSON.stringify(_depart_ids),
+			service_type_ids: JSON.stringify(_service_type_ids),
+			hospitals: JSON.stringify(_hospitals)
 		};
 
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
@@ -302,7 +312,19 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			type: 'post',
 			data: data,
 			success: function success(data) {
-				sweetAlert('data.message');
+				if (data.status === 1) {
+					swal({
+						text: '\u6B22\u8FCE\u60A8\u6210\u4E3A\u836F\u68B0\u7ECF\u7EAA\u4EBA\uFF0C<a href="/">\u8FD4\u56DE\u9996\u9875</a>',
+						html: true,
+						type: 'success'
+					});
+				} else {
+					swal({
+						title: '',
+						text: data.message,
+						type: 'error'
+					});
+				}
 			}
 		});
 	});
