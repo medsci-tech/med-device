@@ -138,3 +138,6 @@
   color: #01B9FE;
   border-color: #01B9FE;
 }
+.info-item .uploadify-button {
+  background-color: blue;
+}
