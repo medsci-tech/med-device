@@ -89,7 +89,7 @@ function _selector(input, config) {
 						l2.find('.btn').click()
 					}
 				} else {
-					output.val($prov.name)
+					$input.val($prov.name)
 					reset()
 				}
 			}
@@ -118,7 +118,7 @@ function _selector(input, config) {
 						return '<a class="btn btn-sm btn-default" data-loc-id="' + area.id + '" data-loc-name="' + area.name + '">' + area.name + '</a>'
 					}))
 				} else {
-					output.val([$prov.name, $city.name].join(' - '))
+					$input.val([$prov.name, $city.name].join(' - '))
 					reset()
 				}
 			}
