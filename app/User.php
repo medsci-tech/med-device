@@ -40,6 +40,23 @@ class User extends Authenticatable
     {
         return $this->hasMany( \App\Models\Cooperation::class);
     }
+
+    /**
+     * 获取指定用户的所有科室
+     */
+    public function departs()
+    {
+        return $this->hasMany( \App\Models\OrderDepart::class);
+    }
+    /**
+     * @return mixed
+     */
+    public function ordersWithDeparts()
+    {
+        return $this->departs()->with(['departs' => function ($query) {
+            $query->get();
+        }]);
+    }
     /**
      * @return mixed
      */
