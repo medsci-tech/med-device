@@ -70,14 +70,15 @@
 		<div>
 			<div class="required">*</div>
 			<label class="normal-label" for="area">预约区域</label>
+			<input id="area" data-type="area" class="normal-input" type="text" name="phone" placeholder="选择地区">
 		</div>
 		<div>
 			<label class="normal-label" for="hospital">医院</label>
-			<input id="hospital"  class="normal-input"type="text" name="phone" placeholder="可填写多家医院">
+			<input id="hospital"  class="normal-input" type="text" name="phone" placeholder="可填写多家医院">
 		</div>
 		<div>
 			<label class="normal-label" for="department">科室</label>
-			<input id="department"  class="normal-input"type="text" name="phone" placeholder="可填写多家科室">
+			<input id="department"  class="normal-input" type="text" name="phone" placeholder="可填写多家科室">
 		</div>
 		<div>
 			<div class="required">*</div>
