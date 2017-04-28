@@ -18,7 +18,7 @@ class OrderService extends Model
      * @var array
      */
     protected $fillable = [
-        'service_id',
+        'service_type_id',
         'user_id'
     ];
 
