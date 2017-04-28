@@ -22,10 +22,9 @@ class OrderDepart extends Model
         'user_id'
     ];
 
-
     public function departs()
     {
-        return $this->belongsToMany(\App\Models\Department::class, 'order_departs','depart_id4', 'depart_id');
+        return $this->belongsToMany(\App\Models\Department::class,'order_departs', 'id','depart_id');
 
     }
 

@@ -44,7 +44,7 @@ class ProductController extends Controller
 
             $tags = strtr($data->tags,",","|");
             $tags = $tags ? $tags : ' ';
-            $data_similar = Product::orderBy('id','desc')->offset(0)->whereRaw("tags REGEXP '".$tags."'")->limit(8)->get();//相关商品
+            $data_similar = Product::orderBy('id','desc')->offset(0)->where('id', '<>', $id)->whereRaw("tags REGEXP '".$tags."'")->limit(8)->get();//相关商品
             $is_collect =false;// 验证是否收藏
             if (\Auth::check()) {
                 //产品是否收藏

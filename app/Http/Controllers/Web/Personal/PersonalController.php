@@ -274,7 +274,16 @@ class PersonalController extends Controller
     public function getDepart(Request $request)
     {
         $user = \Auth::user();
-        dd($user->ordersWithDeparts()->get());
+        $res = $user->ordersWithDeparts()->get();
+        foreach($res as $order)
+        {  echo $order->id.'?';
+            foreach($order->departs as $val )
+            {
+            //echo $val->id;
+            }
+        }
+
+
     }
 
 }
