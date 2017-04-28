@@ -53,42 +53,44 @@ $(document).ready(function () {
 	});
 
 	//点击预约
-	$('#submit').click(function(){
+	$('#order-form').on('submit', function(e){
+		e.preventDefault()
+		let { name, type, area, hospital, department, date, realname, tel, desc } = this
 
-		var name = $('#product-name').val()
-	//	var type_id = service_type_id
-		//TODO: 预约区域
-		var hospital = $('#hospital').val()
-		var department = $('#department').val()
-		var date = $('#datetimepicker').val()
-		var contact = $('#contact').val()
-		var tel = $('#tel').val()
-		var desc = $('#desc').val()
+	// 	var name = $('#product-name').val()
+	// //	var type_id = service_type_id
+	// 	//TODO: 预约区域
+	// 	var hospital = $('#hospital').val()
+	// 	var department = $('#department').val()
+	// 	var date = $('#datetimepicker').val()
+	// 	var contact = $('#contact').val()
+	// 	var tel = $('#tel').val()
+	// 	var desc = $('#desc').val()
 
-		if (name === ''){
+		if (!name.value.trim()){
 			sweetAlert('请填写产品名称')
 			return
 		}
-		if (type === ''){
+		if(!type.value.trim()){
 			sweetAlert('请选择服务类型')
 			return
 		}
-		if (date === ''){
+		if(!date.value){
 			sweetAlert('请选择预约日期')
 			return
 		}
-		if (contact === ''){
+		if (!realname.value.trim()){
 			sweetAlert('请填写联系人')
 			return
 		}
-		if (tel === ''){
+		if (!tel.value.trim()){
 			sweetAlert('请填写联系电话')
 			return
 		}
 
 		var _province,_city,_area
 		_province = _city = _area = "";
-		var work_space = $('#area').val().split(' - ')
+		var work_space = area.value.split(' - ')
 		_province = work_space[0]
 		if (work_space.length === 2){
 			_city = work_space[1]
@@ -99,24 +101,24 @@ $(document).ready(function () {
 		}
 
 		var data = {
-			product_name : name,
-		//	service_type_id : service_type_id,
+			product_name : name.value,
+			service_type_id : type.value,
 			province : _province,
 			city : _city,
 			area : _area,
-			appoint_at : date,
-			contact_name : contact,
-			contact_phone : tel
+			appoint_at : date.value,
+			contact_name : realname.value,
+			contact_phone : tel.value
 		}
  
-		if (hospital !== ''){
-			data.hospital_name = hospital
+		if (hospital.value.trim()){
+			data.hospital_name = hospital.value.trim()
 		}
-		if (department !== '') {
-			data.departments = department
+		if (department.value.trim()) {
+			data.departments = department.value.trim()
 		}
-		if (desc !== '') {
-			data.comment = desc
+		if (desc.value.trim()) {
+			data.comment = desc.value
 		}
 
 		$.ajax({
@@ -124,7 +126,15 @@ $(document).ready(function () {
 			type : 'post',
 			data : data,
 			success : function(data){
-				if (data.message){
+				if(data.status === 1){
+					swal({
+						title: '',
+						text: '您已成功预约，我们将会尽快与您联系确认服务详情。<a href="/personal/appointment">查看详情</a>',
+						html: true,
+						type: 'success'
+					})
+				}
+				else{
 					sweetAlert(data.message)
 				}
 			}
