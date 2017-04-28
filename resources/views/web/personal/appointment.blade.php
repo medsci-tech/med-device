@@ -21,13 +21,13 @@
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="collection">
+				<a class="button" href="/personal/collection">
 					<span class="img2"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;我的收藏
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="cooperation">
+				<a class="button" href="/personal/cooperation">
 					<span class="img3"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;我的合作
 				</a>
@@ -39,7 +39,7 @@
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="pwd-edit">
+				<a class="button" href="/personal/pwd-edit">
 					<span class="img5"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;修改密码
 				</a>
@@ -49,13 +49,12 @@
 			<div class="content-orders">
 				<div class="panel">我的预约</div>
 				<div class="tabs">
-					<span><a href="{{ url('personal/appointment/') }}">全部预约</a><span id="order-all"> ( {{ $count }} )</span></span>
-					<span><a href="{{ url('personal/appointment/2') }}">已预约</a><span id="order-ordered"> ( {{ isset($count_list[2]) ? $count_list[2] : 0 }} )</span></span>
-					<span><a href="{{ url('personal/appointment/1') }}">已审核</a><span id="order-audit"> ( {{ isset($count_list[1]) ? $count_list[1] : 0 }} )</span></span>
-					<span><a href="{{ url('personal/appointment/0') }}">进行中</a><span id="order-on"> ( {{ isset($count_list[0]) ? $count_list[0] : 0 }} )</span></span>
-					<span><a href="{{ url('personal/appointment/3') }}">已完成</a><span id="order-done"> ( {{ isset($count_list[3]) ? $count_list[3] : 0 }} )</span></span>
+					<span class="tab-heading"><a href="{{ url('personal/appointment/') }}">全部预约</a><span id="order-all"> ( {{ $count }} )</span></span>
+					<span class="tab-heading"><a href="{{ url('personal/appointment/2') }}">已预约</a><span id="order-ordered"> ( {{ isset($count_list[2]) ? $count_list[2] : 0 }} )</span></span>
+					<span class="tab-heading"><a href="{{ url('personal/appointment/1') }}">已审核</a><span id="order-audit"> ( {{ isset($count_list[1]) ? $count_list[1] : 0 }} )</span></span>
+					<span class="tab-heading"><a href="{{ url('personal/appointment/0') }}">进行中</a><span id="order-on"> ( {{ isset($count_list[0]) ? $count_list[0] : 0 }} )</span></span>
+					<span class="tab-heading"><a href="{{ url('personal/appointment/3') }}">已完成</a><span id="order-done"> ( {{ isset($count_list[3]) ? $count_list[3] : 0 }} )</span></span>
 				</div>
-				<div class="strip"></div>
 				<div class="orders">
 					@if($list)
 						@foreach($list as $order)
@@ -91,6 +90,28 @@
 </div>
 @endsection
 
-@section('js')
-<script src="/js/profile-orders.js"></script>
+@section('page_js')
+<script>
+$(function(){
+	var m = location.pathname.match(/^\/personal\/appointment(?:\/(\d+))?/),
+		headings = $('.tab-heading')
+	switch(m[1]){
+		case '0':
+			headings.eq(3).addClass('active')
+		break
+		case '1':
+			headings.eq(2).addClass('active')
+		break
+		case '2':
+			headings.eq(1).addClass('active')
+		break
+		case '3':
+			headings.eq(4).addClass('active')
+		break
+		case undefined:
+			headings.eq(0).addClass('active')
+		break
+	}
+})
+</script>
 @endsection

@@ -18,25 +18,25 @@
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="collection">
+				<a class="button" href="/personal/collection">
 					<span class="img2"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;我的收藏
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="cooperation">
+				<a class="button" href="/personal/cooperation">
 					<span class="img3"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;我的合作
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="appointment">
+				<a class="button" href="/personal/appointment">
 					<span class="img4"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;我的预约
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="pwd-edit">
+				<a class="button" href="/personal/pwd-edit">
 					<span class="img5"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;修改密码
 				</a>
@@ -48,7 +48,7 @@
 					<a href="/personal">信息管理</a>
 					<span> &nbsp;> &nbsp;基础信息修改</span>
 				</div>
-				<form class="form">
+				<form class="form" id="profile-form">
 					<div class="icon"><img name="head" src="{{ isset(\Auth::user()->head_img) ? \Auth::user()->head_img.'?imageView2/1/w/150/h/150/q/90' : config('params')['default_head'].'?imageView2/1/w/150/h/150/q/90' }}"> </div>
 					<div id="choose-icon">上传头像</div>
 					<div>
@@ -61,18 +61,17 @@
 					</div>
 					<div>
 						<label class="normal-label">真实姓名</label>
-						<input class="normal-input" type="text" name="realname" placeholder="请输入真实姓名" value="{{ \Auth::user()->real_name }}">
+						<input class="normal-input" type="text" name="real_name" placeholder="请输入真实姓名" value="{{ \Auth::user()->real_name }}">
 					</div>
 					<div class="no-border">
 
-						<label for="gender" class="control-label input-group" style="margin:8px 61px 0 10px">性别</label>
+						<label for="sex" class="control-label input-group" style="margin:8px 61px 0 10px">性别</label>
 						<div class="btn-group" data-toggle="buttons">
 							<label class="btn btn-default active">
-								<input type="radio" name="gender" value="男" @if (\Auth::user()->sex =='男')checked @endif>男</label>
+								<input type="radio" name="sex" value="男" @if (\Auth::user()->sex =='男')checked @endif>男</label>
 							<label class="btn btn-default">
-								<input type="radio" name="gender" value="女" @if (\Auth::user()->sex =='女')checked @endif>女</label>
+								<input type="radio" name="sex" value="女" @if (\Auth::user()->sex =='女')checked @endif>女</label>
 						</div>
-
 					</div>
 					<div>
 						<label class="normal-label">电子邮箱</label>
@@ -80,10 +79,10 @@
 					</div>
 					<div>
 						<label class="normal-label">工作地址</label>
-						<input data-type="area" class="normal-input" type="text" name="area">
+						<input data-type="area" class="normal-input" type="text" name="area" value="{{ Auth::user()->province }} - {{ Auth::user()->city }} - {{ Auth::user()->area }}">
 					</div>
 
-					<div class="submit" id="submit">确定</div>
+					<button class="submit" type="submit" id="submit">确定</button>
 				</form>
 			</div>
 		</div>

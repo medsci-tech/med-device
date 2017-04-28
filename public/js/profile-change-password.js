@@ -54,24 +54,38 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 	});
 
 	//点击提交
-	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#submit').click(function () {
-		var phone = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#phone').val();
-		var code = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#code').val();
-		var password = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#password').val();
-		var password_confirmation = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#password_confirmation').val();
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#pwd-form').on('submit', function (e) {
+		var _this = this;
+
+		e.preventDefault();
+		var phone = this.phone,
+		    code = this.code,
+		    password = this.password,
+		    password_confirmation = this.password_confirmation;
+
+		if (!code.value.trim()) {
+			return sweetAlert('验证码不能为空');
+		}
+		if (!password.value.trim()) {
+			return sweetAlert('新密码不能为空');
+		}
+		if (password.value.trim() !== password_confirmation.value.trim()) {
+			return sweetAlert('两次密码输入不一致');
+		}
 
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
 			url: '/personal/pwd-edit',
-			type: 'post',
+			method: 'POST',
 			data: {
-				phone: phone,
-				code: code,
-				password: password,
-				password_confirmation: password_confirmation
+				phone: phone.value.trim(),
+				code: code.value.trim(),
+				password: password.value.trim(),
+				password_confirmation: password_confirmation.value.trim()
 			},
 			success: function success(data) {
 				if (data.status === 1) {
 					//sweetAlert()
+					_this.reset();
 				}
 				sweetAlert(data.message);
 			}

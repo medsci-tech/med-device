@@ -88,6 +88,37 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			sweetAlert('上传失败!');
 		}
 	}
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#profile-form').on('submit', function (e) {
+		e.preventDefault();
+		var name = this.name,
+		    phone = this.phone,
+		    area = this.area,
+		    real_name = this.real_name,
+		    sex = this.sex,
+		    email = this.email;
+
+
+		var province = area.value.split('-')[0] || '',
+		    city = area.value.split('-')[1] || '';
+
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+			url: '/personal/info-edit',
+			method: 'POST',
+			data: {
+				name: name.value,
+				phone: phone.value,
+				province: province, city: city,
+				area: area.value.split('-')[2] || '',
+				real_name: real_name.value,
+				sex: sex.value,
+				email: email.value
+			}
+		}).then(function (data) {
+			if (data.status === 1) {
+				sweetAlert(data.message);
+			}
+		});
+	});
 });
 
 /***/ }),

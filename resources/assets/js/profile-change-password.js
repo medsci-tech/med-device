@@ -45,24 +45,32 @@ $(function(){
 	})
 
 	//点击提交
-	$('#submit').click(function(){
-		var phone = $('#phone').val()
-		var code = $('#code').val()
-		var password = $('#password').val()
-		var password_confirmation = $('#password_confirmation').val()
+	$('#pwd-form').on('submit', function(e){
+		e.preventDefault()
+		let { phone, code, password, password_confirmation } = this
+		if(!code.value.trim()){
+			return sweetAlert('验证码不能为空')
+		}
+		if(!password.value.trim()){
+			return sweetAlert('新密码不能为空')
+		}
+		if(password.value.trim() !== password_confirmation.value.trim()){
+			return sweetAlert('两次密码输入不一致')
+		}
 
 		$.ajax({
 			url : '/personal/pwd-edit',
-			type : 'post',
+			method : 'POST',
 			data : {
-				phone : phone,
-				code : code,
-				password : password,
-				password_confirmation : password_confirmation
+				phone : phone.value.trim(),
+				code : code.value.trim(),
+				password : password.value.trim(),
+				password_confirmation : password_confirmation.value.trim()
 			},
-			success : function(data){
+			success : data => {
 				if (data.status === 1){
 					//sweetAlert()
+					this.reset()
 				}
 				sweetAlert(data.message)
 			}

@@ -48,12 +48,12 @@
 				<input class="sex-radio" type="radio" name="sex" value="男" @if (Auth::check() && \Auth::user()->sex=='男') checked @endif><span>男</span>
 				<input class="sex-radio" type="radio" name="sex" value="女" @if (Auth::check() && \Auth::user()->sex=='女') checked @endif><span>女</span> -->
 
-				<label for="gender" class="control-label input-group">性别</label>
+				<label for="gender" class="control-label input-group" style="margin: 7px 45px 4px 8px">性别</label>
     			<div class="btn-group" data-toggle="buttons">
     			    
-    			    <label class="btn btn-danger active">
+    			    <label class="btn btn-default active">
     			        <input type="radio" name="gender" value="男" @if (Auth::check() && \Auth::user()->sex=='男') checked @endif>男</label>
-    			    <label class="btn btn-success">
+    			    <label class="btn btn-default">
     			        <input type="radio" name="gender" value="女" @if (Auth::check() && \Auth::user()->sex=='女') checked @endif>女</label>
     			</div>
 
@@ -69,7 +69,7 @@
 				<label class="normal-label">工作区域</label>
 				
 				<div id="loc-wrapper">
-					<input id="area" class="normal-input" style="display: block" readonly type="text" name="area" placeholder="请选择省市地区">
+					<input class="normal-input" data-type="area" style="display: block" readonly type="text" name="area" placeholder="请选择省市地区">
 				</div>
 			</div>
 			<div class="separate-line"></div>
@@ -99,7 +99,6 @@
 
 @section('page_js')
 <script src="/js/broker-sign.js"></script>
-<script src="/js/loc.js"></script>
 @endsection
 
 

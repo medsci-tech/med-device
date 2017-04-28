@@ -80,5 +80,34 @@ $(function () {
 			sweetAlert('上传失败!');
 		}
 	}
+	$('#profile-form').on('submit', function(e){
+		e.preventDefault()
+		let { name, phone, area,
+				real_name, sex,
+				email
+			} = this
+			
+		let province = area.value.split('-')[0] || '',
+			city = area.value.split('-')[1] || ''
+
+		$.ajax({
+			url: '/personal/info-edit',
+			method: 'POST',
+			data: {
+				name: name.value,
+				phone: phone.value,
+				province, city,
+				area: area.value.split('-')[2] || '',
+				real_name: real_name.value,
+				sex: sex.value,
+				email: email.value
+			}
+		}).then(data => {
+			if(data.status === 1){
+				sweetAlert(data.message)
+			}
+		})
+
+	})
 
 });

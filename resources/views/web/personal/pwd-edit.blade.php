@@ -17,19 +17,19 @@
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="collection">
+				<a class="button" href="/personal/collection">
 					<span class="img2"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;我的收藏
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="cooperation">
+				<a class="button" href="/personal/cooperation">
 					<span class="img3"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;我的合作
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="appointment">
+				<a class="button" href="/personal/appointment">
 					<span class="img4"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;我的预约
 				</a>
@@ -46,7 +46,7 @@
 				<div class="panel">修改密码</div>
 			</div>
 
-			<form class="form">
+			<form class="form" id="pwd-form">
 				<div>
 					<label>手机号</label>
 					<input id="phone" type="text" name="phone" readonly placeholder="建议使用常用手机" value="{{ \Auth::user()->phone }}">
@@ -64,7 +64,7 @@
 					<label>确认密码</label>
 					<input id="password_confirmation" type="password" name="confirm" placeholder="请再次输入密码">
 				</div>
-				<div id="submit" class="submit" style="cursor: pointer;">确认</div>
+				<button id="submit" type="submit" class="submit" style="cursor: pointer;">确认</button>
 			</form>
 		</div>
 	</div>

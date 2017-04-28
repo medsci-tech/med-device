@@ -17,7 +17,7 @@
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="collection">
+				<a class="button" href="/personal/collection">
 					<span class="img2"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;我的收藏
 				</a>
@@ -29,13 +29,13 @@
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="appointment">
+				<a class="button" href="/personal/appointment">
 					<span class="img4"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;我的预约
 				</a>
 			</div>
 			<div class="item">
-				<a class="button" href="pwd-edit">
+				<a class="button" href="/personal/pwd-edit">
 					<span class="img5"></span>
 					&nbsp;&nbsp;&nbsp;&nbsp;修改密码
 				</a>

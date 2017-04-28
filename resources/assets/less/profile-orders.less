@@ -79,25 +79,23 @@
 .tabs {
   font-size: 16px;
   border-bottom: 1px solid #f2f2f2;
-}
-.tabs > span {
-  display: inline-block;
-  width: 140px;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-  cursor: pointer;
+  > span {
+    display: inline-block;
+    width: 140px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    &.active{
+      border-bottom: 2px solid #01a4e4;
+    }
+  }
 }
 .tabs > span span {
   color: #ff6600;
 }
 .tabs > span #order-done {
   color: #AEAEAE;
-}
-.strip {
-  width: 140px;
-  height: 2px;
-  background-color: #01a4e4;
 }
 .order-item {
   position: relative;

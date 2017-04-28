@@ -100,26 +100,5 @@
 <script src="/js/common.js"></script>
 <script src="/js/sweetalert/sweetalert.min.js"></script>
 @yield('page_js')
-<script>
-	function SendForm ()
-	{
-		if(CheckPost())
-		{
-			document.searchForm.submit();
-		}
-	}
-
-	function CheckPost ()
-	{
-		if (searchForm.keyword.value == "")
-		{
-			sweetAlert("请输入搜索关键词!");
-			searchForm.keyword.focus();
-			return false;
-		}
-
-		return true;
-	}
-</script>
 </body>
 </html>
