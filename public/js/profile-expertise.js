@@ -128,6 +128,10 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 		var item = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item" style="display:block" data-json=' + JSON.stringify(data) + '><span class="inner">' + data.hospital + '</span></div>').append(cancelBtn).appendTo(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2'));
 		cancelBtn.click(function () {
 			item.remove();
+			deleteItem({
+				id: data.id,
+				type: 'hospital'
+			});
 		});
 	};
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#panel2 .btn-panel').click(function () {
@@ -189,10 +193,26 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 					list2[i].toggleClass('item-chosen');
 				};
 			}(i));
+			var self = this;
 			cancelBtn.on('click', function (i) {
 				return function () {
 					list1[i].toggleClass('item-chosen');
 					list2[i].toggleClass('item-chosen');
+					// if (self.index === 0){
+					// 	deleteItem({
+					// 		depart_id : self.json[i].depart_id,
+					// 		type : 'depart'
+					// 	})
+					// } else {
+					// 	deleteItem({
+					// 		service_type_id : self.json[i].service_type_id,
+					// 		type : 'service'
+					// 	})
+					// }
+					deleteItem({
+						id: self.index === 0 ? self.json[i].depart_id : self.json[i].service_type_id,
+						type: self.index === 0 ? 'depart' : 'service'
+					});
 				};
 			}(i));
 		}
@@ -253,10 +273,10 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 	});
 
 	//获取个人专长数据
+	var hospital_ids, department_ids, type_ids;
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
 		url: '/personal/get-hospital'
 	}).then(function (data) {
-		console.log(data);
 		for (var i = 0; i < data.length; i++) {
 			container_appendHosItem(data[i]);
 		}
@@ -285,6 +305,15 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			});
 		}
 	});
+
+	function deleteItem(item) {
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.post('/personal/del-expertise', item, function (data) {
+			console.log(data);
+			if (data.status !== 1) {
+				sweetAlert(data.message);
+			}
+		});
+	}
 });
 
 /***/ }),
