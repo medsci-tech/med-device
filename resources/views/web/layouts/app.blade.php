@@ -5,6 +5,7 @@
 <title>@yield('title')</title>
 <meta name="description" content="施康培科技（武汉）有限公司版权所有!">
 <meta name="Keywords" content="药械通">
+<meta name="baidu-site-verification" content="Xq1291mV7Z" />
 <link rel="stylesheet" type="text/css" href="/style/common.css">
 <link rel="stylesheet" type="text/css" href="/js/sweetalert/sweetalert.css">
 @yield('page_css')

@@ -341,7 +341,7 @@ class PersonalController extends Controller
                 foreach($res as $key=>$order)
                 {
                     foreach($order->hospitals as $val )
-                        $list[$key]=['id'=>$order->id,'hospital'=>$val->hospital];
+                        $list[$key]=['id'=>$order->id,'hospital'=>$val->hospital,'province'=>$val->provine,'city'=>$val->city,'area'=>$val->country];
                 }
             }
             catch (\Exception $e) {
