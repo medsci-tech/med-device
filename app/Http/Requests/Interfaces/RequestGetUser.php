@@ -39,6 +39,8 @@ trait RequestGetUser
             $un_data = array_filter($data);
             $result =  count($data)==count($un_data) ? true : false;
         }
+        else
+            $result =false;
         return $result;
     }
     /**
