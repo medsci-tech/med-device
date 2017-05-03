@@ -54,10 +54,12 @@
 				</div>
 							<span id="contact" class="contact">{{ ($order->real_name) ? '联系人：'.$order->real_name : '' }}</span>
 							<span id="tel" class="tel">{{ ($order->contact_phone) ? '联系电话：'.$order->contact_phone : '' }}</span>
-							<span id="" class="location">合作类型：
+							@if ($order->join_type)
+								<span id="" class="location">合作类型：
 								@foreach (explode(',',$order->join_type) as $val)
 									{{ config('params')['join_type'][$val] }}
 								@endforeach</span>
+							@endif
 							<span class="time">提交时间：{{ str_limit($order->created_at, $limit = 10, $end = '') }}</span>
 						@endforeach
 					@endforeach
