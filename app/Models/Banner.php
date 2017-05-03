@@ -24,6 +24,7 @@ class Banner extends Model
      */
     protected $fillable = [
         'image_url',
+        'background_url',
         'weight',
         'href_url',
     ];

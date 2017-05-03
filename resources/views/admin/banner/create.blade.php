@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="am-form-group am-form-file">
-                        <label for="doc-ipt-file-2" class="am-u-sm-3 am-form-label">Image</label>
+                        <label for="doc-ipt-file-2" class="am-u-sm-3 am-form-label">轮播图</label>
 
                         <div class="am-u-sm-9">
                             <input type="text" readonly="true" name="file_name" style="display: none;">
@@ -44,6 +44,17 @@
                             </button>
                         </div>
                         <input type="file" id="doc-ipt-file-2" name="banner" required>
+                    </div>
+                    <div class="am-form-group am-form-file">
+                        <label for="doc-ipt-file-2" class="am-u-sm-3 am-form-label">背景图</label>
+
+                        <div class="am-u-sm-9">
+                            <input type="text" readonly="true" name="file_name2" style="display: none;">
+                            <button type="button" class="am-btn am-btn-default am-btn-sm" id="file_name2"><i
+                                        class="am-icon-cloud-upload"></i> 选择要上传的文件
+                            </button>
+                        </div>
+                        <input type="file" id="doc-ipt-file-22" name="banner2" required>
                     </div>
 
                     <div class="am-form-group">
@@ -64,6 +75,8 @@
             $parent.find('.am-btn-default').css('display', 'none');
             $parent.find('input[name=file_name]').css('display', 'block');
             $parent.find('input[name=file_name]').val($(this).val());
+            $parent.find('input[name=file_name2]').css('display', 'block');
+            $parent.find('input[name=file_name2]').val($(this).val());
         });
     </script>
 @stop

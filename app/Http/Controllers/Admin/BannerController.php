@@ -25,6 +25,10 @@ class BannerController extends Controller
         if ($bannerUrl) {
             $data['image_url'] = $bannerUrl;
         }
+        $bannerBackgroundUrl = $this->uploadBackgroundBanners($request);
+        if ($bannerBackgroundUrl) {
+            $data['background_url'] = $bannerBackgroundUrl;
+        }
         return $data;
     }
 
@@ -110,6 +114,19 @@ class BannerController extends Controller
             return false;
         }
         $banner = $request->file('banner');
+        if ($banner->isValid()) {
+            return $imageUrl = \Helper::qiniuUpload($banner);
+        }
+
+        return false;
+    }
+
+    public function uploadBackgroundBanners(Request $request)
+    {
+        if (!$request->hasFile('banner2')) {
+            return false;
+        }
+        $banner = $request->file('banner2');
         if ($banner->isValid()) {
             return $imageUrl = \Helper::qiniuUpload($banner);
         }
