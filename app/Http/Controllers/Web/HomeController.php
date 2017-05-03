@@ -56,6 +56,7 @@ class HomeController extends Controller
                 $user = User::where(['phone'=>$request->phone])->first();
                 $user->password = bcrypt($request->password);
                 $user->save();
+                \Auth::login($user);
                 return response()->json(['code'=>200, 'status' => 1,'message' => '修改成功' ]);
             }
             else
