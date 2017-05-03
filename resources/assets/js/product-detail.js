@@ -65,6 +65,12 @@ $(function () {
 			}
 		})
 	});
+	$('.save').click(function(){
+		if ($(this).data('href') !== undefined){
+			sweetAlert('请先登录')
+		}
+	})
+
 
 	//缩略图切换
 	let thumbs = $('.thumbnail')

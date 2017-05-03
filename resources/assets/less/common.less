@@ -14,15 +14,15 @@ body{
 		}
 		.top-nav {
 			background-color: #01a4e4;
-			height: 51px;
-			line-height: 51px;
+			height: 40px;
+			line-height: 40px;
 			.btn-login, .btn-register {
 				display: inline-block;
 				width: 100px;
 				height: 30px;
 				line-height: 30px;
 				text-align: center;
-				margin: 10px 14px 10px 0;
+				margin: 5px 14px 10px 0;
 				color: #33CCFF;
 				background-color: white;
 				font-size: 14px;
@@ -54,6 +54,10 @@ body{
 					&.icon-165{ background-image: url(/img/home/u165.png); }
 				}
 			}
+			.btn-link:hover{
+				color: #84DDFF;
+				text-decoration: none;
+			}
 		}
 	}
 	>footer{
@@ -63,6 +67,10 @@ body{
 		.info-footer a {
 			display: inline-block;
 			margin: 34px 70px 30px 0;
+		}
+		.info-footer a:hover{
+			color: #01A4E4;
+			text-decoration: none;
 		}
 		.info-footer p {
 			margin-bottom: 10px;
@@ -95,7 +103,7 @@ body{
 	}
 	.searcher {
 		width: 572px;
-		height: 52px;
+		height: 50px;
 		margin: 26px auto 0;
 	
 		.input {
@@ -109,7 +117,7 @@ body{
 		.input input {
 			width: 96%;
 			height: 80%;
-			margin: 6px 10px;
+			margin: 5px 10px;
 			font-size: 14px;
 			background-color: #f2f2f2;
 			outline: none;
@@ -118,14 +126,17 @@ body{
 		.button {
 			float: left;
 			width: 122px;
-			height: 52px;
+			height: 50px;
 			margin-left: -1px;
-			background-color: #01a4e4;
+			background-color: #01A4E4;
 			border-radius: 0 4px 4px 0;
 			line-height: 52px;
 			color: white;
 			font-size: 18px;
 			text-align: center;
+		}
+		.button:hover{
+			background-color: #01B9FE;
 		}
 	}
 	.hot {
@@ -138,6 +149,10 @@ body{
 			margin: 10px;
 			font-size: 14px;
 		}
+	}
+	.hot a:hover{
+		text-decoration: none;
+		color: #01A4E4;
 	}
 	.contect span {
 		display: inline-block;
@@ -251,5 +266,9 @@ body{
 		width: 90px;
 		margin: 0 auto;
 		font-size: 16px;
+	}
+	a:hover{
+		color: #01A4E4;
+		text-decoration: none;
 	}
 }

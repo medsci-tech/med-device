@@ -61,10 +61,18 @@ $(function(){
 				password_confirmation : password_confirmation
 			},
 			success : function(data){
-				if (data.status === 1){
-					//sweetAlert()
+				if (data.status !== 1){
+					sweetAlert(data.message)
+				} else {
+					swal({
+						title: "密码修改成功",
+        			    closeOnConfirm: false,
+        			    confirmButtonColor: "green",
+        			    confirmButtonText:"返回首页"
+        			}, function() {
+        			    location.href = '/'
+        			})
 				}
-				sweetAlert(data.message)
 			}
 		})
 

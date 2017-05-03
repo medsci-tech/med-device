@@ -10,11 +10,11 @@
 <div class="row nav">
 	<div class="container">
 		<div class="col-md-12">
-			<a class="focus" href="/">
-				&nbsp;&nbsp;首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页&nbsp;&nbsp;
+			<a href="/">&nbsp;&nbsp;首&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;页&nbsp;&nbsp;</a>
+			<a class="focus" href="/product">
+				药械产品招商
 				<div class="strip"></div>
 			</a>
-			<a href="/product">药械产品招商</a>
 			<a href="/market">药械营销服务</a>
 			<a href="/agent">药械经纪人</a>
 		</div>

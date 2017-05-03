@@ -6757,8 +6757,8 @@ body > header .logo-link:hover {
 }
 body > header .top-nav {
   background-color: #01a4e4;
-  height: 51px;
-  line-height: 51px;
+  height: 40px;
+  line-height: 40px;
 }
 body > header .top-nav .btn-login,
 body > header .top-nav .btn-register {
@@ -6767,7 +6767,7 @@ body > header .top-nav .btn-register {
   height: 30px;
   line-height: 30px;
   text-align: center;
-  margin: 10px 14px 10px 0;
+  margin: 5px 14px 10px 0;
   color: #33CCFF;
   background-color: white;
   font-size: 14px;
@@ -6805,6 +6805,10 @@ body > header .top-nav .btn-link.icon.icon-163 {
 body > header .top-nav .btn-link.icon.icon-165 {
   background-image: url(/img/home/u165.png);
 }
+body > header .top-nav .btn-link:hover {
+  color: #84DDFF;
+  text-decoration: none;
+}
 body > footer {
   height: 200px;
   color: #5E5E5E;
@@ -6813,6 +6817,10 @@ body > footer {
 body > footer .info-footer a {
   display: inline-block;
   margin: 34px 70px 30px 0;
+}
+body > footer .info-footer a:hover {
+  color: #01A4E4;
+  text-decoration: none;
 }
 body > footer .info-footer p {
   margin-bottom: 10px;
@@ -6843,7 +6851,7 @@ body > footer .qr-code img {
 }
 .search .searcher {
   width: 572px;
-  height: 52px;
+  height: 50px;
   margin: 26px auto 0;
 }
 .search .searcher .input {
@@ -6857,7 +6865,7 @@ body > footer .qr-code img {
 .search .searcher .input input {
   width: 96%;
   height: 80%;
-  margin: 6px 10px;
+  margin: 5px 10px;
   font-size: 14px;
   background-color: #f2f2f2;
   outline: none;
@@ -6866,14 +6874,17 @@ body > footer .qr-code img {
 .search .searcher .button {
   float: left;
   width: 122px;
-  height: 52px;
+  height: 50px;
   margin-left: -1px;
-  background-color: #01a4e4;
+  background-color: #01A4E4;
   border-radius: 0 4px 4px 0;
   line-height: 52px;
   color: white;
   font-size: 18px;
   text-align: center;
+}
+.search .searcher .button:hover {
+  background-color: #01B9FE;
 }
 .search .hot {
   font-size: 13px;
@@ -6885,6 +6896,10 @@ body > footer .qr-code img {
   color: #666;
   margin: 10px;
   font-size: 14px;
+}
+.search .hot a:hover {
+  text-decoration: none;
+  color: #01A4E4;
 }
 .search .contect span {
   display: inline-block;
@@ -6994,4 +7009,8 @@ body > footer .qr-code img {
   width: 90px;
   margin: 0 auto;
   font-size: 16px;
+}
+.appointment a:hover {
+  color: #01A4E4;
+  text-decoration: none;
 }

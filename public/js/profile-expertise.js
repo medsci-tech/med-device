@@ -13,6 +13,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 
 	//初始化数据
 	//获取科室
+	var toDelete = [];
 	var departs, service_types;
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
 		url: '/get-depart',
@@ -128,7 +129,11 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 		var item = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item" style="display:block" data-json=' + JSON.stringify(data) + '><span class="inner">' + data.hospital + '</span></div>').append(cancelBtn).appendTo(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2'));
 		cancelBtn.click(function () {
 			item.remove();
-			deleteItem({
+			// deleteItem({
+			// 	id : data.id,
+			// 	type : 'hospital'
+			// })
+			toDelete.push({
 				id: data.id,
 				type: 'hospital'
 			});
@@ -209,7 +214,11 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 					// 		type : 'service'
 					// 	})
 					// }
-					deleteItem({
+					// deleteItem({
+					// 	id : self.index === 0 ? self.json[i].depart_id : self.json[i].service_type_id,
+					// 	type : self.index === 0 ? 'depart' : 'service'
+					// })
+					toDelete.push({
 						id: self.index === 0 ? self.json[i].depart_id : self.json[i].service_type_id,
 						type: self.index === 0 ? 'depart' : 'service'
 					});
@@ -232,43 +241,49 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 
 	//==================表单提交===========================
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#submit').click(function () {
+		var list = [];
+		for (var i = 0; i < toDelete.length; i++) {
+			list.push(deleteItem(toDelete[i]));
+		}
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.when(list).done(function () {
 
-		var _hospitals = [],
-		    _depart_ids = [],
-		    _service_type_ids = [];
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2 .item').each(function () {
-			_hospitals.push(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json'));
-		});
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container1 .item').each(function () {
-			if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).hasClass('item-chosen')) {
-				_depart_ids.push(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json'));
-			}
-		});
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container3 .item').each(function () {
-			if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).hasClass('item-chosen')) {
-				_service_type_ids.push(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json'));
-			}
-		});
+			var _hospitals = [],
+			    _depart_ids = [],
+			    _service_type_ids = [];
+			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2 .item').each(function () {
+				_hospitals.push(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json'));
+			});
+			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container1 .item').each(function () {
+				if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).hasClass('item-chosen')) {
+					_depart_ids.push(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json'));
+				}
+			});
+			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container3 .item').each(function () {
+				if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).hasClass('item-chosen')) {
+					_service_type_ids.push(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json'));
+				}
+			});
 
-		var data = {
-			depart_ids: JSON.stringify(_depart_ids.map(function (d) {
-				return { depart_id: d.depart_id };
-			})),
-			service_type_ids: JSON.stringify(_service_type_ids.map(function (s) {
-				return { service_type_id: s.service_type_id };
-			})),
-			hospitals: JSON.stringify(_hospitals.map(function (h) {
-				return { city: h.city, hospital: h.hospital, province: h.province };
-			}))
-		};
-		console.log(data);
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
-			url: '/personal/expertise',
-			method: 'POST',
-			data: data,
-			success: function success(data) {
-				sweetAlert(data.message);
-			}
+			var data = {
+				depart_ids: JSON.stringify(_depart_ids.map(function (d) {
+					return { depart_id: d.depart_id };
+				})),
+				service_type_ids: JSON.stringify(_service_type_ids.map(function (s) {
+					return { service_type_id: s.service_type_id };
+				})),
+				hospitals: JSON.stringify(_hospitals.map(function (h) {
+					return { city: h.city, hospital: h.hospital, province: h.province };
+				}))
+			};
+			console.log(data);
+			__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+				url: '/personal/expertise',
+				method: 'POST',
+				data: data,
+				success: function success(data) {
+					sweetAlert(data.message);
+				}
+			});
 		});
 	});
 
@@ -307,7 +322,11 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 	});
 
 	function deleteItem(item) {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.post('/personal/del-expertise', item, function (data) {
+		return __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+			url: '/personal/del-expertise',
+			type: 'post',
+			data: item
+		}).done(function (data) {
 			console.log(data);
 			if (data.status !== 1) {
 				sweetAlert(data.message);

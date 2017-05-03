@@ -120,6 +120,28 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 		});
 	});
 
+	function checkUserName(name) {
+		return __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+			url: '/check-username',
+			type: 'post',
+			data: {
+				name: name
+			}
+		});
+	}
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#name').on('blur', function () {
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+			url: '/check-username',
+			type: 'post',
+			data: {
+				name: __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).val()
+			},
+			success: function success(data) {
+				if (data.status === 1) {} else {}
+			}
+		});
+	});
+
 	//邮箱后缀
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email').on('keyup', function () {
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.email-dropdown').show();

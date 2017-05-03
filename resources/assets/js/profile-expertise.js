@@ -4,6 +4,7 @@ $(function () {
 
 	//初始化数据
 	//获取科室
+	var toDelete = []
 	var departs,service_types
 	$.ajax({
 		url : '/get-depart',
@@ -115,7 +116,11 @@ $(function () {
 		var item = $('<div class="item" style="display:block" data-json=' + JSON.stringify(data) + '><span class="inner">' + data.hospital + '</span></div>').append(cancelBtn).appendTo($('#item-container2'))
 		cancelBtn.click(function(){
 			item.remove()
-			deleteItem({
+			// deleteItem({
+			// 	id : data.id,
+			// 	type : 'hospital'
+			// })
+			toDelete.push({
 				id : data.id,
 				type : 'hospital'
 			})
@@ -197,7 +202,11 @@ $(function () {
 					// 		type : 'service'
 					// 	})
 					// }
-					deleteItem({
+					// deleteItem({
+					// 	id : self.index === 0 ? self.json[i].depart_id : self.json[i].service_type_id,
+					// 	type : self.index === 0 ? 'depart' : 'service'
+					// })
+					toDelete.push({
 						id : self.index === 0 ? self.json[i].depart_id : self.json[i].service_type_id,
 						type : self.index === 0 ? 'depart' : 'service'
 					})
@@ -220,37 +229,45 @@ $(function () {
 
 	//==================表单提交===========================
 	$('#submit').click(function(){
-
-		var _hospitals = [],_depart_ids = [],_service_type_ids = []
-		$('#item-container2 .item').each(function(){
-			_hospitals.push($(this).data('json'))
-		})
-		$('#item-container1 .item').each(function(){
-			if ($(this).hasClass('item-chosen')){
-				_depart_ids.push($(this).data('json'))
-			}
-		})
-		$('#item-container3 .item').each(function(){
-			if ($(this).hasClass('item-chosen')){
-				_service_type_ids.push($(this).data('json'))
-			}
-		})
-
-
-		var data = {
-			depart_ids : JSON.stringify(_depart_ids.map(d => ({ depart_id: d.depart_id }))),
-			service_type_ids : JSON.stringify(_service_type_ids.map(s => ({ service_type_id: s.service_type_id }))),
-			hospitals : JSON.stringify(_hospitals.map(h => ({ city: h.city, hospital: h.hospital, province: h.province })))
+		var list = []
+		for (var i = 0; i < toDelete.length; i++) {
+			list.push(deleteItem(toDelete[i]))
 		}
-		console.log(data)
-		$.ajax({
-			url : '/personal/expertise',
-			method : 'POST',
-			data : data,
-			success : function(data){
-				sweetAlert(data.message)
+		$.when(list).done(function(){
+
+			var _hospitals = [],_depart_ids = [],_service_type_ids = []
+			$('#item-container2 .item').each(function(){
+				_hospitals.push($(this).data('json'))
+			})
+			$('#item-container1 .item').each(function(){
+				if ($(this).hasClass('item-chosen')){
+					_depart_ids.push($(this).data('json'))
+				}
+			})
+			$('#item-container3 .item').each(function(){
+				if ($(this).hasClass('item-chosen')){
+					_service_type_ids.push($(this).data('json'))
+				}
+			})
+	
+	
+			var data = {
+				depart_ids : JSON.stringify(_depart_ids.map(d => ({ depart_id: d.depart_id }))),
+				service_type_ids : JSON.stringify(_service_type_ids.map(s => ({ service_type_id: s.service_type_id }))),
+				hospitals : JSON.stringify(_hospitals.map(h => ({ city: h.city, hospital: h.hospital, province: h.province })))
 			}
+			console.log(data)
+			$.ajax({
+				url : '/personal/expertise',
+				method : 'POST',
+				data : data,
+				success : function(data){
+					sweetAlert(data.message)
+				}
+			})
+
 		})
+
 	})
 
 
@@ -289,7 +306,11 @@ $(function () {
 	})
 
 	function deleteItem(item){
-		$.post('/personal/del-expertise', item, function(data){
+		return $.ajax({
+			url : '/personal/del-expertise',
+			type : 'post',
+			data : item
+		}).done(function(data){
 			console.log(data)
 			if (data.status !== 1){
 				sweetAlert(data.message)
