@@ -51,7 +51,7 @@ class PersonalController extends Controller
     public function cooperation()
     {
         $user = \Auth::user();
-        $list = $user->cooperationsWithProducts()->paginate(config('params')['paginate']);
+        $list = $user->cooperationsWithProducts()->orderBy('id','desc')->paginate(config('params')['paginate']);
         return view('web.personal.cooperation', ['list' => $list]);
     }
     /**

@@ -6,13 +6,14 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Interfaces\CheckResetPwd;
+use App\Http\Requests\Interfaces\CheckUserExists;
 use App\Models\Product;
 use App\Models\Banner;
 use App\User;
 
 class HomeController extends Controller
 {
-    use CheckResetPwd;
+    use CheckResetPwd,CheckUserExists;
     /**
      * Create a new controller instance.
      *
@@ -100,6 +101,23 @@ class HomeController extends Controller
 
         } catch (\Exception $e) {
             return ['code' => 200, 'status' => 0, 'message' => $e->getMessage()];
+        }
+    }
+
+    /**
+     * 检查用户名
+     * @author      lxhui<772932587@qq.com>
+     * @since 1.0
+     * @return array
+     */
+    public function checkUsername(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            $result =$this->checkExists($request->all());
+            if($result['status'] ==1)
+                return response()->json(['code'=>200, 'status' => 1,'message' => '允许注册' ]);
+            else
+                return response()->json(['code'=>200, 'status' => 0,'message' => $result['message'] ]);
         }
     }
 
