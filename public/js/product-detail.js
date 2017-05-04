@@ -73,6 +73,11 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			}
 		});
 	});
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.save').click(function () {
+		if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('href') !== undefined) {
+			sweetAlert('请先登录');
+		}
+	});
 
 	//缩略图切换
 	var thumbs = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.thumbnail');

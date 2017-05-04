@@ -111,6 +111,32 @@ $(function () {
 		})
 	})
 
+	function checkUserName(name){
+		return $.ajax({
+			url : '/check-username',
+			type : 'post',
+			data : {
+				name : name
+			}
+		})
+	}
+	$('#name').on('blur', function(){
+		$.ajax({
+			url : '/check-username',
+			type : 'post',
+			data : {
+				name : $(this).val()
+			},
+			success : function(data){
+				if (data.status === 1){
+					
+				} else {
+					
+				}
+			}
+		})
+	})
+
 
 
 

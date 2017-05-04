@@ -1,3 +1,6 @@
+.search {
+  display: none;
+}
 .nav .item {
   width: 200px;
   height: 68px;
