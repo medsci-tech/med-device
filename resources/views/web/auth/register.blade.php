@@ -17,7 +17,7 @@
 <div class="form-area">
 	<h2 class="title">欢迎注册</h2>
 	<form class="form">
-		<div>
+		<div id="name-box">
 			<div class="required">*</div>
 			<label>用户名</label>
 			<input id="name" type="text" name="name" placeholder="您的账户名和登录名" required>
@@ -27,7 +27,7 @@
 			<label>设置密码</label>
 			<input id="password" type="password" name="password" placeholder="请输入密码" required>
 		</div>
-		<div>
+		<div id="confirm">
 			<div class="required">*</div>
 			<label>确认密码</label>
 			<input id="password_confirmation" type="password" name="password_confirmation" placeholder="请再次输入密码" required>
@@ -58,7 +58,7 @@
 				</div>
 			</div>
 		</div>
-		<div>
+		<div id="email-box">
 			<label>电子邮箱</label>
 			<input id="email" type="text" name="email" placeholder="请输入电子邮箱">
 			<div class="email-dropdown"></div>

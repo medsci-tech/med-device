@@ -10,3 +10,8 @@ new Swiper('.swiper-container', {
 	effect: 'fade',
 
 })
+
+$('.swiper-slide').click(function(){
+	var asd = $(this).data('href')
+	location.replace($(this).data('href'))
+})

@@ -190,6 +190,11 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 	}
 });
 
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.searcher .button').click(function () {
+	var value = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#keyword').val();
+	location.href = '/search?keyword=' + value;
+});
+
 /***/ }),
 /* 5 */,
 /* 6 */,

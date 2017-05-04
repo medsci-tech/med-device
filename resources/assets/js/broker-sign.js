@@ -233,6 +233,7 @@ $(function () {
 				overflow : 'hidden'
 			}).click(function(){
 				$('#email').val($(this).text());
+				checkEmail($('#email'))
 			}).appendTo($('.email-dropdown'))
 		}
 	}
@@ -252,6 +253,56 @@ $(function () {
 		$('.email-dropdown').hide();
 		$('item-email').text('');
 	})
+
+	function checkRight($ele){
+		$ele.children('.note').remove()
+		$ele.css('position', 'relative')
+		$('<img src="/img/home/u44.png">').addClass('note').appendTo($ele).css({
+			position : 'absolute',
+			top : '14px',
+			right : '-40px',
+			width : '20px',
+			whiteSpace : 'nowrap'
+		})
+		$ele.css('border-color','#d7d7d7')
+	}
+	function checkWrong($ele, message){
+		$ele.children('.note').remove()
+		$ele.css('position', 'relative')
+		$('<div class="note"><img src="/img/home/u46.png"> ' + message + '</div>').addClass('note').appendTo($ele).css({
+			position : 'absolute',
+			width : '20px',
+			top: '12px',
+			left : '440px',
+			color : 'red',
+			zIndex : 99,
+			whiteSpace : 'nowrap'
+		})
+		$ele.css('border-color','red')
+	}
+	$('#email').on('blur', function(){
+		checkEmail($(this))
+	})
+	function checkEmail($ele){
+		var value = $ele.val()
+		var index = value.indexOf('@')
+		if (index === -1){
+			checkWrong($('#email-box'), '邮箱格式不正确，请重新输入')
+			return
+		}
+		var suffix = value.substring(index)
+		// for (var i = 0; i < email_data.length; i++) {
+		// 	if (email_data[i] === suffix){
+		// 		checkRight($('#email-box'))
+		// 		return
+		// 	}
+		// }
+		if (suffix.substring(suffix.length-4) === '.com' || suffix.substring(suffix.length-3) === '.cn'){
+			checkRight($('#email-box'))
+			return
+		}
+		checkWrong($('#email-box'), '邮箱格式不正确，请重新输入')
+	}
 
 	//==================表单提交===========================
 	$('#sign-form').on('submit', function(e){

@@ -55,7 +55,7 @@
 					<div id="choose-icon">上传头像</div>
 				</div>
 				<form class="form" id="profile-form">
-					<div>
+					<div id="name-box">
 						<label class="normal-label">用户名</label>
 						<input class="normal-input" type="text" name="name" placeholder="您的账户名和登录名" value="{{ \Auth::user()->name }}" readonly>
 					</div>
@@ -77,9 +77,10 @@
 								<input type="radio" name="sex" value="女" @if (\Auth::user()->sex =='女')checked @endif>女</label>
 						</div>
 					</div>
-					<div>
+					<div id="email-box" style="position: relative;">
 						<label class="normal-label">电子邮箱</label>
-						<input class="normal-input" type="text" name="email" placeholder="请输入电子邮箱" value="{{ \Auth::user()->email }}">
+						<input id="email" class="normal-input" type="text" name="email" placeholder="请输入电子邮箱" value="{{ \Auth::user()->email }}">
+						<div class="email-dropdown"></div>
 					</div>
 					<div>
 						<label class="normal-label">工作地址</label>
