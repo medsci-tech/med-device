@@ -67,7 +67,7 @@ class AuthController extends Controller
             if ($validator->fails())
                 return response()->json(['code'=>200, 'status' => 0,'message' => $validator->errors()->first() ]);
 
-            if (Auth::guard('web')->attempt($this->validateUser($request->input(),$login_sign),(boolean)$request->remember)) {
+            if (Auth::guard('web')->attempt($this->validateUser($data,$login_sign),(boolean)$request->remember)) {
                 if($request->remember=='true') //记住我
                 {
                     $user_info = array('name'=>$data['name'],'password'=> \Helper::authcode($data['password'],'ENCODE',config('params')['salt_key'],0));

@@ -83,7 +83,7 @@
         <h2>欢迎登录</h2>
         <div class="id">
             <img src="/img/login/u1294.png">
-            <input id="name" class="input" type="text" name="name" placeholder="请输入用户名或手机号">
+            <input id="name" class="input" type="text" name="name" placeholder="请输入用户名或手机号" @if (\Cookie::get('user_info')) value="{{ \Cookie::get('user_info')['name'] }}"  @endif>
         </div>
         <div class="password">
             <img src="/img/login/u1296.png">
