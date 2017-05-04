@@ -87,10 +87,10 @@
         </div>
         <div class="password">
             <img src="/img/login/u1296.png">
-            <input id="password" class="input" type="password" name="password" placeholder="请输入密码">
+            <input id="password" class="input" type="password" name="password" placeholder="请输入密码" maxlength="20" @if (\Cookie::get('user_info'))  value="{{ \Cookie::get('user_info')['password'] }}"  @endif>
         </div>
         <div class="password-option">
-            <input id="remember" class="checkbox" type="checkbox" name="remember">
+            <input id="remember" class="checkbox" type="checkbox" name="remember" @if (\Cookie::get('user_info')) checked @endif>
             <span class="remember-password">记住密码</span>
             <a href="{{ url('forget') }}">忘记密码？</a>
         </div>

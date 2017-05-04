@@ -13,3 +13,4 @@ Homestead.yaml
 /app/Http/Requests
 /app/Http/Requests/Interfaces/SendCode.php
 /public/php_errors.log
+/app/Http/Controllers/Auth/AuthController.php

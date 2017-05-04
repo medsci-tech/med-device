@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'salt_key'=>'bestmedevice.com',
     'default_head'=>'http://oocc7psxo.bkt.clouddn.com/head/jpg/timg.jpg',
     'default_image'=>'http://oocc7psxo.bkt.clouddn.com/enterpriseno.jpg',
     'paginate'=>20,

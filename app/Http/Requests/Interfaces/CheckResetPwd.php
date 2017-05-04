@@ -22,14 +22,14 @@ trait CheckResetPwd
         $rules = [
             'phone' => 'required|digits:11|exists:users,phone',
             'code' => 'required|digits:6',
-            'password'=>'required|between:6,20|confirmed|regex:/^[\w\.-]{6,22}$/',
+            'password'=>'required|between:6,12|confirmed|regex:/^[\w\.-]{6,12}$/',
         ];
         $messages = [
             'phone.required' => '电话号码不能为空',
             'phone.exists' => '该电话号码尚未注册',
             'code.required' => '验证码不能为空',
             'password.required' => '密码不能为空',
-            'password.between' => '密码必须是6~20位之间',
+            'password.between' => '密码必须是6~12位之间',
             'confirmed' => '新密码和确认密码不匹配'
         ];
         $validator = \Validator::make($data, $rules, $messages);
