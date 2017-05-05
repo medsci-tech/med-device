@@ -1,1 +1,189 @@
-#getCaptcha,.form .btn-dropdown{cursor:pointer;position:absolute}.form-area{width:420px;margin:50px auto 100px}.form-area h2{text-align:center;font-size:32px;margin:40px}.form-area .form{position:relative}.form-area .form>div{position:relative;width:100%;height:50px;line-height:50px;margin:22px auto;border:1px solid #d7d7d7}.form-area .form>div .required{position:absolute;top:6px;left:-26px;color:red;font-size:24px}.form-area .form label{width:80px;padding-left:20px;font-weight:400}.form-area .form input[type=text],.form-area .form input[type=password]{display:inline-block;width:300px;height:46px;margin-top:1px;margin-left:20px;outline-color:#fff;border:none}.form-area .form .no-border{border:none}.form-area .form .no-border *{display:block;float:left}.form-area .form .confirm-agree{margin:0 0 0 120px}.form-area .form .sex-radio{margin:0 10px 0 40px}.form-area .form .submit{display:block;width:100%;height:50px;background-color:#01A4E4;border-radius:4px;color:#fff;text-align:center;line-height:50px;border:none;font-size:18px}.form-area .form .submit:hover{background-color:#01b9fe}.form-area .form p{margin-top:20px;text-align:center}.form-area .form .captcha{position:relative;margin-bottom:40px}.form-area .form .captcha input{width:180px}#getCaptcha{right:5px;top:7px;width:120px;height:32px;line-height:32px;text-align:center;border-radius:6px;background-color:#f2f2f2}.form .email-dropdown,.form-area .form .email-dropdown{left:89px;background-color:#fff;z-index:9;display:none;text-align:left}.form .email-dropdown{position:absolute;border:1px solid #d7d7d7;border-top:none;width:330px;height:auto;top:48px}.form .btn-dropdown{right:0;width:20px;height:20px;background-position:center;background-repeat:no-repeat;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAECAYAAABcDxXOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABeSURBVBhXY2ZAAqamphJAsF5KSur08+fP30CFGZigNIOxsbHG379/zzMyMroAuceBfBuIDFQRVOA0UIEEiA8EAv///98NFA8BcRhBDKDAcqACFrA0EgCK/2FgYCgFAHLsHFFnBaUiAAAAAElFTkSuQmCC);-webkit-transform:rotateZ(180deg);transform:rotateZ(180deg)}.form .city .btn-dropdown,.form .county .btn-dropdown,.form .province .btn-dropdown{top:0}.form .city,.form .county,.form .province{position:relative;width:94px;height:60px;margin-right:10px}.form-area .form .email-dropdown{position:absolute;border:1px solid #d7d7d7;border-top:none;width:330px;height:auto;top:48px}#drop-city,#drop-county,#drop-province{width:94px;top:650px}.form .email-dropdown .item-email:hover{background-color:#f2f2f2;cursor:default}.drop-down{display:none;position:absolute;padding-left:0;border:1px solid #B9B9B9;border-radius:4px;box-shadow:0 3px 8px #AEAEAE;background-color:#fff;z-index:99}.drop-down li{display:block;cursor:pointer;height:50px;line-height:50px;padding-left:20px;text-align:left}.drop-down li:hover{background-color:#F0F0F0}#drop-province{left:94px}#drop-city{left:198px}#drop-county{left:304px}
+.form-area {
+  width: 420px;
+  margin: 50px auto 100px;
+}
+.form-area h2 {
+  text-align: center;
+  font-size: 32px;
+  margin: 40px;
+}
+.form-area .form {
+  position: relative;
+}
+.form-area .form > div {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  margin: 22px auto;
+  border: 1px solid #d7d7d7;
+}
+.form-area .form > div .required {
+  position: absolute;
+  top: 6px;
+  left: -26px;
+  color: red;
+  font-size: 24px;
+}
+.form-area .form label {
+  width: 80px;
+  padding-left: 20px;
+  font-weight: normal;
+}
+.form-area .form input[type="text"],
+.form-area .form input[type="password"] {
+  display: inline-block;
+  width: 300px;
+  height: 46px;
+  margin-top: 1px;
+  margin-left: 20px;
+  outline-color: #fff;
+  border: none;
+}
+.form-area .form .no-border {
+  border: none;
+}
+.form-area .form .no-border * {
+  display: block;
+  float: left;
+}
+.form-area .form .confirm-agree {
+  margin: 0 0 0 120px;
+}
+.form-area .form .sex-radio {
+  margin: 0 10px 0 40px;
+}
+.form-area .form .submit {
+  display: block;
+  width: 100%;
+  height: 50px;
+  background-color: #01A4E4;
+  border-radius: 4px;
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  border: none;
+  font-size: 18px;
+}
+.form-area .form .submit:hover {
+  background-color: #01b9fe;
+}
+.form-area .form p {
+  margin-top: 20px;
+  text-align: center;
+}
+.form-area .form .captcha {
+  position: relative;
+  margin-bottom: 40px;
+}
+.form-area .form .captcha input {
+  width: 180px;
+}
+#getCaptcha {
+  position: absolute;
+  right: 5px;
+  top: 7px;
+  width: 120px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  border-radius: 6px;
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+.form .email-dropdown {
+  display: none;
+  position: absolute;
+  border: 1px solid #d7d7d7;
+  border-top: none;
+  width: 330px;
+  height: auto;
+  left: 89px;
+  top: 48px;
+  text-align: left;
+  background-color: white;
+  z-index: 9;
+}
+.form .email-dropdown .item-email:hover {
+  background-color: #f2f2f2;
+  cursor: default;
+}
+.form .btn-dropdown {
+  position: absolute;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAECAYAAABcDxXOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABeSURBVBhXY2ZAAqamphJAsF5KSur08+fP30CFGZigNIOxsbHG379/zzMyMroAuceBfBuIDFQRVOA0UIEEiA8EAv///98NFA8BcRhBDKDAcqACFrA0EgCK/2FgYCgFAHLsHFFnBaUiAAAAAElFTkSuQmCC);
+  -webkit-transform: rotateZ(180deg);
+          transform: rotateZ(180deg);
+  cursor: pointer;
+}
+.form .province .btn-dropdown,
+.form .city .btn-dropdown,
+.form .county .btn-dropdown {
+  top: 0;
+}
+.form .province,
+.form .city,
+.form .county {
+  position: relative;
+  width: 94px;
+  height: 60px;
+  margin-right: 10px;
+}
+/* 下拉框 */
+.form-area .form .email-dropdown {
+  display: none;
+  position: absolute;
+  border: 1px solid #d7d7d7;
+  border-top: none;
+  width: 330px;
+  height: auto;
+  left: 89px;
+  top: 48px;
+  text-align: left;
+  background-color: white;
+  z-index: 9;
+}
+.form .email-dropdown .item-email:hover {
+  background-color: #f2f2f2;
+  cursor: default;
+}
+.drop-down {
+  display: none;
+  position: absolute;
+  padding-left: 0;
+  border: 1px solid #B9B9B9;
+  border-radius: 4px;
+  box-shadow: 0 3px 8px #AEAEAE;
+  background-color: white;
+  z-index: 99;
+}
+.drop-down li {
+  display: block;
+  cursor: pointer;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 20px;
+  text-align: left;
+}
+.drop-down li:hover {
+  background-color: #F0F0F0;
+}
+#drop-province {
+  width: 94px;
+  top: 650px;
+  left: 94px;
+}
+#drop-city {
+  width: 94px;
+  top: 650px;
+  left: 198px;
+}
+#drop-county {
+  width: 94px;
+  top: 650px;
+  left: 304px;
+}
