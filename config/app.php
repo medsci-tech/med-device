@@ -180,6 +180,7 @@ return [
         Stevenyangecho\UEditor\UEditorServiceProvider::class, // 富文本编辑器
         zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Laravel\Tinker\TinkerServiceProvider::class,
 
     ],
 
