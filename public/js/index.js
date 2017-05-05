@@ -23,11 +23,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 new __WEBPACK_IMPORTED_MODULE_1_swiper___default.a('.swiper-container', {
 	loop: true,
 	zoom: true,
-	autoplay: 5000,
+	autoplay: 3000,
 	pagination: '.swiper-pagination',
 	paginationClickable: true,
 	effect: 'fade'
 
+});
+
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.swiper-slide').click(function () {
+	var asd = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('href');
+	location.replace(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('href'));
 });
 
 /***/ })

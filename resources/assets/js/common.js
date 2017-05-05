@@ -32,3 +32,8 @@ $(function(){
 		swal.setDefaults({ confirmButtonText: '确定' });
 	}
 })
+
+$('.searcher .button').click(function(){
+	var value = $('#keyword').val()
+	location.href = '/search?keyword=' + value
+})

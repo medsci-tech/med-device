@@ -86,9 +86,9 @@ window.$CSRFTOKEN = '{!! csrf_token() !!}'
 				<a href="/helper#contact">联系我们</a>
 				<a href="/helper#buy">购买方式</a>
 				<a href="/helper#problems">常见问题</a>
-				<p>Copyright@2017 施康培科技（武汉）有限公司版权所有，保留所有权利</p>
-				<p>互联网药品信息服务资格证书编号（鄂）</p>
-				<p>鄂ICP备 15021002号</p>
+				<p>&copy; 2017 施康培医疗科技（武汉）有限公司版权所有，保留所有权利</p>
+				<p>互联网药品信息服务资格证书编号（鄂）经营性-2016-0011</p>
+				<p>鄂ICP备15021002号-3</p>
 			</div>
 			<div class="col-md-4 qr-code">
 				<div class="row">

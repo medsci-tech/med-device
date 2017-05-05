@@ -79,6 +79,10 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			sweetAlert('请填写手机号');
 			return;
 		}
+		if (phone.length !== 11) {
+			sweetAlert('请填写正确的手机号');
+			return;
+		}
 		if (code === '') {
 			sweetAlert('请填写验证码');
 			return;
@@ -120,14 +124,31 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 		});
 	});
 
-	function checkUserName(name) {
-		return __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
-			url: '/check-username',
-			type: 'post',
-			data: {
-				name: name
-			}
+	function checkRight($ele) {
+		$ele.children('.note').remove();
+		$ele.css('position', 'relative');
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('<img src="/img/home/u44.png">').addClass('note').appendTo($ele).css({
+			position: 'absolute',
+			top: '14px',
+			right: '-40px',
+			width: '20px',
+			whiteSpace: 'nowrap'
 		});
+		$ele.css('border-color', '#d7d7d7');
+	}
+	function checkWrong($ele, message) {
+		$ele.children('.note').remove();
+		$ele.css('position', 'relative');
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="note"><img src="/img/home/u46.png"> ' + message + '</div>').addClass('note').appendTo($ele).css({
+			position: 'absolute',
+			width: '20px',
+			top: 0,
+			left: '440px',
+			color: 'red',
+			zIndex: 99,
+			whiteSpace: 'nowrap'
+		});
+		$ele.css('border-color', 'red');
 	}
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#name').on('blur', function () {
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
@@ -137,10 +158,44 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 				name: __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).val()
 			},
 			success: function success(data) {
-				if (data.status === 1) {} else {}
+				if (data.status === 1) {
+					checkRight(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#name-box'));
+				} else {
+					checkWrong(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#name-box'), data.message);
+				}
 			}
 		});
 	});
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#password_confirmation').on('blur', function () {
+		if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).val() !== __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#password').val()) {
+			checkWrong(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#confirm'), '两次密码输入不一致，请重新设置密码');
+		} else {
+			checkRight(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#confirm'));
+		}
+	});
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email').on('blur', function () {
+		checkEmail(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this));
+	});
+	function checkEmail($ele) {
+		var value = $ele.val();
+		var index = value.indexOf('@');
+		if (index === -1) {
+			checkWrong(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email-box'), '邮箱格式不正确，请重新输入');
+			return;
+		}
+		var suffix = value.substring(index);
+		// for (var i = 0; i < data.length; i++) {
+		// 	if (data[i] === suffix){
+		// 		checkRight($('#email-box'))
+		// 		return
+		// 	}
+		// }
+		if (suffix.substring(suffix.length - 4) === '.com' || suffix.substring(suffix.length - 3) === '.cn') {
+			checkRight(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email-box'));
+			return;
+		}
+		checkWrong(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email-box'), '邮箱格式不正确，请重新输入');
+	}
 
 	//邮箱后缀
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email').on('keyup', function () {
@@ -172,6 +227,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 				overflow: 'hidden'
 			}).click(function () {
 				__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email').val(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).text());
+				checkEmail(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email'));
 			}).appendTo(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.email-dropdown'));
 		}
 	}

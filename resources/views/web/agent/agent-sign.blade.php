@@ -58,7 +58,7 @@
     			</div>
 
 			</div>
-			<div class="input-box">
+			<div class="input-box" id="email-box">
         		<div class="required">*</div>
 				<label class="normal-label">电子邮箱</label>
 				<input id="email" class="normal-input" type="text" name="email" placeholder="请输入电子邮箱" @if (Auth::check()) value="{{ \Auth::user()->email }}" @endif>
