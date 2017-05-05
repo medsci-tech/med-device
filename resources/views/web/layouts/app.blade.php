@@ -55,7 +55,7 @@ window.$CSRFTOKEN = '{!! csrf_token() !!}'
 					<div class="input">
 						<input type="text" id="keyword" name="keyword" placeholder="输入产品名称">
 					</div>
-					<div class="button" onclick="SendForm();" style="cursor: pointer">搜索</div>
+					<button class="button" type="submit" style="cursor: pointer;border: 0 none;">搜索</button>
 				</div>
 				</form>
 				<p class="hot" style="text-align: center;padding-right: 0">

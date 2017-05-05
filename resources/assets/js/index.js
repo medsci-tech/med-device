@@ -11,7 +11,10 @@ new Swiper('.swiper-container', {
 
 })
 
-$('.swiper-slide').click(function(){
+$('.swiper-slide .container').click(function(){
 	var asd = $(this).data('href')
-	location.replace($(this).data('href'))
+	console.log(asd)
+	if(asd){
+		window.open(asd)
+	}
 })

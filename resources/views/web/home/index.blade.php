@@ -24,8 +24,8 @@
 <div class="swiper-container">
 	<div class="swiper-wrapper">
 		@foreach($banners as $banner)
-		<div class="swiper-slide" data-href="{{ $banner->href_url }}" style="background-image:url({{ $banner->image_url }})">
-			<div class="container"></div>
+		<div class="swiper-slide" style="background-image:url({{ $banner->background_url }})">
+			<a class="container" data-href="{{ $banner->href_url }}" style="display: block; height: 100%; background-size: cover; background-image:url({{ $banner->image_url }})"></a>
 		</div>
 		@endforeach
 	</div>
