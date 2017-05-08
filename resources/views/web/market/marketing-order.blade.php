@@ -76,12 +76,12 @@
 		<div>
 			<div class="required">*</div>
 			<label class="normal-label" for="contact">联系人</label>
-			<input id="contact" class="normal-input" type="text" name="realname" placeholder="请输入联系人姓名">
+			<input id="contact" class="normal-input" type="text" name="realname" placeholder="请输入联系人姓名" value="@if (Auth::check()){{ \Auth::user()->real_name }}@endif">
 		</div>
 		<div>
 			<div class="required">*</div>
 			<label class="normal-label" for="tel">联系电话</label>
-			<input id="tel" class="normal-input" type="text" name="tel" placeholder="请输入联系电话">
+			<input id="tel" class="normal-input" type="text" name="tel" placeholder="请输入联系电话" value="@if (Auth::check()){{ \Auth::user()->phone }}@endif">
 		</div>
 		<div class="desc">
 			<label class="normal-label" for="desc">要求描述</label>
