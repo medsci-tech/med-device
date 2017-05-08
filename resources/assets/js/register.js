@@ -104,13 +104,16 @@ $(function () {
 				sex
 			},
 			success : function(data){
-				if(data.message){
+				if (data.status === 1){
+					swal({
+						title: '',
+						html:true,
+						text:`注册成功，<a href="/">前往首页</a>`,
+						type:'success'
+					})
+				} else {
 					sweetAlert(data.message)
 				}
-				if(data.status === 1){
-					location.replace('/personal')
-				}
-				console.log(data)
 			}
 		})
 	})
@@ -187,6 +190,14 @@ $(function () {
 		}
 		checkWrong($('#email-box'), '邮箱格式不正确，请重新输入')
 	}
+	$('#phone').on('blur', function(){
+		var reg = /^1[35678]\d{9}$/
+		if (!reg.test($(this).val())){
+			checkWrong($('#phone-box'), '手机号格式不正确，请重新输入')
+		} else {
+			checkRight($('#phone-box'))
+		}
+	})
 
 
 

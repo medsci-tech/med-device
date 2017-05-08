@@ -32,7 +32,7 @@
 			<label>确认密码</label>
 			<input id="password_confirmation" type="password" name="password_confirmation" placeholder="请再次输入密码" required>
 		</div>
-		<div>
+		<div id="phone-box">
 			<div class="required">*</div>
 			<label>手机号</label>
 			<input id="phone" type="text" name="phone" placeholder="建议使用常用手机" required>

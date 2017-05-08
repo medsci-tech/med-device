@@ -366,6 +366,7 @@ $(function () {
 			success : function(data){
 				if(data.status === 1){
 					swal({
+						title : '',
 						text: `欢迎您成为药械经纪人，<a href="/">返回首页</a>`,
 						html: true,
 						type: 'success'

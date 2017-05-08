@@ -68,7 +68,7 @@ window.$CSRFTOKEN = '{!! csrf_token() !!}'
 			<div class="col-md-3 contect" style="padding: 14px 0 0 60px">
 				<span>药械小助手 400-8648883</span>
 				<div class="wechat">
-					<img class="wechat-logo" src="/img/home/u103.png">
+					<img class="wechat-logo" src="/img/home/wechat.png" style="width: 24px;height: 19px">
 					<img class="wechat-code" src="/img/home/u101.jpg" style="z-index: 9;width: 200px;height: 200px">
 				</div>
 			</div>

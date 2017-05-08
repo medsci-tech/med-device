@@ -51,16 +51,26 @@
 					<a class="pic" href="{{ url('product/detail/'.$product->id) }}" target="_blank"><img src="{{ $product->logo }}?imageView2/1/w/220/h/220/q/90"></a>
 					<a class="link" href="{{ url('product/detail/'.$product->id) }}" target="_blank">{{ $product->name }}</a>
 					{{--<a class="btn-cancle" href="{{ url('product/detail/'.$product->id) }}" target="_blank">详情</a>--}}
-				</div>
-							<span id="contact" class="contact">{{ ($order->real_name) ? '联系人：'.$order->real_name : '' }}</span>
-							<span id="tel" class="tel">{{ ($order->contact_phone) ? '联系电话：'.$order->contact_phone : '' }}</span>
+
+					<div class="details">
+						<div class="coope-type">
 							@if ($order->join_type)
 								<span id="" class="location">合作类型：
 								@foreach (explode(',',$order->join_type) as $val)
 									{{ config('params')['join_type'][$val] }}
 								@endforeach</span>
 							@endif
+						</div>
+						<div class="coope-time">
 							<span class="time">提交时间：{{ str_limit($order->created_at, $limit = 10, $end = '') }}</span>
+						</div>
+						<div class="coope-contact">
+							<span id="contact" class="contact">{{ ($order->real_name) ? '联系人：'.$order->real_name : '' }}</span>
+							<span id="tel" class="tel">{{ ($order->contact_phone) ? '联系电话：'.$order->contact_phone : '' }}</span>
+						</div>
+					</div>
+
+				</div>
 						@endforeach
 					@endforeach
 				@endif

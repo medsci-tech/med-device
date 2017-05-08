@@ -6786,6 +6786,7 @@ body > header .top-nav .btn-register {
 }
 body > header .top-nav .btn-link {
   color: white;
+  text-decoration: none;
 }
 body > header .top-nav .btn-link.icon {
   padding-left: 28px;
@@ -6807,6 +6808,9 @@ body > header .top-nav .btn-link.icon.icon-165 {
 }
 body > header .top-nav .btn-link:hover {
   color: #84DDFF;
+  text-decoration: none;
+}
+body > header .top-nav .btn-link:visited {
   text-decoration: none;
 }
 body > footer {

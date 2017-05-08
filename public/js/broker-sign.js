@@ -1,1 +1,395 @@
-webpackJsonp([15],{3:function(i,t,e){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=e(0),a=e.n(n);a()(function(){function i(i,t){a.a.ajax({url:"/get-hospital",type:"post",data:{province:i,city:t}}).then(function(i){if(1!==i.status)return void sweetAlert(i.message);var t=a()("#panel2 .items");t.empty();for(var e=i.data,n=0;n<e.length;n++){var s=e[n],o=a()('<div class="item" data-json='+JSON.stringify(s)+'><span class="name">'+s.hospital+"</span></div>"),c=a()('<input type="checkbox">').appendTo(o);o.click(function(){a()(this).children("input").click()}),c.click(function(){a()(this).click()}),o.appendTo(t)}})}function t(t,e){var n=a()(".city .drop-item");n.empty();for(var s=0;s<t.length;s++)if(t[s].name===e){for(var o=t[s].cities,c=0;c<o.length;c++)a()('<div data-prov="'+e+'">'+o[c].name+"</div>").addClass("item").click(function(){var t=a()(this).text();a()(".city span").text(t),h=t,i(a()(this).data("prov"),t)}).appendTo(n);break}}function e(i){if(0===a()("#item-container2 .inner").length)return!1;var t=!1;return a()("#item-container2 .inner").each(function(){a()(this).text()===i&&(t=!0)}),t}function n(i,t){this.json=i,this.data=this.json.map(function(i){return i.name}),this.index=t,this.panel=a()(".panel").eq(t),this.container=a()(".item-container").eq(t),this.btn_choose=a()(".btn-choose").eq(t),this.btn_panel=a()(".btn-panel").eq(t),this.chosen=[];for(var e=[],n=[],s=0;s<this.data.length;s++){var o=a()('<div class="item"><span>'+this.data[s]+"</span></div>").appendTo(this.panel),c=a()('<span class="icon"><span class="icon2"></span></span>'),r=a()('<div class="item" data-json='+JSON.stringify(this.json[s])+'><span class="inner">'+this.data[s]+"</span></div>").append(c).appendTo(this.container);e.push(o),n.push(r),o.on("click",function(i){return function(){a()(this).toggleClass("item-chosen"),n[i].toggleClass("item-chosen")}}(s)),c.on("click",function(i){return function(){e[i].toggleClass("item-chosen"),n[i].toggleClass("item-chosen")}}(s))}var l=this;this.btn_choose.on("click",function(){l.panel.fadeIn(),a()(".shielder").show()})}function s(i){i.children(".note").remove(),i.css("position","relative"),a()('<img src="/img/home/u44.png">').addClass("note").appendTo(i).css({position:"absolute",top:"14px",right:"-40px",width:"20px",whiteSpace:"nowrap"}),i.css("border-color","#d7d7d7")}function o(i,t){i.children(".note").remove(),i.css("position","relative"),a()('<div class="note"><img src="/img/home/u46.png"> '+t+"</div>").addClass("note").appendTo(i).css({position:"absolute",width:"20px",top:"12px",left:"440px",color:"red",zIndex:99,whiteSpace:"nowrap"}),i.css("border-color","red")}function c(i){var t=i.val(),e=t.indexOf("@");if(-1===e)return void o(a()("#email-box"),"邮箱格式不正确，请重新输入");var n=t.substring(e);if(".com"===n.substring(n.length-4)||".cn"===n.substring(n.length-3))return void s(a()("#email-box"));o(a()("#email-box"),"邮箱格式不正确，请重新输入")}var r,l;a.a.ajax({url:"/get-depart",success:function(i){r=i;new n(r,0)}}),a.a.ajax({url:"/get-service",success:function(i){l=i;new n(l,2)}});var p="",h="";a.a.getJSON("/json/loc.json").then(function(i){i=i;for(var e=0;e<i.length;e++)a()("<div>"+i[e].name+"</div>").addClass("item").click(function(){var e=a()(this).text();a()(".province span").text(e),a()(".city span").text(""),p=e,t(i,e)}).appendTo(a()(".province .drop-item"))}),a()(".search-box").on("keyup",function(){var i=a()(this).val();a()(".items .item").each(function(){var t=a()(this).children(".name");-1===t.text().indexOf(i)?(a()(this).hide(),a()(this).children("input")[0].checked=!1):a()(this).show()})}),a()(".province,.city").click(function(i){i.stopPropagation(),a()(this).children(".drop-item").slideToggle(160)}),a()("body").click(function(){a()(".drop-item").slideUp(160)});var d=function(i){var t=a()('<span class="icon"><span class="icon2"></span></span>'),e=a()('<div class="item" style="display:block" data-json='+JSON.stringify(i)+'><span class="inner">'+i.hospital+"</span></div>").append(t).appendTo(a()("#item-container2"));t.click(function(){e.remove()})};a()("#panel2 .btn-panel").click(function(){for(var i=a()(".items .item"),t=0;t<i.length;t++)i.eq(t).children("input")[0].checked&&!e(i.eq(t).children(".name").text())&&d(i.eq(t).data("json"))}),a()("#hospital").click(function(){a()("#panel2").fadeIn(),a()(".shielder").show()}),a()(".panel img,.shielder,.btn-panel").on("click",function(){a()(".shielder,.panel").hide()}),a()("#email").on("keyup",function(){a()(".email-dropdown").show();var i=a()("#email").val();a()(".item-email").each(function(){var t=i.indexOf("@");if(-1!==t){var e=i.substring(t);-1===a()(this).data("value").indexOf(e)&&a()(this).hide()}else a()(this).show(),a()(this).text(i+a()(this).data("value"))})});var u=["@163.com","@sina.com","@qq.com","@126.com","@vip.sina.com","@gmail.com","@hotmail.com","@sohu.com","@139.com"];!function(i){for(var t=0;t<i.length;t++)a()("<div></div>").addClass("item-email").data("value",i[t]).css({width:"100%",height:"40px",lineHeight:"40px",paddingLeft:"10px",borderBottom:"1px solid #f2f2f2",overflow:"hidden"}).click(function(){a()("#email").val(a()(this).text()),c(a()("#email"))}).appendTo(a()(".email-dropdown"))}(u),a()("body").click(function(){a()(".email-dropdown").hide(),a()("item-email").text("")}),a()("#email").on("blur",function(){c(a()(this))}),a()("#sign-form").on("submit",function(i){i.preventDefault();var t=this.name.value.trim(),e=this.email.value.trim(),n=this.sex.value;if(!t)return sweetAlert("姓名不能为空");if(!e)return sweetAlert("邮箱不能为空");var s=void 0,o=void 0,c=void 0;s=o=c="";var r=this.area.value.split(" - ");s=r[0],2===r.length&&(o=r[1]),3===r.length&&(o=r[1],c=r[2]);var l=[],p=[],h=[];a()("#item-container2 .item").each(function(){l.push(a()(this).data("json"))}),a()("#item-container1 .item").each(function(){a()(this).hasClass("item-chosen")&&p.push(a()(this).data("json"))}),a()("#item-container3 .item").each(function(){a()(this).hasClass("item-chosen")&&h.push(a()(this).data("json"))});var d={real_name:t,sex:n,email:e,province:s,city:o,area:c,depart_ids:JSON.stringify(p),service_type_ids:JSON.stringify(h),hospitals:JSON.stringify(l)};a.a.ajax({url:"/agent/agent-sign",type:"post",data:d,success:function(i){1===i.status?swal({text:'欢迎您成为药械经纪人，<a href="/">返回首页</a>',html:!0,type:"success"}):swal({title:"",text:i.message,type:"error"})}})})})},53:function(i,t,e){i.exports=e(3)}},[53]);
+webpackJsonp([15],{
+
+/***/ 3:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+
+
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
+
+	//初始化数据
+	//获取科室
+	var departs, service_types;
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+		url: '/get-depart',
+		success: function success(data) {
+			departs = data;
+			var manager1 = new manager(departs, 0);
+		}
+	});
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+		url: '/get-service',
+		success: function success(data) {
+			service_types = data;
+			var manager3 = new manager(service_types, 2);
+		}
+	});
+
+	var data,
+	    originData,
+	    province = "",
+	    city = "",
+	    hospitals = [];
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.getJSON('/json/loc.json').then(function (data) {
+		data = data;
+		for (var i = 0; i < data.length; i++) {
+			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div>' + data[i].name + '</div>').addClass('item').click(function () {
+				var provName = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).text();
+				__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.province span').text(provName);
+				__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.city span').text("");
+				province = provName;
+				refreshCityBox(data, provName);
+			}).appendTo(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.province .drop-item'));
+		}
+	});
+
+	function refreshHospitalBox(prov, city) {
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+			url: '/get-hospital',
+			type: 'post',
+			data: {
+				province: prov,
+				city: city
+			}
+		}).then(function (data) {
+			if (data.status !== 1) {
+				sweetAlert(data.message);
+				return;
+			}
+			var container = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#panel2 .items');
+			container.empty();
+			var hospital_list = data.data;
+			for (var i = 0; i < hospital_list.length; i++) {
+				var dataItem = hospital_list[i];
+				var item_hos = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item" data-json=' + JSON.stringify(dataItem) + '><span class="name">' + dataItem.hospital + '</span></div>');
+				var checkbox = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<input type="checkbox">').appendTo(item_hos);
+				item_hos.click(function () {
+					__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).children('input').click();
+				});
+				checkbox.click(function () {
+					__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).click();
+				});
+				item_hos.appendTo(container);
+			}
+		});
+	}
+
+	function refreshCityBox(data, prov) {
+		var container = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.city .drop-item');
+		container.empty();
+		for (var i = 0; i < data.length; i++) {
+			if (data[i].name === prov) {
+				var cities = data[i].cities;
+				for (var j = 0; j < cities.length; j++) {
+					__WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div data-prov="' + prov + '">' + cities[j].name + '</div>').addClass('item').click(function () {
+						var cityName = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).text();
+						__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.city span').text(cityName);
+						city = cityName;
+						refreshHospitalBox(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('prov'), cityName);
+					}).appendTo(container);
+				}
+				break;
+			}
+		}
+	}
+
+	//医院名字筛选搜索
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.search-box').on('keyup', function () {
+		var value = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).val();
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.items .item').each(function () {
+			var $name = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).children('.name');
+			console.log($name.text());
+			if ($name.text().indexOf(value) === -1) {
+				__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).hide();
+				__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).children('input')[0].checked = false;
+			} else {
+				__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).show();
+			}
+		});
+	});
+
+	//省市下拉框事件
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.province,.city').click(function (event) {
+		event.stopPropagation();
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).children('.drop-item').slideToggle(160);
+	});
+
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').click(function () {
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.drop-item').slideUp(160);
+	});
+
+	//选择覆盖区域
+	var container_appendHosItem = function container_appendHosItem(data) {
+		var cancelBtn = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<span class="icon"><span class="icon2"></span></span>');
+		var item = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item" style="display:block" data-json=' + JSON.stringify(data) + '><span class="inner">' + data.hospital + '</span></div>').append(cancelBtn).appendTo(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2'));
+		cancelBtn.click(function () {
+			item.remove();
+		});
+	};
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#panel2 .btn-panel').click(function () {
+		var $items = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.items .item');
+		for (var i = 0; i < $items.length; i++) {
+			if ($items.eq(i).children('input')[0].checked && !isRepeat($items.eq(i).children('.name').text())) {
+				container_appendHosItem($items.eq(i).data('json'));
+			}
+		}
+	});
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#hospital').click(function () {
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#panel2').fadeIn();
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.shielder').show();
+	});
+
+	//选择医院是否重复
+	function isRepeat(name) {
+		if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2 .inner').length === 0) {
+			return false;
+		}
+		var is_repeat = false;
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2 .inner').each(function () {
+			if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).text() === name) {
+				is_repeat = true;
+			}
+		});
+		return is_repeat;
+	}
+
+	function manager(data, index) {
+		this.json = data;
+		this.data = this.json.map(function (obj) {
+			return obj.name;
+		});
+
+		this.index = index;
+		this.panel = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.panel').eq(index);
+		this.container = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.item-container').eq(index);
+		this.btn_choose = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.btn-choose').eq(index);
+		this.btn_panel = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.btn-panel').eq(index);
+		this.chosen = [];
+
+		//初始化panel、container里的items
+		var list1 = [];
+		var list2 = [];
+		for (var i = 0; i < this.data.length; i++) {
+			//panel里的item
+			var item1 = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item"><span>' + this.data[i] + '</span></div>').appendTo(this.panel);
+			//container里的item
+			var cancelBtn = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<span class="icon"><span class="icon2"></span></span>');
+			var item2 = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item" data-json=' + JSON.stringify(this.json[i]) + '><span class="inner">' + this.data[i] + '</span></div>').append(cancelBtn).appendTo(this.container);
+			list1.push(item1);
+			list2.push(item2);
+
+			//两种item的事件绑定
+			item1.on('click', function (i) {
+				return function () {
+					__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).toggleClass('item-chosen');
+					list2[i].toggleClass('item-chosen');
+				};
+			}(i));
+			cancelBtn.on('click', function (i) {
+				return function () {
+					list1[i].toggleClass('item-chosen');
+					list2[i].toggleClass('item-chosen');
+				};
+			}(i));
+		}
+
+		//弹出选择面板
+		var self = this;
+		this.btn_choose.on('click', function () {
+			self.panel.fadeIn();
+			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.shielder').show();
+		});
+	}
+
+	//隐藏选择面板
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.panel img,.shielder,.btn-panel').on('click', function () {
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.shielder,.panel').hide();
+	});
+
+	//邮箱后缀
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email').on('keyup', function () {
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.email-dropdown').show();
+
+		var value = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email').val();
+		var $items = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.item-email');
+		$items.each(function () {
+			var index = value.indexOf('@');
+			if (index !== -1) {
+				var str = value.substring(index);
+				if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('value').indexOf(str) === -1) {
+					__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).hide();
+				}
+			} else {
+				__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).show();
+				__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).text(value + __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('value'));
+			}
+		});
+	});
+	function initDom(data) {
+		for (var i = 0; i < data.length; i++) {
+			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div></div>').addClass('item-email').data('value', data[i]).css({
+				width: '100%',
+				height: '40px',
+				lineHeight: '40px',
+				paddingLeft: '10px',
+				borderBottom: '1px solid #f2f2f2',
+				overflow: 'hidden'
+			}).click(function () {
+				__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email').val(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).text());
+				checkEmail(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email'));
+			}).appendTo(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.email-dropdown'));
+		}
+	}
+	var email_data = ['@163.com', '@sina.com', '@qq.com', '@126.com', '@vip.sina.com', '@gmail.com', '@hotmail.com', '@sohu.com', '@139.com'];
+	initDom(email_data);
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').click(function () {
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.email-dropdown').hide();
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('item-email').text('');
+	});
+
+	function checkRight($ele) {
+		$ele.children('.note').remove();
+		$ele.css('position', 'relative');
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('<img src="/img/home/u44.png">').addClass('note').appendTo($ele).css({
+			position: 'absolute',
+			top: '14px',
+			right: '-40px',
+			width: '20px',
+			whiteSpace: 'nowrap'
+		});
+		$ele.css('border-color', '#d7d7d7');
+	}
+	function checkWrong($ele, message) {
+		$ele.children('.note').remove();
+		$ele.css('position', 'relative');
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="note"><img src="/img/home/u46.png"> ' + message + '</div>').addClass('note').appendTo($ele).css({
+			position: 'absolute',
+			width: '20px',
+			top: '12px',
+			left: '440px',
+			color: 'red',
+			zIndex: 99,
+			whiteSpace: 'nowrap'
+		});
+		$ele.css('border-color', 'red');
+	}
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email').on('blur', function () {
+		checkEmail(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this));
+	});
+	function checkEmail($ele) {
+		var value = $ele.val();
+		var index = value.indexOf('@');
+		if (index === -1) {
+			checkWrong(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email-box'), '邮箱格式不正确，请重新输入');
+			return;
+		}
+		var suffix = value.substring(index);
+		// for (var i = 0; i < email_data.length; i++) {
+		// 	if (email_data[i] === suffix){
+		// 		checkRight($('#email-box'))
+		// 		return
+		// 	}
+		// }
+		if (suffix.substring(suffix.length - 4) === '.com' || suffix.substring(suffix.length - 3) === '.cn') {
+			checkRight(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email-box'));
+			return;
+		}
+		checkWrong(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email-box'), '邮箱格式不正确，请重新输入');
+	}
+
+	//==================表单提交===========================
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#sign-form').on('submit', function (e) {
+		e.preventDefault();
+		var name = this.name.value.trim(),
+		    email = this.email.value.trim(),
+		    sex = this.sex.value;
+
+		if (!name) {
+			return sweetAlert('姓名不能为空');
+		}
+		if (!email) {
+			return sweetAlert('邮箱不能为空');
+		}
+
+		var _province = void 0,
+		    _city = void 0,
+		    _area = void 0;
+		_province = _city = _area = '';
+		var work_space = this.area.value.split(' - ');
+		_province = work_space[0];
+		if (work_space.length === 2) {
+			_city = work_space[1];
+		}
+		if (work_space.length === 3) {
+			_city = work_space[1];
+			_area = work_space[2];
+		}
+
+		var _hospitals = [],
+		    _depart_ids = [],
+		    _service_type_ids = [];
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2 .item').each(function () {
+			_hospitals.push(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json'));
+		});
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container1 .item').each(function () {
+			if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).hasClass('item-chosen')) {
+				_depart_ids.push(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json'));
+			}
+		});
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container3 .item').each(function () {
+			if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).hasClass('item-chosen')) {
+				_service_type_ids.push(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json'));
+			}
+		});
+
+		var data = {
+			real_name: name,
+			sex: sex,
+			email: email,
+			province: _province,
+			city: _city,
+			area: _area,
+			depart_ids: JSON.stringify(_depart_ids),
+			service_type_ids: JSON.stringify(_service_type_ids),
+			hospitals: JSON.stringify(_hospitals)
+		};
+
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+			url: '/agent/agent-sign',
+			type: 'post',
+			data: data,
+			success: function success(data) {
+				if (data.status === 1) {
+					swal({
+						title: '',
+						text: '\u6B22\u8FCE\u60A8\u6210\u4E3A\u836F\u68B0\u7ECF\u7EAA\u4EBA\uFF0C<a href="/">\u8FD4\u56DE\u9996\u9875</a>',
+						html: true,
+						type: 'success'
+					});
+				} else {
+					swal({
+						title: '',
+						text: data.message,
+						type: 'error'
+					});
+				}
+			}
+		});
+	});
+});
+
+/***/ }),
+
+/***/ 53:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(3);
+
+
+/***/ })
+
+},[53]);

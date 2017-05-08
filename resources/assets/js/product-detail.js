@@ -67,7 +67,7 @@ $(function () {
 	});
 	$('.save').click(function(){
 		if ($(this).data('href') !== undefined){
-			sweetAlert('请先登录')
+			location.href = '/login'
 		}
 	})
 
@@ -134,7 +134,12 @@ $(function () {
 			},
 			success : function(data){
 				$('.shielder,#panel').hide()
-				sweetAlert(data.message)
+				swal({
+						title : '',
+						text: `提示合作申请提交成功！我们将会在两个工作日内与您联系<br><a href="/personal/cooperation">查看详情</a>`,
+						html: true,
+						type: 'success'
+					});
 			}
 		})
 	})

@@ -290,6 +290,11 @@ $(function () {
 					$(this).addClass('item-chosen')
 				}
 			})
+			$('#panel1 .item').each(function(){
+				if ($(this).children('span').text() === data[i].name){
+					$(this).addClass('item-chosen')
+				}
+			})
 		}
 	})
 
@@ -299,6 +304,11 @@ $(function () {
 		for (var i = 0; i < data.length; i++) {
 			$('#item-container3 .item').each(function(){
 				if ($(this).data('json').name === data[i].name){
+					$(this).addClass('item-chosen')
+				}
+			})
+			$('#panel3 .item').each(function(){
+				if ($(this).children('span').text() === data[i].name){
 					$(this).addClass('item-chosen')
 				}
 			})
