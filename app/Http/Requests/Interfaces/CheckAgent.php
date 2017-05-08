@@ -20,8 +20,8 @@ trait CheckAgent
             return ['code'=>200, 'status' => 0,'message' => '请先登录!' ];
 
         $rules = [
-            'real_name' => 'required|max:25',//真实姓名
-            'sex' => "required",//类型
+           // 'real_name' => 'required|max:25',//真实姓名
+           // 'sex' => "required",//类型
            // 'email' => 'required|email',
            // 'province' => 'required',
             //'city' => 'required',
