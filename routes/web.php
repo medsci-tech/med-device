@@ -87,7 +87,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
 
 // 后台相关路由
 Route::group(['prefix' => 'admin'], function () {
-    Route::group(['namespace' => 'Admin', 'middleware' => 'admin'], function () {
+    Route::group(['namespace' => 'Admin', 'middleware' => 'web'], function () {
         Route::resource('category', 'CategoryController'); // 产品分类
         Route::resource('product', 'ProductController'); //产品
         Route::resource('supplier', 'SupplierController');
