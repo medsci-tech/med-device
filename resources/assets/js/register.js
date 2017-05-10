@@ -86,7 +86,7 @@ $(function () {
 		var real_name = $('#real_name').val()
 		var email = $('#email').val()
 		var agree = $('#agree')[0].checked
-		var sex = $('input:radio[name="sex"]:checked').val()
+		var sex = $('.btn.active input[name="gender"]').val()
 
 		$.ajax({
 			url : '/register',
