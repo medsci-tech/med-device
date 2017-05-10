@@ -40,7 +40,9 @@
 			</div>
 			<div class="content contact">
 				<h3>我们的地址</h3>
-				<div></div>
+				<div>
+					<iframe src="http://map.baidu.com/?newmap=1&amp;ie=utf-8&amp;s=s%26wd%3D%E6%AD%A6%E6%B1%89%E5%B8%82%E4%B8%9C%E6%B9%96%E5%BC%80%E5%8F%91%E5%8C%BA%E9%AB%98%E6%96%B0%E5%A4%A7%E9%81%93666%E5%8F%B7%E5%85%89%E8%B0%B7%E7%94%9F%E7%89%A9%E5%88%9B%E6%96%B0%E5%9B%ADC2-4%E6%A0%8B" frameborder="0" width="800" height="500"></iframe>
+				</div>
 				<h3>联系方式</h3>
 				<div>
 					<p>专业致力于慢性病医疗领域 以更专业的产品和服务 造福中国慢性疾病医生及患者</p>
