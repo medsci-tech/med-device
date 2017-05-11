@@ -174,7 +174,7 @@ class AuthController extends Controller
     protected function validateRegister(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|alpha_num|max:12|unique:users',
+            'name' => 'required|max:12|unique:users',
             'phone'=>'required|regex:/^1[34578][0-9]{9}$/|unique:users',
             //'email' => 'required|email|max:255|unique:users',
             'code' => 'required|min:6',
@@ -189,7 +189,7 @@ class AuthController extends Controller
             'confirmed' => '两次输入的密码不一致',
             'name.unique' => '该用户名已经被注册',
             'phone.unique' => '该手机号已经被注册',
-            'alpha_num' => ':attribute必须为字母或数字',
+           // 'alpha_num' => ':attribute必须为字母或数字',
             "accepted" => "The :attribute 必须同意条款.",
         ], [
             'name' => '用户名',
