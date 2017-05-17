@@ -21,6 +21,8 @@ Route::group(['middleware' => 'web'], function () {
     });
 });
 Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
+    Route::get('/test', 'TestController@index');//send
+    Route::get('/get', 'TestController@get');//get
 
     Route::get('/', 'HomeController@index');//首页
     Route::any('/forget', 'HomeController@forget'); // 忘记密码

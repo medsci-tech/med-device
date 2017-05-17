@@ -58,7 +58,7 @@
         <div class="am-offcanvas-bar admin-offcanvas-bar">
             <ul class="am-list admin-sidebar-list">
                 {{--<li><a href="/"><span class="am-icon-home"></span> 首页</a></li>--}}
-                <li><a href="/admin/user"><span class="am-icon-users"></span>用户管理</a></li>
+                {{--<li><a href="/admin/user"><span class="am-icon-users"></span>用户管理</a></li>--}}
                 {{--<li><a href="/admin/order"><span class="am-icon-file"></span> 订单管理</a></li>--}}
                 <li><a href="/admin/banner"><span class="am-icon-th"></span> 首页Banner</a></li>
                 <li><a href="/admin/category"><span class="am-icon-pencil-square-o"></span>产品分类</a></li>
@@ -72,21 +72,21 @@
                         <li><a href="/admin/product-banner"><span class="am-icon-th"></span></span>Banner管理</a></li>
                     </ul>
                 </li>
-                {{--<li><a href="/admin/supplier"><span class="am-icon-bank"></span>供应商管理</a></li>--}}
-                {{--<li><a href="/admin/activity"><span class="am-icon-bookmark"></span>活动管理</a></li>--}}
+                <li><a href="/admin/supplier"><span class="am-icon-bank"></span>供应商管理</a></li>
+                <li><a href="/admin/activity"><span class="am-icon-bookmark"></span>活动管理</a></li>
 
-                {{--<li class="admin-parent">--}}
-                    {{--<a class="am-cf" data-am-collapse="{target: '#member-nav'}"><span--}}
-                                {{--class="am-icon-product-hun"></span>--}}
-                        {{--外接商城 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>--}}
-                    {{--<ul class="am-list am-collapse admin-sidebar-sub am-in" id="member-nav">--}}
-                        {{--<li><a href="/admin/member/product" class="am-cf"><span class="am-icon-calendar"></span>商品管理</a>--}}
-                        {{--</li>--}}
-                        {{--<li><a href="/admin/member/member-order" class="am-cf"><span--}}
-                                        {{--class="am-icon-file"></span>App订单</a></li>--}}
-                        {{--<li><a href="/admin/member/wx-order"><span class="am-icon-puzzle-file"></span>微信订单</a>--}}
-                        {{--</li>--}}
-                    {{--</ul>--}}
+                <li class="admin-parent">
+                    <a class="am-cf" data-am-collapse="{target: '#member-nav'}"><span
+                                class="am-icon-product-hun"></span>
+                        用户管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                    <ul class="am-list am-collapse admin-sidebar-sub am-in" id="member-nav">
+                        <li><a href="/admin/user" class="am-cf"><span class="am-icon-calendar"></span>用户管理</a>
+                        </li>
+                        <li><a href="/admin/member/member-order" class="am-cf"><span
+                                        class="am-icon-file"></span>预约申请</a></li>
+                        <li><a href="/admin/member/wx-order"><span class="am-icon-puzzle-file"></span>合作申请</a>
+                        </li>
+                    </ul>
                 {{--</li>--}}
             </ul>
         </div>

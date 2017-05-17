@@ -19,5 +19,5 @@ use Illuminate\Database\Eloquent\Model;
  */
 class MessageVerify extends Model
 {
-    protected $table = 'message_verifies';
+
 }

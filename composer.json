@@ -8,10 +8,12 @@
         "php": ">=5.6.4",
         "barryvdh/laravel-ide-helper": "^2.3",
         "doctrine/dbal": "^2.5",
+        "fenos/notifynder": "^4.2",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "mews/captcha": "^2.1",
         "stevenyangecho/laravel-u-editor": "~1.4",
+        "vladimir-yuldashev/laravel-queue-rabbitmq": "5.4",
         "zgldh/qiniu-laravel-storage": "^0.6.3"
     },
     "require-dev": {

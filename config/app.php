@@ -162,6 +162,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Fenos\Notifynder\NotifynderServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -232,6 +233,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Qiniu' => zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
         'Helper' => App\Helper\Facades\Helper::class,
+        'Notifynder' => Fenos\Notifynder\Facades\Notifynder::class,
 
     ],
 
