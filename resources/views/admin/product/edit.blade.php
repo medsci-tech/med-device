@@ -4,6 +4,10 @@
 @stop
 @include('UEditor::head')
 @section('main')
+    <link rel="stylesheet" href="/admin/dist/css/select2.min.css" type="text/css" />
+    <script type="text/javascript" src="/admin/js/jquery.min.js"></script>
+
+    <script type="text/javascript" src="/admin/dist/js/select2.min.js"></script>
     <div class="admin-content" xmlns="http://www.w3.org/1999/html" style="height: auto">
         <div class="am-cf am-padding">
             <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">商品管理</strong> /
@@ -27,6 +31,19 @@
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
+                            </select>
+                            <span class="am-form-caret"> </span>
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-select">
+                        <label for="doc-select-1" class="am-u-sm-3 am-form-label">关键词</label>
+                        <div class="am-u-sm-9">
+                            <select class="select_gallery-multiple" multiple="multiple" style="width:100%;" name="keyword_ids[]">
+                                <optgroup label="请选择关键词">
+                                    @foreach(\App\Models\Keyword::all() as $val)
+                                        <option value="{{$val->id}}">{{$val->name}}</option>
+                                    @endforeach
+                                </optgroup>
                             </select>
                             <span class="am-form-caret"> </span>
                         </div>
@@ -271,9 +288,11 @@
             </div>
         </div>
     </div>
-    <script src="/admin/js/jquery.min.js"></script>
     <!-- 实例化编辑器 -->
     <script type="text/javascript">
+        $("#form-keyword_ide").select2();
+        $(".select_gallery-multiple").select2();
+        $(".select_gallery").select2();
         var ue = UE.getEditor('container');
         ue.ready(function () {
 

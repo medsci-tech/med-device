@@ -58,7 +58,7 @@
         <div class="am-offcanvas-bar admin-offcanvas-bar">
             <ul class="am-list admin-sidebar-list">
                 {{--<li><a href="/"><span class="am-icon-home"></span> 首页</a></li>--}}
-                {{--<li><a href="/admin/user"><span class="am-icon-users"></span>用户管理</a></li>--}}
+                <li><a href="/admin/message"><span class="am-icon-users"></span>站内信</a></li>
                 {{--<li><a href="/admin/order"><span class="am-icon-file"></span> 订单管理</a></li>--}}
                 <li><a href="/admin/banner"><span class="am-icon-th"></span> 首页Banner</a></li>
                 <li><a href="/admin/category"><span class="am-icon-pencil-square-o"></span>产品分类</a></li>

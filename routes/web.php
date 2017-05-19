@@ -21,8 +21,6 @@ Route::group(['middleware' => 'web'], function () {
     });
 });
 Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
-    Route::get('/test', 'TestController@index');//send
-    Route::get('/get', 'TestController@get');//get
 
     Route::get('/', 'HomeController@index');//首页
     Route::any('/forget', 'HomeController@forget'); // 忘记密码
@@ -95,6 +93,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('supplier', 'SupplierController');
         Route::resource('activity', 'ActivityController');
         Route::resource('user', 'UserController');
+        Route::resource('message', 'MessageController');
         Route::resource('specification', 'SpecificationController');
         Route::resource('video', 'VideoController');
         Route::resource('banner', 'BannerController');

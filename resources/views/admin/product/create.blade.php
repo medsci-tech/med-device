@@ -4,6 +4,10 @@
 @stop
 @include('UEditor::head')
 @section('main')
+    <link rel="stylesheet" href="/admin/dist/css/select2.min.css" type="text/css" />
+    <script type="text/javascript" src="/admin/js/jquery.min.js"></script>
+
+    <script type="text/javascript" src="/admin/dist/js/select2.min.js"></script>
     <div class="admin-content" xmlns="http://www.w3.org/1999/html" style="height: auto">
         <div class="am-cf am-padding">
             <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">商品管理</strong> /
@@ -25,6 +29,19 @@
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
+                            </select>
+                            <span class="am-form-caret"> </span>
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-select">
+                        <label for="doc-select-1" class="am-u-sm-3 am-form-label">关键词</label>
+                        <div class="am-u-sm-9">
+                            <select class="select_gallery-multiple" multiple="multiple" style="width:100%;" name="keywords">
+                                <optgroup label="请选择关键词">
+                                    @foreach(\App\Models\Keyword::all() as $val)
+                                    <option value="{{$val->id}}">{{$val->name}}</option>
+                                    @endforeach
+                                </optgroup>
                             </select>
                             <span class="am-form-caret"> </span>
                         </div>
@@ -143,6 +160,16 @@
                             <small>请用","隔开。例:"药械,糖尿病"</small>
                         </div>
                     </div>
+                    <div class="am-form-grou">
+                        <label class="col-sm-2 control-label">关键词</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="keyword_ids[]" id="form-keyword_id" multiple="multiple" data-placeholder="请选择关键词" style="width:100%;">
+                                @foreach($keywords as $keyword)
+                                    <option value="{{$keyword['id']}}">{{$keyword['name']}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                     <div class="am-form-group am-form-file" id="video">
                         <label for="doc-ipt-file-2" class="am-u-sm-3 am-form-label">教育视频</label>
 
@@ -191,8 +218,11 @@
             </div>
         </div>
     </div>
-    <script src="/admin/js/jquery.min.js"></script>
+
     <script type="text/javascript">
+        $("#form-keyword_ide").select2();
+        $(".select_gallery-multiple").select2();
+        $(".select_gallery").select2();
         $('#add-spec').click(function () {
             var input = '<div class="am-form-group"><label for="user-name" class="am-u-sm-3 am-form-label">商品规格</label><div class="am-u-sm-4"><input type="text" placeholder="规格名称,例如[100g]" name="spec_name[]" required></div><div class="am-u-sm-4"><input type="text"  placeholder="规格对应价格商品价格" name="spec_price[]" required></div></div>';
             $('#price').after(input);
