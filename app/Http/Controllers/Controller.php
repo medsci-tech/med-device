@@ -56,7 +56,8 @@ class Controller extends BaseController
         $pos = strpos($city, $find);
         if ($pos !== false)
             $city =str_replace($find,"",$city);
-
+        if($city =='辖区')
+            $city=$province;
         $name = isset($data['hospital']) ? $data['hospital']:'';
         $where = [];
         if($province){
