@@ -162,7 +162,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Fenos\Notifynder\NotifynderServiceProvider::class,
+        //Fenos\Notifynder\NotifynderServiceProvider::class,
 
         /*
          * Package Service Providers...
