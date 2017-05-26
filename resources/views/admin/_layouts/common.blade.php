@@ -84,7 +84,7 @@
                         </li>
                         <li><a href="/admin/member/member-order" class="am-cf"><span
                                         class="am-icon-file"></span>预约申请</a></li>
-                        <li><a href="/admin/member/wx-order"><span class="am-icon-puzzle-file"></span>合作申请</a>
+                        <li><a href="/admin/cooperations"><span class="am-icon-puzzle-file"></span>合作申请</a>
                         </li>
                     </ul>
                 {{--</li>--}}
