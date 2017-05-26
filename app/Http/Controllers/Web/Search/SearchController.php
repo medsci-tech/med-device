@@ -38,8 +38,10 @@ class SearchController extends Controller
     {
         $id = $request->id;
         $keyword =  Keyword::find($id)->name;
-        $count =Product::whereRaw("FIND_IN_SET($id,keyword_id)")->count();
-        $product = Product::whereRaw("FIND_IN_SET($id,keyword_id)")->paginate(config('params')['paginate']);
+        $tags = ProductTag::select('id')->where('name','like','%'.$keyword.'%')->get()->toArray(); // 匹配,标签
+
+        $count =Product::whereRaw("FIND_IN_SET($id,keyword_id)")->orwhereIn('tags', $tags)->count();
+        $product = Product::whereRaw("FIND_IN_SET($id,keyword_id)")->orwhereIn('tags', $tags)->paginate(config('params')['paginate']);
         return view('web.search.index', compact('product','keyword','count'));
     }
 
