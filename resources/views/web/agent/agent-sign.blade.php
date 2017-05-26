@@ -3,6 +3,7 @@
 @section('title', '经纪人登记')
 
 @section('page_css')
+<link rel="stylesheet" type="text/css" href="/style/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet" type="text/css" href="/style/broker-sign.css">
 @endsection
 
@@ -58,6 +59,11 @@
     			</div>
 
 			</div>
+			<div class="input-box" id="birthday-box">
+        		<div class="required">*</div>
+				<label class="normal-label">出生日期</label>
+				<input id="datetimepicker" class="normal-input" type="text" name="date" placeholder="年/月/日" data-date-format="yyyy-mm-dd">
+			</div>
 			<div class="input-box" id="email-box">
         		<div class="required">*</div>
 				<label class="normal-label">电子邮箱</label>
@@ -98,6 +104,8 @@
 
 
 @section('page_js')
+<script src="/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/js/bootstrap-datetimepicker.zh-CN.js"></script>
 <script src="/js/broker-sign.js"></script>
 @endsection
 

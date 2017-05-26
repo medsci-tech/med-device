@@ -129,9 +129,10 @@ $(document).ready(function () {
 				if(data.status === 1){
 					swal({
 						title: '',
-						text: '您已成功预约，我们将会尽快与您联系确认服务详情。<a href="/personal/appointment">查看详情</a>',
+						text: '您已成功预约，我们将会尽快与您联系确认服务详情。<br><a href="/personal/appointment">查看详情</a>',
 						html: true,
-						type: 'success'
+						type: 'success',
+						showConfirmButton : false
 					})
 				}
 				else{

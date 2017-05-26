@@ -138,9 +138,13 @@ $(function () {
 						title : '',
 						text: `提示合作申请提交成功！我们将会在两个工作日内与您联系<br><a href="/personal/cooperation">查看详情</a>`,
 						html: true,
-						type: 'success'
+						type: 'success',
+						showConfirmButton : false
 					});
 			}
 		})
 	})
+
+	//默认第一个选中
+	$('.checkboxs input').eq(0).attr('checked', 'checked')
 });

@@ -1,1 +1,261 @@
-webpackJsonp([7],{11:function(e,o,t){"use strict";Object.defineProperty(o,"__esModule",{value:!0});var i=t(0),n=t.n(i);n()(function(){function e(e,o){n()("#"+e).on("click",function(e){e.stopPropagation(),"block"===n()("#"+o).css("display")?n()(".drop-down").slideUp(200):(n()(".drop-down").slideUp(200),n()("#"+o).toggle(200))})}function o(e,o){n()("#"+e+" li").on("click",function(e){n()("#"+o).text(n()(e.target).text())})}function t(e,o){var o=n.a.parseJSON(o);1==o.status?n()("img[name=head]").attr("src",o.data.head_img):sweetAlert("上传失败!")}function i(e){e.children(".note").remove(),e.css("position","relative"),n()('<img src="/img/home/u44.png">').addClass("note").appendTo(e).css({position:"absolute",top:"14px",right:"-40px",width:"20px",whiteSpace:"nowrap"}),e.css("border-color","#d7d7d7")}function a(e,o){e.children(".note").remove(),e.css("position","relative"),n()('<div class="note"><img src="/img/home/u46.png"> '+o+"</div>").addClass("note").appendTo(e).css({position:"absolute",width:"20px",top:"12px",left:"440px",color:"red",zIndex:99,whiteSpace:"nowrap"}),e.css("border-color","red")}function s(e){var o=e.val(),t=o.indexOf("@");if(-1===t)return void a(n()("#email-box"),"邮箱格式不正确，请重新输入");var s=o.substring(t+1);if(".com"===s.substring(s.length-4)||".cn"===s.substring(s.length-3))return void i(n()("#email-box"));a(n()("#email-box"),"邮箱格式不正确，请重新输入")}n()("body").on("click",function(){n()(".drop-down").slideUp(200)}),e("btn-dropdown-type","drop-type"),e("btn-dropdown-province","drop-province"),e("btn-dropdown-city","drop-city"),e("btn-dropdown-county","drop-county"),o("drop-province","value-province"),o("drop-city","value-city"),o("drop-county","value-county"),n()("#drop-type li").on("click",function(e){n()("#service-type").val(n()(e.target).text())}),n()("#choose-icon").uploadify({debug:!1,method:"post",formData:{_token:$CSRFTOKEN},onInit:function(e){},buttonText:"上传图像",fileSizeLimit:"2MB",fileTypeExts:"*.gif; *.jpg; *.png",fileTypeDesc:"只能上传图片",swf:"/js/uploadify/uploadify.swf",buttonImage:"",buttonClass:"",uploader:"/personal/upload-head",width:80,onSelect:function(e){e.size>2048e3&&(sweetAlert("文件大小超过限制！"),n()("#choose-icon").uploadify("cancel",e.id))},onUploadSuccess:t,onUploadError:function(e,o,t,i){sweetAlert("The file "+e.name+" could not be uploaded: "+i)}}),n()("#profile-form").on("submit",function(e){e.preventDefault();var o=this.name,t=this.phone,i=this.area,a=this.real_name,s=this.sex,l=this.email,c=i.value.split("-")[0]||"",r=i.value.split("-")[1]||"";n.a.ajax({url:"/personal/info-edit",method:"POST",data:{name:o.value,phone:t.value,province:c,city:r,area:i.value.split("-")[2]||"",real_name:a.value,sex:s.value,email:l.value}}).then(function(e){1===e.status&&sweetAlert(e.message)})}),n()("#name").on("blur",function(){n.a.ajax({url:"/check-username",type:"post",data:{name:n()(this).val()},success:function(e){1===e.status?i(n()("#name-box")):a(n()("#name-box"),e.message)}})}),n()("#password_confirmation").on("blur",function(){n()(this).val()!==n()("#password").val()?a(n()("#confirm"),"两次密码输入不一致，请重新设置密码"):i(n()("#confirm"))}),n()("#email").on("blur",function(){s(n()(this))}),n()("#email").on("keyup",function(){n()(".email-dropdown").show();var e=n()("#email").val();n()(".item-email").each(function(){var o=e.indexOf("@");if(-1!==o){var t=e.substring(o);-1===n()(this).data("value").indexOf(t)&&n()(this).hide()}else n()(this).show(),n()(this).text(e+n()(this).data("value"))})});var l=["@qq.com","@163.com","@126.com","@sina.com","@hptmail.com","@gmail.com","@hotmail.com","@sohu.com","@21cn.com"];!function(e){for(var o=0;o<e.length;o++)n()("<div></div>").addClass("item-email").data("value",e[o]).css({width:"100%",height:"40px",lineHeight:"40px",paddingLeft:"10px",borderBottom:"1px solid #f2f2f2",overflow:"hidden"}).click(function(){n()("#email").val(n()(this).text()),s(n()("#email"))}).appendTo(n()(".email-dropdown"))}(l),n()("body").click(function(){n()(".email-dropdown").hide(),n()("item-email").text("")})})},62:function(e,o,t){e.exports=t(11)}},[62]);
+webpackJsonp([7],{
+
+/***/ 11:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+
+
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
+
+	//隐藏下拉框
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').on('click', function () {
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.drop-down').slideUp(200);
+	});
+
+	//绑定下拉框显示事件
+	function bindShowEvent(triggerId, targetId) {
+
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#' + triggerId).on('click', function (event) {
+			event.stopPropagation();
+			if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#' + targetId).css('display') === 'block') {
+				__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.drop-down').slideUp(200);
+			} else {
+				__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.drop-down').slideUp(200);
+				__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#' + targetId).toggle(200);
+			}
+		});
+	}
+	bindShowEvent('btn-dropdown-type', 'drop-type');
+	bindShowEvent('btn-dropdown-province', 'drop-province');
+	bindShowEvent('btn-dropdown-city', 'drop-city');
+	bindShowEvent('btn-dropdown-county', 'drop-county');
+
+	//填值
+	function autoValue(triggerId, targetId) {
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#' + triggerId + ' li').on('click', function (e) {
+			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#' + targetId).text(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(e.target).text());
+		});
+	}
+	autoValue('drop-province', 'value-province');
+	autoValue('drop-city', 'value-city');
+	autoValue('drop-county', 'value-county');
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#drop-type li').on('click', function (e) {
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#service-type').val(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(e.target).text());
+	});
+
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#choose-icon').uploadify({
+		'debug': false,
+		'method': 'post',
+		'formData': {
+			'_token': $CSRFTOKEN
+		},
+		'onInit': function onInit(instance) {//初始化加载
+			//$('#choose-icon-queue').hide();
+		},
+		'buttonText': '上传图像',
+		'fileSizeLimit': '2MB',
+		'fileTypeExts': '*.gif; *.jpg; *.png',
+		'fileTypeDesc': '只能上传图片', //选择文件的时候的提示信息
+		'swf': "/js/uploadify/uploadify.swf",
+		'buttonImage': '', //重载按钮图片
+		'buttonClass': '', //重载按钮样式
+		'uploader': "/personal/upload-head",
+		'width': 80,
+		'onSelect': function onSelect(file) {
+			if (file.size > 1024000 * 2) {
+				//文件太大，取消上传该文件
+				sweetAlert("文件大小超过限制！");
+				__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#choose-icon').uploadify('cancel', file.id);
+			}
+		},
+		'onUploadSuccess': uploadFile,
+		'onUploadError': function onUploadError(file, errorCode, errorMsg, errorString) {
+			sweetAlert('The file ' + file.name + ' could not be uploaded: ' + errorString);
+		}
+		//            'onUploadSuccess' : function(file, data, response) {
+		//                sweetAlert('The file ' + file.name + ' was successfully uploaded with a response of ' + response + ':' + data);
+		//            }
+	});
+	function uploadFile(file, data) {
+		var data = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.parseJSON(data);
+		console.log(arguments);
+		if (data.status == 1) {
+			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('img[name=head]').attr('src', data.data.head_img);
+		} else {
+			sweetAlert('上传失败!');
+		}
+	}
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#profile-form').on('submit', function (e) {
+		e.preventDefault();
+		var name = this.name,
+		    phone = this.phone,
+		    area = this.area,
+		    real_name = this.real_name,
+		    sex = this.sex,
+		    email = this.email;
+
+
+		var province = area.value.split('-')[0] || '',
+		    city = area.value.split('-')[1] || '';
+
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+			url: '/personal/info-edit',
+			method: 'POST',
+			data: {
+				name: name.value,
+				phone: phone.value,
+				province: province, city: city,
+				area: area.value.split('-')[2] || '',
+				real_name: real_name.value,
+				sex: sex.value,
+				email: email.value
+			}
+		}).then(function (data) {
+			if (data.status === 1) {
+				swal({
+					title: '',
+					text: '\u4FEE\u6539\u6210\u529F\uFF0C<a href="/">\u8FD4\u56DE\u9996\u9875</a>',
+					html: true,
+					type: 'success',
+					showConfirmButton: false
+				});
+			}
+		});
+	});
+
+	function checkRight($ele) {
+		$ele.children('.note').remove();
+		$ele.css('position', 'relative');
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('<img src="/img/home/u44.png">').addClass('note').appendTo($ele).css({
+			position: 'absolute',
+			top: '14px',
+			right: '-40px',
+			width: '20px',
+			whiteSpace: 'nowrap'
+		});
+		$ele.css('border-color', '#d7d7d7');
+	}
+	function checkWrong($ele, message) {
+		$ele.children('.note').remove();
+		$ele.css('position', 'relative');
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="note"><img src="/img/home/u46.png"> ' + message + '</div>').addClass('note').appendTo($ele).css({
+			position: 'absolute',
+			width: '20px',
+			top: '12px',
+			left: '440px',
+			color: 'red',
+			zIndex: 99,
+			whiteSpace: 'nowrap'
+		});
+		$ele.css('border-color', 'red');
+	}
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#name').on('blur', function () {
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+			url: '/check-username',
+			type: 'post',
+			data: {
+				name: __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).val()
+			},
+			success: function success(data) {
+				if (data.status === 1) {
+					checkRight(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#name-box'));
+				} else {
+					checkWrong(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#name-box'), data.message);
+				}
+			}
+		});
+	});
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#password_confirmation').on('blur', function () {
+		if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).val() !== __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#password').val()) {
+			checkWrong(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#confirm'), '两次密码输入不一致，请重新设置密码');
+		} else {
+			checkRight(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#confirm'));
+		}
+	});
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email').on('blur', function () {
+		checkEmail(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this));
+	});
+	function checkEmail($ele) {
+		var value = $ele.val();
+		var index = value.indexOf('@');
+		if (index === -1) {
+			checkWrong(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email-box'), '邮箱格式不正确，请重新输入');
+			return;
+		}
+		var suffix = value.substring(index + 1);
+		// for (var i = 0; i < data.length; i++) {
+		// 	if (data[i] === suffix){
+		// 		checkRight($('#email-box'))
+		// 		return
+		// 	}
+		// }
+		if (suffix.substring(suffix.length - 4) === '.com' || suffix.substring(suffix.length - 3) === '.cn') {
+			checkRight(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email-box'));
+			return;
+		}
+		checkWrong(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email-box'), '邮箱格式不正确，请重新输入');
+	}
+
+	//邮箱后缀
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email').on('keyup', function () {
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.email-dropdown').show();
+
+		var value = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email').val();
+		var $items = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.item-email');
+		$items.each(function () {
+			var index = value.indexOf('@');
+			if (index !== -1) {
+				var str = value.substring(index);
+				if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('value').indexOf(str) === -1) {
+					__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).hide();
+				}
+			} else {
+				__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).show();
+				__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).text(value + __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('value'));
+			}
+		});
+	});
+	function initDom(data) {
+		for (var i = 0; i < data.length; i++) {
+			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div></div>').addClass('item-email').data('value', data[i]).css({
+				width: '100%',
+				height: '40px',
+				lineHeight: '40px',
+				paddingLeft: '10px',
+				borderBottom: '1px solid #f2f2f2',
+				overflow: 'hidden'
+			}).click(function () {
+				__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email').val(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).text());
+				checkEmail(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#email'));
+			}).appendTo(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.email-dropdown'));
+		}
+	}
+	var data = ['@qq.com', '@163.com', '@126.com', '@sina.com', '@hptmail.com', '@gmail.com', '@hotmail.com', '@sohu.com', '@21cn.com'];
+	initDom(data);
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').click(function () {
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.email-dropdown').hide();
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('item-email').text('');
+	});
+
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#datetimepicker').datetimepicker({
+		minView: "month", //选择日期后，不会再跳转去选择时分秒 
+		format: "yyyy-mm-dd", //选择日期后，文本框显示的日期格式 
+		language: 'zh-CN', //汉化 
+		autoclose: true });
+});
+
+/***/ }),
+
+/***/ 62:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(11);
+
+
+/***/ })
+
+},[62]);

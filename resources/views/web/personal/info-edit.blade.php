@@ -3,6 +3,7 @@
 @section('title', '个人资料修改')
 
 @section('page_css')
+<link rel="stylesheet" type="text/css" href="/style/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet" type="text/css" href="/style/profile-basic.css">
 <link rel="stylesheet" type="text/css" href="/js/uploadify/uploadify.css">
 @endsection
@@ -67,6 +68,10 @@
 						<label class="normal-label">真实姓名</label>
 						<input class="normal-input" type="text" name="real_name" placeholder="请输入真实姓名" value="{{ \Auth::user()->real_name }}">
 					</div>
+					<div>
+						<label class="normal-label">出生日期</label>
+						<input id="datetimepicker" class="normal-input" type="text" name="date" placeholder="年/月/日" data-date-format="yyyy-mm-dd" value="{{ \Auth::user()->birthday }}">
+					</div>
 					<div class="no-border">
 
 						<label for="sex" class="control-label input-group" style="margin:8px 61px 0 10px">性别</label>
@@ -96,6 +101,8 @@
 @endsection
 
 @section('page_js')
+<script src="/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/js/bootstrap-datetimepicker.zh-CN.js"></script>
 <script src="/js/uploadify/jquery.uploadify.js"></script>
 <script src="/js/profile-basic.js"></script>
 @endsection

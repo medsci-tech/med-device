@@ -369,7 +369,8 @@ $(function () {
 						title : '',
 						text: `欢迎您成为药械经纪人，<a href="/">返回首页</a>`,
 						html: true,
-						type: 'success'
+						type: 'success',
+						showConfirmButton : false
 					});
 				}
 				else{
@@ -382,6 +383,14 @@ $(function () {
 			}
 		})
 	})
+
+
+	$('#datetimepicker').datetimepicker({
+	    minView: "month", //选择日期后，不会再跳转去选择时分秒 
+		format: "yyyy-mm-dd", //选择日期后，文本框显示的日期格式 
+		language: 'zh-CN', //汉化 
+　　	autoclose:true, //选择日期后自动关闭 
+	});
 
 
 });

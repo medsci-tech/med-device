@@ -1,1 +1,100 @@
-webpackJsonp([9],{60:function(t,e,o){t.exports=o(9)},9:function(t,e,o){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=o(0),a=o.n(n);a()(function(){var t=60;a()("#getCaptcha").click(function(){if(!(t<60)){if(""===a()("#phone").val())return void sweetAlert("请填写手机号");var e=a()(this);setTimeout(function(){e.text("发送中...")},100),a.a.ajax({url:"/send-code",type:"post",data:{phone:a()("#phone").val()},success:function(o){if(1===o.status)var n=setInterval(function(){t<=0?(e.text("获取验证码"),clearInterval(n),t=60):(t--,e.text(t+"秒后重新获取"))},1e3);else e.text("获取验证码"),sweetAlert(o.message)}})}}),a()("#submit").click(function(){var t=a()("#phone").val(),e=a()("#code").val(),o=a()("#password").val(),n=a()("#password_confirmation").val();a.a.ajax({url:"/forget",type:"post",data:{phone:t,code:e,password:o,password_confirmation:n},success:function(t){1!==t.status?sweetAlert(t.message):swal({title:"密码修改成功",closeOnConfirm:!1,confirmButtonColor:"green",confirmButtonText:"返回首页"},function(){location.href="/"})}})})})}},[60]);
+webpackJsonp([9],{
+
+/***/ 60:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(9);
+
+
+/***/ }),
+
+/***/ 9:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+
+
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
+
+	//获取手机验证码 
+	var count = 60;
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#getCaptcha').click(function () {
+		if (count < 60) {
+			return;
+		}
+		var phone = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#phone').val();
+		if (phone === '') {
+			sweetAlert('请填写手机号');
+			return;
+		}
+		var self = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this);
+		setTimeout(function () {
+			self.text('发送中...');
+		}, 100);
+
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+			url: '/send-code',
+			type: 'post',
+			data: {
+				phone: __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#phone').val()
+			},
+			success: function success(data) {
+				if (data.status === 1) {
+					var t = setInterval(function () {
+						if (count <= 0) {
+							self.text('获取验证码');
+							clearInterval(t);
+							count = 60;
+						} else {
+							count--;
+							self.text(count + '秒后重新获取');
+						}
+					}, 1000);
+				} else {
+					self.text('获取验证码');
+					sweetAlert(data.message);
+				}
+			}
+		});
+	});
+
+	//点击提交
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#submit').click(function () {
+		var phone = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#phone').val();
+		var code = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#code').val();
+		var password = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#password').val();
+		var password_confirmation = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#password_confirmation').val();
+
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+			url: '/forget',
+			type: 'post',
+			data: {
+				phone: phone,
+				code: code,
+				password: password,
+				password_confirmation: password_confirmation
+			},
+			success: function success(data) {
+				if (data.status !== 1) {
+					sweetAlert(data.message);
+				} else {
+					swal({
+						title: "密码修改成功",
+						closeOnConfirm: false,
+						confirmButtonColor: "green",
+						confirmButtonText: "返回首页"
+					}, function () {
+						location.href = '/';
+					});
+				}
+			}
+		});
+	});
+});
+
+/***/ })
+
+},[60]);
