@@ -152,24 +152,28 @@
                             </button>
                         </div>
                     </div>
-                    <div class="am-form-group" id="tags">
-                        <label for="user-name" class="am-u-sm-3 am-form-label">商品标签</label>
-
+                    <div class="am-form-group am-form-select" id="tags">
+                        <label for="doc-select-1" class="am-u-sm-3 am-form-label">商品标签</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="tags" placeholder="标签" name="tags">
-                            <small>请用","隔开。例:"药械,糖尿病"</small>
-                        </div>
-                    </div>
-                    <div class="am-form-grou">
-                        <label class="col-sm-2 control-label">关键词</label>
-                        <div class="col-sm-10">
-                            <select class="form-control" name="keyword_ids[]" id="form-keyword_id" multiple="multiple" data-placeholder="请选择关键词" style="width:100%;">
-                                @foreach($keywords as $keyword)
-                                    <option value="{{$keyword['id']}}">{{$keyword['name']}}</option>
-                                @endforeach
+                            <select class="select_gallery-multiple" multiple="multiple" style="width:100%;" name="tags[]">
+                                <optgroup label="请选择标签">
+                                    @foreach(\App\Models\ProductTag::all() as $val)
+                                        <option value="{{$val->id}}">{{$val->name}}</option>
+                                    @endforeach
+                                </optgroup>
                             </select>
+                            <span class="am-form-caret"> </span>
                         </div>
                     </div>
+                    {{--<div class="am-form-group" id="tags">--}}
+                        {{--<label for="user-name" class="am-u-sm-3 am-form-label">商品标签</label>--}}
+
+                        {{--<div class="am-u-sm-9">--}}
+                            {{--<input type="text" id="tags" placeholder="标签" name="tags">--}}
+                            {{--<small>请用","隔开。例:"药械,糖尿病"</small>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+
                     <div class="am-form-group am-form-file" id="video">
                         <label for="doc-ipt-file-2" class="am-u-sm-3 am-form-label">教育视频</label>
 
