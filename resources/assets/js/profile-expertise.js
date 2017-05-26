@@ -262,7 +262,18 @@ $(function () {
 				method : 'POST',
 				data : data,
 				success : function(data){
-					sweetAlert(data.message)
+					console.log(data)
+					if (data.status === 1){
+						swal({
+						title: '',
+						html:true,
+						text:`修改成功! <a href="/">前往首页</a>`,
+						type:'success',
+						showConfirmButton : false
+					})
+					} else {
+						sweetAlert(data.message)
+					}
 				}
 			})
 

@@ -281,7 +281,18 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 				method: 'POST',
 				data: data,
 				success: function success(data) {
-					sweetAlert(data.message);
+					console.log(data);
+					if (data.status === 1) {
+						swal({
+							title: '',
+							html: true,
+							text: '\u4FEE\u6539\u6210\u529F! <a href="/">\u524D\u5F80\u9996\u9875</a>',
+							type: 'success',
+							showConfirmButton: false
+						});
+					} else {
+						sweetAlert(data.message);
+					}
 				}
 			});
 		});

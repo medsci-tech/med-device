@@ -69,10 +69,16 @@ $(function(){
 			},
 			success : data => {
 				if (data.status === 1){
-					//sweetAlert()
-					this.reset()
+					swal({
+						title: '',
+						html:true,
+						text:`修改成功! <a href="/">前往首页</a>`,
+						type:'success',
+						showConfirmButton : false
+					})
+				} else {
+					sweetAlert(data.message)
 				}
-				sweetAlert(data.message)
 			}
 		})
 

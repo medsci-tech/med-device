@@ -55,8 +55,6 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 
 	//点击提交
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#pwd-form').on('submit', function (e) {
-		var _this = this;
-
 		e.preventDefault();
 		var phone = this.phone,
 		    code = this.code,
@@ -84,10 +82,16 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			},
 			success: function success(data) {
 				if (data.status === 1) {
-					//sweetAlert()
-					_this.reset();
+					swal({
+						title: '',
+						html: true,
+						text: '\u4FEE\u6539\u6210\u529F! <a href="/">\u524D\u5F80\u9996\u9875</a>',
+						type: 'success',
+						showConfirmButton: false
+					});
+				} else {
+					sweetAlert(data.message);
 				}
-				sweetAlert(data.message);
 			}
 		});
 	});
