@@ -98,6 +98,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('video', 'VideoController');
         Route::resource('banner', 'BannerController');
         Route::resource('product-banner', 'ProductBannerController');
+        Route::resource('cooperation', 'CooperationController');
+
         Route::get('down-order-excel', 'OrderController@downOrderExcel');
         Route::get('order-2-excel', 'OrderController@order2Excel');
         Route::any('/excel', 'ProductController@excel');
@@ -108,7 +110,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::any('/order/search', 'OrderController@search');
         Route::get('/order/set-ems-num', 'OrderController@setEMSNum');
         Route::get('/order/ems-print', 'OrderController@printEMSOrder');
-        Route::get('/order/print-data', 'OrderController@printData');
         Route::resource('order', 'OrderController');
         //后台管理员
         Route::any('logout', 'AuthController@logout');

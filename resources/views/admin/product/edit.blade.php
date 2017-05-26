@@ -203,15 +203,27 @@
                             @endforeach
                         </div>
                     @endif
-
-                    <div class="am-form-group" id="tags">
-                        <label for="user-name" class="am-u-sm-3 am-form-label">商品标签</label>
-
+                    <div class="am-form-group am-form-select" id="tags">
+                        <label for="doc-select-1" class="am-u-sm-3 am-form-label">商品标签</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="tag" placeholder="标签" name="tags" value="{{$product->tags}}">
-                            <small>请用","隔开。例:"药械,糖尿病"</small>
+                            <select class="select_gallery-multiple" multiple="multiple" style="width:100%;" name="tags[]" id="selTag">
+                                <optgroup label="请选择标签">
+                                    @foreach(\App\Models\ProductTag::all() as $val)
+                                        <option value="{{$val->id}}">{{$val->name}}</option>
+                                    @endforeach
+                                </optgroup>
+                            </select>
+                            <span class="am-form-caret"> </span>
                         </div>
                     </div>
+                    {{--<div class="am-form-group" id="tags">--}}
+                        {{--<label for="user-name" class="am-u-sm-3 am-form-label">商品标签</label>--}}
+
+                        {{--<div class="am-u-sm-9">--}}
+                            {{--<input type="text" id="tag" placeholder="标签" name="tags" value="{{$product->tags}}">--}}
+                            {{--<small>请用","隔开。例:"药械,糖尿病"</small>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                     @foreach($product->videos as $video)
                         <div class="am-form-group"><label for="user-name" class="am-u-sm-3 am-form-label">视频参数</label>
 
@@ -293,6 +305,14 @@
         $("#form-keyword_ide").select2();
         $(".select_gallery-multiple").select2();
         $(".select_gallery").select2();
+        var select_keys = '{{ $product->keyword_id }}';
+        var sh_num =  select_keys.split(",");
+        $("select[name='keyword_ids[]']").val(sh_num).trigger('change');;
+
+        var select_ids = '{{ $product->tags }}';
+        var ch_num =  select_ids.split(",");
+        $("select[name='tags[]']").val(ch_num).trigger('change');;
+
         var ue = UE.getEditor('container');
         ue.ready(function () {
 

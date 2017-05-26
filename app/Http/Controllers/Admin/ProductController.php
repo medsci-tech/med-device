@@ -27,7 +27,7 @@ class ProductController extends Controller
             'name' => $request->input('name'), // 名称
             'weight' => $request->input('weight'),// 排序
             'contact_name' => $request->input('contact_name'),// 联系人
-            'keyword_ids' => $request->input('keyword_ids'),// 关键词id
+            'keyword_id' => implode(',',$request->input('keyword_ids') ? $request->input('keyword_ids') : []),// 关键词id
             'contact_phone' => $request->input('contact_phone'),// 联系电话
             'enterprise' => $request->input('enterprise'),// 生产企业
             'standard' => $request->input('standard'),// 生产标准
@@ -41,7 +41,7 @@ class ProductController extends Controller
             'price' => $request->input('price'),// 价格
             'detail' => $request->input('detail'),// 商品详情
             'description' => $request->input('description'),// 招商详情
-            'tags' => $request->input('tags'), // 标签
+            'tags' => implode(',',$request->input('tags') ? $request->input('tags') : []), // 标签
             'is_hot' => $request->input('is_hot'), // 热销
         ];
     }
@@ -190,7 +190,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $data = $this->updateFormatData($request);
-        $product = Product::find($id);print_r($data);exit;
+        $product = Product::find($id);
         $product->update($data);
 
         if ($request->has('spec_name') && $request->has('spec_price')) {

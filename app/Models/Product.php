@@ -25,7 +25,7 @@ class Product extends Common
     protected $fillable = [
         'name',
         'contact_name',
-        'keyword_ids',
+        'keyword_id',
         'contact_phone',
         'enterprise',
         'standard',
