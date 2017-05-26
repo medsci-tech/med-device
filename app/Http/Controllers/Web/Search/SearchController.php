@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Models\Keyword;
+use App\Models\ProductTag;
 use App\Models\Product;
 class SearchController extends Controller
 {
@@ -19,8 +20,11 @@ class SearchController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->keyword;
-        $count = Product::where('name','like','%'.$keyword.'%')->count();
-        $product = Product::where('name','like','%'.$keyword.'%')->paginate(config('params')['paginate']);
+        $tags = ProductTag::select('id')->where('name','like','%'.$keyword.'%')->get()->toArray(); // 匹配,标签
+        $keys = Keyword::select('id')->where('name','like','%'.$keyword.'%')->get()->toArray(); // 匹配关键词
+
+        $count = Product::where('name','like','%'.$keyword.'%')->orwhereIn('tags', $tags)->orwhereIn('keyword_id', $keys)->count();
+        $product = Product::where('name','like','%'.$keyword.'%')->orwhereIn('tags', $tags)->orwhereIn('keyword_id', $keys)->paginate(config('params')['paginate']);
         return view('web.search.index', compact('product','keyword','count'));
     }
 
