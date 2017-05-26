@@ -36,7 +36,7 @@
                     <div class="am-form-group am-form-select">
                         <label for="doc-select-1" class="am-u-sm-3 am-form-label">关键词</label>
                         <div class="am-u-sm-9">
-                            <select class="select_gallery-multiple" multiple="multiple" style="width:100%;" name="keywords">
+                            <select class="select_gallery-multiple" multiple="multiple" style="width:100%;" name="keyword_ids[]">
                                 <optgroup label="请选择关键词">
                                     @foreach(\App\Models\Keyword::all() as $val)
                                     <option value="{{$val->id}}">{{$val->name}}</option>
