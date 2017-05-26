@@ -20,11 +20,13 @@ class SearchController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->keyword;
-        $tags = ProductTag::select('id')->where('name','like','%'.$keyword.'%')->get()->toArray(); // 匹配,标签
-        $keys = Keyword::select('id')->where('name','like','%'.$keyword.'%')->get()->toArray(); // 匹配关键词
+        $tagId = ProductTag::select('id')->where('name','like','%'.$keyword.'%')->first(); // 匹配,标签
+        $tagId = $tagId ? $tagId->id : "''";
 
-        $count = Product::where('name','like','%'.$keyword.'%')->orwhereIn('tags', $tags)->orwhereIn('keyword_id', $keys)->count();
-        $product = Product::where('name','like','%'.$keyword.'%')->orwhereIn('tags', $tags)->orwhereIn('keyword_id', $keys)->paginate(config('params')['paginate']);
+        $keysId = Keyword::select('id')->where('name','like','%'.$keyword.'%')->first(); // 匹配关键词
+        $keysId = $keysId ? $keysId->id : "''";
+        $count = Product::where('name','like','%'.$keyword.'%')->orWhereRaw("FIND_IN_SET($keysId,keyword_id)")->orWhereRaw("FIND_IN_SET($tagId,tags)")->count();
+        $product = Product::where('name','like','%'.$keyword.'%')->orWhereRaw("FIND_IN_SET($keysId,keyword_id)")->orWhereRaw("FIND_IN_SET($tagId,tags)")->paginate(config('params')['paginate']);
         return view('web.search.index', compact('product','keyword','count'));
     }
 
@@ -38,10 +40,10 @@ class SearchController extends Controller
     {
         $id = $request->id;
         $keyword =  Keyword::find($id)->name;
-        $tags = ProductTag::select('id')->where('name','like','%'.$keyword.'%')->get()->toArray(); // 匹配,标签
-
-        $count =Product::whereRaw("FIND_IN_SET($id,keyword_id)")->orwhereIn('tags', $tags)->count();
-        $product = Product::whereRaw("FIND_IN_SET($id,keyword_id)")->orwhereIn('tags', $tags)->paginate(config('params')['paginate']);
+        $tags = ProductTag::select('id')->where('name','like','%'.$keyword.'%')->first(); // 匹配,标签
+        $tag_id = $tags ? $tags->id : "''";
+        $count =Product::whereRaw("FIND_IN_SET($id,keyword_id)")->orWhereRaw("FIND_IN_SET($tag_id,tags)")->count();
+        $product = Product::whereRaw("FIND_IN_SET($id,keyword_id)")->orWhereRaw("FIND_IN_SET($tag_id,tags)")->paginate(config('params')['paginate']);
         return view('web.search.index', compact('product','keyword','count'));
     }
 
