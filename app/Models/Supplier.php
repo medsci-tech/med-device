@@ -11,10 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Supplier extends Model
 {
-    /**
-     * @var string
-     */
-
+    protected $fillable = ['phone','supplier_name','supplier_desc','logo_image_url','type_id','openid','email','is_approved','fans'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

@@ -24,7 +24,37 @@ class SupplierController extends Controller
             'supplier_name' => $request->input('supplier_name'),
             'supplier_desc' => $request->input('supplier_desc')
         ];
+        $bannerUrl = $this->upload($request);
+        if ($bannerUrl) {
+            $data['logo_image_url'] = $bannerUrl;
+        }
+
         return $data;
+    }
+
+
+    /**
+     *    upload image file.
+     *
+     * @param Resquest    file to upload
+     *
+     * @return string
+     */
+    public function upload(Request $request)
+    {
+        if (!$request->hasFile('banner')) {
+            return false;
+        }
+        $file = $request->file('banner');
+
+        if ($file->isValid()) {
+            $imageUrl = \Helper::qiniuUpload($file);
+            return $imageUrl;
+        }
+        else {
+            return false;
+        }
+
     }
 
     /**
@@ -88,7 +118,7 @@ class SupplierController extends Controller
         $supplier->update($data);
         \Session::flash('message', trans('suppliers.update_message'));
 
-        return redirect()->route('admin.supplier.index');
+        return redirect()->route('supplier.index');
     }
 
     /**

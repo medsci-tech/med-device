@@ -78,6 +78,22 @@ class Product extends Common
     }
 
     /**
+     * @return mixed
+     */
+    public function cooperationsWithProduct()
+    {
+        return $this->cooperations()->with(['products' => function ($query) {
+            $query->get();
+        }]);
+    }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function supplier()
+    {
+        return $this->belongsTo('App\Models\Supplier', 'supplier_id');
+    }
+    /**
      * The attributes that are mass assignable.
      *
      * @var $query

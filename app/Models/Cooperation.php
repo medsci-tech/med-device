@@ -29,4 +29,9 @@ class Cooperation extends Model
         return $this->belongsToMany(\App\Models\Product::class, 'cooperations', 'id', 'product_id');
     }
 
+    public function product()
+    {
+        return $this->belongsTo(\App\Models\Product::class, 'product_id');
+    }
+
 }
