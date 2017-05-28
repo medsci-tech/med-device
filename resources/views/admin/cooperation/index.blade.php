@@ -26,24 +26,22 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {{--@foreach($orders as $order)--}}
+                        @foreach($list as $val)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td>
-
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{$val->id}}</td>
+                                <td>{{ isset($val->product->supplier->supplier_name) ? $val->product->supplier->supplier_name : '' }}</td>
+                                <td>{{$val->product->name}}</td>
+                                <td>{{$val->real_name}}</td>
+                                <td>{{$val->contact_phone}}</td>
+                                <td>{{$val->join_type}}</td>
+                                <td>{{$val->created_at}}</td>
                             </tr>
-                        {{--@endforeach--}}
+                        @endforeach
                         </tbody>
                     </table>
                     <div class="am-cf">
                         <div class="am-fr">
-                            {{--{{$orders->render() }}--}}
+                            {{$list->render() }}
                         </div>
                     </div>
                     <hr>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cooperation;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class CooperationController extends Controller
      */
     public function index()
     {
-        return view('admin.cooperation.index', ['suppliers' => Supplier::paginate('5')]);
+        return view('admin.cooperation.index', ['list' => Cooperation::orderBy('created_at', 'desc')->paginate('20')]);
     }
 
     /**

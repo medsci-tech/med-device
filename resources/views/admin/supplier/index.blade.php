@@ -38,7 +38,7 @@
                         <tr>
                             <th class="table-id">ID</th>
                             <th class="table-title">供应商名称</th>
-                            <th class="table-type">供应商简介</th>
+                            <th class="table-type">联系电话</th>
                             <th class="table-author am-hide-sm-only">创建日期</th>
                             <th class="table-date am-hide-sm-only">修改日期</th>
                             <th class="table-set">操作</th>
@@ -49,7 +49,7 @@
                             <tr>
                                 <td>{{$supplier->id}}</td>
                                 <td><a href="#">{{$supplier->supplier_name}}</a></td>
-                                <td>{{$supplier->supplier_desc}}</td>
+                                <td>{{$supplier->phone}}</td>
                                 <td class="am-hide-sm-only">{{$supplier->created_at}}</td>
                                 <td class="am-hide-sm-only">{{$supplier->updated_at}}</td>
                                 <td>

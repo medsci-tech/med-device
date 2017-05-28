@@ -15,7 +15,7 @@
             <div class="am-u-sm-10">
                 <form class="am-form am-form-horizontal" method="post" action="/admin/supplier/{{$supplier->id}}">
                     <input type="hidden" name="_method" value="put"/>
-
+                    {{ csrf_field() }}
                     <div class="am-form-group">
                         <label for="user-name" class="am-u-sm-3 am-form-label">供应商名称</label>
 
