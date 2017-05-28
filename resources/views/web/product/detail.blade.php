@@ -183,18 +183,21 @@
 		<img src="/../img/broker-sign/u899.png">
 		<p>合作意向</p>
 		<form>
-			<div>
+			<div class="border-div">
 				<label>姓名</label>
 				<input id="name" type="text" name="name" value="@if (Auth::check()){{ \Auth::user()->real_name }}@endif">
 			</div>
-			<div>
+			<div class="border-div">
 				<label>电话</label>
 				<input id="phone" type="text" name="phone" value="@if (Auth::check()){{ \Auth::user()->phone }}@endif">
 			</div>
-			<div class="checkboxs">
-				@foreach(config('params')['join_type'] as $key =>$val)
-				<input type="checkbox" name="join_type" value="{{ $key }}"><span>{{ $val }}</span>
-				@endforeach
+			<div class="form-group checkboxs">
+				<div class="btn-group" data-toggle="buttons" style="margin-left: 30px;outline: 0 none">
+					@foreach(config('params')['join_type'] as $key =>$val)
+					<label class="btn btn-default" style="outline: 0 none">
+							<input type="checkbox" name="join_type" value="{{ $key }}" style="outline: 0 none">{{ $val }}</label>
+					@endforeach
+				</div>
 			</div>
 		</form>
 	</div>

@@ -151,7 +151,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 	});
 
 	//默认第一个选中
-	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.checkboxs input').eq(0).attr('checked', 'checked');
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.checkboxs label').eq(0).addClass('active');
 });
 
 /***/ }),

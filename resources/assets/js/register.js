@@ -109,7 +109,8 @@ $(function () {
 						title: '',
 						html:true,
 						text:`注册成功，<a href="/">前往首页</a>`,
-						type:'success'
+						type:'success',
+						showConfirmButton : false
 					})
 				} else {
 					sweetAlert(data.message)
@@ -195,7 +196,20 @@ $(function () {
 		if (!reg.test($(this).val())){
 			checkWrong($('#phone-box'), '手机号格式不正确，请重新输入')
 		} else {
-			checkRight($('#phone-box'))
+			$.ajax({
+				url : '/check-username',
+				type : 'post',
+				data : {
+					name : $(this).val()
+				},
+				success : function(data){
+					if (data.status === 1){
+						checkRight($('#phone-box'))
+					} else {
+						checkWrong($('#phone-box'), data.message)
+					}
+				}
+			})
 		}
 	})
 

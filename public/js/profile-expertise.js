@@ -37,6 +37,18 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 	    hospitals = [];
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.getJSON('/json/loc.json').then(function (data) {
 		data = data;
+
+		//医院框里用户搜索的item
+		var item_hos = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item" id="byuser"><span class="name"></span></div>');
+		var checkbox = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<input type="checkbox">').appendTo(item_hos);
+		item_hos.click(function () {
+			__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).children('input').click();
+		});
+		checkbox.click(function () {
+			__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).click();
+		});
+		item_hos.appendTo(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#panel2 .items')).hide();
+
 		for (var i = 0; i < data.length; i++) {
 			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div>' + data[i].name + '</div>').addClass('item').click(function () {
 				var provName = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).text();
@@ -62,11 +74,12 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 				return;
 			}
 			var container = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#panel2 .items');
-			container.empty();
+			container.children('.clear').remove();
+
 			var hospital_list = data.data;
 			for (var i = 0; i < hospital_list.length; i++) {
 				var dataItem = hospital_list[i];
-				var item_hos = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item" data-json=' + JSON.stringify(dataItem) + '><span class="name">' + dataItem.hospital + '</span></div>');
+				var item_hos = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item clear" data-json=' + JSON.stringify(dataItem) + '><span class="name">' + dataItem.hospital + '</span></div>');
 				var checkbox = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<input type="checkbox">').appendTo(item_hos);
 				item_hos.click(function () {
 					__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).children('input').click();
@@ -103,14 +116,22 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 		var value = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).val();
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.items .item').each(function () {
 			var $name = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).children('.name');
-			console.log($name.text());
 			if ($name.text().indexOf(value) === -1) {
 				__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).hide();
-				__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).children('input')[0].checked = false;
+				if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).children('input').length !== 0) {
+					__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).children('input')[0].checked = false;
+				}
 			} else {
 				__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).show();
 			}
 		});
+
+		__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#byuser .name').text(value);
+		if (value) {
+			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#byuser').show();
+		} else {
+			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#byuser').hide();
+		}
 	});
 
 	//省市下拉框事件
@@ -126,13 +147,14 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 	//选择覆盖区域
 	var container_appendHosItem = function container_appendHosItem(data) {
 		var cancelBtn = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<span class="icon"><span class="icon2"></span></span>');
-		var item = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item" style="display:block" data-json=' + JSON.stringify(data) + '><span class="inner">' + data.hospital + '</span></div>').append(cancelBtn).appendTo(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2'));
+		var item;
+		if (typeof data === 'string') {
+			item = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item" style="display:block"><span class="inner">' + data + '</span></div>').append(cancelBtn).appendTo(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2'));
+		} else {
+			item = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<div class="item" style="display:block" data-json=' + JSON.stringify(data) + '><span class="inner">' + data.hospital + '</span></div>').append(cancelBtn).appendTo(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2'));
+		}
 		cancelBtn.click(function () {
 			item.remove();
-			// deleteItem({
-			// 	id : data.id,
-			// 	type : 'hospital'
-			// })
 			toDelete.push({
 				id: data.id,
 				type: 'hospital'
@@ -142,8 +164,13 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#panel2 .btn-panel').click(function () {
 		var $items = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.items .item');
 		for (var i = 0; i < $items.length; i++) {
-			if ($items.eq(i).children('input')[0].checked && !isRepeat($items.eq(i).children('.name').text())) {
-				container_appendHosItem($items.eq(i).data('json'));
+			var item = $items.eq(i);
+			if (item.children('input')[0].checked && !isRepeat(item.children('.name').text())) {
+				if (item.data('json')) {
+					container_appendHosItem(item.data('json'));
+				} else {
+					container_appendHosItem(item.children('.name').text());
+				}
 			}
 		}
 	});
@@ -251,7 +278,11 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 			    _depart_ids = [],
 			    _service_type_ids = [];
 			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container2 .item').each(function () {
-				_hospitals.push(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json'));
+				if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json')) {
+					_hospitals.push(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).data('json'));
+				} else {
+					_hospitals.push(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).children('.inner').text());
+				}
 			});
 			__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#item-container1 .item').each(function () {
 				if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).hasClass('item-chosen')) {
@@ -272,7 +303,11 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 					return { service_type_id: s.service_type_id };
 				})),
 				hospitals: JSON.stringify(_hospitals.map(function (h) {
-					return { city: h.city, hospital: h.hospital, province: h.province };
+					if (typeof h === 'string') {
+						return { city: "", hospital: h, province: "" };
+					} else {
+						return { city: h.city, hospital: h.hospital, province: h.province };
+					}
 				}))
 			};
 			console.log(data);

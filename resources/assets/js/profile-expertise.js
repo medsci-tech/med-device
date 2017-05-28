@@ -24,6 +24,18 @@ $(function () {
 	var data, originData, province = "", city = "", hospitals = []
 	$.getJSON('/json/loc.json').then(function(data){
 		data = data;
+
+		//医院框里用户搜索的item
+		var item_hos = $('<div class="item" id="byuser"><span class="name"></span></div>')
+		var checkbox = $('<input type="checkbox">').appendTo(item_hos)
+		item_hos.click(function(){
+			$(this).children('input').click()
+		})
+		checkbox.click(function(){
+			$(this).click()
+		})
+		item_hos.appendTo($('#panel2 .items')).hide()
+
 		for (var i = 0; i < data.length; i++) {
 			$('<div>' + data[i].name + '</div>').addClass('item').click(function(){
 				var provName = $(this).text()
@@ -49,11 +61,12 @@ $(function () {
 				return
 			}
 			var container = $('#panel2 .items')
-			container.empty()
+			container.children('.clear').remove()
+
 			var hospital_list = data.data
 			for (var i = 0; i < hospital_list.length; i++){
 				var dataItem = hospital_list[i]
-				var item_hos = $('<div class="item" data-json=' + JSON.stringify(dataItem) + '><span class="name">' + dataItem.hospital + '</span></div>')
+				var item_hos = $('<div class="item clear" data-json=' + JSON.stringify(dataItem) + '><span class="name">' + dataItem.hospital + '</span></div>')
 				var checkbox = $('<input type="checkbox">').appendTo(item_hos)
 				item_hos.click(function(){
 					$(this).children('input').click()
@@ -90,14 +103,24 @@ $(function () {
 		var value = $(this).val()
 		$('.items .item').each(function(){
 			var $name = $(this).children('.name')
-			console.log($name.text())
 			if ($name.text().indexOf(value) === -1){
 				$(this).hide()
-				$(this).children('input')[0].checked = false
+				if ($(this).children('input').length !== 0){
+					$(this).children('input')[0].checked = false
+				}
 			} else {
 				$(this).show()
 			}
 		})
+
+		$('#byuser .name').text(value)
+		if (value){
+			$('#byuser').show()
+		} else {
+			$('#byuser').hide()
+		}
+		
+
 	})
 
 	//省市下拉框事件
@@ -113,13 +136,14 @@ $(function () {
 	//选择覆盖区域
 	var container_appendHosItem = function(data){
 		var cancelBtn = $('<span class="icon"><span class="icon2"></span></span>')
-		var item = $('<div class="item" style="display:block" data-json=' + JSON.stringify(data) + '><span class="inner">' + data.hospital + '</span></div>').append(cancelBtn).appendTo($('#item-container2'))
+		var item
+		if (typeof data === 'string'){
+			item = $('<div class="item" style="display:block"><span class="inner">' + data + '</span></div>').append(cancelBtn).appendTo($('#item-container2'))
+		} else {
+			item = $('<div class="item" style="display:block" data-json=' + JSON.stringify(data) + '><span class="inner">' + data.hospital + '</span></div>').append(cancelBtn).appendTo($('#item-container2'))
+		}
 		cancelBtn.click(function(){
 			item.remove()
-			// deleteItem({
-			// 	id : data.id,
-			// 	type : 'hospital'
-			// })
 			toDelete.push({
 				id : data.id,
 				type : 'hospital'
@@ -129,8 +153,13 @@ $(function () {
 	$('#panel2 .btn-panel').click(function(){
 		var $items = $('.items .item');
 		for (var i = 0; i < $items.length; i++) {
-			if ($items.eq(i).children('input')[0].checked && !isRepeat($items.eq(i).children('.name').text())){
-				container_appendHosItem($items.eq(i).data('json'))
+			var item = $items.eq(i);
+			if (item.children('input')[0].checked && !isRepeat(item.children('.name').text())){
+				if (item.data('json')){
+					container_appendHosItem(item.data('json'))
+				} else {
+					container_appendHosItem(item.children('.name').text())
+				}
 			}
 		}
 	})
@@ -237,7 +266,12 @@ $(function () {
 
 			var _hospitals = [],_depart_ids = [],_service_type_ids = []
 			$('#item-container2 .item').each(function(){
-				_hospitals.push($(this).data('json'))
+				if ($(this).data('json')){
+					_hospitals.push($(this).data('json'))
+				}
+				else {
+					_hospitals.push($(this).children('.inner').text())
+				}
 			})
 			$('#item-container1 .item').each(function(){
 				if ($(this).hasClass('item-chosen')){
@@ -254,7 +288,13 @@ $(function () {
 			var data = {
 				depart_ids : JSON.stringify(_depart_ids.map(d => ({ depart_id: d.depart_id }))),
 				service_type_ids : JSON.stringify(_service_type_ids.map(s => ({ service_type_id: s.service_type_id }))),
-				hospitals : JSON.stringify(_hospitals.map(h => ({ city: h.city, hospital: h.hospital, province: h.province })))
+				hospitals : JSON.stringify(_hospitals.map(h => {
+					if (typeof h === 'string'){
+						return {city: "", hospital: h, province: ""}
+					} else {
+						return { city: h.city, hospital: h.hospital, province: h.province }
+					}
+				}))
 			}
 			console.log(data)
 			$.ajax({
@@ -265,12 +305,12 @@ $(function () {
 					console.log(data)
 					if (data.status === 1){
 						swal({
-						title: '',
-						html:true,
-						text:`修改成功! <a href="/">前往首页</a>`,
-						type:'success',
-						showConfirmButton : false
-					})
+							title: '',
+							html:true,
+							text:`修改成功! <a href="/">前往首页</a>`,
+							type:'success',
+							showConfirmButton : false
+						})
 					} else {
 						sweetAlert(data.message)
 					}

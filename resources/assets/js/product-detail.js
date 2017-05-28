@@ -146,5 +146,5 @@ $(function () {
 	})
 
 	//默认第一个选中
-	$('.checkboxs input').eq(0).attr('checked', 'checked')
+	$('.checkboxs label').eq(0).addClass('active')
 });

@@ -118,7 +118,8 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 						title: '',
 						html: true,
 						text: '\u6CE8\u518C\u6210\u529F\uFF0C<a href="/">\u524D\u5F80\u9996\u9875</a>',
-						type: 'success'
+						type: 'success',
+						showConfirmButton: false
 					});
 				} else {
 					sweetAlert(data.message);
@@ -204,7 +205,20 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 		if (!reg.test(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).val())) {
 			checkWrong(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#phone-box'), '手机号格式不正确，请重新输入');
 		} else {
-			checkRight(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#phone-box'));
+			__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+				url: '/check-username',
+				type: 'post',
+				data: {
+					name: __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this).val()
+				},
+				success: function success(data) {
+					if (data.status === 1) {
+						checkRight(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#phone-box'));
+					} else {
+						checkWrong(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#phone-box'), data.message);
+					}
+				}
+			});
 		}
 	});
 
