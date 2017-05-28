@@ -122,7 +122,7 @@ $(function () {
 		if (join_type != ''){
 			join_type = join_type.substring(1)
 		}
-
+		console.log(join_type)
 		$.ajax({
 			url : '/product/join',
 			type : 'post',
@@ -147,4 +147,5 @@ $(function () {
 
 	//默认第一个选中
 	$('.checkboxs label').eq(0).addClass('active')
+	$('.checkboxs input').eq(0).attr('checked', 'checked')
 });

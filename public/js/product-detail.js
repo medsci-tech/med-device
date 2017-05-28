@@ -127,7 +127,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 		if (join_type != '') {
 			join_type = join_type.substring(1);
 		}
-
+		console.log(join_type);
 		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
 			url: '/product/join',
 			type: 'post',
@@ -152,6 +152,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
 
 	//默认第一个选中
 	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.checkboxs label').eq(0).addClass('active');
+	__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.checkboxs input').eq(0).attr('checked', 'checked');
 });
 
 /***/ }),
