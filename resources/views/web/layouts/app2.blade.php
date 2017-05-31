@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <title>@yield('title')</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
 <script src="/js/sweetalert/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/style/vendor.css">

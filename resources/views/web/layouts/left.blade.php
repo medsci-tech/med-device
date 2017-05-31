@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <title>@yield('title')</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <link rel="stylesheet" type="text/css" href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/js/sweetalert/sweetalert.css">
 @yield('page_css')

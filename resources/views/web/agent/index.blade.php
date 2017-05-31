@@ -6,8 +6,7 @@
 <link rel="stylesheet" type="text/css" href="style/broker.css">
 <link rel="stylesheet" type="text/css" href="/js/sweetalert/sweetalert.css">
 @endsection
-<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
-<script src="/js/sweetalert/sweetalert.min.js"></script>
+
 @section('content')
 <div class="container">
 	<div class="row nav">
