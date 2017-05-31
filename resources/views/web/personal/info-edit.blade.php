@@ -70,7 +70,7 @@
 					</div>
 					<div>
 						<label class="normal-label">出生日期</label>
-						<input id="datetimepicker" class="normal-input" type="text" name="date" placeholder="年/月/日" data-date-format="yyyy-mm-dd" value="{{ \Auth::user()->birthday }}">
+						<input id="datetimepicker" class="normal-input" type="text" name="date" placeholder="年/月/日" data-date-format="yyyy-mm-dd">
 					</div>
 					<div class="no-border">
 
@@ -101,6 +101,10 @@
 @endsection
 
 @section('page_js')
+<script>
+if(window.$User && window.$User.birthday){
+	document.getElementById('datetimepicker').value = window.$User.birthday.substr(0, 10)
+}</script>
 <script src="/js/bootstrap-datetimepicker.min.js"></script>
 <script src="/js/bootstrap-datetimepicker.zh-CN.js"></script>
 <script src="/js/uploadify/jquery.uploadify.js"></script>

@@ -85,7 +85,7 @@ $(function () {
 		e.preventDefault()
 		let { name, phone, area,
 				real_name, sex,
-				email
+				email, date
 			} = this
 			
 		let province = area.value.split('-')[0] || '',
@@ -101,6 +101,7 @@ $(function () {
 				area: area.value.split('-')[2] || '',
 				real_name: real_name.value,
 				sex: sex.value,
+				birthday: date.value,
 				email: email.value
 			}
 		}).then(data => {
