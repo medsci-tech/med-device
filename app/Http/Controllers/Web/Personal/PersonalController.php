@@ -116,6 +116,7 @@ class PersonalController extends Controller
                 $user->area =$request->area;
                 $user->sex =$request->sex;
                 $user->email =$request->email;
+                $user->birthday =$request->birthday;
                 $user->save();
                 return response()->json(['code'=>200, 'status' => 1,'message' => '修改成功' ]);
             }

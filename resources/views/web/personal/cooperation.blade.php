@@ -66,7 +66,7 @@
 						</div>
 						<div class="coope-contact">
 							<span id="contact" class="contact">{{ ($order->real_name) ? '联系人：'.$order->real_name : '' }}</span>
-							<span id="tel" class="tel">{{ ($order->contact_phone) ? '联系电话：'.$order->contact_phone : '' }}</span>
+							<span id="tel" class="tel">{{ $order->contact_phone }}</span>
 						</div>
 					</div>
 
