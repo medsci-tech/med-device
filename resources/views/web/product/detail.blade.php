@@ -195,7 +195,7 @@
 				<div class="btn-group" data-toggle="buttons" style="margin-left: 30px;outline: 0 none">
 					@foreach(config('params')['join_type'] as $key =>$val)
 					<label class="btn btn-default" style="outline: 0 none">
-							<input type="checkbox" name="join_type" value="{{ $key }}" style="outline: 0 none">{{ $val }}</label>
+							<input type="radio" name="join_type" value="{{ $key }}" style="outline: 0 none">{{ $val }}</label>
 					@endforeach
 				</div>
 			</div>
