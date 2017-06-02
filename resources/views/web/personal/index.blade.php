@@ -54,10 +54,15 @@
 			</div>
 			<div class="mymessage" style="margin-bottom: 80px">
 				<div class="panel">我的消息</div>
+				@if ($list)
+					@foreach ($list as $val)
 				<div class="item-message">
-					<span class="time">{{ \Auth::user()->created_at  }}</span>
-					<p>欢迎注册药械通</p>
+					<span class="time">{{ $val->created_at }}</span>
+					<p>{{ $val->content }}</p>
 				</div>
+					@endforeach
+				@endif
+				{{ $list->links() }}
 			</div>
 		</div>
 	</div>
