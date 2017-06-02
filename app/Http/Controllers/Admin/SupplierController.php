@@ -22,6 +22,7 @@ class SupplierController extends Controller
     {
         $data = [
             'supplier_name' => $request->input('supplier_name'),
+            'phone' => $request->input('phone'),
             'supplier_desc' => $request->input('supplier_desc')
         ];
         $bannerUrl = $this->upload($request);
@@ -64,7 +65,7 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        return view('admin.supplier.index', ['suppliers' => Supplier::paginate('5')]);
+        return view('admin.supplier.index', ['suppliers' => Supplier::orderBy('id','desc')->paginate('5')]);
     }
 
     /**

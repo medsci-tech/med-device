@@ -69,7 +69,7 @@
                                         class="am-icon-cloud-upload"></i> 选择要上传的文件
                             </button>
                         </div>
-                        <input type="file" id="doc-ipt-file-22" name="banner2" required>
+                        <input type="file" id="doc-ipt-file-22" name="banner2" >
                     </div>
                     <div class="am-form-group">
                         <label for="user-name" class="am-u-sm-3 am-form-label"></label>

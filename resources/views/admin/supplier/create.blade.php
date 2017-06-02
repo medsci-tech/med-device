@@ -23,7 +23,13 @@
                             <small>输入你的名字，让我们记住你。</small>
                         </div>
                     </div>
+                    <div class="am-form-group">
+                        <label for="user-name" class="am-u-sm-3 am-form-label">联系电话</label>
 
+                        <div class="am-u-sm-9">
+                            <input type="text" id="supplier_name" placeholder="联系电话" name="phone" >
+                        </div>
+                    </div>
                     <div class="am-form-group">
                         <label for="user-intro" class="am-u-sm-3 am-form-label">供应商简介</label>
 
