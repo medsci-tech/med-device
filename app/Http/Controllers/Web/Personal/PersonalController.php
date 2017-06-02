@@ -18,6 +18,7 @@ use App\Http\Requests\Interfaces\CheckAgent;
 use App\Http\Requests\Interfaces\RequestGetUser;
 use App\Models\CompanyImage;
 use App\Models\Appointment;
+use App\Models\Message;
 class PersonalController extends Controller
 {
     use CheckResetPwd,CheckResetInfo,CheckAgent,RequestGetUser;
@@ -27,7 +28,8 @@ class PersonalController extends Controller
         $use_completion = $this->getUserCompletion();
         $ent_completion = $this->getEnterpriseCompletion();
         $order_completion = $this->getOrderCompletion();
-        return view('web.personal.index', ['use_completion' => $use_completion,'ent_completion' => $ent_completion,'order_completion' => $order_completion]);
+        $list = Message::orderBy('created_at','desc')->where(['user_id'=>\Auth::user()->id])->orWhere(['user_id'=>0])->paginate(20);
+        return view('web.personal.index', ['use_completion' => $use_completion,'ent_completion' => $ent_completion,'order_completion' => $order_completion,'list'=>$list]);
     }
     /**
      * 个人收藏
