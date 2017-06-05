@@ -91,6 +91,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('category', 'CategoryController'); // 产品分类
         Route::resource('product', 'ProductController'); //产品
         Route::resource('supplier', 'SupplierController');
+        Route::resource('market', 'MarketController');//预约
         Route::resource('activity', 'ActivityController');
         Route::resource('user', 'UserController');
         Route::resource('message', 'MessageController');

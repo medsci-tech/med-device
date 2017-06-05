@@ -73,21 +73,23 @@
                     </ul>
                 </li>
                 <li><a href="/admin/supplier"><span class="am-icon-bank"></span>供应商管理</a></li>
-                <li><a href="/admin/activity"><span class="am-icon-bookmark"></span>活动管理</a></li>
+                {{--<li><a href="/admin/activity"><span class="am-icon"></span>用户管理</a></li>--}}
 
                 <li class="admin-parent">
-                    <a class="am-cf" data-am-collapse="{target: '#member-nav'}"><span
-                                class="am-icon-product-hun"></span>
+                    <a class="am-cf" data-am-collapse="{target: '#member-nav'}"><span class="am-icon-user-plus"></span>
                         用户管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                     <ul class="am-list am-collapse admin-sidebar-sub am-in" id="member-nav">
-                        <li><a href="/admin/user" class="am-cf"><span class="am-icon-calendar"></span>用户管理</a>
+                        <li><a href="/admin/user" class="am-cf"><span class="am-icon-user-secret"></span>用户管理</a>
                         </li>
-                        <li><a href="/admin/member/member-order" class="am-cf"><span
+                        <li><a href="/admin/cooperation"><span class="am-icon-paypal"></span>合作申请</a>
+                        </li>
+                        <li><a href="/admin/market" class="am-cf"><span
                                         class="am-icon-file"></span>预约申请</a></li>
-                        <li><a href="/admin/cooperation"><span class="am-icon-puzzle-file"></span>合作申请</a>
+                        <li><a href="/admin/cooperation"><span class="am-icon-ship"></span>企业资料</a>
                         </li>
                     </ul>
                 {{--</li>--}}
+
             </ul>
         </div>
     </div>
