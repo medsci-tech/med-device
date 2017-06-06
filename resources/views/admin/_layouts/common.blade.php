@@ -85,7 +85,7 @@
                         </li>
                         <li><a href="/admin/market" class="am-cf"><span
                                         class="am-icon-file"></span>预约申请</a></li>
-                        <li><a href="/admin/cooperation"><span class="am-icon-ship"></span>企业资料</a>
+                        <li><a href="/admin/enterprise"><span class="am-icon-ship"></span>企业资料</a>
                         </li>
                     </ul>
                 {{--</li>--}}

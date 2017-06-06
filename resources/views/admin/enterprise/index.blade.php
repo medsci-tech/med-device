@@ -1,25 +1,17 @@
 @extends('.admin._layouts.common')
 @section('title')
-    预约列表
+    企业认证列表
 @stop
 @section('main')
     <div class="admin-content">
 
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">预约</strong> /
-                <small>预约列表</small>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">企业认证</strong> /
+                <small>企业认证列表</small>
             </div>
         </div>
 
         <div class="am-g">
-            <div class="am-u-sm-12 am-u-md-3">
-                <div class="am-btn-toolbar">
-                    <div class="am-btn-group am-btn-group-xs empty-a">
-                        <a href="/admin/supplier/create" type="button" class="am-btn am-btn-success"><span
-                                    class="am-icon-plus"></span>新增</a>
-                    </div>
-                </div>
-            </div>
             {{--<div class="am-u-sm-12 am-u-md-8">--}}
             {{--<div class="am-input-group am-input-group-sm">--}}
             {{--<input type="text" class="am-form-field">--}}
@@ -36,35 +28,51 @@
                     <table class="am-table am-table-striped am-table-hover table-main">
                         <thead>
                         <tr>
-                            <th class="table-id">ID</th>
-                            <th class="table-title">商品名称</th>
-                            <th class="table-type">联系人</th>
-                            <th class="table-type">联系电话</th>
-                            <th class="table-author am-hide-sm-only">预约时间</th>
-                            <th class="table-date am-hide-sm-only">修改日期</th>
+                            <th class="table-title">用户</th>
+                            <th class="table-title">营业执照</th>
+                            <th class="table-title">开户许可证</th>
+                            <th class="table-type">医疗器械许可证</th>
+                            <th class="table-type">开票信息 </th>
+                            <th class="table-title">受托人身份证正</th>
+                            <th class="table-title">受托人身份证反</th>
+                            <th class="table-title">印章备案表</th>
+                            <th class="table-title">企业法人委托书</th>
+                            <th class="table-title">发票和出库单</th>
+                            <th class="table-title">企业公示信息</th>
+                            <th class="table-title">质保协议</th>
+                            <th class="table-title">审核状态</th>
                             <th class="table-set">操作</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($list as $val)
+                        @foreach($list as $key=> $val)
                             <tr>
-                                <td>{{$val->id}}</td>
-                                <td><a href="#">{{$val->product_name}}</a></td>
-                                <td>{{$val->contact_name}}</td>
-                                <td class="am-hide-sm-only">{{$val->contact_phone}}</td>
-                                <td class="am-hide-sm-only">{{$val->appoint_at}}</td>
-                                <td class="am-hide-sm-only">{{$val->updated_at}}</td>
+                                <td>{{ \App\User::find($val['user_id'])->name }}</td>
+                                <td><a href="{{$val['file_1']}}" target="_blank"><img  width="50" height="40" src="{{ ($val['file_1']) ? $val['file_1'] : config('params')['default_image'] }}?imageView2/1/w/100/h/25/q/100"></a></td>
+                                <td><a href="{{$val['file_2']}}" target="_blank"><img  width="50" height="40" src="{{ ($val['file_2']) ? $val['file_2'] : config('params')['default_image'] }}?imageView2/1/w/100/h/25/q/100"></a></td>
+                                <td><a href="{{$val['file_3']}}" target="_blank"><img  width="50" height="40" src="{{ ($val['file_3']) ? $val['file_3'] : config('params')['default_image'] }}?imageView2/1/w/100/h/25/q/100"></a></td>
+                                <td><a href="{{$val['file_4']}}" target="_blank"><img  width="50" height="40" src="{{ $val['file_4'] ? $val['file_4'] : config('params')['default_image'] }}?imageView2/1/w/100/h/25/q/100"></a></td>
+                                <td><a href="{{$val['file_5']}}" target="_blank"><img  width="50" height="40" src="{{ ($val['file_5']) ? $val['file_5'] : config('params')['default_image'] }}?imageView2/1/w/100/h/25/q/100"></a></td>
+                                <td><a href="{{$val['file_6']}}" target="_blank"><img  width="50" height="40" src="{{ ($val['file_6']) ? $val['file_6'] : config('params')['default_image'] }}?imageView2/1/w/100/h/25/q/100"></a></td>
+                                <td><a href="{{$val['file_7']}}" target="_blank"><img  width="50" height="40" src="{{ ($val['file_7']) ? $val['file_7'] : config('params')['default_image'] }}?imageView2/1/w/100/h/25/q/100"></a></td>
+                                <td><a href="{{$val['file_8']}}" target="_blank"><img  width="50" height="40" src="{{ ($val['file_8']) ? $val['file_8'] : config('params')['default_image'] }}?imageView2/1/w/100/h/25/q/100"></a></td>
+                                <td><a href="{{$val['file_9']}}" target="_blank"><img  width="50" height="40" src="{{ ($val['file_9']) ? $val['file_9'] : config('params')['default_image'] }}?imageView2/1/w/100/h/25/q/100"></a></td>
+                                <td><a href="{{$val['file_10']}}" target="_blank"><img  width="50" height="40" src="{{ ($val['file_10']) ? $val['file_10'] : config('params')['default_image'] }}?imageView2/1/w/100/h/25/q/100"></a></td>
+                                <td><a href="{{$val['file_11']}}" target="_blank"><img  width="50" height="40" src="{{ ($val['file_11']) ? $val['file_11'] : config('params')['default_image'] }}?imageView2/1/w/100/h/25/q/100"></a></td>
+                                <td>@if ($val['status'] !=2)
+                                        未通过
+                                    @else
+                                       <font color="blue">已通过</font>
+                                    @endif</td>
                                 <td>
                                     <div class="am-btn-toolbar">
                                         <div class="am-btn-group am-btn-group-xs">
-                                            <a href="/admin/supplier/{{$val->id}}/edit"
-                                               class="am-btn am-btn-xs am-btn-primary"><span
-                                                        class="am-icon-pencil"></span> Edit</a>
-                                            <a type="button" class="am-btn am-btn-danger"
-                                               id="delete{{ $val->id }}"><span class="am-icon-remove"></span>
-                                                Delete</a>
-                                            <a type="button" class="am-btn am-btn-danger"
-                                               id="delete{{ $val->id }}"><span class="am-icon-check-circle"></span> 审核
+
+                                            {{--<a type="button" class="am-btn am-btn-danger"--}}
+                                               {{--id="delete{{ $val->id }}"><span class="am-icon-remove"></span>--}}
+                                                {{--删除</a>--}}
+                                            <a type="button" class="am-btn am-btn am-btn-xs am-btn-primary"
+                                               id="pass{{ $val->id }}" data-id="{{ $val->id }}"><span class="am-icon-check-circle"></span> 审核
                                                 </a>
                                         </div>
                                     </div>
@@ -107,20 +115,20 @@
         }
 
         $(function () {
-            $('[id^=delete]').on('click', function () {
-                $('.am-modal-bd').text('您确定要删除?');
-                id = this.id.slice(6);
+            $('[id^=pass]').on('click', function () {
+                $('.am-modal-bd').text('您确定要审核通过吗?');
+                id = $(this).attr('data-id');
                 $('#my-confirm').modal({
                     relatedTarget: this,
                     onConfirm: function (options) {
                         $.ajax({
-                            url: '/admin/supplier/' + id,
-                            type: 'Delete',
+                            url: '/admin/enterprise/' + id+'/edit',
+                            type: 'GET',
                             dataType: 'text',
                             contentType: 'application/json',
                             async: true,
                             success: function (data) {
-                                location.reload();
+                               location.reload();
                             },
                             error: function (XMLResponse) {
                                 alert(XMLResponse.responseText);
