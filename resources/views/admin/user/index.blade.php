@@ -39,7 +39,7 @@
                         @foreach($users as $user)
                             <tr>
                                 <td>{{$user->id}}</td>
-                                <td><a href="#">{{$user->name}}</a></td>
+                                <td><a href="/admin/expertise/{{$user->id}}" title="专业特长">{{$user->name}}</a></td>
                                 <td class="am-hide-sm-only">{{$user->email}}</td>
                                 <td class="am-hide-sm-only">{{$user->created_at}}</td>
                                 <td>

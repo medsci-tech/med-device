@@ -54,6 +54,18 @@
                             <small></small>
                         </div>
                     </div>
+                    <div class="am-form-group am-form-select">
+                        <label for="doc-select-1" class="am-u-sm-3 am-form-label">所属企业</label>
+                        <div class="am-u-sm-9">
+                            <select class="select_gallery-multiple" style="width:100%;" name="supplier_id">
+                                    <option value="">请选择企业</option>
+                                    @foreach($suppliers as $val)
+                                        <option value="{{$val->id}}">{{$val->supplier_name}}</option>
+                                    @endforeach
+                            </select>
+                            <span class="am-form-caret"> </span>
+                        </div>
+                    </div>
                     <div class="am-form-group">
                         <label for="weight" class="am-u-sm-3 am-form-label">商品权重</label>
 

@@ -26,6 +26,7 @@ class ProductController extends Controller
         $this->postData = [
             'name' => $request->input('name'), // 名称
             'weight' => $request->input('weight'),// 排序
+            'supplier_id' => $request->input('supplier_id'),// 所属企业
             'contact_name' => $request->input('contact_name'),// 联系人
             'keyword_id' => implode(',',$request->input('keyword_ids') ? $request->input('keyword_ids') : []),// 关键词id
             'contact_phone' => $request->input('contact_phone'),// 联系电话
@@ -128,6 +129,7 @@ class ProductController extends Controller
     {
         return view('admin.product.create', [
             'categories' => Category::all(),
+            'suppliers' => Supplier::all(),
         ]);
     }
 
@@ -177,6 +179,7 @@ class ProductController extends Controller
         return view('admin.product.edit', [
             'product' => Product::find($id),
             'categories' => Category::all(),
+            'suppliers' => Supplier::all(),
         ]);
     }
 

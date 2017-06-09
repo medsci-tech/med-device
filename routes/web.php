@@ -101,6 +101,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('product-banner', 'ProductBannerController');
         Route::resource('cooperation', 'CooperationController');
         Route::resource('enterprise', 'EnterpriseController');
+        Route::get('expertise/{id}', 'ExpertiseController@index');
 
         Route::get('down-order-excel', 'OrderController@downOrderExcel');
         Route::get('order-2-excel', 'OrderController@order2Excel');
