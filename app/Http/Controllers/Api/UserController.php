@@ -20,8 +20,8 @@ class UserController extends Controller
         if ($request->isMethod('post')) {
             $uid = $request->uid;
             $file = $request->file;//本地文件
-            if(!User::find($uid))
-                return response()->json(['code'=>200, 'status' => 0,'message' => '找不到该用户' ]);
+            if(!User::find($uid) || !$file)
+                return response()->json(['code'=>200, 'status' => 0,'message' => '找不到该用户or 图像不能为空' ]);
             else
             {
                 $newName = md5(date('ymdhis')).".".'jpg';
