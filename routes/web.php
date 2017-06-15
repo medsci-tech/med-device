@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
+    Route::any('/user-head', 'UserController@userHead');
+});
 Route::group(['middleware' => 'web'], function () {
     //Auth::routes();
     Route::any('login', 'Auth\AuthController@login');
@@ -19,6 +21,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('home',function(){
         return redirect('/');
     });
+    Route::any('/test', 'Web\TestController@index');//测试
 });
 Route::group(['middleware' => 'web', 'namespace' => 'Web'], function () {
 
