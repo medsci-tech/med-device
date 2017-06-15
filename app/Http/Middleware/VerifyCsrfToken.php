@@ -16,6 +16,7 @@ class VerifyCsrfToken extends BaseVerifier
         '/get-hospital',
         '/check-username',
         '/product/collect',
+        '/api/user-head',
         '/login',
         '/product/join',
         '/forget',
