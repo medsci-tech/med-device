@@ -47,7 +47,7 @@
                         <tbody>
                         @foreach($list as $key=> $val)
                             <tr>
-                                <td>{{ \App\User::find($val['user_id'])->name }}</td>
+                                <td>{{ isset(\App\User::find($val['user_id'])->name) ? \App\User::find($val['user_id'])->name : '' }}</td>
                                 <td><a href="{{$val['file_1']}}" target="_blank"><img  width="50" height="40" src="{{ ($val['file_1']) ? $val['file_1'] : config('params')['default_image'] }}?imageView2/1/w/100/h/25/q/100"></a></td>
                                 <td><a href="{{$val['file_2']}}" target="_blank"><img  width="50" height="40" src="{{ ($val['file_2']) ? $val['file_2'] : config('params')['default_image'] }}?imageView2/1/w/100/h/25/q/100"></a></td>
                                 <td><a href="{{$val['file_3']}}" target="_blank"><img  width="50" height="40" src="{{ ($val['file_3']) ? $val['file_3'] : config('params')['default_image'] }}?imageView2/1/w/100/h/25/q/100"></a></td>
