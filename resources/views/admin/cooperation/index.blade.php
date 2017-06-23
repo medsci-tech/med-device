@@ -30,7 +30,7 @@
                             <tr>
                                 <td>{{$val->id}}</td>
                                 <td>{{ isset($val->product->supplier->supplier_name) ? $val->product->supplier->supplier_name : '' }}</td>
-                                <td>{{$val->product->name}}</td>
+                                <td>{{isset($val->product->name) ? $val->product->name : ''}}</td>
                                 <td>{{$val->real_name}}</td>
                                 <td>{{$val->contact_phone}}</td>
                                 <td>{{$val->join_type}}</td>
