@@ -17,6 +17,8 @@ class UserController extends Controller
     {
         $data = [
             'name' => $request->input('name'),
+            'real_name' => $request->input('real_name'),
+            'sex' => $request->input('sex'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password'))
         ];
@@ -52,6 +54,8 @@ class UserController extends Controller
     {
         $result = User::create([
             'name' => $request->input('name'),
+            'real_name' => $request->input('real_name'),
+            'sex' => $request->input('sex'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
         ]);
