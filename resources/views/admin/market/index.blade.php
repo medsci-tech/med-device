@@ -41,7 +41,7 @@
                             <th class="table-type">联系人</th>
                             <th class="table-type">联系电话</th>
                             <th class="table-author am-hide-sm-only">预约时间</th>
-                            <th class="table-date am-hide-sm-only">修改日期</th>
+                            <th class="table-date am-hide-sm-only">状态</th>
                             <th class="table-set">操作</th>
                         </tr>
                         </thead>
@@ -53,18 +53,26 @@
                                 <td>{{$val->contact_name}}</td>
                                 <td class="am-hide-sm-only">{{$val->contact_phone}}</td>
                                 <td class="am-hide-sm-only">{{$val->appoint_at}}</td>
-                                <td class="am-hide-sm-only">{{$val->updated_at}}</td>
+                                <td class="am-hide-sm-only">@if ($val->status == 1)
+                                        已审核
+                                    @elseif ($val->status == 2)
+                                        已预约
+                                    @elseif ($val->status == 3)
+                                        已完成
+                                    @else
+                                        已预约
+                                    @endif</td>
                                 <td>
                                     <div class="am-btn-toolbar">
                                         <div class="am-btn-group am-btn-group-xs">
-                                            <a href="/admin/supplier/{{$val->id}}/edit"
+                                            <a id="delete{{ $val->id }}" status="1"
                                                class="am-btn am-btn-xs am-btn-primary"><span
-                                                        class="am-icon-pencil"></span> Edit</a>
+                                                        class="am-icon-pencil"></span> 审核</a>
                                             <a type="button" class="am-btn am-btn-danger"
-                                               id="delete{{ $val->id }}"><span class="am-icon-remove"></span>
-                                                Delete</a>
-                                            <a type="button" class="am-btn am-btn-danger"
-                                               id="delete{{ $val->id }}"><span class="am-icon-check-circle"></span> 审核
+                                               id="delete{{ $val->id }}" status="2"><span class="am-icon-primary"></span>
+                                                预约</a>
+                                            <a type="button" class="am-btn am-btn-primary"
+                                               id="delete{{ $val->id }}" status="3"><span class="am-icon-check-circle"></span> 完成
                                                 </a>
                                         </div>
                                     </div>
@@ -108,24 +116,37 @@
 
         $(function () {
             $('[id^=delete]').on('click', function () {
-                $('.am-modal-bd').text('您确定要删除?');
+                $('.am-modal-bd').text('您确定要执行此次操作吗?');
                 id = this.id.slice(6);
+                status = $(this).attr('status');
                 $('#my-confirm').modal({
                     relatedTarget: this,
                     onConfirm: function (options) {
                         $.ajax({
-                            url: '/admin/supplier/' + id,
-                            type: 'Delete',
-                            dataType: 'text',
-                            contentType: 'application/json',
-                            async: true,
-                            success: function (data) {
-                                location.reload();
-                            },
-                            error: function (XMLResponse) {
+                            url: '/admin/market/update-status',
+                            type: 'post',
+                            data: {id:id,status:status},
+                            async : false, //默认为true 异步
+                            error:function(XMLResponse){
                                 alert(XMLResponse.responseText);
+                            },
+                            success:function(data){
+                                location.reload();
                             }
-                        });
+                            });
+//                        $.ajax({
+//                            url: '/admin/market/update-status',
+//                            type: 'POST',
+//                            data: {id:id,status:status},
+//                            contentType: 'application/json',
+//                            async: true,
+//                            success: function (data) {
+//                                location.reload();
+//                            },
+//                            error: function (XMLResponse) {
+//                                alert(XMLResponse.responseText);
+//                            }
+//                        });
                     },
                     onCancel: function () {
                     }

@@ -15,5 +15,11 @@ class MarketController extends Controller
         return view('admin.market.index', ['list' => Appointment::orderBy('id','desc')->paginate('30')]);
     }
 
+    public function updateStatus(Request $request)
+    {
+        $model = Appointment::find($request->id);
+        $model->status = $request->status;
+        $model->save();
+    }
 
 }
