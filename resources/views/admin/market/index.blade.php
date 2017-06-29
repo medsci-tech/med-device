@@ -56,7 +56,7 @@
                                 <td class="am-hide-sm-only">@if ($val->status == 1)
                                         已审核
                                     @elseif ($val->status == 2)
-                                        已预约
+                                        进行中
                                     @elseif ($val->status == 3)
                                         已完成
                                     @else
