@@ -21,9 +21,9 @@ class ProductController extends Controller
         $keyword = $request->keyword;
         $catogary =  Category::orderBy('id')->get();
 
-        if(!$id)
-            unset($where['category_id']);
-        $product = Product::orderBy('weight', 'desc')->where($where)->paginate(20);
+	$query = Product::query();
+	if($id) $query->where($where);
+        $product = $query->orderBy('weight', 'desc')->paginate(20);
 
         return view('web.product.index', compact('product','keyword','catogary'));
 
