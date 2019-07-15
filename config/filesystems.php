@@ -73,7 +73,6 @@ return [
             'secret_key' => env('QINIU_SK'),  //SecretKey
             'bucket' => env('QINIU_BUCKET'),  //Bucket名字
             'notify_url'=> '',  //持久化处理回调地址
-	    'access'=>''
         ],
 
     ],
