@@ -15,3 +15,4 @@ Homestead.yaml
 /public/php_errors.log
 /app/Http/Controllers/Auth/AuthController.php
 /database/migrations
+/public/uploads
