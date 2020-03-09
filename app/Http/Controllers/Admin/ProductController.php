@@ -141,8 +141,8 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         /* 规格处理 */
-        $specName = $request->input('spec_name');
-        $specPrice = $request->input('spec_price');
+        $specName = $request->input('spec_name', []);
+        $specPrice = $request->input('spec_price', []);
         $specDetails = [];
         for ($i = 0; $i < sizeof($specName); $i++) {
             $specDetails[$i] = [
@@ -151,8 +151,8 @@ class ProductController extends Controller
             ];
         }
         /* 视频处理 */
-        $videoApp = $request->input('qcloud_app_id');
-        $videoFile = $request->input('qcloud_file_id');
+        $videoApp = $request->input('qcloud_app_id', []);
+        $videoFile = $request->input('qcloud_file_id', []);
         $videoDetails = [];
         for ($i = 0; $i < sizeof($videoApp); $i++) {
             $videoDetails[$i] = [
